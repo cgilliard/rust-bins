@@ -1,0 +1,1 @@
+"-O2" "-fPIC" "-o" "output/libcompiler_builtins.rlib.o" "output/libcompiler_builtins.rlib.c" "-c" 

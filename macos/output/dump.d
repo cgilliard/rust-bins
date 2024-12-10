@@ -1,0 +1,2 @@
+output/dump: lib/libproc_macro/tools/dump.rs lib/libproc_macro/tools/../src/protocol.rs
+output/dump: output/liballoc.rlib output/liballoc_system.rlib output/libcompiler_builtins.rlib output/libcore.rlib output/liblibc.rlib output/libpanic_abort.rlib output/libproc_macro.rlib output/librustc_asan.rlib output/librustc_lsan.rlib output/librustc_msan.rlib output/librustc_tsan.rlib output/libstd.rlib output/libstd_unicode.rlib output/libunwind.rlib

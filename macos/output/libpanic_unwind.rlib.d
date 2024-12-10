@@ -1,0 +1,2 @@
+output/libpanic_unwind.rlib: rustc-1.29.0-src/src/libpanic_unwind/lib.rs rustc-1.29.0-src/src/libpanic_unwind/gcc.rs rustc-1.29.0-src/src/libpanic_unwind/dwarf/mod.rs rustc-1.29.0-src/src/libpanic_unwind/dwarf/eh.rs
+output/libpanic_unwind.rlib: output/liballoc.rlib output/libcompiler_builtins.rlib output/libcore.rlib output/liblibc.rlib output/libunwind.rlib

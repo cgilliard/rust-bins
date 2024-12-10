@@ -1,0 +1,2 @@
+output/liblibc.rlib: rustc-1.29.0-src/src/rustc/libc_shim/../../liblibc/src/lib.rs rustc-1.29.0-src/src/rustc/libc_shim/../../liblibc/src/macros.rs rustc-1.29.0-src/src/rustc/libc_shim/../../liblibc/src/dox.rs rustc-1.29.0-src/src/rustc/libc_shim/../../liblibc/src/unix/mod.rs rustc-1.29.0-src/src/rustc/libc_shim/../../liblibc/src/unix/bsd/mod.rs rustc-1.29.0-src/src/rustc/libc_shim/../../liblibc/src/unix/bsd/apple/mod.rs rustc-1.29.0-src/src/rustc/libc_shim/../../liblibc/src/unix/bsd/apple/b64.rs
+output/liblibc.rlib: output/libcompiler_builtins.rlib output/libcore.rlib
