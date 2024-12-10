@@ -1,0 +1,2 @@
+output/libgetopts-0_2_17.rlib: rustc-1.29.0-src/src/vendor/getopts/src/lib.rs
+output/libgetopts-0_2_17.rlib: output/liballoc.rlib output/liballoc_system.rlib output/libcompiler_builtins.rlib output/libcore.rlib output/liblibc.rlib output/libpanic_abort.rlib output/librustc_asan.rlib output/librustc_lsan.rlib output/librustc_msan.rlib output/librustc_tsan.rlib output/libstd.rlib output/libstd_unicode.rlib output/libunwind.rlib

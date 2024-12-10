@@ -1,0 +1,1 @@
+"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output/libpanic_abort.rlib.o" "output/libpanic_abort.rlib.c" "-c" 

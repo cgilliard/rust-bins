@@ -1,0 +1,1 @@
+"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output/librustc_lsan.rlib.o" "output/librustc_lsan.rlib.c" "-c" 
