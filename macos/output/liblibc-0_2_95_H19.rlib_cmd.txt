@@ -1,0 +1,1 @@
+"-O2" "-fPIC" "-o" "output-1.54.0/liblibc-0_2_95_H19.rlib.o" "output-1.54.0/liblibc-0_2_95_H19.rlib.c" "-c" 

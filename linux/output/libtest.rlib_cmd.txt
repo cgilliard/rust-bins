@@ -1,1 +1,0 @@
-"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output/libtest.rlib.o" "output/libtest.rlib.c" "-c" 

@@ -1,2 +1,0 @@
-output/librustc_tsan.rlib: rustc-1.29.0-src/src/librustc_tsan/lib.rs
-output/librustc_tsan.rlib: output/liballoc.rlib output/liballoc_system.rlib output/libcompiler_builtins.rlib output/libcore.rlib output/liblibc.rlib

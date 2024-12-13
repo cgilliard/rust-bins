@@ -1,1 +1,1 @@
-"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output/libcore.rlib.o" "output/libcore.rlib.c" "-c" 
+"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output-1.54.0/libcore.rlib.o" "output-1.54.0/libcore.rlib.c" "-c" 

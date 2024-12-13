@@ -1,0 +1,1 @@
+"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output-1.54.0/libcompiler_builtins-0_1_45_H92.rlib.o" "output-1.54.0/libcompiler_builtins-0_1_45_H92.rlib.c" "-c" 

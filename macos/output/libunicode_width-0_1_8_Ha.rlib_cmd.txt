@@ -1,0 +1,1 @@
+"-O2" "-fPIC" "-o" "output-1.54.0/libunicode_width-0_1_8_Ha.rlib.o" "output-1.54.0/libunicode_width-0_1_8_Ha.rlib.c" "-c" 
