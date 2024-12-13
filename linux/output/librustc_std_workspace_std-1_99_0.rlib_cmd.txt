@@ -1,1 +1,0 @@
-"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output-1.54.0/librustc_std_workspace_std-1_99_0.rlib.o" "output-1.54.0/librustc_std_workspace_std-1_99_0.rlib.c" "-c" 

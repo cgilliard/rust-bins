@@ -1,1 +1,0 @@
-"-O2" "-fPIC" "-o" "output-1.54.0/libstd_detect-0_1_5_Ha7.rlib.o" "output-1.54.0/libstd_detect-0_1_5_Ha7.rlib.c" "-c" 

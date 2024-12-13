@@ -1,2 +1,2 @@
-output-1.54.0/libpanic_unwind.rlib: rustc-1.54.0-src/library/panic_unwind/src/lib.rs rustc-1.54.0-src/library/panic_unwind/src/gcc.rs rustc-1.54.0-src/library/panic_unwind/src/dwarf/mod.rs rustc-1.54.0-src/library/panic_unwind/src/dwarf/eh.rs
-output-1.54.0/libpanic_unwind.rlib: output-1.54.0/liballoc.rlib output-1.54.0/libcfg_if-0_1_10_H3.rlib output-1.54.0/libcompiler_builtins-0_1_45_H92.rlib output-1.54.0/libcore.rlib output-1.54.0/liblibc-0_2_95_H19.rlib output-1.54.0/librustc_std_workspace_core-1_99_0.rlib output-1.54.0/libunwind.rlib
+output/libpanic_unwind.rlib: rustc-1.29.0-src/src/libpanic_unwind/lib.rs rustc-1.29.0-src/src/libpanic_unwind/gcc.rs rustc-1.29.0-src/src/libpanic_unwind/dwarf/mod.rs rustc-1.29.0-src/src/libpanic_unwind/dwarf/eh.rs
+output/libpanic_unwind.rlib: output/liballoc.rlib output/libcompiler_builtins.rlib output/libcore.rlib output/liblibc.rlib output/libunwind.rlib

@@ -102,8 +102,8 @@ struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g {
 };
 typedef char sizeof_assert_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g[ (sizeof(struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g) == 4) ? 1 : -1 ];
 struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g;
-struct e_ZRG2cE9core0_0_03ffi6c_void0g;
-typedef struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  (*t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind15_Unwind_Context0gPuG2cE9core0_0_03ffi6c_void0gG2c_A_B19_Unwind_Reason_Code0g )( struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *, struct e_ZRG2cE9core0_0_03ffi6c_void0g * ); // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"core-0_0_0"::ffi::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+struct e_ZRG1cE12libc0_0_0_H16c_void0g;
+typedef struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  (*t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind15_Unwind_Context0gPuG1cE12libc0_0_0_H16c_void0gG2c_A_B19_Unwind_Reason_Code0g )( struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *, struct e_ZRG1cE12libc0_0_0_H16c_void0g * ); // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"libc-0_0_0_H1"::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 struct s_ZRG2cG11unwind0_0_09libunwind17_Unwind_Exception0g;
 // enum ::"unwind-0_0_0"::libunwind::_Unwind_Action
 struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g {
@@ -160,6 +160,20 @@ struct e_ZRG2cE9core0_0_06option6Option1gCu {
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gCu[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gCu) == 16) ? 1 : -1 ];
+struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g;
+// struct ::"core-0_0_0"::marker::PhantomData<&'#omitted ::"core-0_0_0"::fmt::ArgumentV1<'#omitted,>/*S*/,>
+struct s_ZRG2cE9core0_0_06marker11PhantomData1gBsG2c_A3fmt10ArgumentV10g  {
+	char _d;
+} __attribute__((__aligned__(1),)) ;
+typedef char alignof_assert_ZRG2cE9core0_0_06marker11PhantomData1gBsG2c_A3fmt10ArgumentV10g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06marker11PhantomData1gBsG2c_A3fmt10ArgumentV10g) == 1) ? 1 : -1 ];
+// struct ::"core-0_0_0"::slice::Iter<'#omitted,::"core-0_0_0"::fmt::ArgumentV1<'#omitted,>/*S*/,>
+struct s_ZRG2cE9core0_0_05slice4Iter1gG2c_A3fmt10ArgumentV10g  {
+	/*@0*/// ZST; // ::"core-0_0_0"::marker::PhantomData<&'#omitted ::"core-0_0_0"::fmt::ArgumentV1<'#omitted,>/*S*/,>/*S*/
+	/*@0*/struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g *_0; // *const ::"core-0_0_0"::fmt::ArgumentV1<'#omitted,>/*S*/
+	/*@8*/struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g *_1; // *const ::"core-0_0_0"::fmt::ArgumentV1<'#omitted,>/*S*/
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_05slice4Iter1gG2c_A3fmt10ArgumentV10g[ (sizeof(struct s_ZRG2cE9core0_0_05slice4Iter1gG2c_A3fmt10ArgumentV10g) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_05slice4Iter1gG2c_A3fmt10ArgumentV10g[ (ALIGNOF(struct s_ZRG2cE9core0_0_05slice4Iter1gG2c_A3fmt10ArgumentV10g) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::fmt::Formatter<'#omitted,>
 struct s_ZRG2cE9core0_0_03fmt9Formatter0g  {
 	/*@0*/struct e_ZRG4cE9core0_0_03fmt2rt2v19Alignment0g _2; // ::"core-0_0_0"::fmt::rt::v1::Alignment/*E*/
@@ -168,8 +182,10 @@ struct s_ZRG2cE9core0_0_03fmt9Formatter0g  {
 	/*@16*/struct e_ZRG2cE9core0_0_06option6Option1gCu _3; // ::"core-0_0_0"::option::Option<usize,>/*E*/
 	/*@32*/struct e_ZRG2cE9core0_0_06option6Option1gCu _4; // ::"core-0_0_0"::option::Option<usize,>/*E*/
 	/*@48*/TRAITOBJ_PTR _5; // &'#omitted mut dyn (::"core-0_0_0"::fmt::Write+'#omitted)
+	/*@64*/struct s_ZRG2cE9core0_0_05slice4Iter1gG2c_A3fmt10ArgumentV10g _6; // ::"core-0_0_0"::slice::Iter<'#omitted,::"core-0_0_0"::fmt::ArgumentV1<'#omitted,>/*S*/,>/*S*/
+	/*@80*/SLICE_PTR _7; // &'#omitted [::"core-0_0_0"::fmt::ArgumentV1<'#omitted,>/*S*/]
 } ;
-typedef char sizeof_assert_ZRG2cE9core0_0_03fmt9Formatter0g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt9Formatter0g) == 64) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_03fmt9Formatter0g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt9Formatter0g) == 96) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_03fmt9Formatter0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03fmt9Formatter0g) == 8) ? 1 : -1 ];
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::clone::Clone>::clone<'#omitted,>
 struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_05clone5Clone0g_E0g(
@@ -225,8 +241,8 @@ struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG2cG11unwind0_0
 ;
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_Backtrace
 extern struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  ZRG2cG11unwind0_0_09libunwind17_Unwind_Backtrace0g(
-		t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind15_Unwind_Context0gPuG2cE9core0_0_03ffi6c_void0gG2c_A_B19_Unwind_Reason_Code0g arg0, // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"core-0_0_0"::ffi::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG2cE9core0_0_03ffi6c_void0g *arg1 // *mut ::"core-0_0_0"::ffi::c_void/*E*/
+		t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind15_Unwind_Context0gPuG1cE12libc0_0_0_H16c_void0gG2c_A_B19_Unwind_Reason_Code0g arg0, // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"libc-0_0_0_H1"::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG1cE12libc0_0_0_H16c_void0g *arg1 // *mut ::"libc-0_0_0_H1"::c_void/*E*/
 		) // -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
  asm("__Unwind_Backtrace");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_DeleteException
@@ -235,9 +251,9 @@ extern void  ZRG2cG11unwind0_0_09libunwind23_Unwind_DeleteException0g(
 		) // -> ()
  asm("__Unwind_DeleteException");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_FindEnclosingFunction
-extern struct e_ZRG2cE9core0_0_03ffi6c_void0g * ZRG2cG11unwind0_0_09libunwind29_Unwind_FindEnclosingFunction0g(
-		struct e_ZRG2cE9core0_0_03ffi6c_void0g *arg0 // *mut ::"core-0_0_0"::ffi::c_void/*E*/
-		) // -> *mut ::"core-0_0_0"::ffi::c_void/*E*/
+extern struct e_ZRG1cE12libc0_0_0_H16c_void0g * ZRG2cG11unwind0_0_09libunwind29_Unwind_FindEnclosingFunction0g(
+		struct e_ZRG1cE12libc0_0_0_H16c_void0g *arg0 // *mut ::"libc-0_0_0_H1"::c_void/*E*/
+		) // -> *mut ::"libc-0_0_0_H1"::c_void/*E*/
  asm("__Unwind_FindEnclosingFunction");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetDataRelBase
 extern uintptr_t  ZRG2cG11unwind0_0_09libunwind22_Unwind_GetDataRelBase0g(
@@ -262,9 +278,9 @@ extern uintptr_t  ZRG2cG11unwind0_0_09libunwind17_Unwind_GetIPInfo0g(
 		) // -> usize
  asm("__Unwind_GetIPInfo");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetLanguageSpecificData
-extern struct e_ZRG2cE9core0_0_03ffi6c_void0g * ZRG2cG11unwind0_0_09libunwind31_Unwind_GetLanguageSpecificData0g(
+extern struct e_ZRG1cE12libc0_0_0_H16c_void0g * ZRG2cG11unwind0_0_09libunwind31_Unwind_GetLanguageSpecificData0g(
 		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
-		) // -> *mut ::"core-0_0_0"::ffi::c_void/*E*/
+		) // -> *mut ::"libc-0_0_0_H1"::c_void/*E*/
  asm("__Unwind_GetLanguageSpecificData");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetRegionStart
 extern uintptr_t  ZRG2cG11unwind0_0_09libunwind22_Unwind_GetRegionStart0g(

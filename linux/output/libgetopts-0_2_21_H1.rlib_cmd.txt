@@ -1,1 +1,0 @@
-"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output-1.54.0/libgetopts-0_2_21_H1.rlib.o" "output-1.54.0/libgetopts-0_2_21_H1.rlib.c" "-c" 

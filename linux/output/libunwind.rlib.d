@@ -1,2 +1,2 @@
-output-1.54.0/libunwind.rlib: rustc-1.54.0-src/library/unwind/src/lib.rs rustc-1.54.0-src/library/unwind/src/libunwind.rs
-output-1.54.0/libunwind.rlib: output-1.54.0/libcfg_if-0_1_10_H3.rlib output-1.54.0/libcompiler_builtins-0_1_45_H92.rlib output-1.54.0/libcore.rlib output-1.54.0/liblibc-0_2_95_H19.rlib output-1.54.0/librustc_std_workspace_core-1_99_0.rlib
+output/libunwind.rlib: rustc-1.29.0-src/src/libunwind/lib.rs rustc-1.29.0-src/src/libunwind/macros.rs rustc-1.29.0-src/src/libunwind/libunwind.rs
+output/libunwind.rlib: output/libcompiler_builtins.rlib output/libcore.rlib output/liblibc.rlib

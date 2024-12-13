@@ -1,1 +1,0 @@
-"-O2" "-fPIC" "-o" "output-1.54.0/libcfg_if-0_1_10_H3.rlib.o" "output-1.54.0/libcfg_if-0_1_10_H3.rlib.c" "-c" 
