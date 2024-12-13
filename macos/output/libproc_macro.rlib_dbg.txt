@@ -5,7 +5,7 @@ Target Load: V V V
 Parse: V V V
 (0.01 s) Parse: DONE
 LoadCrates: V V V
-(0.09 s) LoadCrates: DONE
+(0.13 s) LoadCrates: DONE
 Expand: V V V
 (0.00 s) Expand: DONE
 Implicit Crates: V V V
@@ -23,7 +23,7 @@ Lifetime Elision: V V V
 Resolve Type Aliases: V V V
 (0.00 s) Resolve Type Aliases: DONE
 Resolve Bind: V V V
-(0.01 s) Resolve Bind: DONE
+(0.03 s) Resolve Bind: DONE
 Resolve UFCS Outer: V V V
 (0.00 s) Resolve UFCS Outer: DONE
 Resolve HIR Self Type: V V V
@@ -61,13 +61,13 @@ Expand HIR ErasedType: V V V
 Typecheck Expressions (validate): V V V
 (0.00 s) Typecheck Expressions (validate): DONE
 Lower MIR: V V V
-(0.08 s) Lower MIR: DONE
+(0.07 s) Lower MIR: DONE
 MIR Validate: V V V
-(0.08 s) MIR Validate: DONE
+(0.07 s) MIR Validate: DONE
 MIR Cleanup: V V V
-(0.08 s) MIR Cleanup: DONE
+(0.07 s) MIR Cleanup: DONE
 MIR Optimise: V V V
-(0.10 s) MIR Optimise: DONE
+(0.09 s) MIR Optimise: DONE
 MIR Validate PO: V V V
 (0.02 s) MIR Validate PO: DONE
 MIR Validate Full: V V V
@@ -79,11 +79,11 @@ Trans Auto Impls: V V V
 Trans Monomorph: V V V
 (0.03 s) Trans Monomorph: DONE
 MIR Optimise Inline: V V V
-(0.02 s) MIR Optimise Inline: DONE
+(0.03 s) MIR Optimise Inline: DONE
 Trans Enumerate Cleanup: V V V
 (0.00 s) Trans Enumerate Cleanup: DONE
 HIR Serialise: V V V
 (0.01 s) HIR Serialise: DONE
 Trans Codegen: V V V
-Running command - "gcc" @"output/libproc_macro.rlib_cmd.txt"
-(0.04 s) Trans Codegen: DONE
+Running command - "gcc" @"output-1.54.0/libproc_macro.rlib_cmd.txt"
+(0.05 s) Trans Codegen: DONE

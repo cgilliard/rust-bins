@@ -1,1 +1,0 @@
-"-O2" "-fPIC" "-o" "output/librustc_tsan.rlib.o" "output/librustc_tsan.rlib.c" "-c" 

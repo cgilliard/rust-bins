@@ -96,31 +96,32 @@ static inline uint64_t __mrustc_op_umin64(uint64_t a, uint64_t b) { return (a < 
 static inline uint64_t __mrustc_op_imax64(uint64_t a, uint64_t b) { return ((int64_t)a > (int64_t)b ? a : b); }
 static inline uint64_t __mrustc_op_imin64(uint64_t a, uint64_t b) { return ((int64_t)a < (int64_t)b ? a : b); }
 static inline uint64_t __mrustc_op_and_not64(uint64_t a, uint64_t b) { return ~(a & b); }
-typedef void (*t_ZRTF1PuCaT0 )( uint8_t * ); // extern "Rust" fn(*mut u8, ) -> ()
 // PROTO extern "Rust" ::"panic_abort-0_0_0"::#0::abort
 tBANG  ZRG2cL16panic_abort0_0_0B_05abort0g(void) // -> !
 ;
-// PROTO extern "C" ::"panic_abort-0_0_0"::__rust_maybe_catch_panic
-#define ZRG1cL16panic_abort0_0_024__rust_maybe_catch_panic0g __rust_maybe_catch_panic
-__attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_024__rust_maybe_catch_panic0g(
-		t_ZRTF1PuCaT0 arg0, // extern "Rust" fn(*mut u8, ) -> ()
-		uint8_t *arg1, // *mut u8
-		uintptr_t *arg2, // *mut usize
-		uintptr_t *arg3 // *mut usize
-		) // -> u32
+// PROTO extern "C" ::"panic_abort-0_0_0"::__rust_panic_cleanup
+#define ZRG1cL16panic_abort0_0_020__rust_panic_cleanup0g __rust_panic_cleanup
+__attribute__((weak)) TRAITOBJ_PTR  ZRG1cL16panic_abort0_0_020__rust_panic_cleanup0g(
+		uint8_t *arg0 // *mut u8
+		) // -> *mut dyn (::"core-0_0_0"::any::Any+::"core-0_0_0"::marker::Send)
 ;
 // PROTO extern "C" ::"panic_abort-0_0_0"::__rust_start_panic
 #define ZRG1cL16panic_abort0_0_018__rust_start_panic0g __rust_start_panic
 __attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_018__rust_start_panic0g(
-		uintptr_t arg0 // usize
+		TRAITOBJ_PTR *arg0 // *mut &'#omitted mut dyn (::"core-0_0_0"::panic::BoxMeUp+'#omitted)
 		) // -> u32
 ;
 // PROTO extern "C" ::"panic_abort-0_0_0"::personalities::rust_eh_personality
 #define ZRG2cL16panic_abort0_0_013personalities19rust_eh_personality0g rust_eh_personality
-void  ZRG2cL16panic_abort0_0_013personalities19rust_eh_personality0g(void) // -> ()
+__attribute__((weak)) void  ZRG2cL16panic_abort0_0_013personalities19rust_eh_personality0g(void) // -> ()
 ;
-// EXTERN extern "C" ::"libc-0_0_0_H1"::abort
-extern tBANG  ZRG1cE12libc0_0_0_H15abort0g(void) // -> !
+// EXTERN extern "Rust" ::"core-0_0_0"::panicking::panic
+extern tBANG  ZRG2cE9core0_0_09panicking5panic0g(
+		SLICE_PTR arg0 // &'static str
+		) // -> !
+;
+// EXTERN extern "C" ::"libc-0_2_95_H19"::unix::abort
+extern tBANG  ZRG2cE14libc0_2_95_H194unix5abort0g(void) // -> !
  asm("_abort");
 // ::"panic_abort-0_0_0"::#0::abort
 tBANG  ZRG2cL16panic_abort0_0_0B_05abort0g(void) // -> !
@@ -128,38 +129,32 @@ tBANG  ZRG2cL16panic_abort0_0_0B_05abort0g(void) // -> !
 {
 	tBANG rv;
 	tBANG var0 = {0};	// !
-	ZRG1cE12libc0_0_0_H15abort0g( );
-	// ^ Call( _0 = ::"libc-0_0_0_H1"::abort( ), bb1, bb1)
+	ZRG2cE14libc0_2_95_H194unix5abort0g( );
+	// ^ Call( _0 = ::"libc-0_2_95_H19"::unix::abort( ), bb1, bb1)
 bb1: _Unwind_Resume(); // Diverge
 }
-// ::"panic_abort-0_0_0"::__rust_maybe_catch_panic
-uint32_t  ZRG1cL16panic_abort0_0_024__rust_maybe_catch_panic0g(
-		t_ZRTF1PuCaT0 arg0, // extern "Rust" fn(*mut u8, ) -> ()
-		uint8_t *arg1, // *mut u8
-		uintptr_t *arg2, // *mut usize
-		uintptr_t *arg3 // *mut usize
-		) // -> u32
+// ::"panic_abort-0_0_0"::__rust_panic_cleanup
+TRAITOBJ_PTR  ZRG1cL16panic_abort0_0_020__rust_panic_cleanup0g(
+		uint8_t *arg0 // *mut u8
+		) // -> *mut dyn (::"core-0_0_0"::any::Any+::"core-0_0_0"::marker::Send)
 
 {
-	uint32_t rv;
-	tUNIT var0 = {0};	// ()
-	(arg0)( arg1 );
-	// ^ Call( _0 = (a0)( a1, ), bb1, bb2)
-	rv = 0x0;	// retval = Constant(0x0 u32)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
+	TRAITOBJ_PTR rv;
+	tBANG var0 = {0};	// !
+	ZRG2cE9core0_0_09panicking5panic0g( make_sliceptr("internal error: entered unreachable code", 40) );
+	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic( "internal error: entered unreachable code", ), bb1, bb1)
+bb1: _Unwind_Resume(); // Diverge
 }
 // ::"panic_abort-0_0_0"::__rust_start_panic
 uint32_t  ZRG1cL16panic_abort0_0_018__rust_start_panic0g(
-		uintptr_t arg0 // usize
+		TRAITOBJ_PTR *arg0 // *mut &'#omitted mut dyn (::"core-0_0_0"::panic::BoxMeUp+'#omitted)
 		) // -> u32
 
 {
 	uint32_t rv;
 	tBANG var0 = {0};	// !
-	ZRG1cE12libc0_0_0_H15abort0g( );
-	// ^ Call( _0 = ::"libc-0_0_0_H1"::abort( ), bb1, bb1)
+	ZRG2cE14libc0_2_95_H194unix5abort0g( );
+	// ^ Call( _0 = ::"libc-0_2_95_H19"::unix::abort( ), bb1, bb1)
 bb1: _Unwind_Resume(); // Diverge
 }
 // ::"panic_abort-0_0_0"::personalities::rust_eh_personality

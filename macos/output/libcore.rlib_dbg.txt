@@ -3,27 +3,27 @@ Setup: V V V
 Target Load: V V V
 (0.00 s) Target Load: DONE
 Parse: V V V
-(0.20 s) Parse: DONE
+(0.48 s) Parse: DONE
 LoadCrates: V V V
 (0.00 s) LoadCrates: DONE
 Expand: V V V
-(0.30 s) Expand: DONE
+(0.43 s) Expand: DONE
 Implicit Crates: V V V
 (0.00 s) Implicit Crates: DONE
 Resolve Use: V V V
 (0.01 s) Resolve Use: DONE
 Resolve Index: V V V
-(0.01 s) Resolve Index: DONE
+(0.02 s) Resolve Index: DONE
 Resolve Absolute: V V V
-(0.04 s) Resolve Absolute: DONE
+(0.07 s) Resolve Absolute: DONE
 HIR Lower: V V V
-(0.08 s) HIR Lower: DONE
+(0.12 s) HIR Lower: DONE
 Lifetime Elision: V V V
 (0.02 s) Lifetime Elision: DONE
 Resolve Type Aliases: V V V
-(0.01 s) Resolve Type Aliases: DONE
+(0.02 s) Resolve Type Aliases: DONE
 Resolve Bind: V V V
-(0.03 s) Resolve Bind: DONE
+(0.04 s) Resolve Bind: DONE
 Resolve UFCS Outer: V V V
 (0.02 s) Resolve UFCS Outer: DONE
 Resolve HIR Self Type: V V V
@@ -33,57 +33,57 @@ Resolve HIR Markings: V V V
 Sort Impls: V V V
 (0.00 s) Sort Impls: DONE
 Resolve UFCS paths: V V V
-(0.07 s) Resolve UFCS paths: DONE
+(0.15 s) Resolve UFCS paths: DONE
 Constant Evaluate: V V V
-(0.50 s) Constant Evaluate: DONE
+(0.85 s) Constant Evaluate: DONE
 Typecheck Outer: V V V
-(0.13 s) Typecheck Outer: DONE
+(0.24 s) Typecheck Outer: DONE
 Typecheck Expressions: V V V
-(0.85 s) Typecheck Expressions: DONE
+(1.01 s) Typecheck Expressions: DONE
 Expand HIR Annotate: V V V
 (0.03 s) Expand HIR Annotate: DONE
 Expand HIR Static Borrow Mark: V V V
 (0.02 s) Expand HIR Static Borrow Mark: DONE
 Expand HIR Lifetimes: V V V
-(0.33 s) Expand HIR Lifetimes: DONE
+(0.38 s) Expand HIR Lifetimes: DONE
 Expand HIR Closures: V V V
-(0.09 s) Expand HIR Closures: DONE
+(0.14 s) Expand HIR Closures: DONE
 Expand HIR Static Borrow: V V V
 (0.03 s) Expand HIR Static Borrow: DONE
 Expand HIR VTables: V V V
 (0.01 s) Expand HIR VTables: DONE
 Expand HIR Calls: V V V
-(0.03 s) Expand HIR Calls: DONE
+(0.02 s) Expand HIR Calls: DONE
 Expand HIR Reborrows: V V V
 (0.02 s) Expand HIR Reborrows: DONE
 Expand HIR ErasedType: V V V
-(0.03 s) Expand HIR ErasedType: DONE
+(0.04 s) Expand HIR ErasedType: DONE
 Typecheck Expressions (validate): V V V
-(0.15 s) Typecheck Expressions (validate): DONE
+(0.22 s) Typecheck Expressions (validate): DONE
 Lower MIR: V V V
-(0.28 s) Lower MIR: DONE
+(0.32 s) Lower MIR: DONE
 MIR Validate: V V V
-(0.14 s) MIR Validate: DONE
+(0.17 s) MIR Validate: DONE
 MIR Cleanup: V V V
-(0.17 s) MIR Cleanup: DONE
+(0.19 s) MIR Cleanup: DONE
 MIR Optimise: V V V
-(0.77 s) MIR Optimise: DONE
+(0.85 s) MIR Optimise: DONE
 MIR Validate PO: V V V
-(0.07 s) MIR Validate PO: DONE
+(0.08 s) MIR Validate PO: DONE
 MIR Validate Full: V V V
 (0.00 s) MIR Validate Full: DONE
 Trans Enumerate: V V V
-(0.21 s) Trans Enumerate: DONE
+(0.46 s) Trans Enumerate: DONE
 Trans Auto Impls: V V V
 (0.00 s) Trans Auto Impls: DONE
 Trans Monomorph: V V V
-(0.15 s) Trans Monomorph: DONE
+(0.18 s) Trans Monomorph: DONE
 MIR Optimise Inline: V V V
-(0.19 s) MIR Optimise Inline: DONE
+(0.26 s) MIR Optimise Inline: DONE
 Trans Enumerate Cleanup: V V V
 (0.00 s) Trans Enumerate Cleanup: DONE
 HIR Serialise: V V V
-(0.34 s) HIR Serialise: DONE
+(0.55 s) HIR Serialise: DONE
 Trans Codegen: V V V
-Running command - "gcc" @"output/libcore.rlib_cmd.txt"
-(0.28 s) Trans Codegen: DONE
+Running command - "gcc" @"output-1.54.0/libcore.rlib_cmd.txt"
+(0.43 s) Trans Codegen: DONE

@@ -1,1 +1,0 @@
-"-O2" "-fPIC" "-o" "output/libstd_unicode.rlib.o" "output/libstd_unicode.rlib.c" "-c" 

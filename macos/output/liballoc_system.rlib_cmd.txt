@@ -1,1 +1,0 @@
-"-O2" "-fPIC" "-o" "output/liballoc_system.rlib.o" "output/liballoc_system.rlib.c" "-c" 
