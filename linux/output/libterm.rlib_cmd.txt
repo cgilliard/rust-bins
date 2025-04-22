@@ -1,1 +1,1 @@
-"-ffunction-sections" "-pthread" "-O2" "-fPIC" "-o" "output/libterm.rlib.o" "output/libterm.rlib.c" "-c" 
+"-ffunction-sections" "-pthread" "-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/libterm.rlib.o" "output-1.29.0/libterm.rlib.c" "-c" 

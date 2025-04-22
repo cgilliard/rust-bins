@@ -1,0 +1,1 @@
+"-ffunction-sections" "-pthread" "-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/librustc_tsan.rlib.o" "output-1.29.0/librustc_tsan.rlib.c" "-c" 

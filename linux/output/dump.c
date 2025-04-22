@@ -91,6 +91,8 @@ static inline int128_t or128s (int128_t a, int128_t b) { int128_t v = { a.lo | b
 static inline int128_t xor128s(int128_t a, int128_t b) { int128_t v = { a.lo ^ b.lo, a.hi ^ b.hi }; return v; }
 static inline int128_t shl128s(int128_t a, uint32_t b) { int128_t v; if(b == 0) { return a; } else if(b < 64) { v.lo = a.lo << b; v.hi = (a.hi << b) | (a.lo >> (64 - b)); } else { v.hi = a.lo << (b - 64); v.lo = 0; } return v; }
 static inline int128_t shr128s(int128_t a, uint32_t b) { int128_t v; if(b == 0) { return a; } else if(b < 64) { v.lo = (a.lo >> b)|(a.hi << (64 - b)); v.hi = (int64_t)a.hi >> b; } else { v.lo = (int64_t)a.hi >> (b - 64); v.hi = (int64_t)a.hi < 0 ? -1 : 0; } return v; }
+static inline uint128_t int128_to_uint128(int128_t a) { return make128_raw(a.lo, a.hi); }
+static inline int128_t uint128_to_int128(uint128_t a) { return make128s_raw(a.lo, a.hi); }
 
 static inline int slice_cmp(SLICE_PTR l, SLICE_PTR r) {
 	int rv = memcmp(l.PTR, r.PTR, l.META < r.META ? l.META : r.META);
@@ -269,64 +271,6 @@ struct s_ZRG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g  {
 typedef char sizeof_assert_ZRG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g[ (sizeof(struct s_ZRG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g) == 24) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g) == 8) ? 1 : -1 ];
 typedef struct t_ZRTA1Ca  { uint8_t  DATA[1]; } t_ZRTA1Ca ; // [u8; 1]
-// struct ::"core-0_0_0"::option::Option#Some<::"alloc-0_0_0"::string::String/*S*/,>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g  {
-	/*@0*/struct s_ZRG2cF10alloc0_0_06string6String0g _0; // ::"alloc-0_0_0"::string::String/*S*/
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g) == 24) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g) == 8) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<::"alloc-0_0_0"::string::String/*S*/,>
-struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g {
-	struct {
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g var_1;
-	} DATA;};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g) == 24) ? 1 : -1 ];
-// struct ::"core-0_0_0"::option::Option#Some<&'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g  {
-	/*@0*/SLICE_PTR _0; // &'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/]
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g) == 8) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<&'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>
-struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g {
-	struct {
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g var_1;
-	} DATA;};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g) == 16) ? 1 : -1 ];
-// struct ::"core-0_0_0"::fmt::Arguments<'#local25,>
-struct s_ZRG2cE9core0_0_03fmt9Arguments0g  {
-	/*@0*/SLICE_PTR _0; // &'#local25 [&'#local25 str]
-	/*@16*/struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g _1; // ::"core-0_0_0"::option::Option<&'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	/*@32*/SLICE_PTR _2; // &'#local25 [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/]
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_03fmt9Arguments0g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt9Arguments0g) == 48) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_03fmt9Arguments0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03fmt9Arguments0g) == 8) ? 1 : -1 ];
-struct s_ZRG2cE9core0_0_03fmt4Void0g;
-struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g;
-struct s_ZRG2cE9core0_0_03fmt9Formatter0g;
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cE9core0_0_03fmt4Void0gBuG2c_A_B9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( struct s_ZRG2cE9core0_0_03fmt4Void0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"core-0_0_0"::fmt::Void/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-// struct ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>
-struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  {
-	/*@0*/struct s_ZRG2cE9core0_0_03fmt4Void0g *_0; // &'static ::"core-0_0_0"::fmt::Void/*S*/
-	/*@8*/t_ZRTF2BsG2cE9core0_0_03fmt4Void0gBuG2c_A_B9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g _1; // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"core-0_0_0"::fmt::Void/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_03fmt10ArgumentV10g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_03fmt10ArgumentV10g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g) == 8) ? 1 : -1 ];
-typedef struct t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g  { struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  DATA[1]; } t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g ; // [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
-// struct ::"core-0_0_0"::option::Option#Some<char,>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx  {
-	/*@0*/RUST_CHAR _0; // char
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCx[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx) == 4) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCx[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx) == 4) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<char,>
-struct e_ZRG2cE9core0_0_06option6Option1gCx {
-	union {
-		// ZST: ()
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx var_1;
-	} DATA;
-};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gCx[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gCx) == 4) ? 1 : -1 ];
 struct s_ZRG2cF10alloc0_0_04sync8ArcInner1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io8buffered9BufReader1gG3c_D2io5stdio5Maybe1gG3c_D$c2efdfe9737a55ec;
 // struct ::"core-0_0_0"::nonzero::NonZero<*const ::"alloc-0_0_0"::sync::ArcInner<::"std-0_0_0"::sync::mutex::Mutex<::"std-0_0_0"::io::buffered::BufReader<::"std-0_0_0"::io::stdio::Maybe<::"std-0_0_0"::io::stdio::StdinRaw/*S*/,>/*E*/,>/*S*/,>/*S*/,>/*S*/,>
 struct s_ZRG2cE9core0_0_07nonzero7NonZero1gPsG2cF10alloc0_0_04sync8ArcInner1gG3cD8std0_0_0_E5mutex5Mutex1gG3c_G2io8buffered9BufR$93041b69a33b7c46  {
@@ -358,6 +302,71 @@ struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g  {
 } ;
 typedef char sizeof_assert_ZRG3cD8std0_0_02io5stdio5Stdin0g[ (sizeof(struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g) == 8) ? 1 : -1 ];
 typedef char alignof_assert_ZRG3cD8std0_0_02io5stdio5Stdin0g[ (ALIGNOF(struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::option::Option#Some<::"alloc-0_0_0"::string::String/*S*/,>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g  {
+	/*@0*/struct s_ZRG2cF10alloc0_0_06string6String0g _0; // ::"alloc-0_0_0"::string::String/*S*/
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g) == 24) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g) == 8) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<::"alloc-0_0_0"::string::String/*S*/,>
+struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g {
+	struct {
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cF10alloc0_0_06string6String0g var_1;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g) == 24) ? 1 : -1 ];
+// struct ::"core-0_0_0"::option::Option#Some<&'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g  {
+	/*@0*/SLICE_PTR _0; // &'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/]
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g) == 8) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<&'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>
+struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g {
+	struct {
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsSG4c_A3fmt2rt2v18Argument0g var_1;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g) == 16) ? 1 : -1 ];
+// struct ::"core-0_0_0"::fmt::Arguments<'#local25,>
+struct s_ZRG2cE9core0_0_03fmt9Arguments0g  {
+	/*@0*/SLICE_PTR _0; // &'#local25 [&'#local25 str]
+	/*@16*/struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g _1; // ::"core-0_0_0"::option::Option<&'#local25 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	/*@32*/SLICE_PTR _2; // &'#local25 [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/]
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_03fmt9Arguments0g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt9Arguments0g) == 48) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_03fmt9Arguments0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03fmt9Arguments0g) == 8) ? 1 : -1 ];
+typedef struct t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g  { char _unused; } t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g ;
+struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g;
+struct s_ZRG2cE9core0_0_03fmt9Formatter0g;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g )( struct s_ZRG2cF10alloc0_0_06string6String0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+struct s_ZRG2cE9core0_0_03fmt4Void0g;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cE9core0_0_03fmt4Void0gBuG2c_A_B9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( struct s_ZRG2cE9core0_0_03fmt4Void0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"core-0_0_0"::fmt::Void/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+// struct ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>
+struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  {
+	/*@0*/struct s_ZRG2cE9core0_0_03fmt4Void0g *_0; // &'static ::"core-0_0_0"::fmt::Void/*S*/
+	/*@8*/t_ZRTF2BsG2cE9core0_0_03fmt4Void0gBuG2c_A_B9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g _1; // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"core-0_0_0"::fmt::Void/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_03fmt10ArgumentV10g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_03fmt10ArgumentV10g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g) == 8) ? 1 : -1 ];
+typedef struct t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g  { struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  DATA[1]; } t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g ; // [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
+// struct ::"core-0_0_0"::option::Option#Some<char,>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx  {
+	/*@0*/RUST_CHAR _0; // char
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCx[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx) == 4) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCx[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx) == 4) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<char,>
+struct e_ZRG2cE9core0_0_06option6Option1gCx {
+	union {
+		// ZST: ()
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCx var_1;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gCx[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gCx) == 4) ? 1 : -1 ];
+typedef struct t_ZRTfQCx2cE9core0_0_03fmt7Display0g_B0g  { char _unused; } t_ZRTfQCx2cE9core0_0_03fmt7Display0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCxBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( RUST_CHAR *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static char, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g  { char _unused; } t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g ;
 // struct ::"core-0_0_0"::result::Result#Ok<(),::"std-0_0_0"::io::error::Error/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gT0G3cD8std0_0_02io5error5Error0g  {
 	/*@0*/// ZST; // ()
@@ -446,6 +455,8 @@ struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g {
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g) == 16) ? 1 : -1 ];
+typedef struct t_ZRTfQBsCa2cE9core0_0_03fmt5Debug0g_B0g  { char _unused; } t_ZRTfQBsCa2cE9core0_0_03fmt5Debug0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsBsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uint8_t **, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 typedef struct t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g  { struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  DATA[2]; } t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g ; // [::"core-0_0_0"::fmt::ArgumentV1<'#local24,>/*S*/; 2]
 struct s_ZRG3cD8std0_0_04sync5mutex5Mutex1gG3c_A2io8buffered9BufReader1gG3c_A2io5stdio5Maybe1gG3c_A2io_H8StdinRaw0g;
 // struct ::"std-0_0_0"::sys_common::poison::Guard
@@ -479,26 +490,6 @@ struct s_ZRG2cD8std0_0_02rtH19closurelang_start_01gT0  {
 } ;
 typedef char sizeof_assert_ZRG2cD8std0_0_02rtH19closurelang_start_01gT0[ (sizeof(struct s_ZRG2cD8std0_0_02rtH19closurelang_start_01gT0) == 8) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cD8std0_0_02rtH19closurelang_start_01gT0[ (ALIGNOF(struct s_ZRG2cD8std0_0_02rtH19closurelang_start_01gT0) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::slice::FatPtr<u8,>
-struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa  {
-	/*@0*/uint8_t *_0; // *const u8
-	/*@8*/uintptr_t _1; // usize
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_05slice6FatPtr1gCa[ (sizeof(struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_05slice6FatPtr1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa) == 8) ? 1 : -1 ];
-union u_ZRG2cE9core0_0_05slice4Repr1gCa {
-	SLICE_PTR var_0;
-	SLICE_PTR var_1;
-	struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa var_2;
-};
-typedef char sizeof_assert_ZRG2cE9core0_0_05slice4Repr1gCa[ (sizeof(union u_ZRG2cE9core0_0_05slice4Repr1gCa) == 16) ? 1 : -1 ];
-// struct ::"core-0_0_0"::ops::range::RangeTo<usize,>
-struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu  {
-	/*@0*/uintptr_t _0; // usize
-} ;
-typedef char sizeof_assert_ZRG3cE9core0_0_03ops5range7RangeTo1gCu[ (sizeof(struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu) == 8) ? 1 : -1 ];
-typedef char alignof_assert_ZRG3cE9core0_0_03ops5range7RangeTo1gCu[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu) == 8) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g )( struct s_ZRG2cF10alloc0_0_06string6String0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"alloc-0_0_0"::string::String/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 // struct ::"core-0_0_0"::result::Result#Ok<(),::"core-0_0_0"::fmt::Error/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gT0G2c_A3fmt5Error0g  {
 	/*@0*/uint8_t _1; // u8
@@ -527,8 +518,26 @@ struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g {
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g) == 1) ? 1 : -1 ];
+// struct ::"core-0_0_0"::slice::FatPtr<u8,>
+struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa  {
+	/*@0*/uint8_t *_0; // *const u8
+	/*@8*/uintptr_t _1; // usize
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_05slice6FatPtr1gCa[ (sizeof(struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_05slice6FatPtr1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa) == 8) ? 1 : -1 ];
+union u_ZRG2cE9core0_0_05slice4Repr1gCa {
+	SLICE_PTR var_0;
+	SLICE_PTR var_1;
+	struct s_ZRG2cE9core0_0_05slice6FatPtr1gCa var_2;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_05slice4Repr1gCa[ (sizeof(union u_ZRG2cE9core0_0_05slice4Repr1gCa) == 16) ? 1 : -1 ];
+// struct ::"core-0_0_0"::ops::range::RangeTo<usize,>
+struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu  {
+	/*@0*/uintptr_t _0; // usize
+} ;
+typedef char sizeof_assert_ZRG3cE9core0_0_03ops5range7RangeTo1gCu[ (sizeof(struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu) == 8) ? 1 : -1 ];
+typedef char alignof_assert_ZRG3cE9core0_0_03ops5range7RangeTo1gCu[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu) == 8) ? 1 : -1 ];
 typedef struct TUP_3_ZRTBsCy_ZRTCe_ZRTCe  TUP_3_ZRTBsCy_ZRTCe_ZRTCe ;
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCxBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( RUST_CHAR *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 char, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 // struct ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>
 struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g  {
 	/*@0*/struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g _0; // ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
@@ -601,27 +610,55 @@ struct s_ZRG2cD3bin8protocolF10TokenFloat0g  {
 } ;
 typedef char sizeof_assert_ZRG2cD3bin8protocolF10TokenFloat0g[ (sizeof(struct s_ZRG2cD3bin8protocolF10TokenFloat0g) == 16) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cD3bin8protocolF10TokenFloat0g[ (ALIGNOF(struct s_ZRG2cD3bin8protocolF10TokenFloat0g) == 8) ? 1 : -1 ];
+// struct ::"bin#"::protocol::Token#SpanRef
+struct s_ZRG2cD3bin8protocolF12TokenSpanRef0g  {
+	/*@0*/uint8_t _1; // u8
+	/*@8*/uintptr_t _0; // usize
+} ;
+typedef char sizeof_assert_ZRG2cD3bin8protocolF12TokenSpanRef0g[ (sizeof(struct s_ZRG2cD3bin8protocolF12TokenSpanRef0g) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cD3bin8protocolF12TokenSpanRef0g[ (ALIGNOF(struct s_ZRG2cD3bin8protocolF12TokenSpanRef0g) == 8) ? 1 : -1 ];
+// struct ::"bin#"::protocol::SpanDef
+struct s_ZRG2cD3bin8protocol7SpanDef0g  {
+	/*@0*/RUST_BOOL _3; // bool
+	/*@8*/uintptr_t _0; // usize
+	/*@16*/uintptr_t _1; // usize
+	/*@24*/uintptr_t _4; // usize
+	/*@32*/uintptr_t _5; // usize
+	/*@40*/uintptr_t _6; // usize
+	/*@48*/uintptr_t _7; // usize
+	/*@56*/struct s_ZRG2cF10alloc0_0_06string6String0g _2; // ::"alloc-0_0_0"::string::String/*S*/
+} ;
+typedef char sizeof_assert_ZRG2cD3bin8protocol7SpanDef0g[ (sizeof(struct s_ZRG2cD3bin8protocol7SpanDef0g) == 80) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cD3bin8protocol7SpanDef0g[ (ALIGNOF(struct s_ZRG2cD3bin8protocol7SpanDef0g) == 8) ? 1 : -1 ];
+// struct ::"bin#"::protocol::Token#SpanDef
+struct s_ZRG2cD3bin8protocolF12TokenSpanDef0g  {
+	/*@0*/struct s_ZRG2cD3bin8protocol7SpanDef0g _0; // ::"bin#"::protocol::SpanDef/*S*/
+} ;
+typedef char sizeof_assert_ZRG2cD3bin8protocolF12TokenSpanDef0g[ (sizeof(struct s_ZRG2cD3bin8protocolF12TokenSpanDef0g) == 80) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cD3bin8protocolF12TokenSpanDef0g[ (ALIGNOF(struct s_ZRG2cD3bin8protocolF12TokenSpanDef0g) == 8) ? 1 : -1 ];
 // enum ::"bin#"::protocol::Token
 struct e_ZRG2cD3bin8protocol5Token0g {
 	union {
-		struct s_ZRG2cD3bin8protocolF11TokenSymbol0g var_0;
-		struct s_ZRG2cD3bin8protocolF10TokenIdent0g var_1;
-		struct s_ZRG2cD3bin8protocolF13TokenLifetime0g var_2;
-		struct s_ZRG2cD3bin8protocolF11TokenString0g var_3;
-		struct s_ZRG2cD3bin8protocolF15TokenByteString0g var_4;
-		struct s_ZRG2cD3bin8protocolF9TokenChar0g var_5;
-		struct s_ZRG2cD3bin8protocolF13TokenUnsigned0g var_6;
-		struct s_ZRG2cD3bin8protocolF11TokenSigned0g var_7;
-		struct s_ZRG2cD3bin8protocolF10TokenFloat0g var_8;
-		uint8_t TAG;
+		// ZST: ()
+		struct s_ZRG2cD3bin8protocolF11TokenSymbol0g var_1;
+		struct s_ZRG2cD3bin8protocolF10TokenIdent0g var_2;
+		struct s_ZRG2cD3bin8protocolF13TokenLifetime0g var_3;
+		struct s_ZRG2cD3bin8protocolF11TokenString0g var_4;
+		struct s_ZRG2cD3bin8protocolF15TokenByteString0g var_5;
+		struct s_ZRG2cD3bin8protocolF9TokenChar0g var_6;
+		struct s_ZRG2cD3bin8protocolF13TokenUnsigned0g var_7;
+		struct s_ZRG2cD3bin8protocolF11TokenSigned0g var_8;
+		struct s_ZRG2cD3bin8protocolF10TokenFloat0g var_9;
+		struct s_ZRG2cD3bin8protocolF12TokenSpanRef0g var_10;
+		struct s_ZRG2cD3bin8protocolF12TokenSpanDef0g var_11;
 	} DATA;
 };
-typedef char sizeof_assert_ZRG2cD3bin8protocol5Token0g[ (sizeof(struct e_ZRG2cD3bin8protocol5Token0g) == 32) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cD3bin8protocol5Token0g[ (sizeof(struct e_ZRG2cD3bin8protocol5Token0g) == 80) ? 1 : -1 ];
 // struct ::"core-0_0_0"::option::Option#Some<::"bin#"::protocol::Token/*E*/,>
 struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g  {
 	/*@0*/struct e_ZRG2cD3bin8protocol5Token0g _0; // ::"bin#"::protocol::Token/*E*/
 } ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g) == 32) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g) == 80) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g) == 8) ? 1 : -1 ];
 // enum ::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,>
 struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g {
@@ -630,83 +667,26 @@ struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g {
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0g var_1;
 	} DATA;
 };
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g) == 32) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g) == 80) ? 1 : -1 ];
 // struct ::"bin#"::FmtByteString<'#local9,>
 struct s_ZRG1cD3bin13FmtByteString0g  {
 	/*@0*/SLICE_PTR _0; // &'#local9 [u8]
 } ;
 typedef char sizeof_assert_ZRG1cD3bin13FmtByteString0g[ (sizeof(struct s_ZRG1cD3bin13FmtByteString0g) == 16) ? 1 : -1 ];
 typedef char alignof_assert_ZRG1cD3bin13FmtByteString0g[ (ALIGNOF(struct s_ZRG1cD3bin13FmtByteString0g) == 8) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsBsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uint8_t **, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 &'#local17 u8, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-// struct ::"core-0_0_0"::option::Option#Some<&'#local1 u8,>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa  {
-	/*@0*/uint8_t *_0; // &'#local1 u8
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa) == 8) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa) == 8) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<&'#local1 u8,>
-struct e_ZRG2cE9core0_0_06option6Option1gBsCa {
-	struct {
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa var_1;
-	} DATA;};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsCa[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsCa) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::option::Option#Some<&'#omitted str,>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy  {
-	/*@0*/SLICE_PTR _0; // &'#omitted str
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy) == 8) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<&'#omitted str,>
-struct e_ZRG2cE9core0_0_06option6Option1gBsCy {
-	struct {
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy var_1;
-	} DATA;};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsCy[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsCy) == 16) ? 1 : -1 ];
-// struct ::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>
-struct s_ZRG1cE9core0_0_0H18closureI_index_1440g  {
-	/*@0*/SLICE_PTR *_0; // &'#ivar1 &'#omitted str
-	/*@8*/uintptr_t *_1; // &'#ivar1 usize
-} ;
-typedef char sizeof_assert_ZRG1cE9core0_0_0H18closureI_index_1440g[ (sizeof(struct s_ZRG1cE9core0_0_0H18closureI_index_1440g) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG1cE9core0_0_0H18closureI_index_1440g[ (ALIGNOF(struct s_ZRG1cE9core0_0_0H18closureI_index_1440g) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::option::Option#Some<u32,>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe  {
-	/*@0*/uint8_t _1; // u8
-	/*@4*/uint32_t _0; // u32
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCe[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe) == 8) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCe[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe) == 4) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<u32,>
-struct e_ZRG2cE9core0_0_06option6Option1gCe {
-	union {
-		// ZST: ()
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe var_1;
-		uint8_t TAG;
-	} DATA;
-};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gCe[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gCe) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::closure#I_next_104
-struct s_ZRG1cE9core0_0_0H17closureI_next_1040g  {
-	char _d;
-} __attribute__((__aligned__(1),)) ;
-typedef char alignof_assert_ZRG1cE9core0_0_0H17closureI_next_1040g[ (ALIGNOF(struct s_ZRG1cE9core0_0_0H17closureI_next_1040g) == 1) ? 1 : -1 ];
-// struct ::"core-0_0_0"::option::Option#Some<u8,>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa  {
-	/*@0*/uint8_t _1; // u8
-	/*@1*/uint8_t _0; // u8
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCa[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa) == 2) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa) == 1) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<u8,>
-struct e_ZRG2cE9core0_0_06option6Option1gCa {
-	union {
-		// ZST: ()
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa var_1;
-		uint8_t TAG;
-	} DATA;
-};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gCa[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gCa) == 2) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG1cD3bin13FmtByteString0gBuG2cE9core0_0_03fmt9Formatter0gG2c_C6result6Result2gT0G2c_C_D5Error0g )( struct s_ZRG1cD3bin13FmtByteString0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"bin#"::FmtByteString<'#local9,>/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g  { char _unused; } t_ZRTfQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG1cD3bin13FmtByteString0gBuG2cE9core0_0_03fmt9Formatter0gG2c_C6result6Result2gT0G2c_C_D5Error0g )( struct s_ZRG1cD3bin13FmtByteString0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"bin#"::FmtByteString<'static,>/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQCx2cE9core0_0_03fmt5Debug0g_B0g  { char _unused; } t_ZRTfQCx2cE9core0_0_03fmt5Debug0g_B0g ;
+typedef struct t_ZRTfQCi2cE9core0_0_03fmt5Debug0g_B0g  { char _unused; } t_ZRTfQCi2cE9core0_0_03fmt5Debug0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCiBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uint128_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static u128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g  { char _unused; } t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uint8_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQCj2cE9core0_0_03fmt5Debug0g_B0g  { char _unused; } t_ZRTfQCj2cE9core0_0_03fmt5Debug0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCjBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( int128_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static i128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQCo2cE9core0_0_03fmt5Debug0g_B0g  { char _unused; } t_ZRTfQCo2cE9core0_0_03fmt5Debug0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCoBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( double *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static f64, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQCu2cE9core0_0_03fmt7Display0g_B0g  { char _unused; } t_ZRTfQCu2cE9core0_0_03fmt7Display0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uintptr_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 // enum ::"core-0_0_0"::fmt::rt::v1::Alignment
 struct e_ZRG4cE9core0_0_03fmt2rt2v19Alignment0g {
 	int8_t TAG;
@@ -754,16 +734,129 @@ struct s_ZRG2cE9core0_0_03fmt9Formatter0g  {
 } ;
 typedef char sizeof_assert_ZRG2cE9core0_0_03fmt9Formatter0g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt9Formatter0g) == 96) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_03fmt9Formatter0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03fmt9Formatter0g) == 8) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCiBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uint128_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 u128, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uint8_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 u8, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCjBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( int128_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 i128, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCoBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( double *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 f64, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+// struct ::"core-0_0_0"::option::Option#Some<&'#local1 u8,>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa  {
+	/*@0*/uint8_t *_0; // &'#local1 u8
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa) == 8) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa) == 8) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<&'#local1 u8,>
+struct e_ZRG2cE9core0_0_06option6Option1gBsCa {
+	struct {
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCa var_1;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsCa[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsCa) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::option::Option#Some<&'#omitted str,>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy  {
+	/*@0*/SLICE_PTR _0; // &'#omitted str
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy) == 8) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<&'#omitted str,>
+struct e_ZRG2cE9core0_0_06option6Option1gBsCy {
+	struct {
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsCy var_1;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsCy[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsCy) == 16) ? 1 : -1 ];
+// struct ::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>
+struct s_ZRG1cE9core0_0_0H18closureI_index_1440g  {
+	/*@0*/uintptr_t *_1; // &'#local0 usize
+	/*@8*/SLICE_PTR _0; // &'#omitted str
+} ;
+typedef char sizeof_assert_ZRG1cE9core0_0_0H18closureI_index_1440g[ (sizeof(struct s_ZRG1cE9core0_0_0H18closureI_index_1440g) == 24) ? 1 : -1 ];
+typedef char alignof_assert_ZRG1cE9core0_0_0H18closureI_index_1440g[ (ALIGNOF(struct s_ZRG1cE9core0_0_0H18closureI_index_1440g) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::option::Option#Some<u32,>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe  {
+	/*@0*/uint8_t _1; // u8
+	/*@4*/uint32_t _0; // u32
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCe[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe) == 8) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCe[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe) == 4) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<u32,>
+struct e_ZRG2cE9core0_0_06option6Option1gCe {
+	union {
+		// ZST: ()
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCe var_1;
+		uint8_t TAG;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gCe[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gCe) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::closure#I_next_104
+struct s_ZRG1cE9core0_0_0H17closureI_next_1040g  {
+	char _d;
+} __attribute__((__aligned__(1),)) ;
+typedef char alignof_assert_ZRG1cE9core0_0_0H17closureI_next_1040g[ (ALIGNOF(struct s_ZRG1cE9core0_0_0H17closureI_next_1040g) == 1) ? 1 : -1 ];
+typedef struct t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g  { char _unused; } t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( SLICE_PTR *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt5Debug0g_F0g  { char _unused; } t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt5Debug0g_F0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG3cD8std0_0_02io5error5Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F_D0g )( struct s_ZRG3cD8std0_0_02io5error5Error0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQCa2cE9core0_0_03fmt8UpperHex0g_B0g  { char _unused; } t_ZRTfQCa2cE9core0_0_03fmt8UpperHex0g_B0g ;
+// struct ::"core-0_0_0"::option::Option#Some<u8,>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa  {
+	/*@0*/uint8_t _1; // u8
+	/*@1*/uint8_t _0; // u8
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCa[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa) == 2) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa) == 1) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<u8,>
+struct e_ZRG2cE9core0_0_06option6Option1gCa {
+	union {
+		// ZST: ()
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gCa var_1;
+		uint8_t TAG;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gCa[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gCa) == 2) ? 1 : -1 ];
+typedef struct t_ZRTfQCi2cE9core0_0_03fmt8LowerHex0g_B0g  { char _unused; } t_ZRTfQCi2cE9core0_0_03fmt8LowerHex0g_B0g ;
+typedef struct t_ZRTfQCa2cE9core0_0_03fmt8LowerHex0g_B0g  { char _unused; } t_ZRTfQCa2cE9core0_0_03fmt8LowerHex0g_B0g ;
+struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g;
+typedef struct t_ZRTA128Ca  { uint8_t  DATA[128]; } t_ZRTA128Ca ; // [u8; 128]
+// struct ::"core-0_0_0"::marker::PhantomData<&'#local1 mut u8,>
+struct s_ZRG2cE9core0_0_06marker11PhantomData1gBuCa  {
+	char _d;
+} __attribute__((__aligned__(1),)) ;
+typedef char alignof_assert_ZRG2cE9core0_0_06marker11PhantomData1gBuCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06marker11PhantomData1gBuCa) == 1) ? 1 : -1 ];
+// struct ::"core-0_0_0"::slice::IterMut<'#local1,u8,>
+struct s_ZRG2cE9core0_0_05slice7IterMut1gCa  {
+	/*@0*/// ZST; // ::"core-0_0_0"::marker::PhantomData<&'#local1 mut u8,>/*S*/
+	/*@0*/uint8_t *_0; // *mut u8
+	/*@8*/uint8_t *_1; // *mut u8
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_05slice7IterMut1gCa[ (sizeof(struct s_ZRG2cE9core0_0_05slice7IterMut1gCa) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_05slice7IterMut1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_05slice7IterMut1gCa) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::iter::Rev<::"core-0_0_0"::slice::IterMut<'#local1,u8,>/*S*/,>
+struct s_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa  {
+	/*@0*/struct s_ZRG2cE9core0_0_05slice7IterMut1gCa _0; // ::"core-0_0_0"::slice::IterMut<'#local1,u8,>/*S*/
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa[ (sizeof(struct s_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::option::Option#Some<&'#local1 mut u8,>
+struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa  {
+	/*@0*/uint8_t *_0; // &'#local1 mut u8
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa) == 8) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa) == 8) ? 1 : -1 ];
+// enum ::"core-0_0_0"::option::Option<&'#local1 mut u8,>
+struct e_ZRG2cE9core0_0_06option6Option1gBuCa {
+	struct {
+		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa var_1;
+	} DATA;
+};
+typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBuCa[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBuCa) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::ops::range::RangeFrom<usize,>
+struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu  {
+	/*@0*/uintptr_t _0; // usize
+} ;
+typedef char sizeof_assert_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu[ (sizeof(struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu) == 8) ? 1 : -1 ];
+typedef char alignof_assert_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu) == 8) ? 1 : -1 ];
+struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g;
 // struct ::"core-0_0_0"::result::Result#Ok<&'static u8,::"core-0_0_0"::option::NoneError/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g  {
-	/*@0*/uint8_t _1; // u8
-	/*@8*/uint8_t *_0; // &'static u8
+	/*@0*/uint8_t *_0; // &'static u8
 } ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g) == 16) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g) == 8) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::option::NoneError
 struct s_ZRG2cE9core0_0_06option9NoneError0g  {
@@ -772,27 +865,22 @@ struct s_ZRG2cE9core0_0_06option9NoneError0g  {
 typedef char alignof_assert_ZRG2cE9core0_0_06option9NoneError0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06option9NoneError0g) == 1) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Err<&'static u8,::"core-0_0_0"::option::NoneError/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsCaG2c_A6option9NoneError0g  {
-	/*@0*/uint8_t _1; // u8
-	/*@1*/// ZST; // ::"core-0_0_0"::option::NoneError/*S*/
+	/*@0*/// ZST; // ::"core-0_0_0"::option::NoneError/*S*/
+	char _d;
 } __attribute__((__aligned__(1),)) ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gBsCaG2c_A6option9NoneError0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsCaG2c_A6option9NoneError0g) == 1) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gBsCaG2c_A6option9NoneError0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsCaG2c_A6option9NoneError0g) == 1) ? 1 : -1 ];
 // enum ::"core-0_0_0"::result::Result<&'static u8,::"core-0_0_0"::option::NoneError/*S*/,>
 struct e_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g {
-	union {
+	struct {
 		struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsCaG2c_A6option9NoneError0g var_0;
-		struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsCaG2c_A6option9NoneError0g var_1;
-		uint8_t TAG;
 	} DATA;
 };
-typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g) == 16) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g) == 8) ? 1 : -1 ];
  // (u32, )
 typedef struct TUP_1_ZRTCe  {
 	/*@0*/uint32_t _0; // u32
 } TUP_1_ZRTCe ;
 typedef char sizeof_assert_TUP_1_ZRTCe [ (sizeof(TUP_1_ZRTCe ) == 4) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( SLICE_PTR *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 &'static str, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG3cD8std0_0_02io5error5Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F_D0g )( struct s_ZRG3cD8std0_0_02io5error5Error0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"std-0_0_0"::io::error::Error/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 // struct ::"core-0_0_0"::result::Result#Ok<usize,::"std-0_0_0"::io::error::Error/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gCuG3cD8std0_0_02io5error5Error0g  {
 	/*@0*/uint8_t _1; // u8
@@ -814,6 +902,7 @@ struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_02io5error5Error0g {
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_02io5error5Error0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_02io5error5Error0g) == 16) ? 1 : -1 ];
+typedef struct t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g  { char _unused; } t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g ;
 // struct ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>
 struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy  {
 	/*@0*/struct e_ZRG2cE9core0_0_06option6Option1gBsCy _0; // ::"core-0_0_0"::option::Option<&'static str,>/*E*/
@@ -830,7 +919,8 @@ typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsG2c_A3fmt9Ar
 struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g {
 	struct {
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsG2c_A3fmt9Arguments0g var_1;
-	} DATA;};
+	} DATA;
+};
 typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Ok<::"alloc-0_0_0"::string::String/*S*/,::"alloc-0_0_0"::string::FromUtf8Error/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2cF10alloc0_0_06string6String0gG2c_D_E13FromUtf8Error0g  {
@@ -867,6 +957,7 @@ struct e_ZRG2cE9core0_0_06result6Result2gG2cF10alloc0_0_06string6String0gG2c_D_E
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gG2cF10alloc0_0_06string6String0gG2c_D_E13FromUtf8Error0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2cF10alloc0_0_06string6String0gG2c_D_E13FromUtf8Error0g) == 40) ? 1 : -1 ];
+typedef struct t_ZRTA8Ca  { uint8_t  DATA[8]; } t_ZRTA8Ca ; // [u8; 8]
 // struct ::"core-0_0_0"::result::Result#Ok<char,::"core-0_0_0"::char::convert::CharTryFromError/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gCxG3c_A4char7convert16CharTryFromError0g  {
 	/*@0*/RUST_CHAR _0; // char
@@ -894,47 +985,13 @@ struct e_ZRG2cE9core0_0_06result6Result2gCxG3c_A4char7convert16CharTryFromError0
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gCxG3c_A4char7convert16CharTryFromError0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gCxG3c_A4char7convert16CharTryFromError0g) == 4) ? 1 : -1 ];
-typedef struct t_ZRTA8Ca  { uint8_t  DATA[8]; } t_ZRTA8Ca ; // [u8; 8]
-struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g;
-typedef struct t_ZRTA128Ca  { uint8_t  DATA[128]; } t_ZRTA128Ca ; // [u8; 128]
-// struct ::"core-0_0_0"::marker::PhantomData<&'#local1 mut u8,>
-struct s_ZRG2cE9core0_0_06marker11PhantomData1gBuCa  {
-	char _d;
-} __attribute__((__aligned__(1),)) ;
-typedef char alignof_assert_ZRG2cE9core0_0_06marker11PhantomData1gBuCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06marker11PhantomData1gBuCa) == 1) ? 1 : -1 ];
-// struct ::"core-0_0_0"::slice::IterMut<'#local1,u8,>
-struct s_ZRG2cE9core0_0_05slice7IterMut1gCa  {
-	/*@0*/// ZST; // ::"core-0_0_0"::marker::PhantomData<&'#local1 mut u8,>/*S*/
-	/*@0*/uint8_t *_0; // *mut u8
-	/*@8*/uint8_t *_1; // *mut u8
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_05slice7IterMut1gCa[ (sizeof(struct s_ZRG2cE9core0_0_05slice7IterMut1gCa) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_05slice7IterMut1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_05slice7IterMut1gCa) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::iter::Rev<::"core-0_0_0"::slice::IterMut<'#local1,u8,>/*S*/,>
-struct s_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa  {
-	/*@0*/struct s_ZRG2cE9core0_0_05slice7IterMut1gCa _0; // ::"core-0_0_0"::slice::IterMut<'#local1,u8,>/*S*/
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa[ (sizeof(struct s_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_04iter3Rev1gG2c_A5slice7IterMut1gCa) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::option::Option#Some<&'#local1 mut u8,>
-struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa  {
-	/*@0*/uint8_t *_0; // &'#local1 mut u8
-} ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa[ (sizeof(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa) == 8) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa) == 8) ? 1 : -1 ];
-// enum ::"core-0_0_0"::option::Option<&'#local1 mut u8,>
-struct e_ZRG2cE9core0_0_06option6Option1gBuCa {
-	struct {
-		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBuCa var_1;
-	} DATA;};
-typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBuCa[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBuCa) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::ops::range::RangeFrom<usize,>
-struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu  {
+// struct ::"core-0_0_0"::ops::range::Range<usize,>
+struct s_ZRG3cE9core0_0_03ops5range5Range1gCu  {
 	/*@0*/uintptr_t _0; // usize
+	/*@8*/uintptr_t _1; // usize
 } ;
-typedef char sizeof_assert_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu[ (sizeof(struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu) == 8) ? 1 : -1 ];
-typedef char alignof_assert_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu) == 8) ? 1 : -1 ];
-struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g;
+typedef char sizeof_assert_ZRG3cE9core0_0_03ops5range5Range1gCu[ (sizeof(struct s_ZRG3cE9core0_0_03ops5range5Range1gCu) == 16) ? 1 : -1 ];
+typedef char alignof_assert_ZRG3cE9core0_0_03ops5range5Range1gCu[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops5range5Range1gCu) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::nonzero::NonZero<*const dyn (::"core-0_0_0"::any::Any+::"core-0_0_0"::marker::Send),>
 struct s_ZRG2cE9core0_0_07nonzero7NonZero1gPsD2c_A3any3Any0g012c_A6marker4Send0g  {
 	/*@0*/TRAITOBJ_PTR _0; // *const dyn (::"core-0_0_0"::any::Any+::"core-0_0_0"::marker::Send)
@@ -1048,20 +1105,14 @@ struct e_ZRG2cE9core0_0_06result6Result2gBsCyG2c_A3str9Utf8Error0g {
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gBsCyG2c_A3str9Utf8Error0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gBsCyG2c_A3str9Utf8Error0g) == 24) ? 1 : -1 ];
-// struct ::"core-0_0_0"::ops::range::Range<usize,>
-struct s_ZRG3cE9core0_0_03ops5range5Range1gCu  {
-	/*@0*/uintptr_t _0; // usize
-	/*@8*/uintptr_t _1; // usize
-} ;
-typedef char sizeof_assert_ZRG3cE9core0_0_03ops5range5Range1gCu[ (sizeof(struct s_ZRG3cE9core0_0_03ops5range5Range1gCu) == 16) ? 1 : -1 ];
-typedef char alignof_assert_ZRG3cE9core0_0_03ops5range5Range1gCu[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops5range5Range1gCu) == 8) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( uintptr_t *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 usize, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 // struct ::"core-0_0_0"::any::TypeId
 struct s_ZRG2cE9core0_0_03any6TypeId0g  {
 	/*@0*/uint64_t _0; // u64
 } ;
 typedef char sizeof_assert_ZRG2cE9core0_0_03any6TypeId0g[ (sizeof(struct s_ZRG2cE9core0_0_03any6TypeId0g) == 8) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_03any6TypeId0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03any6TypeId0g) == 8) ? 1 : -1 ];
+typedef struct t_ZRTfQG2cF10alloc0_0_06string13FromUtf8Error0g2cE9core0_0_03fmt5Debug0g_E0g  { char _unused; } t_ZRTfQG2cF10alloc0_0_06string13FromUtf8Error0g2cE9core0_0_03fmt5Debug0g_E0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cF10alloc0_0_06string13FromUtf8Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g )( struct s_ZRG2cF10alloc0_0_06string13FromUtf8Error0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::FromUtf8Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 // struct ::"core-0_0_0"::nonzero::NonZero<usize,>
 struct s_ZRG2cE9core0_0_07nonzero7NonZero1gCu  {
 	/*@0*/uintptr_t _0; // usize
@@ -1089,10 +1140,9 @@ typedef char sizeof_assert_ZRG2cE9core0_0_03ptr7NonNull1gCa[ (sizeof(struct s_ZR
 typedef char alignof_assert_ZRG2cE9core0_0_03ptr7NonNull1gCa[ (ALIGNOF(struct s_ZRG2cE9core0_0_03ptr7NonNull1gCa) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Ok<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g  {
-	/*@0*/uint8_t _1; // u8
-	/*@8*/struct s_ZRG2cE9core0_0_03ptr7NonNull1gCa _0; // ::"core-0_0_0"::ptr::NonNull<u8,>/*S*/
+	/*@0*/struct s_ZRG2cE9core0_0_03ptr7NonNull1gCa _0; // ::"core-0_0_0"::ptr::NonNull<u8,>/*S*/
 } ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g) == 16) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g) == 8) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::alloc::AllocErr
 struct s_ZRG2cE9core0_0_05alloc8AllocErr0g  {
@@ -1101,20 +1151,17 @@ struct s_ZRG2cE9core0_0_05alloc8AllocErr0g  {
 typedef char alignof_assert_ZRG2cE9core0_0_05alloc8AllocErr0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_05alloc8AllocErr0g) == 1) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Err<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g  {
-	/*@0*/uint8_t _1; // u8
-	/*@1*/// ZST; // ::"core-0_0_0"::alloc::AllocErr/*S*/
+	/*@0*/// ZST; // ::"core-0_0_0"::alloc::AllocErr/*S*/
+	char _d;
 } __attribute__((__aligned__(1),)) ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g) == 1) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g) == 1) ? 1 : -1 ];
 // enum ::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,>
 struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g {
-	union {
+	struct {
 		struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g var_0;
-		struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g var_1;
-		uint8_t TAG;
 	} DATA;
 };
-typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g) == 16) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g) == 8) ? 1 : -1 ];
 // struct ::"alloc-0_0_0"::closure#I_allocate_in_14
 struct s_ZRG1cF10alloc0_0_0H23closureI_allocate_in_140g  {
 	char _d;
@@ -1127,10 +1174,9 @@ struct s_ZRG1cF10alloc0_0_0H23closureI_allocate_in_150g  {
 typedef char alignof_assert_ZRG1cF10alloc0_0_0H23closureI_allocate_in_150g[ (ALIGNOF(struct s_ZRG1cF10alloc0_0_0H23closureI_allocate_in_150g) == 1) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Ok<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g  {
-	/*@0*/uint8_t _1; // u8
-	/*@8*/struct s_ZRG2cE9core0_0_05alloc6Layout0g _0; // ::"core-0_0_0"::alloc::Layout/*S*/
+	/*@0*/struct s_ZRG2cE9core0_0_05alloc6Layout0g _0; // ::"core-0_0_0"::alloc::Layout/*S*/
 } ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g) == 24) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g) == 16) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::alloc::LayoutErr
 struct s_ZRG2cE9core0_0_05alloc9LayoutErr0g  {
@@ -1140,20 +1186,17 @@ struct s_ZRG2cE9core0_0_05alloc9LayoutErr0g  {
 typedef char alignof_assert_ZRG2cE9core0_0_05alloc9LayoutErr0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_05alloc9LayoutErr0g) == 1) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Err<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g  {
-	/*@0*/uint8_t _1; // u8
-	/*@1*/// ZST; // ::"core-0_0_0"::alloc::LayoutErr/*S*/
+	/*@0*/// ZST; // ::"core-0_0_0"::alloc::LayoutErr/*S*/
+	char _d;
 } __attribute__((__aligned__(1),)) ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g[ (sizeof(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g) == 1) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g) == 1) ? 1 : -1 ];
 // enum ::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,>
 struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g {
-	union {
+	struct {
 		struct s_ZRG2cE9core0_0_06resultG8ResultOk2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g var_0;
-		struct s_ZRG2cE9core0_0_06resultG9ResultErr2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g var_1;
-		uint8_t TAG;
 	} DATA;
 };
-typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g) == 24) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g) == 16) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Ok<(),::"alloc-0_0_0"::collections::CollectionAllocErr/*E*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gT0G2cF10alloc0_0_011collections18CollectionAllocErr0g  {
 	/*@0*/uint8_t _1; // u8
@@ -1214,7 +1257,6 @@ struct s_ZRG3cD8std0_0_02io5error6Custom0g  {
 typedef char sizeof_assert_ZRG3cD8std0_0_02io5error6Custom0g[ (sizeof(struct s_ZRG3cD8std0_0_02io5error6Custom0g) == 24) ? 1 : -1 ];
 typedef char alignof_assert_ZRG3cD8std0_0_02io5error6Custom0g[ (ALIGNOF(struct s_ZRG3cD8std0_0_02io5error6Custom0g) == 8) ? 1 : -1 ];
 typedef struct TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe  TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe ;
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cF10alloc0_0_06string13FromUtf8Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g )( struct s_ZRG2cF10alloc0_0_06string13FromUtf8Error0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"alloc-0_0_0"::string::FromUtf8Error/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
  // (u64, bool, )
 typedef struct TUP_2_ZRTCg_ZRTCw  {
 	/*@0*/RUST_BOOL _1; // bool
@@ -1236,7 +1278,8 @@ typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2c_A3ptr7NonN
 struct e_ZRG2cE9core0_0_06option6Option1gG2c_A3ptr7NonNull1gCa {
 	struct {
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2c_A3ptr7NonNull1gCa var_1;
-	} DATA;};
+	} DATA;
+};
 typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gG2c_A3ptr7NonNull1gCa[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG2c_A3ptr7NonNull1gCa) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::ptr::#0::Block
 struct s_ZRG3cE9core0_0_03ptrB_05Block0g  {
@@ -1256,7 +1299,8 @@ struct s_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g  {
 } ;
 typedef char sizeof_assert_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g[ (sizeof(struct s_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g) == 32) ? 1 : -1 ];
 typedef char alignof_assert_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g) == 8) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cE9core0_0_05alloc9LayoutErr0gBuG2c_A3fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_D5Error0g )( struct s_ZRG2cE9core0_0_05alloc9LayoutErr0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"core-0_0_0"::alloc::LayoutErr/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQG2cE9core0_0_05alloc9LayoutErr0g2c_A3fmt5Debug0g_D0g  { char _unused; } t_ZRTfQG2cE9core0_0_05alloc9LayoutErr0g2c_A3fmt5Debug0g_D0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG2cE9core0_0_05alloc9LayoutErr0gBuG2c_A3fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_D5Error0g )( struct s_ZRG2cE9core0_0_05alloc9LayoutErr0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"core-0_0_0"::alloc::LayoutErr/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 typedef struct t_ZRTA2BsCy  { SLICE_PTR  DATA[2]; } t_ZRTA2BsCy ; // [&'static str; 2]
 typedef struct t_ZRTA3BsCy  { SLICE_PTR  DATA[3]; } t_ZRTA3BsCy ; // [&'static str; 3]
 typedef struct t_ZRTA1BsCy  { SLICE_PTR  DATA[1]; } t_ZRTA1BsCy ; // [&'static str; 1]
@@ -1359,6 +1403,7 @@ typedef char sizeof_assert_ZRG2cE9core0_0_05panicH13BoxMeUpvtable0g[ (sizeof(str
 typedef char alignof_assert_ZRG2cE9core0_0_05panicH13BoxMeUpvtable0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_05panicH13BoxMeUpvtable0g) == 8) ? 1 : -1 ];
 typedef int32_t  (*t_ZRTFeE8rustcall2BsT0T0Cf )( tUNIT *, tUNIT  ); // for<'elided#0,> extern "rust-call" fn(&'H0 (), (), ) -> i32
 typedef int32_t  (*t_ZRTFeE8rustcall2BuT0T0Cf )( tUNIT *, tUNIT  ); // for<'elided#0,> extern "rust-call" fn(&'H0 mut (), (), ) -> i32
+struct s_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf;
 // struct ::"core-0_0_0"::ops::function::Fn#vtable<(),i32,>
 struct s_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf  {
 	/*@0*/t_ZRTF1PoT0T0 _0; // extern "Rust" fn(*move (), ) -> ()
@@ -1366,9 +1411,42 @@ struct s_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf  {
 	/*@16*/uintptr_t _2; // usize
 	/*@24*/t_ZRTFeE8rustcall2BsT0T0Cf _3; // for<'elided#0,> extern "rust-call" fn(&'H0 (), (), ) -> i32
 	/*@32*/t_ZRTFeE8rustcall2BuT0T0Cf _4; // for<'elided#0,> extern "rust-call" fn(&'H0 mut (), (), ) -> i32
+	/*@40*/struct s_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf *_5; // &'#omitted ::"core-0_0_0"::ops::function::FnMut#vtable<(),i32,>/*S*/
+	/*@48*/// ZST; // ()
 } ;
-typedef char sizeof_assert_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf[ (sizeof(struct s_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf) == 40) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf[ (sizeof(struct s_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf) == 48) ? 1 : -1 ];
 typedef char alignof_assert_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::ops::function::FnMut#vtable<(),i32,>
+struct s_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf  {
+	/*@0*/t_ZRTF1PoT0T0 _0; // extern "Rust" fn(*move (), ) -> ()
+	/*@8*/uintptr_t _1; // usize
+	/*@16*/uintptr_t _2; // usize
+	/*@24*/t_ZRTFeE8rustcall2BuT0T0Cf _3; // for<'elided#0,> extern "rust-call" fn(&'H0 mut (), (), ) -> i32
+	/*@32*/// ZST; // ()
+} ;
+typedef char sizeof_assert_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf[ (sizeof(struct s_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf) == 32) ? 1 : -1 ];
+typedef char alignof_assert_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf[ (ALIGNOF(struct s_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf) == 8) ? 1 : -1 ];
+struct e_ZRG2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00;
+typedef struct e_ZRG2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00  (*t_ZRTF1BsT0G2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00 )( tUNIT * ); // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> ::"core-0_0_0"::option::Option<&'H0 dyn (::"std-0_0_0"::error::Error+'H0),>/*E*/
+typedef SLICE_PTR  (*t_ZRTF1BsT0BsCy )( tUNIT * ); // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> &'H0 str
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsT0BuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( tUNIT *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 (), &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+struct s_ZRG2cE9core0_0_03fmtF11Debugvtable0g;
+struct s_ZRG2cE9core0_0_03fmtH13Displayvtable0g;
+// struct ::"std-0_0_0"::error::Error#vtable
+struct s_ZRG2cD8std0_0_05errorF11Errorvtable0g  {
+	/*@0*/t_ZRTF1PoT0T0 _0; // extern "Rust" fn(*move (), ) -> ()
+	/*@8*/uintptr_t _1; // usize
+	/*@16*/uintptr_t _2; // usize
+	/*@24*/t_ZRTF1BsT0G2cE9core0_0_03any6TypeId0g _3; // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> ::"core-0_0_0"::any::TypeId/*S*/
+	/*@32*/t_ZRTF1BsT0G2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00 _4; // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> ::"core-0_0_0"::option::Option<&'H0 dyn (::"std-0_0_0"::error::Error+'H0),>/*E*/
+	/*@40*/t_ZRTF1BsT0BsCy _5; // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> &'H0 str
+	/*@48*/t_ZRTF2BsT0BuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g _6; // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 (), &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	/*@56*/t_ZRTF2BsT0BuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g _7; // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 (), &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	/*@64*/struct s_ZRG2cE9core0_0_03fmtF11Debugvtable0g *_8; // &'#omitted ::"core-0_0_0"::fmt::Debug#vtable/*S*/
+	/*@72*/struct s_ZRG2cE9core0_0_03fmtH13Displayvtable0g *_9; // &'#omitted ::"core-0_0_0"::fmt::Display#vtable/*S*/
+} ;
+typedef char sizeof_assert_ZRG2cD8std0_0_05errorF11Errorvtable0g[ (sizeof(struct s_ZRG2cD8std0_0_05errorF11Errorvtable0g) == 80) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cD8std0_0_05errorF11Errorvtable0g[ (ALIGNOF(struct s_ZRG2cD8std0_0_05errorF11Errorvtable0g) == 8) ? 1 : -1 ];
 // struct ::"std-0_0_0"::sys::unix::os_str::Buf
 struct s_ZRG4cD8std0_0_03sys4unix6os_str3Buf0g  {
 	/*@0*/struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa _0; // ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
@@ -1391,7 +1469,8 @@ typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG3cD8std0_0_03
 struct e_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsString0g {
 	struct {
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG3cD8std0_0_03ffi6os_str8OsString0g var_1;
-	} DATA;};
+	} DATA;
+};
 typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsString0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsString0g) == 24) ? 1 : -1 ];
 // struct ::"core-0_0_0"::ptr::Unique<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>
 struct s_ZRG2cE9core0_0_03ptr6Unique1gG3cD8std0_0_03ffi6os_str8OsString0g  {
@@ -1559,22 +1638,22 @@ typedef char alignof_assert_ZRG2cF10alloc0_0_04sync8ArcInner1gG3cD8std0_0_0_B5mu
 struct s_ZRG4cD8std0_0_03sys4unix5mutex5Mutex0g;
 typedef struct t_ZRTA0Ch  { char _d; }  __attribute__((__aligned__(8),))t_ZRTA0Ch ; // [i64; 0]
 typedef struct t_ZRTA40Ca  { uint8_t  DATA[40]; } t_ZRTA40Ca ; // [u8; 40]
-// struct ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t
-struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g  {
+// struct ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t
+struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g  {
 	/*@0*/// ZST; // [i64; 0]
 	/*@0*/t_ZRTA40Ca _1; // [u8; 40]
 } __attribute__((__aligned__(8),)) ;
-typedef char sizeof_assert_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g[ (sizeof(struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g) == 40) ? 1 : -1 ];
-typedef char alignof_assert_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g[ (ALIGNOF(struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g) == 8) ? 1 : -1 ];
-// struct ::"core-0_0_0"::cell::UnsafeCell<::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/,>
-struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g  {
-	/*@0*/struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g _0; // ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
+typedef char sizeof_assert_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g[ (sizeof(struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g) == 40) ? 1 : -1 ];
+typedef char alignof_assert_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g[ (ALIGNOF(struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::cell::UnsafeCell<::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/,>
+struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g  {
+	/*@0*/struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g _0; // ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
 } ;
-typedef char sizeof_assert_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g[ (sizeof(struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g) == 40) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g) == 8) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g[ (sizeof(struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g) == 40) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g) == 8) ? 1 : -1 ];
 // struct ::"std-0_0_0"::sys::unix::mutex::Mutex
 struct s_ZRG4cD8std0_0_03sys4unix5mutex5Mutex0g  {
-	/*@0*/struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g _0; // ::"core-0_0_0"::cell::UnsafeCell<::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/,>/*S*/
+	/*@0*/struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g _0; // ::"core-0_0_0"::cell::UnsafeCell<::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/,>/*S*/
 } ;
 typedef char sizeof_assert_ZRG4cD8std0_0_03sys4unix5mutex5Mutex0g[ (sizeof(struct s_ZRG4cD8std0_0_03sys4unix5mutex5Mutex0g) == 40) ? 1 : -1 ];
 typedef char alignof_assert_ZRG4cD8std0_0_03sys4unix5mutex5Mutex0g[ (ALIGNOF(struct s_ZRG4cD8std0_0_03sys4unix5mutex5Mutex0g) == 8) ? 1 : -1 ];
@@ -1584,23 +1663,6 @@ struct s_ZRG3cD8std0_0_010sys_common5mutex5Mutex0g  {
 } ;
 typedef char sizeof_assert_ZRG3cD8std0_0_010sys_common5mutex5Mutex0g[ (sizeof(struct s_ZRG3cD8std0_0_010sys_common5mutex5Mutex0g) == 40) ? 1 : -1 ];
 typedef char alignof_assert_ZRG3cD8std0_0_010sys_common5mutex5Mutex0g[ (ALIGNOF(struct s_ZRG3cD8std0_0_010sys_common5mutex5Mutex0g) == 8) ? 1 : -1 ];
-struct e_ZRG2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00;
-typedef struct e_ZRG2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00  (*t_ZRTF1BsT0G2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00 )( tUNIT * ); // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> ::"core-0_0_0"::option::Option<&'H0 dyn (::"std-0_0_0"::error::Error+'H0),>/*E*/
-typedef SLICE_PTR  (*t_ZRTF1BsT0BsCy )( tUNIT * ); // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> &'H0 str
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsT0BuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( tUNIT *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 (), &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-// struct ::"std-0_0_0"::error::Error#vtable
-struct s_ZRG2cD8std0_0_05errorF11Errorvtable0g  {
-	/*@0*/t_ZRTF1PoT0T0 _0; // extern "Rust" fn(*move (), ) -> ()
-	/*@8*/uintptr_t _1; // usize
-	/*@16*/uintptr_t _2; // usize
-	/*@24*/t_ZRTF1BsT0G2cE9core0_0_03any6TypeId0g _3; // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> ::"core-0_0_0"::any::TypeId/*S*/
-	/*@32*/t_ZRTF1BsT0G2cE9core0_0_06option6Option1gBsD2cD8std0_0_05error5Error0g00 _4; // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> ::"core-0_0_0"::option::Option<&'H0 dyn (::"std-0_0_0"::error::Error+'H0),>/*E*/
-	/*@40*/t_ZRTF1BsT0BsCy _5; // for<'elided#0,> extern "Rust" fn(&'H0 (), ) -> &'H0 str
-	/*@48*/t_ZRTF2BsT0BuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g _6; // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 (), &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-	/*@56*/t_ZRTF2BsT0BuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g _7; // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 (), &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-} ;
-typedef char sizeof_assert_ZRG2cD8std0_0_05errorF11Errorvtable0g[ (sizeof(struct s_ZRG2cD8std0_0_05errorF11Errorvtable0g) == 64) ? 1 : -1 ];
-typedef char alignof_assert_ZRG2cD8std0_0_05errorF11Errorvtable0g[ (ALIGNOF(struct s_ZRG2cD8std0_0_05errorF11Errorvtable0g) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::option::Option#Some<::"core-0_0_0"::alloc::Layout/*S*/,>
 struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2c_A5alloc6Layout0g  {
 	/*@0*/struct s_ZRG2cE9core0_0_05alloc6Layout0g _0; // ::"core-0_0_0"::alloc::Layout/*S*/
@@ -1611,14 +1673,33 @@ typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gG2c_A5alloc6La
 struct e_ZRG2cE9core0_0_06option6Option1gG2c_A5alloc6Layout0g {
 	struct {
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG2c_A5alloc6Layout0g var_1;
-	} DATA;};
+	} DATA;
+};
 typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gG2c_A5alloc6Layout0g[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG2c_A5alloc6Layout0g) == 16) ? 1 : -1 ];
-// struct ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>
+// struct ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>
 struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g  {
-	/*@0*/intptr_t *_0; // &'#ivar1 isize
+	/*@0*/intptr_t *_0; // &'#local0 isize
 } ;
 typedef char sizeof_assert_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g[ (sizeof(struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g) == 8) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g[ (ALIGNOF(struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g) == 8) ? 1 : -1 ];
+typedef struct t_ZRTfQBsCf2cE9core0_0_03fmt5Debug0g_B0g  { char _unused; } t_ZRTfQBsCf2cE9core0_0_03fmt5Debug0g_B0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsBsCfBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( int32_t **, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+// struct ::"core-0_0_0"::panic::Location<'#local2,>
+struct s_ZRG2cE9core0_0_05panic8Location0g  {
+	/*@0*/uint32_t _1; // u32
+	/*@4*/uint32_t _2; // u32
+	/*@8*/SLICE_PTR _0; // &'#local2 str
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_05panic8Location0g[ (sizeof(struct s_ZRG2cE9core0_0_05panic8Location0g) == 24) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_05panic8Location0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_05panic8Location0g) == 8) ? 1 : -1 ];
+// struct ::"core-0_0_0"::panic::PanicInfo<'#local2,>
+struct s_ZRG2cE9core0_0_05panic9PanicInfo0g  {
+	/*@0*/struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g _1; // ::"core-0_0_0"::option::Option<&'#local2 ::"core-0_0_0"::fmt::Arguments<'#local2,>/*S*/,>/*E*/
+	/*@8*/TRAITOBJ_PTR _0; // &'#local2 dyn (::"core-0_0_0"::any::Any+::"core-0_0_0"::marker::Send)
+	/*@24*/struct s_ZRG2cE9core0_0_05panic8Location0g _2; // ::"core-0_0_0"::panic::Location<'#local2,>/*S*/
+} ;
+typedef char sizeof_assert_ZRG2cE9core0_0_05panic9PanicInfo0g[ (sizeof(struct s_ZRG2cE9core0_0_05panic9PanicInfo0g) == 48) ? 1 : -1 ];
+typedef char alignof_assert_ZRG2cE9core0_0_05panic9PanicInfo0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_05panic9PanicInfo0g) == 8) ? 1 : -1 ];
 struct s_ZRG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu;
 // struct ::"core-0_0_0"::result::Result#Ok<usize,::"std-0_0_0"::thread::local::AccessError/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gCuG3cD8std0_0_06thread5local11AccessError0g  {
@@ -1649,7 +1730,12 @@ struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11AccessErr
 	} DATA;
 };
 typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11AccessError0g[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11AccessError0g) == 16) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsBsCfBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g )( int32_t **, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 &'#local0 i32, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g;
+// struct ::"core-0_0_0"::panic::#0::NoPayload
+struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g  {
+	char _d;
+} __attribute__((__aligned__(1),)) ;
+typedef char alignof_assert_ZRG3cE9core0_0_05panicB_09NoPayload0g[ (ALIGNOF(struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g) == 1) ? 1 : -1 ];
 struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_B4Cell1gCu;
 struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell10UnsafeCell1gG2c_A_B_C1gG2c_A_D4Cell1gCu;
 typedef struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell10UnsafeCell1gG2c_A_B_C1gG2c_A_D4Cell1gCu  (*t_ZRTFu0G2cE9core0_0_06option6Option1gBsG2c_A4cell10UnsafeCell1gG2c_A_B_C1gG2c_A_D4Cell1gCu )(void); // unsafe extern "Rust" fn() -> ::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,>/*E*/
@@ -1663,31 +1749,28 @@ typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsG2c_A4cell10
 struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell10UnsafeCell1gG2c_A_B_C1gG2c_A_D4Cell1gCu {
 	struct {
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsG2c_A4cell10UnsafeCell1gG2c_A_B6Option1gG2c_A_D4Cell1gCu var_1;
-	} DATA;};
+	} DATA;
+};
 typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell10UnsafeCell1gG2c_A_B_C1gG2c_A_D4Cell1gCu[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell10UnsafeCell1gG2c_A_B_C1gG2c_A_D4Cell1gCu) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Ok<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,::"std-0_0_0"::thread::local::AccessError/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b  {
-	/*@0*/uint8_t _1; // u8
-	/*@8*/struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_B4Cell1gCu *_0; // &'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/
+	/*@0*/struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_B4Cell1gCu *_0; // &'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/
 } ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b) == 16) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b[ (sizeof(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b) == 8) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b) == 8) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Err<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,::"std-0_0_0"::thread::local::AccessError/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread$53e5cbf0d8801890  {
-	/*@0*/uint8_t _1; // u8
-	/*@1*/// ZST; // ::"std-0_0_0"::thread::local::AccessError/*S*/
+	/*@0*/// ZST; // ::"std-0_0_0"::thread::local::AccessError/*S*/
+	char _d;
 } __attribute__((__aligned__(1),)) ;
-typedef char sizeof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread$53e5cbf0d8801890[ (sizeof(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread$53e5cbf0d8801890) == 1) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_06resultG9ResultErr2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread$53e5cbf0d8801890[ (ALIGNOF(struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread$53e5cbf0d8801890) == 1) ? 1 : -1 ];
 // enum ::"core-0_0_0"::result::Result<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,::"std-0_0_0"::thread::local::AccessError/*S*/,>
 struct e_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5loc$129c7df1900d2f7e {
-	union {
+	struct {
 		struct s_ZRG2cE9core0_0_06resultG8ResultOk2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5$763a784a481e979b var_0;
-		struct s_ZRG2cE9core0_0_06resultG9ResultErr2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread$53e5cbf0d8801890 var_1;
-		uint8_t TAG;
 	} DATA;
 };
-typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5loc$129c7df1900d2f7e[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5loc$129c7df1900d2f7e) == 16) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5loc$129c7df1900d2f7e[ (sizeof(struct e_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5loc$129c7df1900d2f7e) == 8) ? 1 : -1 ];
 struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu;
 struct s_ZRG2cE9core0_0_04cell4Cell1gCu;
  // (&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/, )
@@ -1741,9 +1824,12 @@ typedef char alignof_assert_ZRG2cE9core0_0_06optionG10OptionSome1gBsG2c_A4cell4C
 struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell4Cell1gCu {
 	struct {
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gBsG2c_A4cell4Cell1gCu var_1;
-	} DATA;};
+	} DATA;
+};
 typedef char sizeof_assert_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell4Cell1gCu[ (sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A4cell4Cell1gCu) == 8) ? 1 : -1 ];
-typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG3cD8std0_0_06thread5local11AccessError0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F5Error0g )( struct s_ZRG3cD8std0_0_06thread5local11AccessError0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 ::"std-0_0_0"::thread::local::AccessError/*S*/, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+typedef struct t_ZRTfQG3cD8std0_0_06thread5local11AccessError0g2cE9core0_0_03fmt5Debug0g_F0g  { char _unused; } t_ZRTfQG3cD8std0_0_06thread5local11AccessError0g2cE9core0_0_03fmt5Debug0g_F0g ;
+typedef struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  (*t_ZRTF2BsG3cD8std0_0_06thread5local11AccessError0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F5Error0g )( struct s_ZRG3cD8std0_0_06thread5local11AccessError0g *, struct s_ZRG2cE9core0_0_03fmt9Formatter0g * ); // for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::thread::local::AccessError/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+tTYPEID __typeid_ZRTG3cE9core0_0_05panicB_09NoPayload0g __attribute__((weak));
 tTYPEID __typeid_ZRTT0 __attribute__((weak));
 tTYPEID __typeid_ZRTBsCy __attribute__((weak));
 // PROTO extern "Rust" ::"alloc-0_0_0"::alloc::box_free<::"std-0_0_0"::io::error::Custom/*S*/,>
@@ -1820,27 +1906,6 @@ static struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g  ZRG2cE9core0_0_03ptr4read
 		struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g *arg0 // *const ::"std-0_0_0"::ffi::os_str::OsString/*S*/
 		) // -> ::"std-0_0_0"::ffi::os_str::OsString/*S*/
 ;
-// PROTO extern "Rust" ::"core-0_0_0"::ptr::swap_nonoverlapping<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>
-static void  ZRG2cE9core0_0_03ptr19swap_nonoverlapping1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu(
-		struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *arg0, // *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
-		struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *arg1, // *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
-		uintptr_t arg2 // usize
-		) // -> ()
-;
-// PROTO extern "Rust" ::"core-0_0_0"::ptr::swap_nonoverlapping<::"core-0_0_0"::option::Option<&'static str,>/*E*/,>
-static void  ZRG2cE9core0_0_03ptr19swap_nonoverlapping1gG2c_A6option6Option1gBsCy(
-		struct e_ZRG2cE9core0_0_06option6Option1gBsCy *arg0, // *mut ::"core-0_0_0"::option::Option<&'static str,>/*E*/
-		struct e_ZRG2cE9core0_0_06option6Option1gBsCy *arg1, // *mut ::"core-0_0_0"::option::Option<&'static str,>/*E*/
-		uintptr_t arg2 // usize
-		) // -> ()
-;
-// PROTO extern "Rust" ::"core-0_0_0"::ptr::swap_nonoverlapping_bytes
-static void  ZRG2cE9core0_0_03ptr25swap_nonoverlapping_bytes0g(
-		uint8_t *arg0, // *mut u8
-		uint8_t *arg1, // *mut u8
-		uintptr_t arg2 // usize
-		) // -> ()
-;
 // PROTO extern "Rust" ::"core-0_0_0"::ptr::swap_nonoverlapping_one<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>
 static void  ZRG2cE9core0_0_03ptr23swap_nonoverlapping_one1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu(
 		struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *arg0, // *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
@@ -1906,8 +1971,8 @@ static void  ZRG3cE9core0_0_04sync6atomic5fence0g(
 		struct e_ZRG3cE9core0_0_04sync6atomic8Ordering0g arg0 // ::"core-0_0_0"::sync::atomic::Ordering/*E*/
 		) // -> ()
 ;
-// PROTO extern "Rust" ::"std-0_0_0"::rt::lang_start
-static intptr_t  ZRG2cD8std0_0_02rt10lang_start0g(
+// PROTO extern "Rust" ::"std-0_0_0"::rt::lang_start<(),>
+static intptr_t  ZRG2cD8std0_0_02rt10lang_start1gT0(
 		t_ZRTF0T0 arg0, // extern "Rust" fn() -> ()
 		intptr_t arg1, // isize
 		uint8_t **arg2 // *const *const u8
@@ -2097,6 +2162,11 @@ struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g  ZRIG2cD3bin8
 		struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *arg0 // &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
 		) // -> ::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,>/*E*/
 ;
+// PROTO extern "Rust" <::"bin#"::protocol::SpanDef/*S*/ /*- */>::#drop_glue
+static void  ZRIG2cD3bin8protocol7SpanDef0gA9drop_glue0g(
+		struct s_ZRG2cD3bin8protocol7SpanDef0g *arg0 // &'#omitted move ::"bin#"::protocol::SpanDef/*S*/
+		) // -> ()
+;
 // PROTO extern "Rust" <::"bin#"::protocol::Token/*E*/ /*- */>::#drop_glue
 static void  ZRIG2cD3bin8protocol5Token0gA9drop_glue0g(
 		struct e_ZRG2cD3bin8protocol5Token0g *arg0 // &'#omitted move ::"bin#"::protocol::Token/*E*/
@@ -2115,6 +2185,11 @@ static void  ZRIG2cD3bin8protocolF10TokenIdent0gA9drop_glue0g(
 // PROTO extern "Rust" <::"bin#"::protocol::Token#Lifetime/*S*/ /*- */>::#drop_glue
 static void  ZRIG2cD3bin8protocolF13TokenLifetime0gA9drop_glue0g(
 		struct s_ZRG2cD3bin8protocolF13TokenLifetime0g *arg0 // &'#omitted move ::"bin#"::protocol::Token#Lifetime/*S*/
+		) // -> ()
+;
+// PROTO extern "Rust" <::"bin#"::protocol::Token#SpanDef/*S*/ /*- */>::#drop_glue
+static void  ZRIG2cD3bin8protocolF12TokenSpanDef0gA9drop_glue0g(
+		struct s_ZRG2cD3bin8protocolF12TokenSpanDef0g *arg0 // &'#omitted move ::"bin#"::protocol::Token#SpanDef/*S*/
 		) // -> ()
 ;
 // PROTO extern "Rust" <::"bin#"::protocol::Token#String/*S*/ /*- */>::#drop_glue
@@ -2143,11 +2218,11 @@ static void  ZRIG2cE9core0_0_04cell10UnsafeCell1gG3cD8std0_0_02io8buffered9BufRe
 		struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG3cD8std0_0_02io8buffered9BufReader1gG3c_D2io5stdio5Maybe1gG3c_D2io_H8StdinRaw0g *arg0 // &'#omitted move ::"core-0_0_0"::cell::UnsafeCell<::"std-0_0_0"::io::buffered::BufReader<::"std-0_0_0"::io::stdio::Maybe<::"std-0_0_0"::io::stdio::StdinRaw/*S*/,>/*E*/,>/*S*/,>/*S*/
 		) // -> ()
 ;
-// PROTO extern "Rust" <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,usize,>
+// PROTO extern "Rust" <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local23,usize,>
 static struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCu(
-		uintptr_t *arg0, // &'#local1 usize
+		uintptr_t *arg0, // &'#local23 usize
 		t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g arg1 // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 usize, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-		) // -> ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+		) // -> ::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/
 ;
 // PROTO extern "Rust" <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local15,u8,>
 static struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa(
@@ -2299,10 +2374,10 @@ static struct e_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g  ZR
 		struct s_ZRG2cE9core0_0_06option9NoneError0g arg1 // ::"core-0_0_0"::option::NoneError/*S*/
 		) // -> ::"core-0_0_0"::result::Result<&'static u8,::"core-0_0_0"::option::NoneError/*S*/,>/*E*/
 ;
-// PROTO extern "Rust" <::"core-0_0_0"::option::Option<&'#omitted str,>/*E*/ /*- <&'#omitted str,>*/>::unwrap_or_else<::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>/*S*/,>
+// PROTO extern "Rust" <::"core-0_0_0"::option::Option<&'#omitted str,>/*E*/ /*- <&'#omitted str,>*/>::unwrap_or_else<::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>/*S*/,>
 static SLICE_PTR  ZRIG2cE9core0_0_06option6Option1gBsCy14unwrap_or_else1gG1c_AH18closureI_index_1440g(
 		struct e_ZRG2cE9core0_0_06option6Option1gBsCy arg0, // ::"core-0_0_0"::option::Option<&'#omitted str,>/*E*/
-		struct s_ZRG1cE9core0_0_0H18closureI_index_1440g arg1 // ::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>/*S*/
+		struct s_ZRG1cE9core0_0_0H18closureI_index_1440g arg1 // ::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>/*S*/
 		) // -> &'#omitted str
 ;
 // PROTO extern "Rust" <::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/ /*- <&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::unwrap
@@ -2329,6 +2404,11 @@ static void  ZRIG2cE9core0_0_06optionG10OptionSome1gG2cD3bin8protocol5Token0gA9d
 // PROTO extern "Rust" <::"core-0_0_0"::option::Option#Some<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/ /*- */>::#drop_glue
 static void  ZRIG2cE9core0_0_06optionG10OptionSome1gG3cD8std0_0_03ffi6os_str8OsString0gA9drop_glue0g(
 		struct s_ZRG2cE9core0_0_06optionG10OptionSome1gG3cD8std0_0_03ffi6os_str8OsString0g *arg0 // &'#omitted move ::"core-0_0_0"::option::Option#Some<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/
+		) // -> ()
+;
+// PROTO extern "Rust" <::"core-0_0_0"::panic::#0::NoPayload/*S*/ /*- */>::#drop_glue
+static void  ZRIG3cE9core0_0_05panicB_09NoPayload0gA9drop_glue0g(
+		struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g *arg0 // &'#omitted move ::"core-0_0_0"::panic::#0::NoPayload/*S*/
 		) // -> ()
 ;
 // PROTO extern "Rust" <::"core-0_0_0"::ptr::NonNull<u8,>/*S*/ /*- <u8,>*/>::new
@@ -2517,16 +2597,16 @@ static struct s_ZRG2cE9core0_0_04cell4Cell1gCu * ZRIG3cD8std0_0_06thread5local8L
 		struct s_ZRG2cE9core0_0_04cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_B4Cell1gCu *arg1 // &'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/
 		) // -> &'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/
 ;
-// PROTO extern "Rust" <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::try_with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/,usize,>
+// PROTO extern "Rust" <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::try_with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/,usize,>
 static struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11AccessError0g  ZRIG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu8try_with2gG2c_A9panickingH27closureupdate_panic_count_00gCu(
 		struct s_ZRG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu *arg0, // &'static ::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/
-		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/
+		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<usize,::"std-0_0_0"::thread::local::AccessError/*S*/,>/*E*/
 ;
-// PROTO extern "Rust" <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/,usize,>
+// PROTO extern "Rust" <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/,usize,>
 static uintptr_t  ZRIG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu4with2gG2c_A9panickingH27closureupdate_panic_count_00gCu(
 		struct s_ZRG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu *arg0, // &'static ::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/
-		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/
+		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/
 		) // -> usize
 ;
 // PROTO extern "Rust" <[u8] /*- <u8,>*/>::iter<'#local6,>
@@ -2555,125 +2635,29 @@ static struct e_ZRG2cE9core0_0_06option6Option1gBsCa  ZRQCu2cE9core0_0_05slice10
 		SLICE_PTR arg1 // &'#local1 [u8]
 		) // -> ::"core-0_0_0"::option::Option<&'#local1 u8,>/*E*/
 ;
-// PROTO extern "Rust" <usize as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::get_unchecked<'#local1,>
-static uint8_t * ZRQCu2cE9core0_0_05slice10SliceIndex1gSCa13get_unchecked0g(
-		uintptr_t arg0, // usize
-		SLICE_PTR arg1 // &'#local1 [u8]
-		) // -> &'#local1 u8
-;
 // PROTO extern "Rust" <u8 as ::"alloc-0_0_0"::vec::SpecFromElem>::from_elem
 static struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa  ZRQCa2cF10alloc0_0_03vec12SpecFromElem0g9from_elem0g(
 		uint8_t arg0, // u8
 		uintptr_t arg1 // usize
 		) // -> ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
 ;
-// PROTO extern "Rust" <u8 as ::"core-0_0_0"::cmp::PartialEq<u8,>>::eq<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCa2cE9core0_0_03cmp9PartialEq1gCa2eq0g(
-		uint8_t *arg0, // &'#omitted u8
-		uint8_t *arg1 // &'#omitted u8
-		) // -> bool
-;
-// PROTO extern "Rust" <u8 as ::"core-0_0_0"::cmp::PartialOrd<u8,>>::ge<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCa2cE9core0_0_03cmp10PartialOrd1gCa2ge0g(
-		uint8_t *arg0, // &'#omitted u8
-		uint8_t *arg1 // &'#omitted u8
-		) // -> bool
-;
-// PROTO extern "Rust" <u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'#local17,'static,>
+// PROTO extern "Rust" <u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCa2cE9core0_0_03fmt5Debug0g_B0g(
-		uint8_t *arg0, // &'#local17 u8
+		uint8_t *arg0, // &'static u8
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
-// PROTO extern "Rust" <u8 as ::"core-0_0_0"::ops::arith::Div<u8,>>::div
-static uint8_t  ZRQCa3cE9core0_0_03ops5arith3Div1gCa3div0g(
-		uint8_t arg0, // u8
-		uint8_t arg1 // u8
-		) // -> u8
-;
-// PROTO extern "Rust" <u8 as ::"core-0_0_0"::ops::arith::Rem<u8,>>::rem
-static uint8_t  ZRQCa3cE9core0_0_03ops5arith3Rem1gCa3rem0g(
-		uint8_t arg0, // u8
-		uint8_t arg1 // u8
-		) // -> u8
-;
-// PROTO extern "Rust" <u8 as ::"core-0_0_0"::ops::arith::Sub<u8,>>::sub
-static uint8_t  ZRQCa3cE9core0_0_03ops5arith3Sub1gCa3sub0g(
-		uint8_t arg0, // u8
-		uint8_t arg1 // u8
-		) // -> u8
-;
-// PROTO extern "Rust" <u32 as ::"core-0_0_0"::cmp::PartialEq<u32,>>::eq<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCe2cE9core0_0_03cmp9PartialEq1gCe2eq0g(
-		uint32_t *arg0, // &'#omitted u32
-		uint32_t *arg1 // &'#omitted u32
-		) // -> bool
-;
-// PROTO extern "Rust" <u32 as ::"core-0_0_0"::cmp::PartialOrd<u32,>>::ge<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCe2cE9core0_0_03cmp10PartialOrd1gCe2ge0g(
-		uint32_t *arg0, // &'#omitted u32
-		uint32_t *arg1 // &'#omitted u32
-		) // -> bool
-;
-// PROTO extern "Rust" <u32 as ::"core-0_0_0"::ops::arith::Div<u32,>>::div
-static uint32_t  ZRQCe3cE9core0_0_03ops5arith3Div1gCe3div0g(
-		uint32_t arg0, // u32
-		uint32_t arg1 // u32
-		) // -> u32
-;
-// PROTO extern "Rust" <u32 as ::"core-0_0_0"::ops::arith::Rem<u32,>>::rem
-static uint32_t  ZRQCe3cE9core0_0_03ops5arith3Rem1gCe3rem0g(
-		uint32_t arg0, // u32
-		uint32_t arg1 // u32
-		) // -> u32
-;
-// PROTO extern "Rust" <u32 as ::"core-0_0_0"::ops::arith::Sub<u32,>>::sub
-static uint32_t  ZRQCe3cE9core0_0_03ops5arith3Sub1gCe3sub0g(
-		uint32_t arg0, // u32
-		uint32_t arg1 // u32
-		) // -> u32
-;
-// PROTO extern "Rust" <i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'#local0,'static,>
+// PROTO extern "Rust" <i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCf2cE9core0_0_03fmt5Debug0g_B0g(
-		int32_t *arg0, // &'#local0 i32
+		int32_t *arg0, // &'static i32
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-;
-// PROTO extern "Rust" <u128 as ::"core-0_0_0"::cmp::PartialEq<u128,>>::eq<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCi2cE9core0_0_03cmp9PartialEq1gCi2eq0g(
-		uint128_t *arg0, // &'#omitted u128
-		uint128_t *arg1 // &'#omitted u128
-		) // -> bool
-;
-// PROTO extern "Rust" <u128 as ::"core-0_0_0"::cmp::PartialOrd<u128,>>::ge<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCi2cE9core0_0_03cmp10PartialOrd1gCi2ge0g(
-		uint128_t *arg0, // &'#omitted u128
-		uint128_t *arg1 // &'#omitted u128
-		) // -> bool
 ;
 // PROTO extern "Rust" <u128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCi2cE9core0_0_03fmt5Debug0g_B0g(
 		uint128_t *arg0, // &'static u128
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-;
-// PROTO extern "Rust" <u128 as ::"core-0_0_0"::ops::arith::Div<u128,>>::div
-static uint128_t  ZRQCi3cE9core0_0_03ops5arith3Div1gCi3div0g(
-		uint128_t arg0, // u128
-		uint128_t arg1 // u128
-		) // -> u128
-;
-// PROTO extern "Rust" <u128 as ::"core-0_0_0"::ops::arith::Rem<u128,>>::rem
-static uint128_t  ZRQCi3cE9core0_0_03ops5arith3Rem1gCi3rem0g(
-		uint128_t arg0, // u128
-		uint128_t arg1 // u128
-		) // -> u128
-;
-// PROTO extern "Rust" <u128 as ::"core-0_0_0"::ops::arith::Sub<u128,>>::sub
-static uint128_t  ZRQCi3cE9core0_0_03ops5arith3Sub1gCi3sub0g(
-		uint128_t arg0, // u128
-		uint128_t arg1 // u128
-		) // -> u128
 ;
 // PROTO extern "Rust" <i128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCj2cE9core0_0_03fmt5Debug0g_B0g(
@@ -2686,24 +2670,17 @@ static struct e_ZRG2cE9core0_0_06result6Result2gCxG3c_A4char7convert16CharTryFro
 		uint32_t arg0 // u32
 		) // -> ::"core-0_0_0"::result::Result<char,::"core-0_0_0"::char::convert::CharTryFromError/*S*/,>/*E*/
 ;
-// PROTO extern "Rust" <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc<'#local1,>
+// PROTO extern "Rust" <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc<'#local3,>
 static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g  ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g_B0g(
-		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local1 mut ::"alloc-0_0_0"::alloc::Global/*S*/
+		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local3 mut ::"alloc-0_0_0"::alloc::Global/*S*/
 		struct s_ZRG2cE9core0_0_05alloc6Layout0g arg1 // ::"core-0_0_0"::alloc::Layout/*S*/
 		) // -> ::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,>/*E*/
 ;
-// PROTO extern "Rust" <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc_zeroed<'#local0,>
+// PROTO extern "Rust" <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc_zeroed<'#local2,>
 static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g  ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g12alloc_zeroed0g(
-		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local0 mut ::"alloc-0_0_0"::alloc::Global/*S*/
+		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local2 mut ::"alloc-0_0_0"::alloc::Global/*S*/
 		struct s_ZRG2cE9core0_0_05alloc6Layout0g arg1 // ::"core-0_0_0"::alloc::Layout/*S*/
 		) // -> ::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,>/*E*/
-;
-// PROTO extern "Rust" <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::dealloc<'#omitted,>
-static void  ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g7dealloc0g(
-		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#omitted mut ::"alloc-0_0_0"::alloc::Global/*S*/
-		struct s_ZRG2cE9core0_0_03ptr7NonNull1gCa arg1, // ::"core-0_0_0"::ptr::NonNull<u8,>/*S*/
-		struct s_ZRG2cE9core0_0_05alloc6Layout0g arg2 // ::"core-0_0_0"::alloc::Layout/*S*/
-		) // -> ()
 ;
 // PROTO extern "Rust" <::"alloc-0_0_0"::boxed::Box<::"std-0_0_0"::io::error::Custom/*S*/,>/*S*/ as ::"core-0_0_0"::ops::drop::Drop>::drop<'#omitted,>
 static void  ZRQG2cF10alloc0_0_05boxed3Box1gG3cD8std0_0_02io5error6Custom0g3cE9core0_0_03ops4drop4Drop0g_J0g(
@@ -2773,11 +2750,6 @@ static void  ZRQG2cF10alloc0_0_04sync3Arc1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io
 		struct s_ZRG2cF10alloc0_0_04sync3Arc1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io8buffered9BufReader1gG3c_D2io5stdio5Maybe1gG3c_D2io_J$18fcc294cbc2a21f *arg0 // &'#omitted mut ::"alloc-0_0_0"::sync::Arc<::"std-0_0_0"::sync::mutex::Mutex<::"std-0_0_0"::io::buffered::BufReader<::"std-0_0_0"::io::stdio::Maybe<::"std-0_0_0"::io::stdio::StdinRaw/*S*/,>/*E*/,>/*S*/,>/*S*/,>/*S*/
 		) // -> ()
 ;
-// PROTO extern "Rust" <::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::by_ref<'#omitted,>
-static struct s_ZRG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g * ZRQG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g3cE9core0_0_04iter8iterator8Iterator0g6by_ref0g(
-		struct s_ZRG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g *arg0 // &'#omitted mut ::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/
-		) // -> &'#omitted mut ::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/
-;
 // PROTO extern "Rust" <::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#omitted,>
 static struct e_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsString0g  ZRQG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g3cE9core0_0_04iter8iterator8Iterator0g4next0g(
 		struct s_ZRG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g *arg0 // &'#omitted mut ::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/
@@ -2803,15 +2775,9 @@ static void  ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops4drop4Drop0g_F0g(
 		struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *arg0 // &'#omitted mut ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
 		) // -> ()
 ;
-// PROTO extern "Rust" <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::index::IndexMut<::"core-0_0_0"::ops::range::RangeFull/*S*/,>>::index_mut<'#omitted,>
-static SLICE_PTR  ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5index8IndexMut1gG3c_D_E5range9RangeFull0g9index_mut0g(
-		struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *arg0, // &'#omitted mut ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-		struct s_ZRG3cE9core0_0_03ops5range9RangeFull0g arg1 // ::"core-0_0_0"::ops::range::RangeFull/*S*/
-		) // -> &'#omitted mut [u8]
-;
-// PROTO extern "Rust" <::"bin#"::FmtByteString<'#local9,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
+// PROTO extern "Rust" <::"bin#"::FmtByteString<'static,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g(
-		struct s_ZRG1cD3bin13FmtByteString0g *arg0, // &'static ::"bin#"::FmtByteString<'#local9,>/*S*/
+		struct s_ZRG1cD3bin13FmtByteString0g *arg0, // &'static ::"bin#"::FmtByteString<'static,>/*S*/
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
@@ -2879,18 +2845,6 @@ static SLICE_PTR  ZRQG3cE9core0_0_03ops5range5Range1gCu2c_A5slice10SliceIndex1gS
 		SLICE_PTR arg1 // &'#omitted mut [u8]
 		) // -> &'#omitted mut [u8]
 ;
-// PROTO extern "Rust" <::"core-0_0_0"::ops::range::RangeFrom<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::index<'#omitted,>
-static SLICE_PTR  ZRQG3cE9core0_0_03ops5range9RangeFrom1gCu2c_A5slice10SliceIndex1gSCa5index0g(
-		struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu arg0, // ::"core-0_0_0"::ops::range::RangeFrom<usize,>/*S*/
-		SLICE_PTR arg1 // &'#omitted [u8]
-		) // -> &'#omitted [u8]
-;
-// PROTO extern "Rust" <::"core-0_0_0"::ops::range::RangeFull/*S*/ as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::index_mut<'#omitted,>
-static SLICE_PTR  ZRQG3cE9core0_0_03ops5range9RangeFull0g2c_A5slice10SliceIndex1gSCa9index_mut0g(
-		struct s_ZRG3cE9core0_0_03ops5range9RangeFull0g arg0, // ::"core-0_0_0"::ops::range::RangeFull/*S*/
-		SLICE_PTR arg1 // &'#omitted mut [u8]
-		) // -> &'#omitted mut [u8]
-;
 // PROTO extern "Rust" <::"core-0_0_0"::ops::range::RangeTo<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<str,>>::get<'#omitted,>
 static struct e_ZRG2cE9core0_0_06option6Option1gBsCy  ZRQG3cE9core0_0_03ops5range7RangeTo1gCu2c_A5slice10SliceIndex1gCy3get0g(
 		struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu arg0, // ::"core-0_0_0"::ops::range::RangeTo<usize,>/*S*/
@@ -2903,15 +2857,15 @@ static SLICE_PTR  ZRQG3cE9core0_0_03ops5range7RangeTo1gCu2c_A5slice10SliceIndex1
 		SLICE_PTR arg1 // &'#omitted str
 		) // -> &'#omitted str
 ;
-// PROTO extern "Rust" <::"core-0_0_0"::option::Option<u32,>/*E*/ as ::"core-0_0_0"::ops::try::Try>::from_error
-static struct e_ZRG2cE9core0_0_06option6Option1gCe  ZRQG2cE9core0_0_06option6Option1gCe3c_A3ops3try3Try0g10from_error0g(
-		struct s_ZRG2cE9core0_0_06option9NoneError0g arg0 // ::"core-0_0_0"::option::NoneError/*S*/
-		) // -> ::"core-0_0_0"::option::Option<u32,>/*E*/
+// PROTO extern "Rust" <::"core-0_0_0"::panic::#0::NoPayload/*S*/ as ::"core-0_0_0"::any::Any>::get_type_id<'#omitted,>
+static struct s_ZRG2cE9core0_0_03any6TypeId0g  ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0g11get_type_id0g(
+		struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g *arg0 // &'#omitted ::"core-0_0_0"::panic::#0::NoPayload/*S*/
+		) // -> ::"core-0_0_0"::any::TypeId/*S*/
 ;
-// PROTO extern "Rust" <::"core-0_0_0"::slice::Iter<'#local9,u8,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>
+// PROTO extern "Rust" <::"core-0_0_0"::slice::Iter<'static,u8,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>
 static struct e_ZRG2cE9core0_0_06option6Option1gBsCa  ZRQG2cE9core0_0_05slice4Iter1gCa3c_A4iter8iterator8Iterator0g4next0g(
-		struct s_ZRG2cE9core0_0_05slice4Iter1gCa *arg0 // &'#local0 mut ::"core-0_0_0"::slice::Iter<'#local9,u8,>/*S*/
-		) // -> ::"core-0_0_0"::option::Option<&'#local9 u8,>/*E*/
+		struct s_ZRG2cE9core0_0_05slice4Iter1gCa *arg0 // &'#local0 mut ::"core-0_0_0"::slice::Iter<'static,u8,>/*S*/
+		) // -> ::"core-0_0_0"::option::Option<&'static u8,>/*E*/
 ;
 // PROTO extern "Rust" <::"core-0_0_0"::slice::IterMut<'#local1,u8,>/*S*/ as ::"core-0_0_0"::iter::traits::DoubleEndedIterator>::next_back<'#local2,>
 static struct e_ZRG2cE9core0_0_06option6Option1gBuCa  ZRQG2cE9core0_0_05slice7IterMut1gCa3c_A4iter6traits19DoubleEndedIterator0g9next_back0g(
@@ -2935,10 +2889,10 @@ static struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g
 		uintptr_t arg1 // usize
 		) // -> ::"core-0_0_0"::option::Option<::"alloc-0_0_0"::string::String/*S*/,>/*E*/
 ;
-// PROTO extern "Rust" <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local0,'#local0,>
+// PROTO extern "Rust" <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local0,'#local2,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g  ZRQG3cD8std0_0_02io5stdio9StdinLock0g2c_A2io4Read0g10read_exact0g(
 		struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g *arg0, // &'#local0 mut ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
-		SLICE_PTR arg1 // &'#local0 mut [u8]
+		SLICE_PTR arg1 // &'#local2 mut [u8]
 		) // -> ::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
 ;
 // PROTO extern "Rust" <::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::box_me_up<'#omitted,>
@@ -2984,20 +2938,15 @@ static struct s_ZRG2cE9core0_0_03any6TypeId0g  ZRQT02cE9core0_0_03any3Any0g11get
 		tUNIT *arg0 // &'#omitted ()
 		) // -> ::"core-0_0_0"::any::TypeId/*S*/
 ;
-// PROTO extern "Rust" <() as ::"std-0_0_0"::process::Termination>::report
-static int32_t  ZRQT02cD8std0_0_07process11Termination0g6report0g(
-		tUNIT arg0 // ()
-		) // -> i32
-;
-// PROTO extern "Rust" <&'#local17 u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
+// PROTO extern "Rust" <&'static u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQBsCa2cE9core0_0_03fmt5Debug0g_B0g(
-		uint8_t **arg0, // &'static &'#local17 u8
+		uint8_t **arg0, // &'static &'static u8
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
-// PROTO extern "Rust" <&'#local0 i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
+// PROTO extern "Rust" <&'static i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g(
-		int32_t **arg0, // &'static &'#local0 i32
+		int32_t **arg0, // &'static &'static i32
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
@@ -3005,11 +2954,6 @@ static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQBsCf2cE9
 static struct s_ZRG2cE9core0_0_03any6TypeId0g  ZRQBsCy2cE9core0_0_03any3Any0g11get_type_id0g(
 		SLICE_PTR *arg0 // &'#omitted &'static str
 		) // -> ::"core-0_0_0"::any::TypeId/*S*/
-;
-// PROTO extern "Rust" <&'static str as ::"core-0_0_0"::convert::Into<::"alloc-0_0_0"::boxed::Box<dyn (::"std-0_0_0"::error::Error+::"core-0_0_0"::marker::Send+::"core-0_0_0"::marker::Sync),>/*S*/,>>::into
-static struct s_ZRG2cF10alloc0_0_05boxed3Box1gD2cD8std0_0_05error5Error0g022cE9core0_0_06marker4Send0g2c_G_H4Sync0g  ZRQBsCy2cE9core0_0_07convert4Into1gG2cF10alloc0_0_05boxed3Box1gD2cD8std0_0_05error5Error0g022c_A6marker4Send0g2c_A_J4Sy$3822e47e5d8ad101(
-		SLICE_PTR arg0 // &'static str
-		) // -> ::"alloc-0_0_0"::boxed::Box<dyn (::"std-0_0_0"::error::Error+::"core-0_0_0"::marker::Send+::"core-0_0_0"::marker::Sync),>/*S*/
 ;
 // PROTO extern "Rust" <&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g(
@@ -3023,47 +2967,25 @@ static RUST_BOOL  ZRQBsCy3cE9core0_0_03str7pattern7Pattern0g12is_prefix_of0g(
 		SLICE_PTR arg1 // &'#local1 str
 		) // -> bool
 ;
-// PROTO extern "Rust" <*const u8 as ::"core-0_0_0"::slice::PointerExt>::post_inc<'#local0,>
-static uint8_t * ZRQPsCa2cE9core0_0_05slice10PointerExt0g8post_inc0g(
-		uint8_t **arg0 // &'#local0 mut *const u8
-		) // -> *const u8
-;
-// PROTO extern "Rust" <*const u8 as ::"core-0_0_0"::slice::PointerExt>::slice_offset
-static uint8_t * ZRQPsCa2cE9core0_0_05slice10PointerExt0g12slice_offset0g(
-		uint8_t *arg0, // *const u8
-		intptr_t arg1 // isize
-		) // -> *const u8
-;
-// PROTO extern "Rust" <*mut u8 as ::"core-0_0_0"::slice::PointerExt>::pre_dec<'#local2,>
-static uint8_t * ZRQPuCa2cE9core0_0_05slice10PointerExt0g7pre_dec0g(
-		uint8_t **arg0 // &'#local2 mut *mut u8
-		) // -> *mut u8
-;
-// PROTO extern "Rust" <*mut u8 as ::"core-0_0_0"::slice::PointerExt>::slice_offset
-static uint8_t * ZRQPuCa2cE9core0_0_05slice10PointerExt0g12slice_offset0g(
-		uint8_t *arg0, // *mut u8
-		intptr_t arg1 // isize
-		) // -> *mut u8
-;
 // EXTERN extern "Rust" ::"alloc-0_0_0"::alloc::#0::oom_impl
 extern tBANG  ZRG3cF10alloc0_0_05allocB_08oom_impl0g(
 		struct s_ZRG2cE9core0_0_05alloc6Layout0g arg0 // ::"core-0_0_0"::alloc::Layout/*S*/
 		) // -> !
  asm("oom_impl");
 // EXTERN extern "Rust" ::"alloc-0_0_0"::alloc::__rust_alloc
-extern uint8_t * ZRG2cF10alloc0_0_05alloc12__rust_alloc0g(
+extern uint8_t * ZRG2cF10alloc0_0_05alloc13___rust_alloc0g(
 		uintptr_t arg0, // usize
 		uintptr_t arg1 // usize
 		) // -> *mut u8
  asm("__rust_alloc");
 // EXTERN extern "Rust" ::"alloc-0_0_0"::alloc::__rust_alloc_zeroed
-extern uint8_t * ZRG2cF10alloc0_0_05alloc19__rust_alloc_zeroed0g(
+extern uint8_t * ZRG2cF10alloc0_0_05alloc20___rust_alloc_zeroed0g(
 		uintptr_t arg0, // usize
 		uintptr_t arg1 // usize
 		) // -> *mut u8
  asm("__rust_alloc_zeroed");
 // EXTERN extern "Rust" ::"alloc-0_0_0"::alloc::__rust_dealloc
-extern void  ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g(
+extern void  ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g(
 		uint8_t *arg0, // *mut u8
 		uintptr_t arg1, // usize
 		uintptr_t arg2 // usize
@@ -3074,6 +2996,11 @@ extern tBANG  ZRG2cE9core0_0_06option13expect_failed0g(
 		SLICE_PTR arg0 // &'static str
 		) // -> !
 ;
+// EXTERN extern "Rust" ::"core-0_0_0"::panicking::#0::panic_impl<'#local3,>
+extern tBANG  ZRG3cE9core0_0_09panickingB_010panic_impl0g(
+		struct s_ZRG2cE9core0_0_05panic9PanicInfo0g *arg0 // &'#local3 ::"core-0_0_0"::panic::PanicInfo<'#local3,>/*S*/
+		) // -> !
+ asm("panic_impl");
 // EXTERN extern "Rust" ::"core-0_0_0"::panicking::panic<'static,>
 extern tBANG  ZRG2cE9core0_0_09panicking5panic0g(
 		TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe *arg0 // &'static (&'static str, &'static str, u32, u32, )
@@ -3109,21 +3036,21 @@ extern struct e_ZRG2cE9core0_0_06result6Result2gBsCyG2c_A3str9Utf8Error0g  ZRG2c
 		SLICE_PTR arg0 // &'#local0 [u8]
 		) // -> ::"core-0_0_0"::result::Result<&'#local0 str,::"core-0_0_0"::str::Utf8Error/*S*/,>/*E*/
 ;
-// EXTERN extern "C" ::"libc-0_0_0_H1"::unix::pthread_mutex_destroy
-extern int32_t  ZRG2cE12libc0_0_0_H14unix21pthread_mutex_destroy0g(
-		struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *arg0 // *mut ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
+// EXTERN extern "C" ::"libc-0_0_0_H4"::unix::pthread_mutex_destroy
+extern int32_t  ZRG2cE12libc0_0_0_H44unix21pthread_mutex_destroy0g(
+		struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *arg0 // *mut ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
 		) // -> i32
  asm("pthread_mutex_destroy");
-// EXTERN extern "C" ::"libc-0_0_0_H1"::unix::pthread_mutex_unlock
-extern int32_t  ZRG2cE12libc0_0_0_H14unix20pthread_mutex_unlock0g(
-		struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *arg0 // *mut ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
+// EXTERN extern "C" ::"libc-0_0_0_H4"::unix::pthread_mutex_unlock
+extern int32_t  ZRG2cE12libc0_0_0_H44unix20pthread_mutex_unlock0g(
+		struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *arg0 // *mut ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
 		) // -> i32
  asm("pthread_mutex_unlock");
 // EXTERN extern "Rust" ::"std-0_0_0"::env::args
 extern struct s_ZRG2cD8std0_0_03env4Args0g  ZRG2cD8std0_0_03env4args0g(void) // -> ::"std-0_0_0"::env::Args/*S*/
 ;
 // EXTERN extern "Rust" ::"std-0_0_0"::io::stdio::_print<'static,>
-extern void  ZRG3cD8std0_0_02io5stdio6_print0g(
+extern void  ZRG3cD8std0_0_02io5stdio7__print0g(
 		struct s_ZRG2cE9core0_0_03fmt9Arguments0g arg0 // ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
 		) // -> ()
 ;
@@ -3230,14 +3157,20 @@ extern uint8_t  ZRQCe3cE9core0_0_03fmt3num3Int0g5to_u80g(
 // EXTERN extern "Rust" <u32 as ::"core-0_0_0"::fmt::num::Int>::zero
 extern uint32_t  ZRQCe3cE9core0_0_03fmt3num3Int0g4zero0g(void) // -> u32
 ;
-// EXTERN extern "Rust" <i32 as ::"core-0_0_0"::fmt::Display>::fmt<'#local0,'static,>
+// EXTERN extern "Rust" <i32 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>
 extern struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCf2cE9core0_0_03fmt7Display0g_B0g(
-		int32_t *arg0, // &'#local0 i32
+		int32_t *arg0, // &'static i32
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
 // EXTERN extern "Rust" <u128 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>
 extern struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCi2cE9core0_0_03fmt7Display0g_B0g(
+		uint128_t *arg0, // &'static u128
+		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
+		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+;
+// EXTERN extern "Rust" <u128 as ::"core-0_0_0"::fmt::LowerHex>::fmt<'static,'static,>
+extern struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCi2cE9core0_0_03fmt8LowerHex0g_B0g(
 		uint128_t *arg0, // &'static u128
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
@@ -3320,9 +3253,9 @@ extern struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG2cE9cor
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
-// EXTERN extern "Rust" <::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(),>>::call_once
+// EXTERN extern "Rust" <::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(),>>::call_once
 extern SLICE_PTR  ZRQG1cE9core0_0_0H18closureI_index_1440g3c_A3ops8function6FnOnce1gT09call_once0g(
-		struct s_ZRG1cE9core0_0_0H18closureI_index_1440g arg0, // ::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>/*S*/
+		struct s_ZRG1cE9core0_0_0H18closureI_index_1440g arg0, // ::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>/*S*/
 		tUNIT arg1 // ()
 		) // -> &'static str
 ;
@@ -3383,9 +3316,9 @@ extern struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_02io5error5Error0g
 		SLICE_PTR arg1 // &'#local0 mut [u8]
 		) // -> ::"core-0_0_0"::result::Result<usize,::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
 ;
-// EXTERN extern "Rust" <::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/, ),>>::call_once
+// EXTERN extern "Rust" <::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/, ),>>::call_once
 extern uintptr_t  ZRQG2cD8std0_0_09panickingH27closureupdate_panic_count_00g3cE9core0_0_03ops8function6FnOnce1gT1BsG2c_D4cell4Cell1gCu9call_once0g(
-		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg0, // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/
+		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg0, // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/
 		TUP_1_ZRTBsG2cE9core0_0_04cell4Cell1gCu arg1 // (&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/, )
 		) // -> usize
 ;
@@ -3395,123 +3328,158 @@ extern struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG3cD8std
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
-extern union u_static_ZRG2cF10alloc0_0_04syncG7lifted10g{ struct s_ZRG2cF10alloc0_0_05alloc6Global0g val; uint8_t raw[0]; } ZRG2cF10alloc0_0_04syncG7lifted10g;	// static ::"alloc-0_0_0"::sync::lifted#1 : ::"alloc-0_0_0"::alloc::Global/*S*/
 union u_static_ZRG3cD3binB_0B_09FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cD3binB_0B_09FRAGMENTS0g;	// static ::"bin#"::#0::#0::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG3cD3binB_1B_09FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG3cD3binB_1B_09FRAGMENTS0g;	// static ::"bin#"::#1::#0::FRAGMENTS : [&'static str; 3]
 union u_static_ZRG2cD3binC_109FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_109FRAGMENTS0g;	// static ::"bin#"::#10::FRAGMENTS : [&'static str; 3]
-union u_static_ZRG2cD3binC_119FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_119FRAGMENTS0g;	// static ::"bin#"::#11::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_119FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_119FRAGMENTS0g;	// static ::"bin#"::#11::FRAGMENTS : [&'static str; 3]
 union u_static_ZRG2cD3binC_129FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_129FRAGMENTS0g;	// static ::"bin#"::#12::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binC_139FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_139FRAGMENTS0g;	// static ::"bin#"::#13::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG2cD3binC_149FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_149FRAGMENTS0g;	// static ::"bin#"::#14::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_149FRAGMENTS0g{ t_ZRTA1BsCy val; uintptr_t raw[2]; } ZRG2cD3binC_149FRAGMENTS0g;	// static ::"bin#"::#14::FRAGMENTS : [&'static str; 1]
 union u_static_ZRG2cD3binC_159FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_159FRAGMENTS0g;	// static ::"bin#"::#15::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binC_169FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_169FRAGMENTS0g;	// static ::"bin#"::#16::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG2cD3binC_179FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_179FRAGMENTS0g;	// static ::"bin#"::#17::FRAGMENTS : [&'static str; 3]
-union u_static_ZRG2cD3binC_189FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_189FRAGMENTS0g;	// static ::"bin#"::#18::FRAGMENTS : [&'static str; 3]
-union u_static_ZRG2cD3binC_199FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_199FRAGMENTS0g;	// static ::"bin#"::#19::FRAGMENTS : [&'static str; 3]
-union u_static_ZRG2cD3binB_29FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binB_29FRAGMENTS0g;	// static ::"bin#"::#2::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG2cD3binC_209FRAGMENTS0g{ t_ZRTA1BsCy val; uintptr_t raw[2]; } ZRG2cD3binC_209FRAGMENTS0g;	// static ::"bin#"::#20::FRAGMENTS : [&'static str; 1]
-union u_static_ZRG2cD3binC_219FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_219FRAGMENTS0g;	// static ::"bin#"::#21::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG2cD3binC_229FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_229FRAGMENTS0g;	// static ::"bin#"::#22::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG2cD3binC_239FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_239FRAGMENTS0g;	// static ::"bin#"::#23::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_179FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_179FRAGMENTS0g;	// static ::"bin#"::#17::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_189FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_189FRAGMENTS0g;	// static ::"bin#"::#18::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_199FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_199FRAGMENTS0g;	// static ::"bin#"::#19::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binB_29FRAGMENTS0g{ t_ZRTA1BsCy val; uintptr_t raw[2]; } ZRG2cD3binB_29FRAGMENTS0g;	// static ::"bin#"::#2::FRAGMENTS : [&'static str; 1]
+union u_static_ZRG2cD3binC_209FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_209FRAGMENTS0g;	// static ::"bin#"::#20::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_219FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_219FRAGMENTS0g;	// static ::"bin#"::#21::FRAGMENTS : [&'static str; 3]
+union u_static_ZRG2cD3binC_229FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_229FRAGMENTS0g;	// static ::"bin#"::#22::FRAGMENTS : [&'static str; 3]
+union u_static_ZRG2cD3binC_239FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binC_239FRAGMENTS0g;	// static ::"bin#"::#23::FRAGMENTS : [&'static str; 3]
+union u_static_ZRG2cD3binC_249FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_249FRAGMENTS0g;	// static ::"bin#"::#24::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_259FRAGMENTS0g{ t_ZRTA1BsCy val; uintptr_t raw[2]; } ZRG2cD3binC_259FRAGMENTS0g;	// static ::"bin#"::#25::FRAGMENTS : [&'static str; 1]
+union u_static_ZRG2cD3binC_269FRAGMENTS0g{ t_ZRTA1BsCy val; uintptr_t raw[2]; } ZRG2cD3binC_269FRAGMENTS0g;	// static ::"bin#"::#26::FRAGMENTS : [&'static str; 1]
+union u_static_ZRG2cD3binC_279FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_279FRAGMENTS0g;	// static ::"bin#"::#27::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_289FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_289FRAGMENTS0g;	// static ::"bin#"::#28::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3binC_299FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binC_299FRAGMENTS0g;	// static ::"bin#"::#29::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binB_39FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binB_39FRAGMENTS0g;	// static ::"bin#"::#3::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binB_49FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binB_49FRAGMENTS0g;	// static ::"bin#"::#4::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binB_59FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binB_59FRAGMENTS0g;	// static ::"bin#"::#5::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binB_69FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binB_69FRAGMENTS0g;	// static ::"bin#"::#6::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binB_79FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binB_79FRAGMENTS0g;	// static ::"bin#"::#7::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG2cD3binB_89FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binB_89FRAGMENTS0g;	// static ::"bin#"::#8::FRAGMENTS : [&'static str; 3]
+union u_static_ZRG2cD3binB_89FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG2cD3binB_89FRAGMENTS0g;	// static ::"bin#"::#8::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG2cD3binB_99FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG2cD3binB_99FRAGMENTS0g;	// static ::"bin#"::#9::FRAGMENTS : [&'static str; 3]
-union u_static_ZRG1cD3binG7lifted00g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binG7lifted00g;	// static ::"bin#"::lifted#0 : (&'static str, u32, u32, )
-union u_static_ZRG1cD3binG7lifted10g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binG7lifted10g;	// static ::"bin#"::lifted#1 : (&'static str, u32, u32, )
-union u_static_ZRG1cD3binG7lifted20g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binG7lifted20g;	// static ::"bin#"::lifted#2 : (&'static str, u32, u32, )
-union u_static_ZRG1cD3binG7lifted30g{ uint8_t val; uint8_t raw[1]; } ZRG1cD3binG7lifted30g;	// static ::"bin#"::lifted#3 : u8
-union u_static_ZRG1cD3binG7lifted40g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binG7lifted40g;	// static ::"bin#"::lifted#4 : (&'static str, u32, u32, )
-union u_static_ZRG1cD3binG7lifted50g{ t_ZRTA0G2cE9core0_0_03fmt10ArgumentV10g val; uintptr_t raw[0]; } ZRG1cD3binG7lifted50g;	// static ::"bin#"::lifted#5 : [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 0]
-union u_static_ZRG1cD3binG7lifted60g{ t_ZRTA1G4cE9core0_0_03fmt2rt2v18Argument0g val; uintptr_t raw[8]; } ZRG1cD3binG7lifted60g;	// static ::"bin#"::lifted#6 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1]
+union u_static_ZRG1cD3binF6const00g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binF6const00g;	// static ::"bin#"::const#0 : (&'static str, u32, u32, )
+union u_static_ZRG1cD3binF6const10g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binF6const10g;	// static ::"bin#"::const#1 : (&'static str, u32, u32, )
+union u_static_ZRG1cD3binF6const20g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binF6const20g;	// static ::"bin#"::const#2 : (&'static str, u32, u32, )
+union u_static_ZRG1cD3binF6const30g{ uint8_t val; uint8_t raw[1]; } ZRG1cD3binF6const30g;	// static ::"bin#"::const#3 : u8
+union u_static_ZRG1cD3binF6const40g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG1cD3binF6const40g;	// static ::"bin#"::const#4 : (&'static str, u32, u32, )
+union u_static_ZRG1cD3binF6const50g{ t_ZRTA0G2cE9core0_0_03fmt10ArgumentV10g val; uintptr_t raw[0]; } ZRG1cD3binF6const50g;	// static ::"bin#"::const#5 : [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 0]
+union u_static_ZRG1cD3binF6const60g{ t_ZRTA0G2cE9core0_0_03fmt10ArgumentV10g val; uintptr_t raw[0]; } ZRG1cD3binF6const60g;	// static ::"bin#"::const#6 : [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 0]
+union u_static_ZRG1cD3binF6const70g{ t_ZRTA0G2cE9core0_0_03fmt10ArgumentV10g val; uintptr_t raw[0]; } ZRG1cD3binF6const70g;	// static ::"bin#"::const#7 : [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 0]
+union u_static_ZRG1cD3binF6const80g{ t_ZRTA0G2cE9core0_0_03fmt10ArgumentV10g val; uintptr_t raw[0]; } ZRG1cD3binF6const80g;	// static ::"bin#"::const#8 : [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 0]
+union u_static_ZRG1cD3binF6const90g{ t_ZRTA1G4cE9core0_0_03fmt2rt2v18Argument0g val; uintptr_t raw[8]; } ZRG1cD3binF6const90g;	// static ::"bin#"::const#9 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1]
 union u_static_ZRG3cD3bin8protocolB_09FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cD3bin8protocolB_09FRAGMENTS0g;	// static ::"bin#"::protocol::#0::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG3cD3bin8protocolB_19FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cD3bin8protocolB_19FRAGMENTS0g;	// static ::"bin#"::protocol::#1::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG3cD3bin8protocolB_29FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG3cD3bin8protocolB_29FRAGMENTS0g;	// static ::"bin#"::protocol::#2::FRAGMENTS : [&'static str; 3]
+union u_static_ZRG3cD3bin8protocolB_29FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cD3bin8protocolB_29FRAGMENTS0g;	// static ::"bin#"::protocol::#2::FRAGMENTS : [&'static str; 2]
 union u_static_ZRG3cD3bin8protocolB_39FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cD3bin8protocolB_39FRAGMENTS0g;	// static ::"bin#"::protocol::#3::FRAGMENTS : [&'static str; 2]
-union u_static_ZRG2cD3bin8protocolG7lifted00g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolG7lifted00g;	// static ::"bin#"::protocol::lifted#0 : (&'static str, u32, u32, )
-union u_static_ZRG2cD3bin8protocolG7lifted10g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolG7lifted10g;	// static ::"bin#"::protocol::lifted#1 : (&'static str, u32, u32, )
-union u_static_ZRG2cD3bin8protocolG7lifted20g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolG7lifted20g;	// static ::"bin#"::protocol::lifted#2 : (&'static str, u32, u32, )
-union u_static_ZRG2cD3bin8protocolG7lifted30g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolG7lifted30g;	// static ::"bin#"::protocol::lifted#3 : (&'static str, u32, u32, )
-union u_static_ZRG2cD3bin8protocolG7lifted40g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolG7lifted40g;	// static ::"bin#"::protocol::lifted#4 : (&'static str, u32, u32, )
-union u_static_ZRG2cD3bin8protocolG7lifted50g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolG7lifted50g;	// static ::"bin#"::protocol::lifted#5 : (&'static str, u32, u32, )
-union u_static_ZRG2cD3bin8protocolG7lifted60g{ t_ZRTA1G4cE9core0_0_03fmt2rt2v18Argument0g val; uintptr_t raw[8]; } ZRG2cD3bin8protocolG7lifted60g;	// static ::"bin#"::protocol::lifted#6 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1]
-union u_static_ZRG2cD3bin8protocolG7lifted70g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolG7lifted70g;	// static ::"bin#"::protocol::lifted#7 : (&'static str, u32, u32, )
-extern union u_static_ZRG2cE9core0_0_05allocG7lifted30g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG2cE9core0_0_05allocG7lifted30g;	// static ::"core-0_0_0"::alloc::lifted#3 : (&'static str, &'static str, u32, u32, )
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted150g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted150g;	// static ::"core-0_0_0"::fmt::num::lifted#15 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted180g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted180g;	// static ::"core-0_0_0"::fmt::num::lifted#18 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted220g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted220g;	// static ::"core-0_0_0"::fmt::num::lifted#22 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted230g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted230g;	// static ::"core-0_0_0"::fmt::num::lifted#23 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted390g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted390g;	// static ::"core-0_0_0"::fmt::num::lifted#39 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted420g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted420g;	// static ::"core-0_0_0"::fmt::num::lifted#42 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted460g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted460g;	// static ::"core-0_0_0"::fmt::num::lifted#46 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
-extern union u_static_ZRG3cE9core0_0_03fmt3numG8lifted470g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numG8lifted470g;	// static ::"core-0_0_0"::fmt::num::lifted#47 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
-extern union u_static_ZRG2cE9core0_0_06optionG7lifted10g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG2cE9core0_0_06optionG7lifted10g;	// static ::"core-0_0_0"::option::lifted#1 : (&'static str, &'static str, u32, u32, )
+union u_static_ZRG3cD3bin8protocolB_49FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cD3bin8protocolB_49FRAGMENTS0g;	// static ::"bin#"::protocol::#4::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG3cD3bin8protocolB_59FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG3cD3bin8protocolB_59FRAGMENTS0g;	// static ::"bin#"::protocol::#5::FRAGMENTS : [&'static str; 3]
+union u_static_ZRG3cD3bin8protocolB_69FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cD3bin8protocolB_69FRAGMENTS0g;	// static ::"bin#"::protocol::#6::FRAGMENTS : [&'static str; 2]
+union u_static_ZRG2cD3bin8protocolF6const00g{ SLICE_PTR val; uintptr_t raw[2]; } ZRG2cD3bin8protocolF6const00g;	// static ::"bin#"::protocol::const#0 : &'static str
+union u_static_ZRG2cD3bin8protocolF6const10g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF6const10g;	// static ::"bin#"::protocol::const#1 : (&'static str, u32, u32, )
+union u_static_ZRG2cD3bin8protocolF7const100g{ t_ZRTA1G4cE9core0_0_03fmt2rt2v18Argument0g val; uintptr_t raw[8]; } ZRG2cD3bin8protocolF7const100g;	// static ::"bin#"::protocol::const#10 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1]
+union u_static_ZRG2cD3bin8protocolF7const110g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF7const110g;	// static ::"bin#"::protocol::const#11 : (&'static str, u32, u32, )
+union u_static_ZRG2cD3bin8protocolF6const20g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF6const20g;	// static ::"bin#"::protocol::const#2 : (&'static str, u32, u32, )
+union u_static_ZRG2cD3bin8protocolF6const30g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF6const30g;	// static ::"bin#"::protocol::const#3 : (&'static str, u32, u32, )
+union u_static_ZRG2cD3bin8protocolF6const40g{ SLICE_PTR val; uintptr_t raw[2]; } ZRG2cD3bin8protocolF6const40g;	// static ::"bin#"::protocol::const#4 : &'static str
+union u_static_ZRG2cD3bin8protocolF6const50g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF6const50g;	// static ::"bin#"::protocol::const#5 : (&'static str, u32, u32, )
+union u_static_ZRG2cD3bin8protocolF6const60g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF6const60g;	// static ::"bin#"::protocol::const#6 : (&'static str, u32, u32, )
+union u_static_ZRG2cD3bin8protocolF6const70g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF6const70g;	// static ::"bin#"::protocol::const#7 : (&'static str, u32, u32, )
+union u_static_ZRG2cD3bin8protocolF6const80g{ t_ZRTA1G4cE9core0_0_03fmt2rt2v18Argument0g val; uintptr_t raw[8]; } ZRG2cD3bin8protocolF6const80g;	// static ::"bin#"::protocol::const#8 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1]
+union u_static_ZRG2cD3bin8protocolF6const90g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cD3bin8protocolF6const90g;	// static ::"bin#"::protocol::const#9 : (&'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_05allocB_19FRAGMENTS0g{ t_ZRTA2BsCy val; uintptr_t raw[4]; } ZRG3cE9core0_0_05allocB_19FRAGMENTS0g;	// static ::"core-0_0_0"::alloc::#1::FRAGMENTS : [&'static str; 2]
+extern union u_static_ZRG2cE9core0_0_05allocF6const60g{ SLICE_PTR val; uintptr_t raw[2]; } ZRG2cE9core0_0_05allocF6const60g;	// static ::"core-0_0_0"::alloc::const#6 : &'static str
+extern union u_static_ZRG2cE9core0_0_05allocF6const70g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cE9core0_0_05allocF6const70g;	// static ::"core-0_0_0"::alloc::const#7 : (&'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const150g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const150g;	// static ::"core-0_0_0"::fmt::num::const#15 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const180g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const180g;	// static ::"core-0_0_0"::fmt::num::const#18 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const220g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const220g;	// static ::"core-0_0_0"::fmt::num::const#22 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const230g{ struct s_ZRG3cE9core0_0_03fmt3num8LowerHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const230g;	// static ::"core-0_0_0"::fmt::num::const#23 : ::"core-0_0_0"::fmt::num::LowerHex/*S*/
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const390g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const390g;	// static ::"core-0_0_0"::fmt::num::const#39 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const420g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const420g;	// static ::"core-0_0_0"::fmt::num::const#42 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const460g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const460g;	// static ::"core-0_0_0"::fmt::num::const#46 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
+extern union u_static_ZRG3cE9core0_0_03fmt3numF7const470g{ struct s_ZRG3cE9core0_0_03fmt3num8UpperHex0g val; uint8_t raw[0]; } ZRG3cE9core0_0_03fmt3numF7const470g;	// static ::"core-0_0_0"::fmt::num::const#47 : ::"core-0_0_0"::fmt::num::UpperHex/*S*/
+extern union u_static_ZRG2cE9core0_0_06optionF6const10g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG2cE9core0_0_06optionF6const10g;	// static ::"core-0_0_0"::option::const#1 : (&'static str, &'static str, u32, u32, )
+extern union u_static_ZRG2cE9core0_0_05panicF6const00g{ struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g val; uint8_t raw[0]; } ZRG2cE9core0_0_05panicF6const00g;	// static ::"core-0_0_0"::panic::const#0 : ::"core-0_0_0"::panic::#0::NoPayload/*S*/
 extern union u_static_ZRG3cE9core0_0_06resultB_19FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG3cE9core0_0_06resultB_19FRAGMENTS0g;	// static ::"core-0_0_0"::result::#1::FRAGMENTS : [&'static str; 3]
-extern union u_static_ZRG2cE9core0_0_06resultG7lifted00g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cE9core0_0_06resultG7lifted00g;	// static ::"core-0_0_0"::result::lifted#0 : (&'static str, u32, u32, )
-extern union u_static_ZRG3cE9core0_0_04sync6atomicG8lifted190g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicG8lifted190g;	// static ::"core-0_0_0"::sync::atomic::lifted#19 : (&'static str, &'static str, u32, u32, )
-extern union u_static_ZRG3cE9core0_0_04sync6atomicG8lifted290g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicG8lifted290g;	// static ::"core-0_0_0"::sync::atomic::lifted#29 : (&'static str, &'static str, u32, u32, )
-extern union u_static_ZRG3cE9core0_0_04sync6atomicG8lifted300g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicG8lifted300g;	// static ::"core-0_0_0"::sync::atomic::lifted#30 : (&'static str, &'static str, u32, u32, )
-extern union u_static_ZRG3cE9core0_0_04sync6atomicG7lifted50g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicG7lifted50g;	// static ::"core-0_0_0"::sync::atomic::lifted#5 : (&'static str, &'static str, u32, u32, )
-extern union u_static_ZRG3cE9core0_0_04sync6atomicG7lifted60g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicG7lifted60g;	// static ::"core-0_0_0"::sync::atomic::lifted#6 : (&'static str, &'static str, u32, u32, )
-extern union u_static_ZRG3cE9core0_0_04sync6atomicG7lifted70g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicG7lifted70g;	// static ::"core-0_0_0"::sync::atomic::lifted#7 : (&'static str, &'static str, u32, u32, )
-extern union u_static_ZRG3cD8std0_0_09panickingB_4G7lifted00g{ tUNIT val; uint8_t raw[0]; } ZRG3cD8std0_0_09panickingB_4G7lifted00g;	// static ::"std-0_0_0"::panicking::#4::lifted#0 : ()
-extern union u_static_ZRG2cD8std0_0_09panickingG7lifted20g{ struct s_ZRG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu val; uintptr_t raw[2]; } ZRG2cD8std0_0_09panickingG7lifted20g;	// static ::"std-0_0_0"::panicking::lifted#2 : ::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/
+extern union u_static_ZRG2cE9core0_0_06resultF6const00g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG2cE9core0_0_06resultF6const00g;	// static ::"core-0_0_0"::result::const#0 : (&'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_04sync6atomicF7const190g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicF7const190g;	// static ::"core-0_0_0"::sync::atomic::const#19 : (&'static str, &'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_04sync6atomicF7const290g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicF7const290g;	// static ::"core-0_0_0"::sync::atomic::const#29 : (&'static str, &'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_04sync6atomicF7const300g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicF7const300g;	// static ::"core-0_0_0"::sync::atomic::const#30 : (&'static str, &'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_04sync6atomicF6const50g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicF6const50g;	// static ::"core-0_0_0"::sync::atomic::const#5 : (&'static str, &'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_04sync6atomicF6const60g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicF6const60g;	// static ::"core-0_0_0"::sync::atomic::const#6 : (&'static str, &'static str, u32, u32, )
+extern union u_static_ZRG3cE9core0_0_04sync6atomicF6const70g{ TUP_4_ZRTBsCy_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[5]; } ZRG3cE9core0_0_04sync6atomicF6const70g;	// static ::"core-0_0_0"::sync::atomic::const#7 : (&'static str, &'static str, u32, u32, )
+extern union u_static_ZRG3cD8std0_0_09panickingB_4F6const00g{ tUNIT val; uint8_t raw[0]; } ZRG3cD8std0_0_09panickingB_4F6const00g;	// static ::"std-0_0_0"::panicking::#4::const#0 : ()
+extern union u_static_ZRG2cD8std0_0_09panickingF6const20g{ struct s_ZRG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu val; uintptr_t raw[2]; } ZRG2cD8std0_0_09panickingF6const20g;	// static ::"std-0_0_0"::panicking::const#2 : ::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/
 extern union u_static_ZRG5cD8std0_0_03sys4unix5mutexB_69FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG5cD8std0_0_03sys4unix5mutexB_69FRAGMENTS0g;	// static ::"std-0_0_0"::sys::unix::mutex::#6::FRAGMENTS : [&'static str; 3]
 extern union u_static_ZRG5cD8std0_0_03sys4unix5mutexB_79FRAGMENTS0g{ t_ZRTA3BsCy val; uintptr_t raw[6]; } ZRG5cD8std0_0_03sys4unix5mutexB_79FRAGMENTS0g;	// static ::"std-0_0_0"::sys::unix::mutex::#7::FRAGMENTS : [&'static str; 3]
-extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexG7lifted00g{ int32_t val; uint8_t raw[4]; } ZRG4cD8std0_0_03sys4unix5mutexG7lifted00g;	// static ::"std-0_0_0"::sys::unix::mutex::lifted#0 : i32
-extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexG7lifted10g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG4cD8std0_0_03sys4unix5mutexG7lifted10g;	// static ::"std-0_0_0"::sys::unix::mutex::lifted#1 : (&'static str, u32, u32, )
-extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexG8lifted120g{ int32_t val; uint8_t raw[4]; } ZRG4cD8std0_0_03sys4unix5mutexG8lifted120g;	// static ::"std-0_0_0"::sys::unix::mutex::lifted#12 : i32
-extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexG8lifted130g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG4cD8std0_0_03sys4unix5mutexG8lifted130g;	// static ::"std-0_0_0"::sys::unix::mutex::lifted#13 : (&'static str, u32, u32, )
+extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexF6const00g{ int32_t val; uint8_t raw[4]; } ZRG4cD8std0_0_03sys4unix5mutexF6const00g;	// static ::"std-0_0_0"::sys::unix::mutex::const#0 : i32
+extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexF6const10g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG4cD8std0_0_03sys4unix5mutexF6const10g;	// static ::"std-0_0_0"::sys::unix::mutex::const#1 : (&'static str, u32, u32, )
+extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexF7const120g{ int32_t val; uint8_t raw[4]; } ZRG4cD8std0_0_03sys4unix5mutexF7const120g;	// static ::"std-0_0_0"::sys::unix::mutex::const#12 : i32
+extern union u_static_ZRG4cD8std0_0_03sys4unix5mutexF7const130g{ TUP_3_ZRTBsCy_ZRTCe_ZRTCe val; uintptr_t raw[3]; } ZRG4cD8std0_0_03sys4unix5mutexF7const130g;	// static ::"std-0_0_0"::sys::unix::mutex::const#13 : (&'static str, u32, u32, )
+__attribute__((weak)) union u_static_ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0gG6vtable0g{ struct s_ZRG2cE9core0_0_03anyD9Anyvtable0g val; uintptr_t raw[4]; } ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0gG6vtable0g;	// static <::"core-0_0_0"::panic::#0::NoPayload/*S*/ as ::"core-0_0_0"::any::Any>::vtable# : ::"core-0_0_0"::any::Any#vtable/*S*/
 __attribute__((weak)) union u_static_ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g{ struct s_ZRG2cE9core0_0_05panicH13BoxMeUpvtable0g val; uintptr_t raw[5]; } ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g;	// static <::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::vtable# : ::"core-0_0_0"::panic::BoxMeUp#vtable/*S*/
-__attribute__((weak)) union u_static_ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g{ struct s_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf val; uintptr_t raw[5]; } ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g;	// static <::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as for ::"core-0_0_0"::ops::function::Fn<(),>>::vtable# : ::"core-0_0_0"::ops::function::Fn#vtable<(),i32,>/*S*/
+__attribute__((weak)) union u_static_ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g{ struct s_ZRG3cE9core0_0_03ops8functionC8Fnvtable2gT0Cf val; uintptr_t raw[6]; } ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g;	// static <::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::Fn<(),>>::vtable# : ::"core-0_0_0"::ops::function::Fn#vtable<(),i32,>/*S*/
+__attribute__((weak)) union u_static_ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT0G6vtable0g{ struct s_ZRG3cE9core0_0_03ops8functionF11FnMutvtable2gT0Cf val; uintptr_t raw[4]; } ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT0G6vtable0g;	// static <::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::FnMut<(),>>::vtable# : ::"core-0_0_0"::ops::function::FnMut#vtable<(),i32,>/*S*/
 __attribute__((weak)) union u_static_ZRQT02cE9core0_0_03any3Any0gG6vtable0g{ struct s_ZRG2cE9core0_0_03anyD9Anyvtable0g val; uintptr_t raw[4]; } ZRQT02cE9core0_0_03any3Any0gG6vtable0g;	// static <() as ::"core-0_0_0"::any::Any>::vtable# : ::"core-0_0_0"::any::Any#vtable/*S*/
 __attribute__((weak)) union u_static_ZRQBsCy2cE9core0_0_03any3Any0gG6vtable0g{ struct s_ZRG2cE9core0_0_03anyD9Anyvtable0g val; uintptr_t raw[4]; } ZRQBsCy2cE9core0_0_03any3Any0gG6vtable0g;	// static <&'static str as ::"core-0_0_0"::any::Any>::vtable# : ::"core-0_0_0"::any::Any#vtable/*S*/
 union u_static_ZRG3cD3binB_0B_09FRAGMENTS0g ZRG3cD3binB_0B_09FRAGMENTS0g = { .raw = {(uintptr_t)"\\x",0x2ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::#0::#0::FRAGMENTS : [&'static str; 2] = 0010000000000000 0200000000000000 0010000000000000 0000000000000000{@0x0+8 = "\\x", @0x10+8 = ""}
 union u_static_ZRG3cD3binB_1B_09FRAGMENTS0g ZRG3cD3binB_1B_09FRAGMENTS0g = { .raw = {(uintptr_t)"assertion failed: `(left == right)`\n  left: `",0x2dull,(uintptr_t)"`,\n right: `",0xcull,(uintptr_t)"`",0x1ull} };	// static ::"bin#"::#1::#0::FRAGMENTS : [&'static str; 3] = 0010000000000000 2D00000000000000 0010000000000000 0C00000000000000 0010000000000000 0100000000000000{@0x0+8 = "assertion failed: `(left == right)`\n  left: `", @0x10+8 = "`,\n right: `", @0x20+8 = "`"}
-union u_static_ZRG2cD3binC_109FRAGMENTS0g ZRG2cD3binC_109FRAGMENTS0g = { .raw = {(uintptr_t)"FLOAT ",0x6ull,(uintptr_t)" ty=",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#10::FRAGMENTS : [&'static str; 3] = 0010000000000000 0600000000000000 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "FLOAT ", @0x10+8 = " ty=", @0x20+8 = "\n"}
-union u_static_ZRG2cD3binC_119FRAGMENTS0g ZRG2cD3binC_119FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" ",0x1ull} };	// static ::"bin#"::#11::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0100000000000000{@0x0+8 = "", @0x10+8 = " "}
-union u_static_ZRG2cD3binC_129FRAGMENTS0g ZRG2cD3binC_129FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" ",0x1ull} };	// static ::"bin#"::#12::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0100000000000000{@0x0+8 = "", @0x10+8 = " "}
-union u_static_ZRG2cD3binC_139FRAGMENTS0g ZRG2cD3binC_139FRAGMENTS0g = { .raw = {(uintptr_t)"'",0x1ull,(uintptr_t)" ",0x1ull} };	// static ::"bin#"::#13::FRAGMENTS : [&'static str; 2] = 0010000000000000 0100000000000000 0010000000000000 0100000000000000{@0x0+8 = "'", @0x10+8 = " "}
-union u_static_ZRG2cD3binC_149FRAGMENTS0g ZRG2cD3binC_149FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::#14::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0000000000000000{@0x0+8 = "", @0x10+8 = ""}
-union u_static_ZRG2cD3binC_159FRAGMENTS0g ZRG2cD3binC_159FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::#15::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0000000000000000{@0x0+8 = "", @0x10+8 = ""}
-union u_static_ZRG2cD3binC_169FRAGMENTS0g ZRG2cD3binC_169FRAGMENTS0g = { .raw = {(uintptr_t)"'",0x1ull,(uintptr_t)"'",0x1ull} };	// static ::"bin#"::#16::FRAGMENTS : [&'static str; 2] = 0010000000000000 0100000000000000 0010000000000000 0100000000000000{@0x0+8 = "'", @0x10+8 = "'"}
-union u_static_ZRG2cD3binC_179FRAGMENTS0g ZRG2cD3binC_179FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" /*ty=",0x6ull,(uintptr_t)"*/",0x2ull} };	// static ::"bin#"::#17::FRAGMENTS : [&'static str; 3] = 0010000000000000 0000000000000000 0010000000000000 0600000000000000 0010000000000000 0200000000000000{@0x0+8 = "", @0x10+8 = " /*ty=", @0x20+8 = "*/"}
-union u_static_ZRG2cD3binC_189FRAGMENTS0g ZRG2cD3binC_189FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" /*ty=",0x6ull,(uintptr_t)"*/",0x2ull} };	// static ::"bin#"::#18::FRAGMENTS : [&'static str; 3] = 0010000000000000 0000000000000000 0010000000000000 0600000000000000 0010000000000000 0200000000000000{@0x0+8 = "", @0x10+8 = " /*ty=", @0x20+8 = "*/"}
-union u_static_ZRG2cD3binC_199FRAGMENTS0g ZRG2cD3binC_199FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" /*ty=",0x6ull,(uintptr_t)"*/",0x2ull} };	// static ::"bin#"::#19::FRAGMENTS : [&'static str; 3] = 0010000000000000 0000000000000000 0010000000000000 0600000000000000 0010000000000000 0200000000000000{@0x0+8 = "", @0x10+8 = " /*ty=", @0x20+8 = "*/"}
-union u_static_ZRG2cD3binB_29FRAGMENTS0g ZRG2cD3binB_29FRAGMENTS0g = { .raw = {(uintptr_t)"SYM ",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#2::FRAGMENTS : [&'static str; 2] = 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "SYM ", @0x10+8 = "\n"}
-union u_static_ZRG2cD3binC_209FRAGMENTS0g ZRG2cD3binC_209FRAGMENTS0g = { .raw = {(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#20::FRAGMENTS : [&'static str; 1] = 0010000000000000 0100000000000000{@0x0+8 = "\n"}
-union u_static_ZRG2cD3binC_219FRAGMENTS0g ZRG2cD3binC_219FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown free argument ",0x16ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::#21::FRAGMENTS : [&'static str; 2] = 0010000000000000 1600000000000000 0010000000000000 0000000000000000{@0x0+8 = "Unknown free argument ", @0x10+8 = ""}
-union u_static_ZRG2cD3binC_229FRAGMENTS0g ZRG2cD3binC_229FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown short argument `-",0x19ull,(uintptr_t)"`",0x1ull} };	// static ::"bin#"::#22::FRAGMENTS : [&'static str; 2] = 0010000000000000 1900000000000000 0010000000000000 0100000000000000{@0x0+8 = "Unknown short argument `-", @0x10+8 = "`"}
-union u_static_ZRG2cD3binC_239FRAGMENTS0g ZRG2cD3binC_239FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown argument `",0x12ull,(uintptr_t)"`",0x1ull} };	// static ::"bin#"::#23::FRAGMENTS : [&'static str; 2] = 0010000000000000 1200000000000000 0010000000000000 0100000000000000{@0x0+8 = "Unknown argument `", @0x10+8 = "`"}
-union u_static_ZRG2cD3binB_39FRAGMENTS0g ZRG2cD3binB_39FRAGMENTS0g = { .raw = {(uintptr_t)"IDENT ",0x6ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#3::FRAGMENTS : [&'static str; 2] = 0010000000000000 0600000000000000 0010000000000000 0100000000000000{@0x0+8 = "IDENT ", @0x10+8 = "\n"}
-union u_static_ZRG2cD3binB_49FRAGMENTS0g ZRG2cD3binB_49FRAGMENTS0g = { .raw = {(uintptr_t)"LIFETIME ",0x9ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#4::FRAGMENTS : [&'static str; 2] = 0010000000000000 0900000000000000 0010000000000000 0100000000000000{@0x0+8 = "LIFETIME ", @0x10+8 = "\n"}
-union u_static_ZRG2cD3binB_59FRAGMENTS0g ZRG2cD3binB_59FRAGMENTS0g = { .raw = {(uintptr_t)"STRING ",0x7ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#5::FRAGMENTS : [&'static str; 2] = 0010000000000000 0700000000000000 0010000000000000 0100000000000000{@0x0+8 = "STRING ", @0x10+8 = "\n"}
-union u_static_ZRG2cD3binB_69FRAGMENTS0g ZRG2cD3binB_69FRAGMENTS0g = { .raw = {(uintptr_t)"BYTESTRING ",0xbull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#6::FRAGMENTS : [&'static str; 2] = 0010000000000000 0B00000000000000 0010000000000000 0100000000000000{@0x0+8 = "BYTESTRING ", @0x10+8 = "\n"}
-union u_static_ZRG2cD3binB_79FRAGMENTS0g ZRG2cD3binB_79FRAGMENTS0g = { .raw = {(uintptr_t)"CHAR ",0x5ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#7::FRAGMENTS : [&'static str; 2] = 0010000000000000 0500000000000000 0010000000000000 0100000000000000{@0x0+8 = "CHAR ", @0x10+8 = "\n"}
-union u_static_ZRG2cD3binB_89FRAGMENTS0g ZRG2cD3binB_89FRAGMENTS0g = { .raw = {(uintptr_t)"UNSIGNED ",0x9ull,(uintptr_t)" ty=",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#8::FRAGMENTS : [&'static str; 3] = 0010000000000000 0900000000000000 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "UNSIGNED ", @0x10+8 = " ty=", @0x20+8 = "\n"}
-union u_static_ZRG2cD3binB_99FRAGMENTS0g ZRG2cD3binB_99FRAGMENTS0g = { .raw = {(uintptr_t)"SIGNED ",0x7ull,(uintptr_t)" ty=",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#9::FRAGMENTS : [&'static str; 3] = 0010000000000000 0700000000000000 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "SIGNED ", @0x10+8 = " ty=", @0x20+8 = "\n"}
-union u_static_ZRG1cD3binG7lifted00g ZRG1cD3binG7lifted00g = { .raw = {0x3500000053ull,(uintptr_t)"lib/libproc_macro/tools/dump.rs",0x1full} };	// static ::"bin#"::lifted#0 : (&'static str, u32, u32, ) = 5300000035000000 0010000000000000 1F00000000000000{@0x8+8 = "lib/libproc_macro/tools/dump.rs"}
-union u_static_ZRG1cD3binG7lifted10g ZRG1cD3binG7lifted10g = { .raw = {0x400000005cull,(uintptr_t)"lib/libproc_macro/tools/dump.rs",0x1full} };	// static ::"bin#"::lifted#1 : (&'static str, u32, u32, ) = 5C00000040000000 0010000000000000 1F00000000000000{@0x8+8 = "lib/libproc_macro/tools/dump.rs"}
-union u_static_ZRG1cD3binG7lifted20g ZRG1cD3binG7lifted20g = { .raw = {0x3500000067ull,(uintptr_t)"lib/libproc_macro/tools/dump.rs",0x1full} };	// static ::"bin#"::lifted#2 : (&'static str, u32, u32, ) = 6700000035000000 0010000000000000 1F00000000000000{@0x8+8 = "lib/libproc_macro/tools/dump.rs"}
-union u_static_ZRG1cD3binG7lifted40g ZRG1cD3binG7lifted40g = { .raw = {0x1d00000077ull,(uintptr_t)"lib/libproc_macro/tools/dump.rs",0x1full} };	// static ::"bin#"::lifted#4 : (&'static str, u32, u32, ) = 770000001D000000 0010000000000000 1F00000000000000{@0x8+8 = "lib/libproc_macro/tools/dump.rs"}
-union u_static_ZRG1cD3binG7lifted60g ZRG1cD3binG7lifted60g = { .raw = {0x0ull,0x0ull,0x3000000003ull,0x0ull,0x3ull,0x0ull,0x0ull,0x2ull} };	// static ::"bin#"::lifted#6 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1] = 0000000000000000 0000000000000000 0300000030000000 0000000000000000 0300000000000000 0000000000000000 0000000000000000 0200000000000000{}
-union u_static_ZRG3cD3bin8protocolB_09FRAGMENTS0g ZRG3cD3bin8protocolB_09FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown tag byte: ",0x12ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#0::FRAGMENTS : [&'static str; 2] = 0010000000000000 1200000000000000 0010000000000000 0000000000000000{@0x0+8 = "Unknown tag byte: ", @0x10+8 = ""}
-union u_static_ZRG3cD3bin8protocolB_19FRAGMENTS0g ZRG3cD3bin8protocolB_19FRAGMENTS0g = { .raw = {(uintptr_t)"Error reading from stdin - ",0x1bull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#1::FRAGMENTS : [&'static str; 2] = 0010000000000000 1B00000000000000 0010000000000000 0000000000000000{@0x0+8 = "Error reading from stdin - ", @0x10+8 = ""}
-union u_static_ZRG3cD3bin8protocolB_29FRAGMENTS0g ZRG3cD3bin8protocolB_29FRAGMENTS0g = { .raw = {(uintptr_t)"Error reading from stdin get_byte_vec(",0x26ull,(uintptr_t)") - ",0x4ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#2::FRAGMENTS : [&'static str; 3] = 0010000000000000 2600000000000000 0010000000000000 0400000000000000 0010000000000000 0000000000000000{@0x0+8 = "Error reading from stdin get_byte_vec(", @0x10+8 = ") - ", @0x20+8 = ""}
-union u_static_ZRG3cD3bin8protocolB_39FRAGMENTS0g ZRG3cD3bin8protocolB_39FRAGMENTS0g = { .raw = {(uintptr_t)"Error reading from stdin - ",0x1bull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#3::FRAGMENTS : [&'static str; 2] = 0010000000000000 1B00000000000000 0010000000000000 0000000000000000{@0x0+8 = "Error reading from stdin - ", @0x10+8 = ""}
-union u_static_ZRG2cD3bin8protocolG7lifted00g ZRG2cD3bin8protocolG7lifted00g = { .raw = {0x2100000065ull,(uintptr_t)"lib/libproc_macro/tools/../src/protocol.rs",0x2aull} };	// static ::"bin#"::protocol::lifted#0 : (&'static str, u32, u32, ) = 6500000021000000 0010000000000000 2A00000000000000{@0x8+8 = "lib/libproc_macro/tools/../src/protocol.rs"}
-union u_static_ZRG2cD3bin8protocolG7lifted10g ZRG2cD3bin8protocolG7lifted10g = { .raw = {0x550000006bull,(uintptr_t)"lib/libproc_macro/tools/../src/protocol.rs",0x2aull} };	// static ::"bin#"::protocol::lifted#1 : (&'static str, u32, u32, ) = 6B00000055000000 0010000000000000 2A00000000000000{@0x8+8 = "lib/libproc_macro/tools/../src/protocol.rs"}
-union u_static_ZRG2cD3bin8protocolG7lifted20g ZRG2cD3bin8protocolG7lifted20g = { .raw = {0x3e00000079ull,(uintptr_t)"lib/libproc_macro/tools/../src/protocol.rs",0x2aull} };	// static ::"bin#"::protocol::lifted#2 : (&'static str, u32, u32, ) = 790000003E000000 0010000000000000 2A00000000000000{@0x8+8 = "lib/libproc_macro/tools/../src/protocol.rs"}
-union u_static_ZRG2cD3bin8protocolG7lifted30g ZRG2cD3bin8protocolG7lifted30g = { .raw = {0x2100000054ull,(uintptr_t)"lib/libproc_macro/tools/../src/protocol.rs",0x2aull} };	// static ::"bin#"::protocol::lifted#3 : (&'static str, u32, u32, ) = 5400000021000000 0010000000000000 2A00000000000000{@0x8+8 = "lib/libproc_macro/tools/../src/protocol.rs"}
-union u_static_ZRG2cD3bin8protocolG7lifted40g ZRG2cD3bin8protocolG7lifted40g = { .raw = {0x2b00000046ull,(uintptr_t)"lib/libproc_macro/tools/../src/protocol.rs",0x2aull} };	// static ::"bin#"::protocol::lifted#4 : (&'static str, u32, u32, ) = 460000002B000000 0010000000000000 2A00000000000000{@0x8+8 = "lib/libproc_macro/tools/../src/protocol.rs"}
-union u_static_ZRG2cD3bin8protocolG7lifted50g ZRG2cD3bin8protocolG7lifted50g = { .raw = {0x3e00000047ull,(uintptr_t)"lib/libproc_macro/tools/../src/protocol.rs",0x2aull} };	// static ::"bin#"::protocol::lifted#5 : (&'static str, u32, u32, ) = 470000003E000000 0010000000000000 2A00000000000000{@0x8+8 = "lib/libproc_macro/tools/../src/protocol.rs"}
-union u_static_ZRG2cD3bin8protocolG7lifted60g ZRG2cD3bin8protocolG7lifted60g = { .raw = {0x0ull,0x0ull,0x2000000003ull,0x4ull,0x3ull,0x0ull,0x3ull,0x0ull} };	// static ::"bin#"::protocol::lifted#6 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1] = 0000000000000000 0000000000000000 0300000020000000 0400000000000000 0300000000000000 0000000000000000 0300000000000000 0000000000000000{}
-union u_static_ZRG2cD3bin8protocolG7lifted70g ZRG2cD3bin8protocolG7lifted70g = { .raw = {0x370000003cull,(uintptr_t)"lib/libproc_macro/tools/../src/protocol.rs",0x2aull} };	// static ::"bin#"::protocol::lifted#7 : (&'static str, u32, u32, ) = 3C00000037000000 0010000000000000 2A00000000000000{@0x8+8 = "lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3binC_109FRAGMENTS0g ZRG2cD3binC_109FRAGMENTS0g = { .raw = {(uintptr_t)"SIGNED ",0x7ull,(uintptr_t)" ty=",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#10::FRAGMENTS : [&'static str; 3] = 0010000000000000 0700000000000000 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "SIGNED ", @0x10+8 = " ty=", @0x20+8 = "\n"}
+union u_static_ZRG2cD3binC_119FRAGMENTS0g ZRG2cD3binC_119FRAGMENTS0g = { .raw = {(uintptr_t)"FLOAT ",0x6ull,(uintptr_t)" ty=",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#11::FRAGMENTS : [&'static str; 3] = 0010000000000000 0600000000000000 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "FLOAT ", @0x10+8 = " ty=", @0x20+8 = "\n"}
+union u_static_ZRG2cD3binC_129FRAGMENTS0g ZRG2cD3binC_129FRAGMENTS0g = { .raw = {(uintptr_t)"SPAN#",0x5ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#12::FRAGMENTS : [&'static str; 2] = 0010000000000000 0500000000000000 0010000000000000 0100000000000000{@0x0+8 = "SPAN#", @0x10+8 = "\n"}
+union u_static_ZRG2cD3binC_139FRAGMENTS0g ZRG2cD3binC_139FRAGMENTS0g = { .raw = {(uintptr_t)"SPAN=",0x5ull,(uintptr_t)"(...)\n",0x6ull} };	// static ::"bin#"::#13::FRAGMENTS : [&'static str; 2] = 0010000000000000 0500000000000000 0010000000000000 0600000000000000{@0x0+8 = "SPAN=", @0x10+8 = "(...)\n"}
+union u_static_ZRG2cD3binC_149FRAGMENTS0g ZRG2cD3binC_149FRAGMENTS0g = { .raw = {(uintptr_t)"-EOS-",0x5ull} };	// static ::"bin#"::#14::FRAGMENTS : [&'static str; 1] = 0010000000000000 0500000000000000{@0x0+8 = "-EOS-"}
+union u_static_ZRG2cD3binC_159FRAGMENTS0g ZRG2cD3binC_159FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" ",0x1ull} };	// static ::"bin#"::#15::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0100000000000000{@0x0+8 = "", @0x10+8 = " "}
+union u_static_ZRG2cD3binC_169FRAGMENTS0g ZRG2cD3binC_169FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" ",0x1ull} };	// static ::"bin#"::#16::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0100000000000000{@0x0+8 = "", @0x10+8 = " "}
+union u_static_ZRG2cD3binC_179FRAGMENTS0g ZRG2cD3binC_179FRAGMENTS0g = { .raw = {(uintptr_t)"'",0x1ull,(uintptr_t)" ",0x1ull} };	// static ::"bin#"::#17::FRAGMENTS : [&'static str; 2] = 0010000000000000 0100000000000000 0010000000000000 0100000000000000{@0x0+8 = "'", @0x10+8 = " "}
+union u_static_ZRG2cD3binC_189FRAGMENTS0g ZRG2cD3binC_189FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::#18::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0000000000000000{@0x0+8 = "", @0x10+8 = ""}
+union u_static_ZRG2cD3binC_199FRAGMENTS0g ZRG2cD3binC_199FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::#19::FRAGMENTS : [&'static str; 2] = 0010000000000000 0000000000000000 0010000000000000 0000000000000000{@0x0+8 = "", @0x10+8 = ""}
+union u_static_ZRG2cD3binB_29FRAGMENTS0g ZRG2cD3binB_29FRAGMENTS0g = { .raw = {(uintptr_t)"EOS\n",0x4ull} };	// static ::"bin#"::#2::FRAGMENTS : [&'static str; 1] = 0010000000000000 0400000000000000{@0x0+8 = "EOS\n"}
+union u_static_ZRG2cD3binC_209FRAGMENTS0g ZRG2cD3binC_209FRAGMENTS0g = { .raw = {(uintptr_t)"'",0x1ull,(uintptr_t)"'",0x1ull} };	// static ::"bin#"::#20::FRAGMENTS : [&'static str; 2] = 0010000000000000 0100000000000000 0010000000000000 0100000000000000{@0x0+8 = "'", @0x10+8 = "'"}
+union u_static_ZRG2cD3binC_219FRAGMENTS0g ZRG2cD3binC_219FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" /*ty=",0x6ull,(uintptr_t)"*/",0x2ull} };	// static ::"bin#"::#21::FRAGMENTS : [&'static str; 3] = 0010000000000000 0000000000000000 0010000000000000 0600000000000000 0010000000000000 0200000000000000{@0x0+8 = "", @0x10+8 = " /*ty=", @0x20+8 = "*/"}
+union u_static_ZRG2cD3binC_229FRAGMENTS0g ZRG2cD3binC_229FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" /*ty=",0x6ull,(uintptr_t)"*/",0x2ull} };	// static ::"bin#"::#22::FRAGMENTS : [&'static str; 3] = 0010000000000000 0000000000000000 0010000000000000 0600000000000000 0010000000000000 0200000000000000{@0x0+8 = "", @0x10+8 = " /*ty=", @0x20+8 = "*/"}
+union u_static_ZRG2cD3binC_239FRAGMENTS0g ZRG2cD3binC_239FRAGMENTS0g = { .raw = {(uintptr_t)"",0x0ull,(uintptr_t)" /*ty=",0x6ull,(uintptr_t)"*/",0x2ull} };	// static ::"bin#"::#23::FRAGMENTS : [&'static str; 3] = 0010000000000000 0000000000000000 0010000000000000 0600000000000000 0010000000000000 0200000000000000{@0x0+8 = "", @0x10+8 = " /*ty=", @0x20+8 = "*/"}
+union u_static_ZRG2cD3binC_249FRAGMENTS0g ZRG2cD3binC_249FRAGMENTS0g = { .raw = {(uintptr_t)"/*SPAN#",0x7ull,(uintptr_t)"*/\n",0x3ull} };	// static ::"bin#"::#24::FRAGMENTS : [&'static str; 2] = 0010000000000000 0700000000000000 0010000000000000 0300000000000000{@0x0+8 = "/*SPAN#", @0x10+8 = "*/\n"}
+union u_static_ZRG2cD3binC_259FRAGMENTS0g ZRG2cD3binC_259FRAGMENTS0g = { .raw = {(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#25::FRAGMENTS : [&'static str; 1] = 0010000000000000 0100000000000000{@0x0+8 = "\n"}
+union u_static_ZRG2cD3binC_269FRAGMENTS0g ZRG2cD3binC_269FRAGMENTS0g = { .raw = {(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#26::FRAGMENTS : [&'static str; 1] = 0010000000000000 0100000000000000{@0x0+8 = "\n"}
+union u_static_ZRG2cD3binC_279FRAGMENTS0g ZRG2cD3binC_279FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown free argument ",0x16ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::#27::FRAGMENTS : [&'static str; 2] = 0010000000000000 1600000000000000 0010000000000000 0000000000000000{@0x0+8 = "Unknown free argument ", @0x10+8 = ""}
+union u_static_ZRG2cD3binC_289FRAGMENTS0g ZRG2cD3binC_289FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown short argument `-",0x19ull,(uintptr_t)"`",0x1ull} };	// static ::"bin#"::#28::FRAGMENTS : [&'static str; 2] = 0010000000000000 1900000000000000 0010000000000000 0100000000000000{@0x0+8 = "Unknown short argument `-", @0x10+8 = "`"}
+union u_static_ZRG2cD3binC_299FRAGMENTS0g ZRG2cD3binC_299FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown argument `",0x12ull,(uintptr_t)"`",0x1ull} };	// static ::"bin#"::#29::FRAGMENTS : [&'static str; 2] = 0010000000000000 1200000000000000 0010000000000000 0100000000000000{@0x0+8 = "Unknown argument `", @0x10+8 = "`"}
+union u_static_ZRG2cD3binB_39FRAGMENTS0g ZRG2cD3binB_39FRAGMENTS0g = { .raw = {(uintptr_t)"SYM ",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#3::FRAGMENTS : [&'static str; 2] = 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "SYM ", @0x10+8 = "\n"}
+union u_static_ZRG2cD3binB_49FRAGMENTS0g ZRG2cD3binB_49FRAGMENTS0g = { .raw = {(uintptr_t)"IDENT ",0x6ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#4::FRAGMENTS : [&'static str; 2] = 0010000000000000 0600000000000000 0010000000000000 0100000000000000{@0x0+8 = "IDENT ", @0x10+8 = "\n"}
+union u_static_ZRG2cD3binB_59FRAGMENTS0g ZRG2cD3binB_59FRAGMENTS0g = { .raw = {(uintptr_t)"LIFETIME ",0x9ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#5::FRAGMENTS : [&'static str; 2] = 0010000000000000 0900000000000000 0010000000000000 0100000000000000{@0x0+8 = "LIFETIME ", @0x10+8 = "\n"}
+union u_static_ZRG2cD3binB_69FRAGMENTS0g ZRG2cD3binB_69FRAGMENTS0g = { .raw = {(uintptr_t)"STRING ",0x7ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#6::FRAGMENTS : [&'static str; 2] = 0010000000000000 0700000000000000 0010000000000000 0100000000000000{@0x0+8 = "STRING ", @0x10+8 = "\n"}
+union u_static_ZRG2cD3binB_79FRAGMENTS0g ZRG2cD3binB_79FRAGMENTS0g = { .raw = {(uintptr_t)"BYTESTRING ",0xbull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#7::FRAGMENTS : [&'static str; 2] = 0010000000000000 0B00000000000000 0010000000000000 0100000000000000{@0x0+8 = "BYTESTRING ", @0x10+8 = "\n"}
+union u_static_ZRG2cD3binB_89FRAGMENTS0g ZRG2cD3binB_89FRAGMENTS0g = { .raw = {(uintptr_t)"CHAR ",0x5ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#8::FRAGMENTS : [&'static str; 2] = 0010000000000000 0500000000000000 0010000000000000 0100000000000000{@0x0+8 = "CHAR ", @0x10+8 = "\n"}
+union u_static_ZRG2cD3binB_99FRAGMENTS0g ZRG2cD3binB_99FRAGMENTS0g = { .raw = {(uintptr_t)"UNSIGNED ",0x9ull,(uintptr_t)" ty=",0x4ull,(uintptr_t)"\n",0x1ull} };	// static ::"bin#"::#9::FRAGMENTS : [&'static str; 3] = 0010000000000000 0900000000000000 0010000000000000 0400000000000000 0010000000000000 0100000000000000{@0x0+8 = "UNSIGNED ", @0x10+8 = " ty=", @0x20+8 = "\n"}
+union u_static_ZRG1cD3binF6const00g ZRG1cD3binF6const00g = { .raw = {0x3500000059ull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs",0x42ull} };	// static ::"bin#"::const#0 : (&'static str, u32, u32, ) = 5900000035000000 0010000000000000 4200000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs"}
+union u_static_ZRG1cD3binF6const10g ZRG1cD3binF6const10g = { .raw = {0x4000000062ull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs",0x42ull} };	// static ::"bin#"::const#1 : (&'static str, u32, u32, ) = 6200000040000000 0010000000000000 4200000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs"}
+union u_static_ZRG1cD3binF6const20g ZRG1cD3binF6const20g = { .raw = {0x350000006dull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs",0x42ull} };	// static ::"bin#"::const#2 : (&'static str, u32, u32, ) = 6D00000035000000 0010000000000000 4200000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs"}
+union u_static_ZRG1cD3binF6const40g ZRG1cD3binF6const40g = { .raw = {0x1d0000007dull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs",0x42ull} };	// static ::"bin#"::const#4 : (&'static str, u32, u32, ) = 7D0000001D000000 0010000000000000 4200000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/dump.rs"}
+union u_static_ZRG1cD3binF6const90g ZRG1cD3binF6const90g = { .raw = {0x0ull,0x0ull,0x3000000003ull,0x0ull,0x3ull,0x0ull,0x0ull,0x2ull} };	// static ::"bin#"::const#9 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1] = 0000000000000000 0000000000000000 0300000030000000 0000000000000000 0300000000000000 0000000000000000 0000000000000000 0200000000000000{}
+union u_static_ZRG3cD3bin8protocolB_09FRAGMENTS0g ZRG3cD3bin8protocolB_09FRAGMENTS0g = { .raw = {(uintptr_t)"Protocol error: malformed char literal ",0x27ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#0::FRAGMENTS : [&'static str; 2] = 0010000000000000 2700000000000000 0010000000000000 0000000000000000{@0x0+8 = "Protocol error: malformed char literal ", @0x10+8 = ""}
+union u_static_ZRG3cD3bin8protocolB_19FRAGMENTS0g ZRG3cD3bin8protocolB_19FRAGMENTS0g = { .raw = {(uintptr_t)"Unknown tag byte: ",0x12ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#1::FRAGMENTS : [&'static str; 2] = 0010000000000000 1200000000000000 0010000000000000 0000000000000000{@0x0+8 = "Unknown tag byte: ", @0x10+8 = ""}
+union u_static_ZRG3cD3bin8protocolB_29FRAGMENTS0g ZRG3cD3bin8protocolB_29FRAGMENTS0g = { .raw = {(uintptr_t)"Error reading from stdin - ",0x1bull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#2::FRAGMENTS : [&'static str; 2] = 0010000000000000 1B00000000000000 0010000000000000 0000000000000000{@0x0+8 = "Error reading from stdin - ", @0x10+8 = ""}
+union u_static_ZRG3cD3bin8protocolB_39FRAGMENTS0g ZRG3cD3bin8protocolB_39FRAGMENTS0g = { .raw = {(uintptr_t)"assertion failed: ",0x12ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#3::FRAGMENTS : [&'static str; 2] = 0010000000000000 1200000000000000 0010000000000000 0000000000000000{@0x0+8 = "assertion failed: ", @0x10+8 = ""}
+union u_static_ZRG3cD3bin8protocolB_49FRAGMENTS0g ZRG3cD3bin8protocolB_49FRAGMENTS0g = { .raw = {(uintptr_t)"assertion failed: ",0x12ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#4::FRAGMENTS : [&'static str; 2] = 0010000000000000 1200000000000000 0010000000000000 0000000000000000{@0x0+8 = "assertion failed: ", @0x10+8 = ""}
+union u_static_ZRG3cD3bin8protocolB_59FRAGMENTS0g ZRG3cD3bin8protocolB_59FRAGMENTS0g = { .raw = {(uintptr_t)"Error reading from stdin get_byte_vec(",0x26ull,(uintptr_t)") - ",0x4ull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#5::FRAGMENTS : [&'static str; 3] = 0010000000000000 2600000000000000 0010000000000000 0400000000000000 0010000000000000 0000000000000000{@0x0+8 = "Error reading from stdin get_byte_vec(", @0x10+8 = ") - ", @0x20+8 = ""}
+union u_static_ZRG3cD3bin8protocolB_69FRAGMENTS0g ZRG3cD3bin8protocolB_69FRAGMENTS0g = { .raw = {(uintptr_t)"Error reading from stdin - ",0x1bull,(uintptr_t)"",0x0ull} };	// static ::"bin#"::protocol::#6::FRAGMENTS : [&'static str; 2] = 0010000000000000 1B00000000000000 0010000000000000 0000000000000000{@0x0+8 = "Error reading from stdin - ", @0x10+8 = ""}
+union u_static_ZRG2cD3bin8protocolF6const00g ZRG2cD3bin8protocolF6const00g = { .raw = {(uintptr_t)"(size < (1 << 30))",0x12ull} };	// static ::"bin#"::protocol::const#0 : &'static str = 0010000000000000 1200000000000000{@0x0+8 = "(size < (1 << 30))"}
+union u_static_ZRG2cD3bin8protocolF6const10g ZRG2cD3bin8protocolF6const10g = { .raw = {0x2100000089ull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#1 : (&'static str, u32, u32, ) = 8900000021000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3bin8protocolF7const100g ZRG2cD3bin8protocolF7const100g = { .raw = {0x0ull,0x0ull,0x2000000003ull,0x4ull,0x3ull,0x0ull,0x3ull,0x0ull} };	// static ::"bin#"::protocol::const#10 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1] = 0000000000000000 0000000000000000 0300000020000000 0400000000000000 0300000000000000 0000000000000000 0300000000000000 0000000000000000{}
+union u_static_ZRG2cD3bin8protocolF7const110g ZRG2cD3bin8protocolF7const110g = { .raw = {0x3700000060ull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#11 : (&'static str, u32, u32, ) = 6000000037000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3bin8protocolF6const20g ZRG2cD3bin8protocolF6const20g = { .raw = {0x550000008full,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#2 : (&'static str, u32, u32, ) = 8F00000055000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3bin8protocolF6const30g ZRG2cD3bin8protocolF6const30g = { .raw = {0x3e0000009dull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#3 : (&'static str, u32, u32, ) = 9D0000003E000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3bin8protocolF6const40g ZRG2cD3bin8protocolF6const40g = { .raw = {(uintptr_t)"(ofs < (18 * 7))",0x10ull} };	// static ::"bin#"::protocol::const#4 : &'static str = 0010000000000000 1000000000000000{@0x0+8 = "(ofs < (18 * 7))"}
+union u_static_ZRG2cD3bin8protocolF6const50g ZRG2cD3bin8protocolF6const50g = { .raw = {0x2100000078ull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#5 : (&'static str, u32, u32, ) = 7800000021000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3bin8protocolF6const60g ZRG2cD3bin8protocolF6const60g = { .raw = {0x2b0000006aull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#6 : (&'static str, u32, u32, ) = 6A0000002B000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3bin8protocolF6const70g ZRG2cD3bin8protocolF6const70g = { .raw = {0x3e0000006bull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#7 : (&'static str, u32, u32, ) = 6B0000003E000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRG2cD3bin8protocolF6const80g ZRG2cD3bin8protocolF6const80g = { .raw = {0x0ull,0x0ull,0x2000000003ull,0x4ull,0x3ull,0x0ull,0x3ull,0x0ull} };	// static ::"bin#"::protocol::const#8 : [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/; 1] = 0000000000000000 0000000000000000 0300000020000000 0400000000000000 0300000000000000 0000000000000000 0300000000000000 0000000000000000{}
+union u_static_ZRG2cD3bin8protocolF6const90g ZRG2cD3bin8protocolF6const90g = { .raw = {0x5600000042ull,(uintptr_t)"/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs",0x4dull} };	// static ::"bin#"::protocol::const#9 : (&'static str, u32, u32, ) = 4200000056000000 0010000000000000 4D00000000000000{@0x8+8 = "/home/chris/projects/mrustc-latest/lib/libproc_macro/tools/../src/protocol.rs"}
+union u_static_ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0gG6vtable0g ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0gG6vtable0g = { .raw = {(uintptr_t)&ZRIG3cE9core0_0_05panicB_09NoPayload0gA9drop_glue0g,0x0ull,0x1ull,(uintptr_t)&ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0g11get_type_id0g} };	// static <::"core-0_0_0"::panic::#0::NoPayload/*S*/ as ::"core-0_0_0"::any::Any>::vtable# : ::"core-0_0_0"::any::Any#vtable/*S*/ = 0010000000000000 0000000000000000 0100000000000000 0010000000000000{@0x0+8 = &<::"core-0_0_0"::panic::#0::NoPayload/*S*/ /*- */>::#drop_glue, @0x18+8 = &<::"core-0_0_0"::panic::#0::NoPayload/*S*/ as ::"core-0_0_0"::any::Any>::get_type_id}
 union u_static_ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g = { .raw = {(uintptr_t)&ZRIG3cD8std0_0_09panickingB_412PanicPayload1gBsCyA9drop_glue0g,0x10ull,0x8ull,(uintptr_t)&ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0g3get0g,(uintptr_t)&ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0g9box_me_up0g} };	// static <::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::vtable# : ::"core-0_0_0"::panic::BoxMeUp#vtable/*S*/ = 0010000000000000 1000000000000000 0800000000000000 0010000000000000 0010000000000000{@0x0+8 = &<::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ /*- */>::#drop_glue, @0x18+8 = &<::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::get, @0x20+8 = &<::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::box_me_up}
-union u_static_ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g = { .raw = {(uintptr_t)&ZRIG2cD8std0_0_02rtH19closurelang_start_01gT0A9drop_glue0g,0x8ull,0x8ull,(uintptr_t)&ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT04call0g,(uintptr_t)&ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT08call_mut0g} };	// static <::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as for ::"core-0_0_0"::ops::function::Fn<(),>>::vtable# : ::"core-0_0_0"::ops::function::Fn#vtable<(),i32,>/*S*/ = 0010000000000000 0800000000000000 0800000000000000 0010000000000000 0010000000000000{@0x0+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ /*- */>::#drop_glue, @0x18+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::Fn<(),>>::call, @0x20+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::FnMut<(),>>::call_mut}
+union u_static_ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g = { .raw = {(uintptr_t)&ZRIG2cD8std0_0_02rtH19closurelang_start_01gT0A9drop_glue0g,0x8ull,0x8ull,(uintptr_t)&ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT04call0g,(uintptr_t)&ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT08call_mut0g,(uintptr_t)&ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT0G6vtable0g} };	// static <::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::Fn<(),>>::vtable# : ::"core-0_0_0"::ops::function::Fn#vtable<(),i32,>/*S*/ = 0010000000000000 0800000000000000 0800000000000000 0010000000000000 0010000000000000 0010000000000000{@0x0+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ /*- */>::#drop_glue, @0x18+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::Fn<(),>>::call, @0x20+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::FnMut<(),>>::call_mut, @0x28+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::FnMut<(),>>::vtable#}
+union u_static_ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT0G6vtable0g ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT0G6vtable0g = { .raw = {(uintptr_t)&ZRIG2cD8std0_0_02rtH19closurelang_start_01gT0A9drop_glue0g,0x8ull,0x8ull,(uintptr_t)&ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function5FnMut1gT08call_mut0g} };	// static <::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::FnMut<(),>>::vtable# : ::"core-0_0_0"::ops::function::FnMut#vtable<(),i32,>/*S*/ = 0010000000000000 0800000000000000 0800000000000000 0010000000000000{@0x0+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ /*- */>::#drop_glue, @0x18+8 = &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::FnMut<(),>>::call_mut}
 union u_static_ZRQT02cE9core0_0_03any3Any0gG6vtable0g ZRQT02cE9core0_0_03any3Any0gG6vtable0g = { .raw = {(uintptr_t)&ZRIT0A9drop_glue0g,0x0ull,0x1ull,(uintptr_t)&ZRQT02cE9core0_0_03any3Any0g11get_type_id0g} };	// static <() as ::"core-0_0_0"::any::Any>::vtable# : ::"core-0_0_0"::any::Any#vtable/*S*/ = 0010000000000000 0000000000000000 0100000000000000 0010000000000000{@0x0+8 = &<() /*- */>::#drop_glue, @0x18+8 = &<() as ::"core-0_0_0"::any::Any>::get_type_id}
 union u_static_ZRQBsCy2cE9core0_0_03any3Any0gG6vtable0g ZRQBsCy2cE9core0_0_03any3Any0gG6vtable0g = { .raw = {(uintptr_t)&ZRIBsCyA9drop_glue0g,0x10ull,0x8ull,(uintptr_t)&ZRQBsCy2cE9core0_0_03any3Any0g11get_type_id0g} };	// static <&'static str as ::"core-0_0_0"::any::Any>::vtable# : ::"core-0_0_0"::any::Any#vtable/*S*/ = 0010000000000000 1000000000000000 0800000000000000 0010000000000000{@0x0+8 = &<&'static str /*- */>::#drop_glue, @0x18+8 = &<&'static str as ::"core-0_0_0"::any::Any>::get_type_id}
 // ::"alloc-0_0_0"::alloc::box_free<::"std-0_0_0"::io::error::Custom/*S*/,>
@@ -3526,7 +3494,7 @@ static void  ZRG2cF10alloc0_0_05alloc8box_free1gG3cD8std0_0_02io5error6Custom0g(
 	uint8_t *var2;	// *mut u8
 	var0 = (struct s_ZRG3cD8std0_0_02io5error6Custom0g *)arg0._0._0;	// _0 = Cast(a0.0.0 as *mut ::"std-0_0_0"::io::error::Custom/*S*/)
 	var2 = (uint8_t *)var0;	// _2 = Cast(_0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var2, 0x18ull, 0x8ull );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var2, 0x18ull, 0x8ull );
 	// ^ Call( _1 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _2, 0x18 usize, 0x8 usize, ), bb1, bb2)
 	/* ZST assign */
 	return ;
@@ -3545,7 +3513,7 @@ static void  ZRG2cF10alloc0_0_05alloc8box_free1gG3cD8std0_0_010sys_common5mutex5
 	uint8_t *var2;	// *mut u8
 	var0 = (struct s_ZRG3cD8std0_0_010sys_common5mutex5Mutex0g *)arg0._0._0;	// _0 = Cast(a0.0.0 as *mut ::"std-0_0_0"::sys_common::mutex::Mutex/*S*/)
 	var2 = (uint8_t *)var0;	// _2 = Cast(_0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var2, 0x28ull, 0x8ull );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var2, 0x28ull, 0x8ull );
 	// ^ Call( _1 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _2, 0x28 usize, 0x8 usize, ), bb1, bb2)
 	/* ZST assign */
 	return ;
@@ -3580,7 +3548,7 @@ static void  ZRG2cF10alloc0_0_05alloc8box_free1gD2cE9core0_0_03any3Any0g012c_D6m
 bb3: _Unwind_Resume(); // Diverge
 bb4:
 	var7 = (uint8_t *)var0.PTR;	// _7 = Cast(_0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var7, var1, var2 );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var7, var1, var2 );
 	// ^ Call( _6 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _7, _1, _2, ), bb5, bb3)
 bb5:
 	/* ZST assign */
@@ -3615,7 +3583,7 @@ static void  ZRG2cF10alloc0_0_05alloc8box_free1gD2cD8std0_0_05error5Error0g022cE
 bb3: _Unwind_Resume(); // Diverge
 bb4:
 	var7 = (uint8_t *)var0.PTR;	// _7 = Cast(_0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var7, var1, var2 );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var7, var1, var2 );
 	// ^ Call( _6 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _7, _1, _2, ), bb5, bb3)
 bb5:
 	/* ZST assign */
@@ -3647,7 +3615,7 @@ static void  ZRG2cF10alloc0_0_05alloc8box_free1gSCa(
 bb2: _Unwind_Resume(); // Diverge
 bb3:
 	var6 = (uint8_t *)var0.PTR;	// _6 = Cast(_0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var6, var1, var2 );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var6, var1, var2 );
 	// ^ Call( _5 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _6, _1, _2, ), bb4, bb2)
 bb4:
 	/* ZST assign */
@@ -3677,7 +3645,7 @@ static void  ZRG2cF10alloc0_0_05alloc8box_free1gBsCy(
 	uint8_t *var2;	// *mut u8
 	var0 = (SLICE_PTR *)arg0._0._0;	// _0 = Cast(a0.0.0 as *mut &'static str)
 	var2 = (uint8_t *)var0;	// _2 = Cast(_0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var2, 0x10ull, 0x8ull );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var2, 0x10ull, 0x8ull );
 	// ^ Call( _1 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _2, 0x10 usize, 0x8 usize, ), bb1, bb2)
 	/* ZST assign */
 	return ;
@@ -3712,7 +3680,7 @@ bb2:
 	var3._0 = var4;	// _3 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_4})
 	var0._0 = arg0;
 	var0._1 = var3;	// _0 = Struct(::"core-0_0_0"::alloc::Layout, {a0, _3})
-	var1 = ZRG2cF10alloc0_0_05alloc12__rust_alloc0g( var0._0, var0._1._0._0 );
+	var1 = ZRG2cF10alloc0_0_05alloc13___rust_alloc0g( var0._0, var0._1._0._0 );
 	// ^ Call( _1 = ::"alloc-0_0_0"::alloc::__rust_alloc( _0.0, _0.1.0.0, ), bb3, bb4)
 	var6 = 0x0ull;	// _6 = Constant(0x0 usize)
 	var5 = (uint8_t *)var6;	// _5 = Cast(_6 as *mut u8)
@@ -3750,107 +3718,160 @@ void  ZRG1cD3bin17dump_token_stream1gG3cD8std0_0_02io5stdio9StdinLock0g(
 	uint8_t var11;	// u8
 	double var12;	// f64
 	uint8_t var13;	// u8
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var14;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g var15;	// ::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,>/*E*/
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var16;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var17;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var18;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var19;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	tUNIT var20 = {0};	// ()
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var21;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	uintptr_t var14;	// usize
+	struct s_ZRG2cD3bin8protocol7SpanDef0g var15;	// ::"bin#"::protocol::SpanDef/*S*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var16;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g var17;	// ::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,>/*E*/
+	tUNIT var18 = {0};	// ()
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var19;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g var20 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var21;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var22;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
 	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var23;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
 	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var24;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
 	tUNIT var25 = {0};	// ()
 	struct s_ZRG2cF10alloc0_0_06string6String0g *var26;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var27;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var28;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var29;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	tUNIT var30 = {0};	// ()
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var31;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var32;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var33;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var34;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	tUNIT var35 = {0};	// ()
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var36;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	SLICE_PTR var37;	// &'#omitted [u8]
-	SLICE_PTR var38;	// &'#omitted [u8]
-	struct s_ZRG1cD3bin13FmtByteString0g var39;	// ::"bin#"::FmtByteString<'#local9,>/*S*/
-	struct s_ZRG1cD3bin13FmtByteString0g *var40;	// &'#local10 ::"bin#"::FmtByteString<'#local9,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var41;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var42;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var43;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	tUNIT var44 = {0};	// ()
-	RUST_CHAR *var45;	// &'#local12 char
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var46;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var47;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var48;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	tUNIT var49 = {0};	// ()
-	uint128_t *var50;	// &'#local14 u128
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var51;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var52;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var53;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var54;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	tUNIT var55 = {0};	// ()
-	int128_t *var56;	// &'#local17 i128
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var57;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var58;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var59;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var60;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	tUNIT var61 = {0};	// ()
-	double *var62;	// &'#local20 f64
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var63;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var64;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var65;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var66;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	tUNIT var67 = {0};	// ()
-	uint8_t *var68;	// &'#local15 u8
-	uint8_t *var69;	// &'#local15 u8
-	uint8_t *var70;	// &'#local15 u8
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var71;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var72;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var73;	// &'static [&'static str]
-	SLICE_PTR var74;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var75;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var76;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var77;	// &'static [&'static str]
-	SLICE_PTR var78;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var79;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var80;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var81;	// &'static [&'static str]
-	SLICE_PTR var82;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var83;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var84;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var85;	// &'static [&'static str]
-	SLICE_PTR var86;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var87;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var88;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var89;	// &'static [&'static str]
-	SLICE_PTR var90;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var91;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var92;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var93;	// &'static [&'static str]
-	SLICE_PTR var94;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var95;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var96;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var97;	// &'static [&'static str]
-	SLICE_PTR var98;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var99;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var100;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var101;	// &'static [&'static str]
-	SLICE_PTR var102;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var103;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var104;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var105;	// &'static [&'static str]
-	SLICE_PTR var106;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g var27 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var28;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var29;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var30;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var31;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var32 = {0};	// ()
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var33;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g var34 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var35;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var36;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var37;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var38;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var39 = {0};	// ()
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var40;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g var41 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var42;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var43;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var44;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var45;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var46 = {0};	// ()
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var47;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	SLICE_PTR var48;	// &'#omitted [u8]
+	SLICE_PTR var49;	// &'#omitted [u8]
+	struct s_ZRG1cD3bin13FmtByteString0g var50;	// ::"bin#"::FmtByteString<'#local9,>/*S*/
+	struct s_ZRG1cD3bin13FmtByteString0g *var51;	// &'#local10 ::"bin#"::FmtByteString<'#local9,>/*S*/
+	t_ZRTfQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g var52 = {0};	// fn{<::"bin#"::FmtByteString<'static,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG1cD3bin13FmtByteString0gBuG2cE9core0_0_03fmt9Formatter0gG2c_C6result6Result2gT0G2c_C_D5Error0g var53;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"bin#"::FmtByteString<'static,>/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var54;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var55;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var56;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var57 = {0};	// ()
+	RUST_CHAR *var58;	// &'#local12 char
+	t_ZRTfQCx2cE9core0_0_03fmt5Debug0g_B0g var59 = {0};	// fn{<char as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCxBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var60;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static char, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var61;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var62;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var63;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var64 = {0};	// ()
+	uint128_t *var65;	// &'#local14 u128
+	t_ZRTfQCi2cE9core0_0_03fmt5Debug0g_B0g var66 = {0};	// fn{<u128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCiBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var67;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var68;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g var69 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var70;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var71;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var72;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local27,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var73;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local27,>/*S*/; 2]
+	tUNIT var74 = {0};	// ()
+	int128_t *var75;	// &'#local17 i128
+	t_ZRTfQCj2cE9core0_0_03fmt5Debug0g_B0g var76 = {0};	// fn{<i128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCjBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var77;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static i128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var78;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g var79 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var80;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var81;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var82;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local27,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var83;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local27,>/*S*/; 2]
+	tUNIT var84 = {0};	// ()
+	double *var85;	// &'#local20 f64
+	t_ZRTfQCo2cE9core0_0_03fmt5Debug0g_B0g var86 = {0};	// fn{<f64 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCoBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var87;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static f64, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var88;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g var89 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var90;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var91;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var92;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local27,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var93;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local27,>/*S*/; 2]
+	tUNIT var94 = {0};	// ()
+	uintptr_t *var95;	// &'#local23 usize
+	t_ZRTfQCu2cE9core0_0_03fmt7Display0g_B0g var96 = {0};	// fn{<usize as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var97;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var98;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var99;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var100;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var101 = {0};	// ()
+	uintptr_t *var102;	// &'#local23 usize
+	t_ZRTfQCu2cE9core0_0_03fmt7Display0g_B0g var103 = {0};	// fn{<usize as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var104;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var105;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var106;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var107;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var108 = {0};	// ()
+	uint8_t *var109;	// &'#local15 u8
+	uint8_t *var110;	// &'#local15 u8
+	uint8_t *var111;	// &'#local15 u8
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var112;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var113;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var114;	// &'static [&'static str]
+	SLICE_PTR var115;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var116;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var117;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var118;	// &'static [&'static str]
+	SLICE_PTR var119;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var120;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var121;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var122;	// &'static [&'static str]
+	SLICE_PTR var123;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var124;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var125;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var126;	// &'static [&'static str]
+	SLICE_PTR var127;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var128;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var129;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var130;	// &'static [&'static str]
+	SLICE_PTR var131;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var132;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var133;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var134;	// &'static [&'static str]
+	SLICE_PTR var135;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var136;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var137;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var138;	// &'static [&'static str]
+	SLICE_PTR var139;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var140;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var141;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var142;	// &'static [&'static str]
+	SLICE_PTR var143;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var144;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var145;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var146;	// &'static [&'static str]
+	SLICE_PTR var147;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var148;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var149;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var150;	// &'static [&'static str]
+	SLICE_PTR var151;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var152;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var153;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var154;	// &'static [&'static str]
+	SLICE_PTR var155;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var156;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var157;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var158;	// &'static [&'static str]
+	SLICE_PTR var159;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
 	var0._0 = arg0;	// _0 = Struct(::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>, {a0})
 	// ^ Goto(1)
 bb1:
-	var14 = & var0;	// _14 = Borrow(Unique, _0)
-	var15 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g8read_ent0g( var14 );
-	// ^ Call( _15 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::read_ent<'#local0,>( _14, ), bb2, bb3)
-	if( var15.DATA.var_1._0.DATA.TAG == 9) {goto bb4;} else {goto bb5;}
-	// ^ Switch( _15 : 0 => bb4, 1 => bb5, )
+	var16 = & var0;	// _16 = Borrow(Unique, _0)
+	var17 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g8read_ent0g( var16 );
+	// ^ Call( _17 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::read_ent<'#local0,>( _16, ), bb2, bb3)
+	if( var17.DATA.var_1._0.DATA.var_11._0._3 == 14) {goto bb4;} else {goto bb5;}
+	// ^ Switch( _17 : 0 => bb4, 1 => bb5, )
 bb3: _Unwind_Resume(); // Diverge
 bb4:
 	/* ZST assign */
@@ -3859,200 +3880,275 @@ bb4:
 	return ;
 	// ^ Return
 bb5:
-	var1 = var15.DATA.var_1._0;	// _1 = Use(_15#1.0)
-	switch(var1.DATA.TAG) {
-	case 0: goto bb6;break;
-	case 1: goto bb9;break;
-	case 2: goto bb12;break;
-	case 3: goto bb15;break;
-	case 4: goto bb18;break;
-	case 5: goto bb22;break;
-	case 6: goto bb24;break;
-	case 7: goto bb27;break;
-	case 8: goto bb30;break;
-	default: abort();
+	var1 = var17.DATA.var_1._0;	// _1 = Use(_17#1.0)
+	switch(var1.DATA.var_11._0._3) {
+	case 2: goto bb6;break;
+	case 3: goto bb7;break;
+	case 4: goto bb10;break;
+	case 5: goto bb13;break;
+	case 6: goto bb16;break;
+	case 7: goto bb19;break;
+	case 8: goto bb23;break;
+	case 9: goto bb25;break;
+	case 10: goto bb28;break;
+	case 11: goto bb31;break;
+	case 12: goto bb34;break;
+	default: goto bb36;break;
 	}
-	// ^ Switch( _1 : 0 => bb6, 1 => bb9, 2 => bb12, 3 => bb15, 4 => bb18, 5 => bb22, 6 => bb24, 7 => bb27, 8 => bb30, )
+	// ^ Switch( _1 : 0 => bb6, 1 => bb7, 2 => bb10, 3 => bb13, 4 => bb16, 5 => bb19, 6 => bb23, 7 => bb25, 8 => bb28, 9 => bb31, 10 => bb34, 11 => bb36, )
 bb6:
-	var2 = var1.DATA.var_0._0;	// _2 = Use(_1#0.0)
-	var16 = & var2;	// _16 = Borrow(Shared, _2)
-	var73 = make_sliceptr(&ZRG2cD3binB_29FRAGMENTS0g.val, 0x2ull);	// _73 = MakeDst(&::"bin#"::#2::FRAGMENTS, 0x2 usize)
-	var17 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var16, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g );
-	// ^ Call( _17 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"alloc-0_0_0"::string::String/*S*/,>( _16, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb7, bb3)
-	var18.DATA[0] = var17;	// _18 = Array(_17)
-	var19 = & var18;	// _19 = Borrow(Shared, _18)
-	var74 = make_sliceptr(var19, 0x1ull);	// _74 = MakeDst(_19, 0x1 usize)
-	memset(&var72, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _72 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var71._0 = var73;
-	var71._1 = var72;
-	var71._2 = var74;	// _71 = Struct(::"core-0_0_0"::fmt::Arguments<'#local26,>, {_73, _72, _74})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var71 );
-	// ^ Call( _20 = ::"std-0_0_0"::io::stdio::_print<'#local26,>( _71, ), bb8, bb3)
+	var114 = make_sliceptr(&ZRG2cD3binB_29FRAGMENTS0g.val, 0x1ull);	// _114 = MakeDst(&::"bin#"::#2::FRAGMENTS, 0x1 usize)
+	var115 = make_sliceptr(&ZRG1cD3binF6const80g.val, 0x0ull);	// _115 = MakeDst(&::"bin#"::const#8, 0x0 usize)
+	memset(&var113, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _113 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var112._0 = var114;
+	var112._1 = var113;
+	var112._2 = var115;	// _112 = Struct(::"core-0_0_0"::fmt::Arguments<'static,>, {_114, _113, _115})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var112 );
+	goto bb1;
+	// ^ Call( _18 = ::"std-0_0_0"::io::stdio::_print<'static,>( _112, ), bb1, bb3)
+bb7:
+	var2 = var1.DATA.var_1._0;	// _2 = Use(_1#1.0)
+	var19 = & var2;	// _19 = Borrow(Shared, _2)
+	var118 = make_sliceptr(&ZRG2cD3binB_39FRAGMENTS0g.val, 0x2ull);	// _118 = MakeDst(&::"bin#"::#3::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var21 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g;	// _21 = Cast(_20 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var22 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var19, var21 );
+	// ^ Call( _22 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"alloc-0_0_0"::string::String/*S*/,>( _19, _21, ), bb8, bb3)
+	var23.DATA[0] = var22;	// _23 = Array(_22)
+	var24 = & var23;	// _24 = Borrow(Shared, _23)
+	var119 = make_sliceptr(var24, 0x1ull);	// _119 = MakeDst(_24, 0x1 usize)
+	memset(&var117, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _117 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var116._0 = var118;
+	var116._1 = var117;
+	var116._2 = var119;	// _116 = Struct(::"core-0_0_0"::fmt::Arguments<'#local30,>, {_118, _117, _119})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var116 );
+	// ^ Call( _25 = ::"std-0_0_0"::io::stdio::_print<'#local30,>( _116, ), bb9, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var2);
 	// ^ drop(_2)
 	goto bb1;
 	// ^ Goto(1)
-bb9:
-	var3 = var1.DATA.var_1._0;	// _3 = Use(_1#1.0)
-	var21 = & var3;	// _21 = Borrow(Shared, _3)
-	var77 = make_sliceptr(&ZRG2cD3binB_39FRAGMENTS0g.val, 0x2ull);	// _77 = MakeDst(&::"bin#"::#3::FRAGMENTS, 0x2 usize)
-	var22 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var21, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g );
-	// ^ Call( _22 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local3,::"alloc-0_0_0"::string::String/*S*/,>( _21, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb10, bb3)
-	var23.DATA[0] = var22;	// _23 = Array(_22)
-	var24 = & var23;	// _24 = Borrow(Shared, _23)
-	var78 = make_sliceptr(var24, 0x1ull);	// _78 = MakeDst(_24, 0x1 usize)
-	memset(&var76, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _76 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var75._0 = var77;
-	var75._1 = var76;
-	var75._2 = var78;	// _75 = Struct(::"core-0_0_0"::fmt::Arguments<'#local27,>, {_77, _76, _78})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var75 );
-	// ^ Call( _25 = ::"std-0_0_0"::io::stdio::_print<'#local27,>( _75, ), bb11, bb3)
+bb10:
+	var3 = var1.DATA.var_2._0;	// _3 = Use(_1#2.0)
+	var26 = & var3;	// _26 = Borrow(Shared, _3)
+	var122 = make_sliceptr(&ZRG2cD3binB_49FRAGMENTS0g.val, 0x2ull);	// _122 = MakeDst(&::"bin#"::#4::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var28 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g;	// _28 = Cast(_27 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var29 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var26, var28 );
+	// ^ Call( _29 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local3,::"alloc-0_0_0"::string::String/*S*/,>( _26, _28, ), bb11, bb3)
+	var30.DATA[0] = var29;	// _30 = Array(_29)
+	var31 = & var30;	// _31 = Borrow(Shared, _30)
+	var123 = make_sliceptr(var31, 0x1ull);	// _123 = MakeDst(_31, 0x1 usize)
+	memset(&var121, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _121 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var120._0 = var122;
+	var120._1 = var121;
+	var120._2 = var123;	// _120 = Struct(::"core-0_0_0"::fmt::Arguments<'#local31,>, {_122, _121, _123})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var120 );
+	// ^ Call( _32 = ::"std-0_0_0"::io::stdio::_print<'#local31,>( _120, ), bb12, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var3);
 	// ^ drop(_3)
 	goto bb1;
 	// ^ Goto(1)
-bb12:
-	var4 = var1.DATA.var_2._0;	// _4 = Use(_1#2.0)
-	var26 = & var4;	// _26 = Borrow(Shared, _4)
-	var81 = make_sliceptr(&ZRG2cD3binB_49FRAGMENTS0g.val, 0x2ull);	// _81 = MakeDst(&::"bin#"::#4::FRAGMENTS, 0x2 usize)
-	var27 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var26, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g );
-	// ^ Call( _27 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local5,::"alloc-0_0_0"::string::String/*S*/,>( _26, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb13, bb3)
-	var28.DATA[0] = var27;	// _28 = Array(_27)
-	var29 = & var28;	// _29 = Borrow(Shared, _28)
-	var82 = make_sliceptr(var29, 0x1ull);	// _82 = MakeDst(_29, 0x1 usize)
-	memset(&var80, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _80 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var79._0 = var81;
-	var79._1 = var80;
-	var79._2 = var82;	// _79 = Struct(::"core-0_0_0"::fmt::Arguments<'#local28,>, {_81, _80, _82})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var79 );
-	// ^ Call( _30 = ::"std-0_0_0"::io::stdio::_print<'#local28,>( _79, ), bb14, bb3)
+bb13:
+	var4 = var1.DATA.var_3._0;	// _4 = Use(_1#3.0)
+	var33 = & var4;	// _33 = Borrow(Shared, _4)
+	var126 = make_sliceptr(&ZRG2cD3binB_59FRAGMENTS0g.val, 0x2ull);	// _126 = MakeDst(&::"bin#"::#5::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var35 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g;	// _35 = Cast(_34 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var36 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var33, var35 );
+	// ^ Call( _36 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local5,::"alloc-0_0_0"::string::String/*S*/,>( _33, _35, ), bb14, bb3)
+	var37.DATA[0] = var36;	// _37 = Array(_36)
+	var38 = & var37;	// _38 = Borrow(Shared, _37)
+	var127 = make_sliceptr(var38, 0x1ull);	// _127 = MakeDst(_38, 0x1 usize)
+	memset(&var125, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _125 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var124._0 = var126;
+	var124._1 = var125;
+	var124._2 = var127;	// _124 = Struct(::"core-0_0_0"::fmt::Arguments<'#local32,>, {_126, _125, _127})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var124 );
+	// ^ Call( _39 = ::"std-0_0_0"::io::stdio::_print<'#local32,>( _124, ), bb15, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var4);
 	// ^ drop(_4)
 	goto bb1;
 	// ^ Goto(1)
-bb15:
-	var5 = var1.DATA.var_3._0;	// _5 = Use(_1#3.0)
-	var31 = & var5;	// _31 = Borrow(Shared, _5)
-	var85 = make_sliceptr(&ZRG2cD3binB_59FRAGMENTS0g.val, 0x2ull);	// _85 = MakeDst(&::"bin#"::#5::FRAGMENTS, 0x2 usize)
-	var32 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var31, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g );
-	// ^ Call( _32 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local7,::"alloc-0_0_0"::string::String/*S*/,>( _31, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb16, bb3)
-	var33.DATA[0] = var32;	// _33 = Array(_32)
-	var34 = & var33;	// _34 = Borrow(Shared, _33)
-	var86 = make_sliceptr(var34, 0x1ull);	// _86 = MakeDst(_34, 0x1 usize)
-	memset(&var84, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _84 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var83._0 = var85;
-	var83._1 = var84;
-	var83._2 = var86;	// _83 = Struct(::"core-0_0_0"::fmt::Arguments<'#local29,>, {_85, _84, _86})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var83 );
-	// ^ Call( _35 = ::"std-0_0_0"::io::stdio::_print<'#local29,>( _83, ), bb17, bb3)
+bb16:
+	var5 = var1.DATA.var_4._0;	// _5 = Use(_1#4.0)
+	var40 = & var5;	// _40 = Borrow(Shared, _5)
+	var130 = make_sliceptr(&ZRG2cD3binB_69FRAGMENTS0g.val, 0x2ull);	// _130 = MakeDst(&::"bin#"::#6::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var42 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g;	// _42 = Cast(_41 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var43 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var40, var42 );
+	// ^ Call( _43 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local7,::"alloc-0_0_0"::string::String/*S*/,>( _40, _42, ), bb17, bb3)
+	var44.DATA[0] = var43;	// _44 = Array(_43)
+	var45 = & var44;	// _45 = Borrow(Shared, _44)
+	var131 = make_sliceptr(var45, 0x1ull);	// _131 = MakeDst(_45, 0x1 usize)
+	memset(&var129, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _129 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var128._0 = var130;
+	var128._1 = var129;
+	var128._2 = var131;	// _128 = Struct(::"core-0_0_0"::fmt::Arguments<'#local33,>, {_130, _129, _131})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var128 );
+	// ^ Call( _46 = ::"std-0_0_0"::io::stdio::_print<'#local33,>( _128, ), bb18, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var5);
 	// ^ drop(_5)
 	goto bb1;
 	// ^ Goto(1)
-bb18:
-	var6 = var1.DATA.var_4._0;	// _6 = Use(_1#4.0)
-	var36 = & var6;	// _36 = Borrow(Shared, _6)
-	var37 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var36 );
-	// ^ Call( _37 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _36, ), bb19, bb3)
-	var38 = var37;	// _38 = Borrow(Shared, _37*)
-	var39._0 = var38;	// _39 = Struct(::"bin#"::FmtByteString<'static,>, {_38})
-	var40 = & var39;	// _40 = Borrow(Shared, _39)
-	var89 = make_sliceptr(&ZRG2cD3binB_69FRAGMENTS0g.val, 0x2ull);	// _89 = MakeDst(&::"bin#"::#6::FRAGMENTS, 0x2 usize)
-	var41 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG1cD3bin13FmtByteString0g( var40, ZRQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g );
-	// ^ Call( _41 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local10,::"bin#"::FmtByteString<'#local9,>/*S*/,>( _40, &<::"bin#"::FmtByteString<'#local9,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb20, bb3)
-	var42.DATA[0] = var41;	// _42 = Array(_41)
-	var43 = & var42;	// _43 = Borrow(Shared, _42)
-	var90 = make_sliceptr(var43, 0x1ull);	// _90 = MakeDst(_43, 0x1 usize)
-	memset(&var88, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _88 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var87._0 = var89;
-	var87._1 = var88;
-	var87._2 = var90;	// _87 = Struct(::"core-0_0_0"::fmt::Arguments<'#local30,>, {_89, _88, _90})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var87 );
-	// ^ Call( _44 = ::"std-0_0_0"::io::stdio::_print<'#local30,>( _87, ), bb21, bb3)
-	// ^ drop(_39)
+bb19:
+	var6 = var1.DATA.var_5._0;	// _6 = Use(_1#5.0)
+	var47 = & var6;	// _47 = Borrow(Shared, _6)
+	var48 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var47 );
+	// ^ Call( _48 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _47, ), bb20, bb3)
+	var49 = var48;	// _49 = Borrow(Shared, _48*)
+	var50._0 = var49;	// _50 = Struct(::"bin#"::FmtByteString<'static,>, {_49})
+	var51 = & var50;	// _51 = Borrow(Shared, _50)
+	var134 = make_sliceptr(&ZRG2cD3binB_79FRAGMENTS0g.val, 0x2ull);	// _134 = MakeDst(&::"bin#"::#7::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var53 = ZRQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g;	// _53 = Cast(_52 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"bin#"::FmtByteString<'static,>/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var54 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG1cD3bin13FmtByteString0g( var51, var53 );
+	// ^ Call( _54 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local10,::"bin#"::FmtByteString<'#local9,>/*S*/,>( _51, _53, ), bb21, bb3)
+	var55.DATA[0] = var54;	// _55 = Array(_54)
+	var56 = & var55;	// _56 = Borrow(Shared, _55)
+	var135 = make_sliceptr(var56, 0x1ull);	// _135 = MakeDst(_56, 0x1 usize)
+	memset(&var133, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _133 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var132._0 = var134;
+	var132._1 = var133;
+	var132._2 = var135;	// _132 = Struct(::"core-0_0_0"::fmt::Arguments<'#local34,>, {_134, _133, _135})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var132 );
+	// ^ Call( _57 = ::"std-0_0_0"::io::stdio::_print<'#local34,>( _132, ), bb22, bb3)
+	// ^ drop(_50)
 	ZRIG2cF10alloc0_0_03vec3Vec1gCaA9drop_glue0g(&var6);
 	// ^ drop(_6)
 	goto bb1;
 	// ^ Goto(1)
-bb22:
-	var7 = var1.DATA.var_5._0;	// _7 = Use(_1#5.0)
-	var45 = & var7;	// _45 = Borrow(Shared, _7)
-	var93 = make_sliceptr(&ZRG2cD3binB_79FRAGMENTS0g.val, 0x2ull);	// _93 = MakeDst(&::"bin#"::#7::FRAGMENTS, 0x2 usize)
-	var46 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCx( var45, ZRQCx2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _46 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local12,char,>( _45, &<char as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb23, bb3)
-	var47.DATA[0] = var46;	// _47 = Array(_46)
-	var48 = & var47;	// _48 = Borrow(Shared, _47)
-	var94 = make_sliceptr(var48, 0x1ull);	// _94 = MakeDst(_48, 0x1 usize)
-	memset(&var92, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _92 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var91._0 = var93;
-	var91._1 = var92;
-	var91._2 = var94;	// _91 = Struct(::"core-0_0_0"::fmt::Arguments<'#local31,>, {_93, _92, _94})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var91 );
+bb23:
+	var7 = var1.DATA.var_6._0;	// _7 = Use(_1#6.0)
+	var58 = & var7;	// _58 = Borrow(Shared, _7)
+	var138 = make_sliceptr(&ZRG2cD3binB_89FRAGMENTS0g.val, 0x2ull);	// _138 = MakeDst(&::"bin#"::#8::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var60 = ZRQCx2cE9core0_0_03fmt5Debug0g_B0g;	// _60 = Cast(_59 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static char, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var61 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCx( var58, var60 );
+	// ^ Call( _61 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local12,char,>( _58, _60, ), bb24, bb3)
+	var62.DATA[0] = var61;	// _62 = Array(_61)
+	var63 = & var62;	// _63 = Borrow(Shared, _62)
+	var139 = make_sliceptr(var63, 0x1ull);	// _139 = MakeDst(_63, 0x1 usize)
+	memset(&var137, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _137 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var136._0 = var138;
+	var136._1 = var137;
+	var136._2 = var139;	// _136 = Struct(::"core-0_0_0"::fmt::Arguments<'#local35,>, {_138, _137, _139})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var136 );
 	goto bb1;
-	// ^ Call( _49 = ::"std-0_0_0"::io::stdio::_print<'#local31,>( _91, ), bb1, bb3)
-bb24:
-	var9 = var1.DATA.var_6._1;	// _9 = Use(_1#6.1)
-	var8 = var1.DATA.var_6._0;	// _8 = Use(_1#6.0)
-	var50 = & var8;	// _50 = Borrow(Shared, _8)
-	var68 = & var9;	// _68 = Borrow(Shared, _9)
-	var97 = make_sliceptr(&ZRG2cD3binB_89FRAGMENTS0g.val, 0x3ull);	// _97 = MakeDst(&::"bin#"::#8::FRAGMENTS, 0x3 usize)
-	var51 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCi( var50, ZRQCi2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _51 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local14,u128,>( _50, &<u128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb25, bb3)
-	var52 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var68, ZRQCa2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _52 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local15,u8,>( _68, &<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb26, bb3)
-	var53.DATA[0] = var51;
-	var53.DATA[1] = var52;	// _53 = Array(_51, _52)
-	var54 = & var53;	// _54 = Borrow(Shared, _53)
-	var98 = make_sliceptr(var54, 0x2ull);	// _98 = MakeDst(_54, 0x2 usize)
-	memset(&var96, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _96 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var95._0 = var97;
-	var95._1 = var96;
-	var95._2 = var98;	// _95 = Struct(::"core-0_0_0"::fmt::Arguments<'#local32,>, {_97, _96, _98})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var95 );
+	// ^ Call( _64 = ::"std-0_0_0"::io::stdio::_print<'#local35,>( _136, ), bb1, bb3)
+bb25:
+	var9 = var1.DATA.var_7._1;	// _9 = Use(_1#7.1)
+	var8 = var1.DATA.var_7._0;	// _8 = Use(_1#7.0)
+	var65 = & var8;	// _65 = Borrow(Shared, _8)
+	var109 = & var9;	// _109 = Borrow(Shared, _9)
+	var142 = make_sliceptr(&ZRG2cD3binB_99FRAGMENTS0g.val, 0x3ull);	// _142 = MakeDst(&::"bin#"::#9::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var67 = ZRQCi2cE9core0_0_03fmt5Debug0g_B0g;	// _67 = Cast(_66 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var68 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCi( var65, var67 );
+	// ^ Call( _68 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local14,u128,>( _65, _67, ), bb26, bb3)
+	/* ZST assign */
+	var70 = ZRQCa2cE9core0_0_03fmt7Display0g_B0g;	// _70 = Cast(_69 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var71 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var109, var70 );
+	// ^ Call( _71 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local15,u8,>( _109, _70, ), bb27, bb3)
+	var72.DATA[0] = var68;
+	var72.DATA[1] = var71;	// _72 = Array(_68, _71)
+	var73 = & var72;	// _73 = Borrow(Shared, _72)
+	var143 = make_sliceptr(var73, 0x2ull);	// _143 = MakeDst(_73, 0x2 usize)
+	memset(&var141, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _141 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var140._0 = var142;
+	var140._1 = var141;
+	var140._2 = var143;	// _140 = Struct(::"core-0_0_0"::fmt::Arguments<'#local36,>, {_142, _141, _143})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var140 );
 	goto bb1;
-	// ^ Call( _55 = ::"std-0_0_0"::io::stdio::_print<'#local32,>( _95, ), bb1, bb3)
-bb27:
-	var11 = var1.DATA.var_7._1;	// _11 = Use(_1#7.1)
-	var10 = var1.DATA.var_7._0;	// _10 = Use(_1#7.0)
-	var56 = & var10;	// _56 = Borrow(Shared, _10)
-	var69 = & var11;	// _69 = Borrow(Shared, _11)
-	var101 = make_sliceptr(&ZRG2cD3binB_99FRAGMENTS0g.val, 0x3ull);	// _101 = MakeDst(&::"bin#"::#9::FRAGMENTS, 0x3 usize)
-	var57 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCj( var56, ZRQCj2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _57 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local17,i128,>( _56, &<i128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb28, bb3)
-	var58 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var69, ZRQCa2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _58 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local18,u8,>( _69, &<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb29, bb3)
-	var59.DATA[0] = var57;
-	var59.DATA[1] = var58;	// _59 = Array(_57, _58)
-	var60 = & var59;	// _60 = Borrow(Shared, _59)
-	var102 = make_sliceptr(var60, 0x2ull);	// _102 = MakeDst(_60, 0x2 usize)
-	memset(&var100, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _100 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var99._0 = var101;
-	var99._1 = var100;
-	var99._2 = var102;	// _99 = Struct(::"core-0_0_0"::fmt::Arguments<'#local33,>, {_101, _100, _102})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var99 );
+	// ^ Call( _74 = ::"std-0_0_0"::io::stdio::_print<'#local36,>( _140, ), bb1, bb3)
+bb28:
+	var11 = var1.DATA.var_8._1;	// _11 = Use(_1#8.1)
+	var10 = var1.DATA.var_8._0;	// _10 = Use(_1#8.0)
+	var75 = & var10;	// _75 = Borrow(Shared, _10)
+	var110 = & var11;	// _110 = Borrow(Shared, _11)
+	var146 = make_sliceptr(&ZRG2cD3binC_109FRAGMENTS0g.val, 0x3ull);	// _146 = MakeDst(&::"bin#"::#10::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var77 = ZRQCj2cE9core0_0_03fmt5Debug0g_B0g;	// _77 = Cast(_76 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static i128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var78 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCj( var75, var77 );
+	// ^ Call( _78 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local17,i128,>( _75, _77, ), bb29, bb3)
+	/* ZST assign */
+	var80 = ZRQCa2cE9core0_0_03fmt7Display0g_B0g;	// _80 = Cast(_79 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var81 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var110, var80 );
+	// ^ Call( _81 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local18,u8,>( _110, _80, ), bb30, bb3)
+	var82.DATA[0] = var78;
+	var82.DATA[1] = var81;	// _82 = Array(_78, _81)
+	var83 = & var82;	// _83 = Borrow(Shared, _82)
+	var147 = make_sliceptr(var83, 0x2ull);	// _147 = MakeDst(_83, 0x2 usize)
+	memset(&var145, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _145 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var144._0 = var146;
+	var144._1 = var145;
+	var144._2 = var147;	// _144 = Struct(::"core-0_0_0"::fmt::Arguments<'#local37,>, {_146, _145, _147})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var144 );
 	goto bb1;
-	// ^ Call( _61 = ::"std-0_0_0"::io::stdio::_print<'#local33,>( _99, ), bb1, bb3)
-bb30:
-	var13 = var1.DATA.var_8._1;	// _13 = Use(_1#8.1)
-	var12 = var1.DATA.var_8._0;	// _12 = Use(_1#8.0)
-	var62 = & var12;	// _62 = Borrow(Shared, _12)
-	var70 = & var13;	// _70 = Borrow(Shared, _13)
-	var105 = make_sliceptr(&ZRG2cD3binC_109FRAGMENTS0g.val, 0x3ull);	// _105 = MakeDst(&::"bin#"::#10::FRAGMENTS, 0x3 usize)
-	var63 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCo( var62, ZRQCo2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _63 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local20,f64,>( _62, &<f64 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb31, bb3)
-	var64 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var70, ZRQCa2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _64 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local21,u8,>( _70, &<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb32, bb3)
-	var65.DATA[0] = var63;
-	var65.DATA[1] = var64;	// _65 = Array(_63, _64)
-	var66 = & var65;	// _66 = Borrow(Shared, _65)
-	var106 = make_sliceptr(var66, 0x2ull);	// _106 = MakeDst(_66, 0x2 usize)
-	memset(&var104, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _104 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var103._0 = var105;
-	var103._1 = var104;
-	var103._2 = var106;	// _103 = Struct(::"core-0_0_0"::fmt::Arguments<'#local34,>, {_105, _104, _106})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var103 );
+	// ^ Call( _84 = ::"std-0_0_0"::io::stdio::_print<'#local37,>( _144, ), bb1, bb3)
+bb31:
+	var13 = var1.DATA.var_9._1;	// _13 = Use(_1#9.1)
+	var12 = var1.DATA.var_9._0;	// _12 = Use(_1#9.0)
+	var85 = & var12;	// _85 = Borrow(Shared, _12)
+	var111 = & var13;	// _111 = Borrow(Shared, _13)
+	var150 = make_sliceptr(&ZRG2cD3binC_119FRAGMENTS0g.val, 0x3ull);	// _150 = MakeDst(&::"bin#"::#11::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var87 = ZRQCo2cE9core0_0_03fmt5Debug0g_B0g;	// _87 = Cast(_86 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static f64, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var88 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCo( var85, var87 );
+	// ^ Call( _88 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local20,f64,>( _85, _87, ), bb32, bb3)
+	/* ZST assign */
+	var90 = ZRQCa2cE9core0_0_03fmt7Display0g_B0g;	// _90 = Cast(_89 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var91 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var111, var90 );
+	// ^ Call( _91 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local21,u8,>( _111, _90, ), bb33, bb3)
+	var92.DATA[0] = var88;
+	var92.DATA[1] = var91;	// _92 = Array(_88, _91)
+	var93 = & var92;	// _93 = Borrow(Shared, _92)
+	var151 = make_sliceptr(var93, 0x2ull);	// _151 = MakeDst(_93, 0x2 usize)
+	memset(&var149, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _149 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var148._0 = var150;
+	var148._1 = var149;
+	var148._2 = var151;	// _148 = Struct(::"core-0_0_0"::fmt::Arguments<'#local38,>, {_150, _149, _151})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var148 );
 	goto bb1;
-	// ^ Call( _67 = ::"std-0_0_0"::io::stdio::_print<'#local34,>( _103, ), bb1, bb3)
+	// ^ Call( _94 = ::"std-0_0_0"::io::stdio::_print<'#local38,>( _148, ), bb1, bb3)
+bb34:
+	var14 = var1.DATA.var_10._0;	// _14 = Use(_1#10.0)
+	var95 = & var14;	// _95 = Borrow(Shared, _14)
+	var154 = make_sliceptr(&ZRG2cD3binC_129FRAGMENTS0g.val, 0x2ull);	// _154 = MakeDst(&::"bin#"::#12::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var97 = ZRQCu2cE9core0_0_03fmt7Display0g_B0g;	// _97 = Cast(_96 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var98 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCu( var95, var97 );
+	// ^ Call( _98 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local23,usize,>( _95, _97, ), bb35, bb3)
+	var99.DATA[0] = var98;	// _99 = Array(_98)
+	var100 = & var99;	// _100 = Borrow(Shared, _99)
+	var155 = make_sliceptr(var100, 0x1ull);	// _155 = MakeDst(_100, 0x1 usize)
+	memset(&var153, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _153 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var152._0 = var154;
+	var152._1 = var153;
+	var152._2 = var155;	// _152 = Struct(::"core-0_0_0"::fmt::Arguments<'#local39,>, {_154, _153, _155})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var152 );
+	goto bb1;
+	// ^ Call( _101 = ::"std-0_0_0"::io::stdio::_print<'#local39,>( _152, ), bb1, bb3)
+bb36:
+	var15 = var1.DATA.var_11._0;	// _15 = Use(_1#11.0)
+	var102 = & var15._0;	// _102 = Borrow(Shared, _15.0)
+	var158 = make_sliceptr(&ZRG2cD3binC_139FRAGMENTS0g.val, 0x2ull);	// _158 = MakeDst(&::"bin#"::#13::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var104 = ZRQCu2cE9core0_0_03fmt7Display0g_B0g;	// _104 = Cast(_103 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var105 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCu( var102, var104 );
+	// ^ Call( _105 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local25,usize,>( _102, _104, ), bb37, bb3)
+	var106.DATA[0] = var105;	// _106 = Array(_105)
+	var107 = & var106;	// _107 = Borrow(Shared, _106)
+	var159 = make_sliceptr(var107, 0x1ull);	// _159 = MakeDst(_107, 0x1 usize)
+	memset(&var157, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _157 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var156._0 = var158;
+	var156._1 = var157;
+	var156._2 = var159;	// _156 = Struct(::"core-0_0_0"::fmt::Arguments<'#local40,>, {_158, _157, _159})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var156 );
+	// ^ Call( _108 = ::"std-0_0_0"::io::stdio::_print<'#local40,>( _156, ), bb38, bb3)
+	ZRIG2cD3bin8protocol7SpanDef0gA9drop_glue0g(&var15);
+	// ^ drop(_15)
+	goto bb1;
+	// ^ Goto(1)
 }
 // ::"bin#"::dump_token_stream_pretty<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>
 void  ZRG1cD3bin24dump_token_stream_pretty1gG3cD8std0_0_02io5stdio9StdinLock0g(
@@ -4075,314 +4171,426 @@ void  ZRG1cD3bin24dump_token_stream_pretty1gG3cD8std0_0_02io5stdio9StdinLock0g(
 	uint8_t var11;	// u8
 	double var12;	// f64
 	uint8_t var13;	// u8
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var14;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g var15;	// ::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,>/*E*/
-	tUNIT var16 = {0};	// ()
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var17;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var18;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var19;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var20;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var21;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var22;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var23;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var24;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var25;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var26;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var27;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var28;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var29;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var30;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var31;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var32;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var33;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	SLICE_PTR var34;	// &'#omitted [u8]
-	SLICE_PTR var35;	// &'#omitted [u8]
-	struct s_ZRG1cD3bin13FmtByteString0g var36;	// ::"bin#"::FmtByteString<'#local9,>/*S*/
-	struct s_ZRG1cD3bin13FmtByteString0g *var37;	// &'#local10 ::"bin#"::FmtByteString<'#local9,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var38;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var39;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var40;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	RUST_CHAR *var41;	// &'#local12 char
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var42;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var43;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var44;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	uint128_t *var45;	// &'#local14 u128
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var46;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var47;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var48;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var49;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	int128_t *var50;	// &'#local17 i128
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var51;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var52;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var53;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var54;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	double *var55;	// &'#local20 f64
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var56;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var57;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var58;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var59;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/; 2]
-	tUNIT var60 = {0};	// ()
-	uint8_t *var61;	// &'#local15 u8
-	uint8_t *var62;	// &'#local15 u8
-	uint8_t *var63;	// &'#local15 u8
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var64;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var65;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var66;	// &'static [&'static str]
-	SLICE_PTR var67;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var68;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var69;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var70;	// &'static [&'static str]
-	SLICE_PTR var71;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var72;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var73;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var74;	// &'static [&'static str]
-	SLICE_PTR var75;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var76;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var77;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var78;	// &'static [&'static str]
-	SLICE_PTR var79;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var80;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var81;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var82;	// &'static [&'static str]
-	SLICE_PTR var83;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var84;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var85;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var86;	// &'static [&'static str]
-	SLICE_PTR var87;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var88;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var89;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var90;	// &'static [&'static str]
-	SLICE_PTR var91;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var92;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var93;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var94;	// &'static [&'static str]
-	SLICE_PTR var95;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var96;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var97;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var98;	// &'static [&'static str]
-	SLICE_PTR var99;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var100;	// ::"core-0_0_0"::fmt::Arguments<'#local26,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var101;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var102;	// &'static [&'static str]
-	SLICE_PTR var103;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
+	uintptr_t var14;	// usize
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var15;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g var16;	// ::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,>/*E*/
+	tUNIT var17 = {0};	// ()
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var18;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g var19 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var20;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var21;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var22;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var23;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var24;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g var25 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var26;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var27;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var28;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var29;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var30;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g var31 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var32;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var33;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var34;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var35;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var36;	// &'#local1 ::"alloc-0_0_0"::string::String/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g var37 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var38;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var39;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var40;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var41;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var42;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	SLICE_PTR var43;	// &'#omitted [u8]
+	SLICE_PTR var44;	// &'#omitted [u8]
+	struct s_ZRG1cD3bin13FmtByteString0g var45;	// ::"bin#"::FmtByteString<'#local9,>/*S*/
+	struct s_ZRG1cD3bin13FmtByteString0g *var46;	// &'#local10 ::"bin#"::FmtByteString<'#local9,>/*S*/
+	t_ZRTfQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g var47 = {0};	// fn{<::"bin#"::FmtByteString<'static,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG1cD3bin13FmtByteString0gBuG2cE9core0_0_03fmt9Formatter0gG2c_C6result6Result2gT0G2c_C_D5Error0g var48;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"bin#"::FmtByteString<'static,>/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var49;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var50;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var51;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	RUST_CHAR *var52;	// &'#local12 char
+	t_ZRTfQCx2cE9core0_0_03fmt5Debug0g_B0g var53 = {0};	// fn{<char as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCxBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var54;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static char, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var55;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var56;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var57;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	uint128_t *var58;	// &'#local14 u128
+	t_ZRTfQCi2cE9core0_0_03fmt5Debug0g_B0g var59 = {0};	// fn{<u128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCiBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var60;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var61;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g var62 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var63;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var64;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var65;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var66;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/; 2]
+	int128_t *var67;	// &'#local17 i128
+	t_ZRTfQCj2cE9core0_0_03fmt5Debug0g_B0g var68 = {0};	// fn{<i128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCjBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var69;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static i128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var70;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g var71 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var72;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var73;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var74;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var75;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/; 2]
+	double *var76;	// &'#local20 f64
+	t_ZRTfQCo2cE9core0_0_03fmt5Debug0g_B0g var77 = {0};	// fn{<f64 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsCoBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var78;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static f64, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var79;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt7Display0g_B0g var80 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var81;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var82;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var83;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var84;	// &'#local16 [::"core-0_0_0"::fmt::ArgumentV1<'#local25,>/*S*/; 2]
+	uintptr_t *var85;	// &'#local23 usize
+	t_ZRTfQCu2cE9core0_0_03fmt7Display0g_B0g var86 = {0};	// fn{<usize as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var87;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var88;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var89;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var90;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	tUNIT var91 = {0};	// ()
+	tUNIT var92 = {0};	// ()
+	tUNIT var93 = {0};	// ()
+	uint8_t *var94;	// &'#local15 u8
+	uint8_t *var95;	// &'#local15 u8
+	uint8_t *var96;	// &'#local15 u8
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var97;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var98;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var99;	// &'static [&'static str]
+	SLICE_PTR var100;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var101;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var102;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var103;	// &'static [&'static str]
+	SLICE_PTR var104;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var105;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var106;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var107;	// &'static [&'static str]
+	SLICE_PTR var108;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var109;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var110;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var111;	// &'static [&'static str]
+	SLICE_PTR var112;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var113;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var114;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var115;	// &'static [&'static str]
+	SLICE_PTR var116;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var117;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var118;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var119;	// &'static [&'static str]
+	SLICE_PTR var120;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var121;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var122;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var123;	// &'static [&'static str]
+	SLICE_PTR var124;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var125;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var126;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var127;	// &'static [&'static str]
+	SLICE_PTR var128;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var129;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var130;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var131;	// &'static [&'static str]
+	SLICE_PTR var132;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var133;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var134;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var135;	// &'static [&'static str]
+	SLICE_PTR var136;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var137;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var138;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var139;	// &'static [&'static str]
+	SLICE_PTR var140;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var141;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var142;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var143;	// &'static [&'static str]
+	SLICE_PTR var144;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var145;	// ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var146;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var147;	// &'static [&'static str]
+	SLICE_PTR var148;	// &'static [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
 	var0._0 = arg0;	// _0 = Struct(::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>, {a0})
 	// ^ Goto(1)
 bb1:
-	var14 = & var0;	// _14 = Borrow(Unique, _0)
-	var15 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g8read_ent0g( var14 );
-	// ^ Call( _15 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::read_ent<'#local0,>( _14, ), bb2, bb3)
-	if( var15.DATA.var_1._0.DATA.TAG == 9) {goto bb4;} else {goto bb6;}
-	// ^ Switch( _15 : 0 => bb4, 1 => bb6, )
+	var15 = & var0;	// _15 = Borrow(Unique, _0)
+	var16 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g8read_ent0g( var15 );
+	// ^ Call( _16 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::read_ent<'#local0,>( _15, ), bb2, bb3)
+	if( var16.DATA.var_1._0.DATA.var_11._0._3 == 14) {goto bb4;} else {goto bb6;}
+	// ^ Switch( _16 : 0 => bb4, 1 => bb6, )
 bb3: _Unwind_Resume(); // Diverge
 bb4:
-	var102 = make_sliceptr(&ZRG2cD3binC_209FRAGMENTS0g.val, 0x1ull);	// _102 = MakeDst(&::"bin#"::#20::FRAGMENTS, 0x1 usize)
-	var103 = make_sliceptr(&ZRG1cD3binG7lifted50g.val, 0x0ull);	// _103 = MakeDst(&::"bin#"::lifted#5, 0x0 usize)
-	memset(&var101, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _101 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var100._0 = var102;
-	var100._1 = var101;
-	var100._2 = var103;	// _100 = Struct(::"core-0_0_0"::fmt::Arguments<'static,>, {_102, _101, _103})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var100 );
-	// ^ Call( _60 = ::"std-0_0_0"::io::stdio::_print<'static,>( _100, ), bb5, bb3)
+	var147 = make_sliceptr(&ZRG2cD3binC_269FRAGMENTS0g.val, 0x1ull);	// _147 = MakeDst(&::"bin#"::#26::FRAGMENTS, 0x1 usize)
+	var148 = make_sliceptr(&ZRG1cD3binF6const70g.val, 0x0ull);	// _148 = MakeDst(&::"bin#"::const#7, 0x0 usize)
+	memset(&var146, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _146 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var145._0 = var147;
+	var145._1 = var146;
+	var145._2 = var148;	// _145 = Struct(::"core-0_0_0"::fmt::Arguments<'static,>, {_147, _146, _148})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var145 );
+	// ^ Call( _93 = ::"std-0_0_0"::io::stdio::_print<'static,>( _145, ), bb5, bb3)
 	ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0gA9drop_glue0g(&var0);
 	// ^ drop(_0)
 	/* ZST assign */
 	return ;
 	// ^ Return
 bb6:
-	var1 = var15.DATA.var_1._0;	// _1 = Use(_15#1.0)
-	switch(var1.DATA.TAG) {
-	case 0: goto bb7;break;
-	case 1: goto bb10;break;
-	case 2: goto bb13;break;
-	case 3: goto bb16;break;
-	case 4: goto bb19;break;
-	case 5: goto bb23;break;
-	case 6: goto bb25;break;
-	case 7: goto bb28;break;
-	case 8: goto bb31;break;
-	default: abort();
+	var1 = var16.DATA.var_1._0;	// _1 = Use(_16#1.0)
+	switch(var1.DATA.var_11._0._3) {
+	case 2: goto bb7;break;
+	case 3: goto bb8;break;
+	case 4: goto bb11;break;
+	case 5: goto bb14;break;
+	case 6: goto bb17;break;
+	case 7: goto bb20;break;
+	case 8: goto bb24;break;
+	case 9: goto bb26;break;
+	case 10: goto bb29;break;
+	case 11: goto bb32;break;
+	case 12: goto bb35;break;
+	default: goto bb37;break;
 	}
-	// ^ Switch( _1 : 0 => bb7, 1 => bb10, 2 => bb13, 3 => bb16, 4 => bb19, 5 => bb23, 6 => bb25, 7 => bb28, 8 => bb31, )
+	// ^ Switch( _1 : 0 => bb7, 1 => bb8, 2 => bb11, 3 => bb14, 4 => bb17, 5 => bb20, 6 => bb24, 7 => bb26, 8 => bb29, 9 => bb32, 10 => bb35, 11 => bb37, )
 bb7:
-	var2 = var1.DATA.var_0._0;	// _2 = Use(_1#0.0)
-	var17 = & var2;	// _17 = Borrow(Shared, _2)
-	var66 = make_sliceptr(&ZRG2cD3binC_119FRAGMENTS0g.val, 0x2ull);	// _66 = MakeDst(&::"bin#"::#11::FRAGMENTS, 0x2 usize)
-	var18 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var17, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g );
-	// ^ Call( _18 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"alloc-0_0_0"::string::String/*S*/,>( _17, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb8, bb3)
-	var19.DATA[0] = var18;	// _19 = Array(_18)
-	var20 = & var19;	// _20 = Borrow(Shared, _19)
-	var67 = make_sliceptr(var20, 0x1ull);	// _67 = MakeDst(_20, 0x1 usize)
-	memset(&var65, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _65 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var64._0 = var66;
-	var64._1 = var65;
-	var64._2 = var67;	// _64 = Struct(::"core-0_0_0"::fmt::Arguments<'#local26,>, {_66, _65, _67})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var64 );
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local26,>( _64, ), bb9, bb3)
+	var99 = make_sliceptr(&ZRG2cD3binC_149FRAGMENTS0g.val, 0x1ull);	// _99 = MakeDst(&::"bin#"::#14::FRAGMENTS, 0x1 usize)
+	var100 = make_sliceptr(&ZRG1cD3binF6const50g.val, 0x0ull);	// _100 = MakeDst(&::"bin#"::const#5, 0x0 usize)
+	memset(&var98, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _98 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var97._0 = var99;
+	var97._1 = var98;
+	var97._2 = var100;	// _97 = Struct(::"core-0_0_0"::fmt::Arguments<'static,>, {_99, _98, _100})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var97 );
+	goto bb1;
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'static,>( _97, ), bb1, bb3)
+bb8:
+	var2 = var1.DATA.var_1._0;	// _2 = Use(_1#1.0)
+	var18 = & var2;	// _18 = Borrow(Shared, _2)
+	var103 = make_sliceptr(&ZRG2cD3binC_159FRAGMENTS0g.val, 0x2ull);	// _103 = MakeDst(&::"bin#"::#15::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var20 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g;	// _20 = Cast(_19 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var21 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var18, var20 );
+	// ^ Call( _21 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"alloc-0_0_0"::string::String/*S*/,>( _18, _20, ), bb9, bb3)
+	var22.DATA[0] = var21;	// _22 = Array(_21)
+	var23 = & var22;	// _23 = Borrow(Shared, _22)
+	var104 = make_sliceptr(var23, 0x1ull);	// _104 = MakeDst(_23, 0x1 usize)
+	memset(&var102, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _102 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var101._0 = var103;
+	var101._1 = var102;
+	var101._2 = var104;	// _101 = Struct(::"core-0_0_0"::fmt::Arguments<'#local28,>, {_103, _102, _104})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var101 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local28,>( _101, ), bb10, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var2);
 	// ^ drop(_2)
 	goto bb1;
 	// ^ Goto(1)
-bb10:
-	var3 = var1.DATA.var_1._0;	// _3 = Use(_1#1.0)
-	var21 = & var3;	// _21 = Borrow(Shared, _3)
-	var70 = make_sliceptr(&ZRG2cD3binC_129FRAGMENTS0g.val, 0x2ull);	// _70 = MakeDst(&::"bin#"::#12::FRAGMENTS, 0x2 usize)
-	var22 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var21, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g );
-	// ^ Call( _22 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local3,::"alloc-0_0_0"::string::String/*S*/,>( _21, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb11, bb3)
-	var23.DATA[0] = var22;	// _23 = Array(_22)
-	var24 = & var23;	// _24 = Borrow(Shared, _23)
-	var71 = make_sliceptr(var24, 0x1ull);	// _71 = MakeDst(_24, 0x1 usize)
-	memset(&var69, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _69 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var68._0 = var70;
-	var68._1 = var69;
-	var68._2 = var71;	// _68 = Struct(::"core-0_0_0"::fmt::Arguments<'#local27,>, {_70, _69, _71})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var68 );
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local27,>( _68, ), bb12, bb3)
+bb11:
+	var3 = var1.DATA.var_2._0;	// _3 = Use(_1#2.0)
+	var24 = & var3;	// _24 = Borrow(Shared, _3)
+	var107 = make_sliceptr(&ZRG2cD3binC_169FRAGMENTS0g.val, 0x2ull);	// _107 = MakeDst(&::"bin#"::#16::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var26 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g;	// _26 = Cast(_25 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var27 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var24, var26 );
+	// ^ Call( _27 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local3,::"alloc-0_0_0"::string::String/*S*/,>( _24, _26, ), bb12, bb3)
+	var28.DATA[0] = var27;	// _28 = Array(_27)
+	var29 = & var28;	// _29 = Borrow(Shared, _28)
+	var108 = make_sliceptr(var29, 0x1ull);	// _108 = MakeDst(_29, 0x1 usize)
+	memset(&var106, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _106 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var105._0 = var107;
+	var105._1 = var106;
+	var105._2 = var108;	// _105 = Struct(::"core-0_0_0"::fmt::Arguments<'#local29,>, {_107, _106, _108})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var105 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local29,>( _105, ), bb13, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var3);
 	// ^ drop(_3)
 	goto bb1;
 	// ^ Goto(1)
-bb13:
-	var4 = var1.DATA.var_2._0;	// _4 = Use(_1#2.0)
-	var25 = & var4;	// _25 = Borrow(Shared, _4)
-	var74 = make_sliceptr(&ZRG2cD3binC_139FRAGMENTS0g.val, 0x2ull);	// _74 = MakeDst(&::"bin#"::#13::FRAGMENTS, 0x2 usize)
-	var26 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var25, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g );
-	// ^ Call( _26 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local5,::"alloc-0_0_0"::string::String/*S*/,>( _25, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb14, bb3)
-	var27.DATA[0] = var26;	// _27 = Array(_26)
-	var28 = & var27;	// _28 = Borrow(Shared, _27)
-	var75 = make_sliceptr(var28, 0x1ull);	// _75 = MakeDst(_28, 0x1 usize)
-	memset(&var73, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _73 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var72._0 = var74;
-	var72._1 = var73;
-	var72._2 = var75;	// _72 = Struct(::"core-0_0_0"::fmt::Arguments<'#local28,>, {_74, _73, _75})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var72 );
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local28,>( _72, ), bb15, bb3)
+bb14:
+	var4 = var1.DATA.var_3._0;	// _4 = Use(_1#3.0)
+	var30 = & var4;	// _30 = Borrow(Shared, _4)
+	var111 = make_sliceptr(&ZRG2cD3binC_179FRAGMENTS0g.val, 0x2ull);	// _111 = MakeDst(&::"bin#"::#17::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var32 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g;	// _32 = Cast(_31 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var33 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var30, var32 );
+	// ^ Call( _33 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local5,::"alloc-0_0_0"::string::String/*S*/,>( _30, _32, ), bb15, bb3)
+	var34.DATA[0] = var33;	// _34 = Array(_33)
+	var35 = & var34;	// _35 = Borrow(Shared, _34)
+	var112 = make_sliceptr(var35, 0x1ull);	// _112 = MakeDst(_35, 0x1 usize)
+	memset(&var110, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _110 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var109._0 = var111;
+	var109._1 = var110;
+	var109._2 = var112;	// _109 = Struct(::"core-0_0_0"::fmt::Arguments<'#local30,>, {_111, _110, _112})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var109 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local30,>( _109, ), bb16, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var4);
 	// ^ drop(_4)
 	goto bb1;
 	// ^ Goto(1)
-bb16:
-	var5 = var1.DATA.var_3._0;	// _5 = Use(_1#3.0)
-	var29 = & var5;	// _29 = Borrow(Shared, _5)
-	var78 = make_sliceptr(&ZRG2cD3binC_149FRAGMENTS0g.val, 0x2ull);	// _78 = MakeDst(&::"bin#"::#14::FRAGMENTS, 0x2 usize)
-	var30 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var29, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g );
-	// ^ Call( _30 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local7,::"alloc-0_0_0"::string::String/*S*/,>( _29, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb17, bb3)
-	var31.DATA[0] = var30;	// _31 = Array(_30)
-	var32 = & var31;	// _32 = Borrow(Shared, _31)
-	var79 = make_sliceptr(var32, 0x1ull);	// _79 = MakeDst(_32, 0x1 usize)
-	memset(&var77, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _77 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var76._0 = var78;
-	var76._1 = var77;
-	var76._2 = var79;	// _76 = Struct(::"core-0_0_0"::fmt::Arguments<'#local29,>, {_78, _77, _79})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var76 );
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local29,>( _76, ), bb18, bb3)
+bb17:
+	var5 = var1.DATA.var_4._0;	// _5 = Use(_1#4.0)
+	var36 = & var5;	// _36 = Borrow(Shared, _5)
+	var115 = make_sliceptr(&ZRG2cD3binC_189FRAGMENTS0g.val, 0x2ull);	// _115 = MakeDst(&::"bin#"::#18::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var38 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g;	// _38 = Cast(_37 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var39 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var36, var38 );
+	// ^ Call( _39 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local7,::"alloc-0_0_0"::string::String/*S*/,>( _36, _38, ), bb18, bb3)
+	var40.DATA[0] = var39;	// _40 = Array(_39)
+	var41 = & var40;	// _41 = Borrow(Shared, _40)
+	var116 = make_sliceptr(var41, 0x1ull);	// _116 = MakeDst(_41, 0x1 usize)
+	memset(&var114, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _114 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var113._0 = var115;
+	var113._1 = var114;
+	var113._2 = var116;	// _113 = Struct(::"core-0_0_0"::fmt::Arguments<'#local31,>, {_115, _114, _116})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var113 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local31,>( _113, ), bb19, bb3)
 	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&var5);
 	// ^ drop(_5)
 	goto bb1;
 	// ^ Goto(1)
-bb19:
-	var6 = var1.DATA.var_4._0;	// _6 = Use(_1#4.0)
-	var33 = & var6;	// _33 = Borrow(Shared, _6)
-	var34 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var33 );
-	// ^ Call( _34 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _33, ), bb20, bb3)
-	var35 = var34;	// _35 = Borrow(Shared, _34*)
-	var36._0 = var35;	// _36 = Struct(::"bin#"::FmtByteString<'static,>, {_35})
-	var37 = & var36;	// _37 = Borrow(Shared, _36)
-	var82 = make_sliceptr(&ZRG2cD3binC_159FRAGMENTS0g.val, 0x2ull);	// _82 = MakeDst(&::"bin#"::#15::FRAGMENTS, 0x2 usize)
-	var38 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG1cD3bin13FmtByteString0g( var37, ZRQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g );
-	// ^ Call( _38 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local10,::"bin#"::FmtByteString<'#local9,>/*S*/,>( _37, &<::"bin#"::FmtByteString<'#local9,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb21, bb3)
-	var39.DATA[0] = var38;	// _39 = Array(_38)
-	var40 = & var39;	// _40 = Borrow(Shared, _39)
-	var83 = make_sliceptr(var40, 0x1ull);	// _83 = MakeDst(_40, 0x1 usize)
-	memset(&var81, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _81 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var80._0 = var82;
-	var80._1 = var81;
-	var80._2 = var83;	// _80 = Struct(::"core-0_0_0"::fmt::Arguments<'#local30,>, {_82, _81, _83})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var80 );
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local30,>( _80, ), bb22, bb3)
-	// ^ drop(_36)
+bb20:
+	var6 = var1.DATA.var_5._0;	// _6 = Use(_1#5.0)
+	var42 = & var6;	// _42 = Borrow(Shared, _6)
+	var43 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var42 );
+	// ^ Call( _43 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _42, ), bb21, bb3)
+	var44 = var43;	// _44 = Borrow(Shared, _43*)
+	var45._0 = var44;	// _45 = Struct(::"bin#"::FmtByteString<'static,>, {_44})
+	var46 = & var45;	// _46 = Borrow(Shared, _45)
+	var119 = make_sliceptr(&ZRG2cD3binC_199FRAGMENTS0g.val, 0x2ull);	// _119 = MakeDst(&::"bin#"::#19::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var48 = ZRQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g;	// _48 = Cast(_47 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"bin#"::FmtByteString<'static,>/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var49 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG1cD3bin13FmtByteString0g( var46, var48 );
+	// ^ Call( _49 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local10,::"bin#"::FmtByteString<'#local9,>/*S*/,>( _46, _48, ), bb22, bb3)
+	var50.DATA[0] = var49;	// _50 = Array(_49)
+	var51 = & var50;	// _51 = Borrow(Shared, _50)
+	var120 = make_sliceptr(var51, 0x1ull);	// _120 = MakeDst(_51, 0x1 usize)
+	memset(&var118, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _118 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var117._0 = var119;
+	var117._1 = var118;
+	var117._2 = var120;	// _117 = Struct(::"core-0_0_0"::fmt::Arguments<'#local32,>, {_119, _118, _120})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var117 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local32,>( _117, ), bb23, bb3)
+	// ^ drop(_45)
 	ZRIG2cF10alloc0_0_03vec3Vec1gCaA9drop_glue0g(&var6);
 	// ^ drop(_6)
 	goto bb1;
 	// ^ Goto(1)
-bb23:
-	var7 = var1.DATA.var_5._0;	// _7 = Use(_1#5.0)
-	var41 = & var7;	// _41 = Borrow(Shared, _7)
-	var86 = make_sliceptr(&ZRG2cD3binC_169FRAGMENTS0g.val, 0x2ull);	// _86 = MakeDst(&::"bin#"::#16::FRAGMENTS, 0x2 usize)
-	var42 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCx( var41, ZRQCx2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _42 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local12,char,>( _41, &<char as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb24, bb3)
-	var43.DATA[0] = var42;	// _43 = Array(_42)
-	var44 = & var43;	// _44 = Borrow(Shared, _43)
-	var87 = make_sliceptr(var44, 0x1ull);	// _87 = MakeDst(_44, 0x1 usize)
-	memset(&var85, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _85 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var84._0 = var86;
-	var84._1 = var85;
-	var84._2 = var87;	// _84 = Struct(::"core-0_0_0"::fmt::Arguments<'#local31,>, {_86, _85, _87})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var84 );
+bb24:
+	var7 = var1.DATA.var_6._0;	// _7 = Use(_1#6.0)
+	var52 = & var7;	// _52 = Borrow(Shared, _7)
+	var123 = make_sliceptr(&ZRG2cD3binC_209FRAGMENTS0g.val, 0x2ull);	// _123 = MakeDst(&::"bin#"::#20::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var54 = ZRQCx2cE9core0_0_03fmt5Debug0g_B0g;	// _54 = Cast(_53 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static char, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var55 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCx( var52, var54 );
+	// ^ Call( _55 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local12,char,>( _52, _54, ), bb25, bb3)
+	var56.DATA[0] = var55;	// _56 = Array(_55)
+	var57 = & var56;	// _57 = Borrow(Shared, _56)
+	var124 = make_sliceptr(var57, 0x1ull);	// _124 = MakeDst(_57, 0x1 usize)
+	memset(&var122, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _122 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var121._0 = var123;
+	var121._1 = var122;
+	var121._2 = var124;	// _121 = Struct(::"core-0_0_0"::fmt::Arguments<'#local33,>, {_123, _122, _124})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var121 );
 	goto bb1;
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local31,>( _84, ), bb1, bb3)
-bb25:
-	var9 = var1.DATA.var_6._1;	// _9 = Use(_1#6.1)
-	var8 = var1.DATA.var_6._0;	// _8 = Use(_1#6.0)
-	var45 = & var8;	// _45 = Borrow(Shared, _8)
-	var61 = & var9;	// _61 = Borrow(Shared, _9)
-	var90 = make_sliceptr(&ZRG2cD3binC_179FRAGMENTS0g.val, 0x3ull);	// _90 = MakeDst(&::"bin#"::#17::FRAGMENTS, 0x3 usize)
-	var46 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCi( var45, ZRQCi2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _46 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local14,u128,>( _45, &<u128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb26, bb3)
-	var47 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var61, ZRQCa2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _47 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local15,u8,>( _61, &<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb27, bb3)
-	var48.DATA[0] = var46;
-	var48.DATA[1] = var47;	// _48 = Array(_46, _47)
-	var49 = & var48;	// _49 = Borrow(Shared, _48)
-	var91 = make_sliceptr(var49, 0x2ull);	// _91 = MakeDst(_49, 0x2 usize)
-	memset(&var89, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _89 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var88._0 = var90;
-	var88._1 = var89;
-	var88._2 = var91;	// _88 = Struct(::"core-0_0_0"::fmt::Arguments<'#local32,>, {_90, _89, _91})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var88 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local33,>( _121, ), bb1, bb3)
+bb26:
+	var9 = var1.DATA.var_7._1;	// _9 = Use(_1#7.1)
+	var8 = var1.DATA.var_7._0;	// _8 = Use(_1#7.0)
+	var58 = & var8;	// _58 = Borrow(Shared, _8)
+	var94 = & var9;	// _94 = Borrow(Shared, _9)
+	var127 = make_sliceptr(&ZRG2cD3binC_219FRAGMENTS0g.val, 0x3ull);	// _127 = MakeDst(&::"bin#"::#21::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var60 = ZRQCi2cE9core0_0_03fmt5Debug0g_B0g;	// _60 = Cast(_59 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var61 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCi( var58, var60 );
+	// ^ Call( _61 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local14,u128,>( _58, _60, ), bb27, bb3)
+	/* ZST assign */
+	var63 = ZRQCa2cE9core0_0_03fmt7Display0g_B0g;	// _63 = Cast(_62 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var64 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var94, var63 );
+	// ^ Call( _64 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local15,u8,>( _94, _63, ), bb28, bb3)
+	var65.DATA[0] = var61;
+	var65.DATA[1] = var64;	// _65 = Array(_61, _64)
+	var66 = & var65;	// _66 = Borrow(Shared, _65)
+	var128 = make_sliceptr(var66, 0x2ull);	// _128 = MakeDst(_66, 0x2 usize)
+	memset(&var126, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _126 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var125._0 = var127;
+	var125._1 = var126;
+	var125._2 = var128;	// _125 = Struct(::"core-0_0_0"::fmt::Arguments<'#local34,>, {_127, _126, _128})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var125 );
 	goto bb1;
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local32,>( _88, ), bb1, bb3)
-bb28:
-	var11 = var1.DATA.var_7._1;	// _11 = Use(_1#7.1)
-	var10 = var1.DATA.var_7._0;	// _10 = Use(_1#7.0)
-	var50 = & var10;	// _50 = Borrow(Shared, _10)
-	var62 = & var11;	// _62 = Borrow(Shared, _11)
-	var94 = make_sliceptr(&ZRG2cD3binC_189FRAGMENTS0g.val, 0x3ull);	// _94 = MakeDst(&::"bin#"::#18::FRAGMENTS, 0x3 usize)
-	var51 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCj( var50, ZRQCj2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _51 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local17,i128,>( _50, &<i128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb29, bb3)
-	var52 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var62, ZRQCa2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _52 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local18,u8,>( _62, &<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb30, bb3)
-	var53.DATA[0] = var51;
-	var53.DATA[1] = var52;	// _53 = Array(_51, _52)
-	var54 = & var53;	// _54 = Borrow(Shared, _53)
-	var95 = make_sliceptr(var54, 0x2ull);	// _95 = MakeDst(_54, 0x2 usize)
-	memset(&var93, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _93 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var92._0 = var94;
-	var92._1 = var93;
-	var92._2 = var95;	// _92 = Struct(::"core-0_0_0"::fmt::Arguments<'#local33,>, {_94, _93, _95})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var92 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local34,>( _125, ), bb1, bb3)
+bb29:
+	var11 = var1.DATA.var_8._1;	// _11 = Use(_1#8.1)
+	var10 = var1.DATA.var_8._0;	// _10 = Use(_1#8.0)
+	var67 = & var10;	// _67 = Borrow(Shared, _10)
+	var95 = & var11;	// _95 = Borrow(Shared, _11)
+	var131 = make_sliceptr(&ZRG2cD3binC_229FRAGMENTS0g.val, 0x3ull);	// _131 = MakeDst(&::"bin#"::#22::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var69 = ZRQCj2cE9core0_0_03fmt5Debug0g_B0g;	// _69 = Cast(_68 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static i128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var70 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCj( var67, var69 );
+	// ^ Call( _70 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local17,i128,>( _67, _69, ), bb30, bb3)
+	/* ZST assign */
+	var72 = ZRQCa2cE9core0_0_03fmt7Display0g_B0g;	// _72 = Cast(_71 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var73 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var95, var72 );
+	// ^ Call( _73 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local18,u8,>( _95, _72, ), bb31, bb3)
+	var74.DATA[0] = var70;
+	var74.DATA[1] = var73;	// _74 = Array(_70, _73)
+	var75 = & var74;	// _75 = Borrow(Shared, _74)
+	var132 = make_sliceptr(var75, 0x2ull);	// _132 = MakeDst(_75, 0x2 usize)
+	memset(&var130, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _130 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var129._0 = var131;
+	var129._1 = var130;
+	var129._2 = var132;	// _129 = Struct(::"core-0_0_0"::fmt::Arguments<'#local35,>, {_131, _130, _132})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var129 );
 	goto bb1;
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local33,>( _92, ), bb1, bb3)
-bb31:
-	var13 = var1.DATA.var_8._1;	// _13 = Use(_1#8.1)
-	var12 = var1.DATA.var_8._0;	// _12 = Use(_1#8.0)
-	var55 = & var12;	// _55 = Borrow(Shared, _12)
-	var63 = & var13;	// _63 = Borrow(Shared, _13)
-	var98 = make_sliceptr(&ZRG2cD3binC_199FRAGMENTS0g.val, 0x3ull);	// _98 = MakeDst(&::"bin#"::#19::FRAGMENTS, 0x3 usize)
-	var56 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCo( var55, ZRQCo2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _56 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local20,f64,>( _55, &<f64 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb32, bb3)
-	var57 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var63, ZRQCa2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _57 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local21,u8,>( _63, &<u8 as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb33, bb3)
-	var58.DATA[0] = var56;
-	var58.DATA[1] = var57;	// _58 = Array(_56, _57)
-	var59 = & var58;	// _59 = Borrow(Shared, _58)
-	var99 = make_sliceptr(var59, 0x2ull);	// _99 = MakeDst(_59, 0x2 usize)
-	memset(&var97, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _97 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var96._0 = var98;
-	var96._1 = var97;
-	var96._2 = var99;	// _96 = Struct(::"core-0_0_0"::fmt::Arguments<'#local34,>, {_98, _97, _99})
-	ZRG3cD8std0_0_02io5stdio6_print0g( var96 );
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local35,>( _129, ), bb1, bb3)
+bb32:
+	var13 = var1.DATA.var_9._1;	// _13 = Use(_1#9.1)
+	var12 = var1.DATA.var_9._0;	// _12 = Use(_1#9.0)
+	var76 = & var12;	// _76 = Borrow(Shared, _12)
+	var96 = & var13;	// _96 = Borrow(Shared, _13)
+	var135 = make_sliceptr(&ZRG2cD3binC_239FRAGMENTS0g.val, 0x3ull);	// _135 = MakeDst(&::"bin#"::#23::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var78 = ZRQCo2cE9core0_0_03fmt5Debug0g_B0g;	// _78 = Cast(_77 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static f64, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var79 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCo( var76, var78 );
+	// ^ Call( _79 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local20,f64,>( _76, _78, ), bb33, bb3)
+	/* ZST assign */
+	var81 = ZRQCa2cE9core0_0_03fmt7Display0g_B0g;	// _81 = Cast(_80 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var82 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var96, var81 );
+	// ^ Call( _82 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local21,u8,>( _96, _81, ), bb34, bb3)
+	var83.DATA[0] = var79;
+	var83.DATA[1] = var82;	// _83 = Array(_79, _82)
+	var84 = & var83;	// _84 = Borrow(Shared, _83)
+	var136 = make_sliceptr(var84, 0x2ull);	// _136 = MakeDst(_84, 0x2 usize)
+	memset(&var134, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _134 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var133._0 = var135;
+	var133._1 = var134;
+	var133._2 = var136;	// _133 = Struct(::"core-0_0_0"::fmt::Arguments<'#local36,>, {_135, _134, _136})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var133 );
 	goto bb1;
-	// ^ Call( _16 = ::"std-0_0_0"::io::stdio::_print<'#local34,>( _96, ), bb1, bb3)
+	// ^ Call( _17 = ::"std-0_0_0"::io::stdio::_print<'#local36,>( _133, ), bb1, bb3)
+bb35:
+	var14 = var1.DATA.var_10._0;	// _14 = Use(_1#10.0)
+	var85 = & var14;	// _85 = Borrow(Shared, _14)
+	var139 = make_sliceptr(&ZRG2cD3binC_249FRAGMENTS0g.val, 0x2ull);	// _139 = MakeDst(&::"bin#"::#24::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var87 = ZRQCu2cE9core0_0_03fmt7Display0g_B0g;	// _87 = Cast(_86 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var88 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCu( var85, var87 );
+	// ^ Call( _88 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local23,usize,>( _85, _87, ), bb36, bb3)
+	var89.DATA[0] = var88;	// _89 = Array(_88)
+	var90 = & var89;	// _90 = Borrow(Shared, _89)
+	var140 = make_sliceptr(var90, 0x1ull);	// _140 = MakeDst(_90, 0x1 usize)
+	memset(&var138, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _138 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var137._0 = var139;
+	var137._1 = var138;
+	var137._2 = var140;	// _137 = Struct(::"core-0_0_0"::fmt::Arguments<'#local37,>, {_139, _138, _140})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var137 );
+	goto bb38;
+	// ^ Call( _91 = ::"std-0_0_0"::io::stdio::_print<'#local37,>( _137, ), bb38, bb3)
+bb37:
+	var143 = make_sliceptr(&ZRG2cD3binC_259FRAGMENTS0g.val, 0x1ull);	// _143 = MakeDst(&::"bin#"::#25::FRAGMENTS, 0x1 usize)
+	var144 = make_sliceptr(&ZRG1cD3binF6const60g.val, 0x0ull);	// _144 = MakeDst(&::"bin#"::const#6, 0x0 usize)
+	memset(&var142, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _142 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var141._0 = var143;
+	var141._1 = var142;
+	var141._2 = var144;	// _141 = Struct(::"core-0_0_0"::fmt::Arguments<'static,>, {_143, _142, _144})
+	ZRG3cD8std0_0_02io5stdio7__print0g( var141 );
+	// ^ Call( _92 = ::"std-0_0_0"::io::stdio::_print<'static,>( _141, ), bb38, bb3)
+bb38:
+	/* ZST assign */
+	goto bb1;
+	// ^ Goto(1)
 }
 // ::"bin#"::main
 void  ZRG1cD3bin4main0g(void) // -> ()
@@ -4398,194 +4606,206 @@ void  ZRG1cD3bin4main0g(void) // -> ()
 	t_ZRTA1Ca var6;	// [u8; 1]
 	uint8_t *var7;	// &'#local17 u8
 	uint8_t *var8;	// &'#local17 u8
-	RUST_BOOL var9;	// bool
-	struct s_ZRG2cD8std0_0_03env4Args0g var10;	// ::"std-0_0_0"::env::Args/*S*/
-	struct s_ZRG2cE9core0_0_04iter4Skip1gG2cD8std0_0_03env4Args0g *var11;	// &'#local0 mut ::"core-0_0_0"::iter::Skip<::"std-0_0_0"::env::Args/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g var12;	// ::"core-0_0_0"::option::Option<::"alloc-0_0_0"::string::String/*S*/,>/*E*/
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var13;	// &'#local2 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var14;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var15;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var16;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var17;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var18;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	tBANG var19 = {0};	// !
-	struct s_ZRG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g *var20;	// &'#local7 mut ::"core-0_0_0"::iter::Skip<::"core-0_0_0"::str::Chars<'#local6,>/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gCx var21;	// ::"core-0_0_0"::option::Option<char,>/*E*/
-	RUST_CHAR *var22;	// &'#local8 char
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var23;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var24;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var25;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var26;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var27;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	tBANG var28 = {0};	// !
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var29;	// &'#local2 ::"alloc-0_0_0"::string::String/*S*/
-	SLICE_PTR var30;	// &'#omitted str
-	SLICE_PTR *var31;	// &'#omitted &'static str
-	SLICE_PTR var32;	// &'#omitted str
-	struct s_ZRG2cF10alloc0_0_06string6String0g *var33;	// &'#local2 ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var34;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var35;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var36;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var37;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var38;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	tBANG var39 = {0};	// !
-	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g var40;	// ::"std-0_0_0"::io::stdio::Stdin/*S*/
-	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g *var41;	// &'#local15 mut ::"std-0_0_0"::io::stdio::Stdin/*S*/
-	t_ZRTA1Ca *var42;	// &'#local16 mut [u8; 1]
-	SLICE_PTR var43;	// &'#local16 mut [u8]
-	struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g var44;	// ::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
-	tUNIT var45 = {0};	// ()
-	t_ZRTA1Ca *var46;	// &'#omitted [u8; 1]
-	SLICE_PTR var47;	// &'#omitted [u8]
-	uint8_t **var48;	// &'#local18 &'#local17 u8
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var49;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var50;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var51;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var52;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local24,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var53;	// &'#local20 [::"core-0_0_0"::fmt::ArgumentV1<'#local24,>/*S*/; 2]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var54;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
-	tUNIT var55 = {0};	// ()
-	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g var56;	// ::"std-0_0_0"::io::stdio::Stdin/*S*/
-	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g *var57;	// &'#local22 ::"std-0_0_0"::io::stdio::Stdin/*S*/
-	struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g var58;	// ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
-	tUNIT var59 = {0};	// ()
-	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g var60;	// ::"std-0_0_0"::io::stdio::Stdin/*S*/
-	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g *var61;	// &'#local22 ::"std-0_0_0"::io::stdio::Stdin/*S*/
-	struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g var62;	// ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
-	tUNIT var63 = {0};	// ()
-	uint8_t **var64;	// &'#local18 &'#local17 u8
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var65;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	SLICE_PTR var66;	// &'#omitted [u8]
-	SLICE_PTR var67;	// *const [u8]
-	SLICE_PTR var68;	// *const str
-	SLICE_PTR var69;	// &'#omitted [u8]
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var70;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	SLICE_PTR var71;	// &'#omitted [u8]
-	SLICE_PTR var72;	// *const [u8]
-	SLICE_PTR var73;	// *const str
-	SLICE_PTR var74;	// &'#omitted [u8]
-	SLICE_PTR var75;	// &'#omitted str
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var76;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var77;	// &'static [&'static str]
-	SLICE_PTR var78;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var79;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	SLICE_PTR var80;	// &'#omitted [u8]
-	SLICE_PTR var81;	// *const [u8]
-	SLICE_PTR var82;	// *const str
-	SLICE_PTR var83;	// &'#omitted [u8]
-	SLICE_PTR var84;	// &'#omitted str
-	struct s_ZRG2cE9core0_0_03str5Chars0g var85;	// ::"core-0_0_0"::str::Chars<'#local6,>/*S*/
-	struct s_ZRG2cE9core0_0_05slice4Iter1gCa var86;	// ::"core-0_0_0"::slice::Iter<'#local6,u8,>/*S*/
-	SLICE_PTR var87;	// &'#omitted [u8]
-	union u_ZRG3cE9core0_0_03strB_26Slices0g var88;	// ::"core-0_0_0"::str::#2::Slices<'#local6,>/*U*/
-	SLICE_PTR var89;	// &'#omitted str
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var90;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var91;	// &'static [&'static str]
-	SLICE_PTR var92;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var93;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	SLICE_PTR var94;	// &'#omitted [u8]
-	SLICE_PTR var95;	// *const [u8]
-	SLICE_PTR var96;	// *const str
+	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g var9;	// ::"std-0_0_0"::io::stdio::Stdin/*S*/
+	RUST_BOOL var10;	// bool
+	struct s_ZRG2cD8std0_0_03env4Args0g var11;	// ::"std-0_0_0"::env::Args/*S*/
+	struct s_ZRG2cE9core0_0_04iter4Skip1gG2cD8std0_0_03env4Args0g *var12;	// &'#local0 mut ::"core-0_0_0"::iter::Skip<::"std-0_0_0"::env::Args/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g var13;	// ::"core-0_0_0"::option::Option<::"alloc-0_0_0"::string::String/*S*/,>/*E*/
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var14;	// &'#local2 ::"alloc-0_0_0"::string::String/*S*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var15;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g var16 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var17;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var18;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var19;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var20;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var21;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	tBANG var22 = {0};	// !
+	struct s_ZRG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g *var23;	// &'#local7 mut ::"core-0_0_0"::iter::Skip<::"core-0_0_0"::str::Chars<'#local6,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gCx var24;	// ::"core-0_0_0"::option::Option<char,>/*E*/
+	RUST_CHAR *var25;	// &'#local8 char
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var26;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	t_ZRTfQCx2cE9core0_0_03fmt7Display0g_B0g var27 = {0};	// fn{<char as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCxBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var28;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static char, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var29;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var30;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var31;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var32;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	tBANG var33 = {0};	// !
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var34;	// &'#local2 ::"alloc-0_0_0"::string::String/*S*/
+	SLICE_PTR var35;	// &'#omitted str
+	SLICE_PTR *var36;	// &'#omitted &'static str
+	SLICE_PTR var37;	// &'#omitted str
+	struct s_ZRG2cF10alloc0_0_06string6String0g *var38;	// &'#local2 ::"alloc-0_0_0"::string::String/*S*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var39;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g var40 = {0};	// fn{<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string6String0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var41;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var42;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var43;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var44;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var45;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	tBANG var46 = {0};	// !
+	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g var47;	// ::"std-0_0_0"::io::stdio::Stdin/*S*/
+	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g *var48;	// &'#local15 mut ::"std-0_0_0"::io::stdio::Stdin/*S*/
+	t_ZRTA1Ca *var49;	// &'#local16 mut [u8; 1]
+	SLICE_PTR var50;	// &'#local16 mut [u8]
+	struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g var51;	// ::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
+	tUNIT var52 = {0};	// ()
+	t_ZRTA1Ca *var53;	// &'#omitted [u8; 1]
+	SLICE_PTR var54;	// &'#omitted [u8]
+	uint8_t var55;	// u8
+	uint8_t **var56;	// &'#local18 &'#local17 u8
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var57;	// ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	t_ZRTfQBsCa2cE9core0_0_03fmt5Debug0g_B0g var58 = {0};	// fn{<&'static u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var59;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var60;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
+	t_ZRTfQBsCa2cE9core0_0_03fmt5Debug0g_B0g var61 = {0};	// fn{<&'static u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var62;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var63;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var64;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local24,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var65;	// &'#local20 [::"core-0_0_0"::fmt::ArgumentV1<'#local24,>/*S*/; 2]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var66;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local25,>/*S*/
+	tUNIT var67 = {0};	// ()
+	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g *var68;	// &'#local22 ::"std-0_0_0"::io::stdio::Stdin/*S*/
+	struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g var69;	// ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
+	tUNIT var70 = {0};	// ()
+	struct s_ZRG3cD8std0_0_02io5stdio5Stdin0g *var71;	// &'#local22 ::"std-0_0_0"::io::stdio::Stdin/*S*/
+	struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g var72;	// ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
+	tUNIT var73 = {0};	// ()
+	uint8_t **var74;	// &'#local18 &'#local17 u8
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var75;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	SLICE_PTR var76;	// &'#omitted [u8]
+	SLICE_PTR var77;	// *const [u8]
+	SLICE_PTR var78;	// *const str
+	SLICE_PTR var79;	// &'#omitted [u8]
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var80;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	SLICE_PTR var81;	// &'#omitted [u8]
+	SLICE_PTR var82;	// *const [u8]
+	SLICE_PTR var83;	// *const str
+	SLICE_PTR var84;	// &'#omitted [u8]
+	SLICE_PTR var85;	// &'#omitted str
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var86;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var87;	// &'static [&'static str]
+	SLICE_PTR var88;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var89;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	SLICE_PTR var90;	// &'#omitted [u8]
+	SLICE_PTR var91;	// *const [u8]
+	SLICE_PTR var92;	// *const str
+	SLICE_PTR var93;	// &'#omitted [u8]
+	SLICE_PTR var94;	// &'#omitted str
+	struct s_ZRG2cE9core0_0_03str5Chars0g var95;	// ::"core-0_0_0"::str::Chars<'#local6,>/*S*/
+	struct s_ZRG2cE9core0_0_05slice4Iter1gCa var96;	// ::"core-0_0_0"::slice::Iter<'#local6,u8,>/*S*/
 	SLICE_PTR var97;	// &'#omitted [u8]
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var98;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var99;	// &'static [&'static str]
-	SLICE_PTR var100;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var101;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var102;	// &'static [&'static str]
-	SLICE_PTR var103;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
+	union u_ZRG3cE9core0_0_03strB_26Slices0g var98;	// ::"core-0_0_0"::str::#2::Slices<'#local6,>/*U*/
+	SLICE_PTR var99;	// &'#omitted str
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var100;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var101;	// &'static [&'static str]
+	SLICE_PTR var102;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var103;	// &'#omitted ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	SLICE_PTR var104;	// &'#omitted [u8]
+	SLICE_PTR var105;	// *const [u8]
+	SLICE_PTR var106;	// *const str
+	SLICE_PTR var107;	// &'#omitted [u8]
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var108;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var109;	// &'static [&'static str]
+	SLICE_PTR var110;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var111;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var112;	// &'static [&'static str]
+	SLICE_PTR var113;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/]
 	var0 = false;	// _0 = Constant(false)
 	var1 = false;	// _1 = Constant(false)
-	var10 = ZRG2cD8std0_0_03env4args0g( );
-	// ^ Call( _10 = ::"std-0_0_0"::env::args( ), bb1, bb4)
-	var2._0 = var10;
-	var2._1 = 0x1ull;	// _2 = Struct(::"core-0_0_0"::iter::Skip<::"std-0_0_0"::env::Args/*S*/,>, {_10, 0x1 usize})
+	var11 = ZRG2cD8std0_0_03env4args0g( );
+	// ^ Call( _11 = ::"std-0_0_0"::env::args( ), bb1, bb4)
+	var2._0 = var11;
+	var2._1 = 0x1ull;	// _2 = Struct(::"core-0_0_0"::iter::Skip<::"std-0_0_0"::env::Args/*S*/,>, {_11, 0x1 usize})
 	// ^ Goto(2)
 bb2:
-	var11 = & var2;	// _11 = Borrow(Unique, _2)
-	var12 = ZRQG2cE9core0_0_04iter4Skip1gG2cD8std0_0_03env4Args0g3c_A_B8iterator8Iterator0g4next0g( var11 );
-	// ^ Call( _12 = <::"core-0_0_0"::iter::Skip<::"std-0_0_0"::env::Args/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>( _11, ), bb3, bb4)
-	if( var12.DATA.var_1._0._0._0._0._0._0 != 0 )
+	var12 = & var2;	// _12 = Borrow(Unique, _2)
+	var13 = ZRQG2cE9core0_0_04iter4Skip1gG2cD8std0_0_03env4Args0g3c_A_B8iterator8Iterator0g4next0g( var12 );
+	// ^ Call( _13 = <::"core-0_0_0"::iter::Skip<::"std-0_0_0"::env::Args/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>( _12, ), bb3, bb4)
+	if( var13.DATA.var_1._0._0._0._0._0._0 != 0 )
 		goto bb6;
 	else
 		goto bb5;
-	// ^ Switch( _12 : 0 => bb5, 1 => bb6, )
+	// ^ Switch( _13 : 0 => bb5, 1 => bb6, )
 bb4: _Unwind_Resume(); // Diverge
 bb5:
 	ZRIG2cE9core0_0_04iter4Skip1gG2cD8std0_0_03env4Args0gA9drop_glue0g(&var2);
 	// ^ drop(_2)
-	var9 = var1;	// _9 = Use(_1)
+	var10 = var1;	// _10 = Use(_1)
 	if(var1) goto bb30; else goto bb34;
 	// ^ If( _1 : 30, 34)
 bb6:
-	var3 = var12.DATA.var_1._0;	// _3 = Use(_12#1.0)
-	var65 = & var3._0;	// _65 = Borrow(Shared, _3.0)
-	var66 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var65 );
-	// ^ Call( _66 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _65, ), bb7, bb4)
-	var69 = var66;	// _69 = Borrow(Shared, _66*)
-	var67 = var69;	// _67 = Cast(_69 as *const [u8])
-	var68 = var67;	// _68 = Cast(_67 as *const str)
-	var75 = var68;	// _75 = Borrow(Shared, _68*)
-	var9 = ZRQBsCy3cE9core0_0_03str7pattern7Pattern0g12is_prefix_of0g( make_sliceptr("-", 1), var75 );
-	// ^ Call( _9 = <&'#omitted str as ::"core-0_0_0"::str::pattern::Pattern<'#local1,>>::is_prefix_of( "-", _75, ), bb8, bb4)
-	if(var9) goto bb9; else goto bb12;
-	// ^ If( _9 : 9, 12)
+	var3 = var13.DATA.var_1._0;	// _3 = Use(_13#1.0)
+	var75 = & var3._0;	// _75 = Borrow(Shared, _3.0)
+	var76 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var75 );
+	// ^ Call( _76 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _75, ), bb7, bb4)
+	var79 = var76;	// _79 = Borrow(Shared, _76*)
+	var77 = var79;	// _77 = Cast(_79 as *const [u8])
+	var78 = var77;	// _78 = Cast(_77 as *const str)
+	var85 = var78;	// _85 = Borrow(Shared, _78*)
+	var10 = ZRQBsCy3cE9core0_0_03str7pattern7Pattern0g12is_prefix_of0g( make_sliceptr("-", 1), var85 );
+	// ^ Call( _10 = <&'#omitted str as ::"core-0_0_0"::str::pattern::Pattern<'#local1,>>::is_prefix_of( "-", _85, ), bb8, bb4)
+	if(var10) goto bb9; else goto bb12;
+	// ^ If( _10 : 9, 12)
 bb9:
-	var70 = & var3._0;	// _70 = Borrow(Shared, _3.0)
-	var71 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var70 );
-	// ^ Call( _71 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _70, ), bb10, bb4)
-	var74 = var71;	// _74 = Borrow(Shared, _71*)
-	var72 = var74;	// _72 = Cast(_74 as *const [u8])
-	var73 = var72;	// _73 = Cast(_72 as *const str)
-	var84 = var73;	// _84 = Borrow(Shared, _73*)
-	var9 = ZRQBsCy3cE9core0_0_03str7pattern7Pattern0g12is_prefix_of0g( make_sliceptr("--", 2), var84 );
-	// ^ Call( _9 = <&'#omitted str as ::"core-0_0_0"::str::pattern::Pattern<'#local5,>>::is_prefix_of( "--", _84, ), bb11, bb4)
-	if(var9) goto bb14; else goto bb16;
-	// ^ If( _9 : 14, 16)
+	var80 = & var3._0;	// _80 = Borrow(Shared, _3.0)
+	var81 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var80 );
+	// ^ Call( _81 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _80, ), bb10, bb4)
+	var84 = var81;	// _84 = Borrow(Shared, _81*)
+	var82 = var84;	// _82 = Cast(_84 as *const [u8])
+	var83 = var82;	// _83 = Cast(_82 as *const str)
+	var94 = var83;	// _94 = Borrow(Shared, _83*)
+	var10 = ZRQBsCy3cE9core0_0_03str7pattern7Pattern0g12is_prefix_of0g( make_sliceptr("--", 2), var94 );
+	// ^ Call( _10 = <&'#omitted str as ::"core-0_0_0"::str::pattern::Pattern<'#local5,>>::is_prefix_of( "--", _94, ), bb11, bb4)
+	if(var10) goto bb14; else goto bb16;
+	// ^ If( _10 : 14, 16)
 bb12:
-	var13 = & var3;	// _13 = Borrow(Shared, _3)
-	var77 = make_sliceptr(&ZRG2cD3binC_219FRAGMENTS0g.val, 0x2ull);	// _77 = MakeDst(&::"bin#"::#21::FRAGMENTS, 0x2 usize)
-	var15 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var13, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g );
-	// ^ Call( _15 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local2,::"alloc-0_0_0"::string::String/*S*/,>( _13, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb13, bb4)
-	var16.DATA[0] = var15;	// _16 = Array(_15)
-	var17 = & var16;	// _17 = Borrow(Shared, _16)
-	var78 = make_sliceptr(var17, 0x1ull);	// _78 = MakeDst(_17, 0x1 usize)
-	memset(&var76, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _76 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var14._0 = var77;
-	var14._1 = var76;
-	var14._2 = var78;	// _14 = Struct(::"core-0_0_0"::fmt::Arguments<'#local25,>, {_77, _76, _78})
-	var18 = & var14;	// _18 = Borrow(Shared, _14)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var18, &ZRG1cD3binG7lifted00g.val );
+	var14 = & var3;	// _14 = Borrow(Shared, _3)
+	var87 = make_sliceptr(&ZRG2cD3binC_279FRAGMENTS0g.val, 0x2ull);	// _87 = MakeDst(&::"bin#"::#27::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var17 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt5Debug0g_E0g;	// _17 = Cast(_16 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var18 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var14, var17 );
+	// ^ Call( _18 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local2,::"alloc-0_0_0"::string::String/*S*/,>( _14, _17, ), bb13, bb4)
+	var19.DATA[0] = var18;	// _19 = Array(_18)
+	var20 = & var19;	// _20 = Borrow(Shared, _19)
+	var88 = make_sliceptr(var20, 0x1ull);	// _88 = MakeDst(_20, 0x1 usize)
+	memset(&var86, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _86 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var15._0 = var87;
+	var15._1 = var86;
+	var15._2 = var88;	// _15 = Struct(::"core-0_0_0"::fmt::Arguments<'#local25,>, {_87, _86, _88})
+	var21 = & var15;	// _21 = Borrow(Shared, _15)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var21, &ZRG1cD3binF6const00g.val );
 	goto bb4;
-	// ^ Call( _19 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local29,'static,>( _18, &::"bin#"::lifted#0, ), bb4, bb4)
+	// ^ Call( _22 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local29,'static,>( _21, &::"bin#"::const#0, ), bb4, bb4)
 bb14:
-	var29 = & var3;	// _29 = Borrow(Shared, _3)
-	var30 = make_sliceptr("--", 2);	// _30 = Constant("--")
-	var31 = & var30;	// _31 = Borrow(Shared, _30)
-	var9 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03cmp9PartialEq1gBsCy2ne0g( var29, var31 );
-	// ^ Call( _9 = <::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::cmp::PartialEq<&'#omitted str,>>::ne<'#omitted,'#omitted,>( _29, _31, ), bb15, bb4)
-	if(var9) goto bb24; else goto bb21;
-	// ^ If( _9 : 24, 21)
+	var34 = & var3;	// _34 = Borrow(Shared, _3)
+	var35 = make_sliceptr("--", 2);	// _35 = Constant("--")
+	var36 = & var35;	// _36 = Borrow(Shared, _35)
+	var10 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03cmp9PartialEq1gBsCy2ne0g( var34, var36 );
+	// ^ Call( _10 = <::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::cmp::PartialEq<&'#omitted str,>>::ne<'#omitted,'#omitted,>( _34, _36, ), bb15, bb4)
+	if(var10) goto bb24; else goto bb21;
+	// ^ If( _10 : 24, 21)
 bb16:
-	var79 = & var3._0;	// _79 = Borrow(Shared, _3.0)
-	var80 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var79 );
-	// ^ Call( _80 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _79, ), bb17, bb4)
-	var83 = var80;	// _83 = Borrow(Shared, _80*)
-	var81 = var83;	// _81 = Cast(_83 as *const [u8])
-	var82 = var81;	// _82 = Cast(_81 as *const str)
-	var89 = var82;	// _89 = Borrow(Shared, _82*)
-	var88.var_0 = var89;	// _88 = UnionVariant(::"core-0_0_0"::str::#2::Slices<'#local6,> #0, _89)
-	var87 = var88.var_1;	// _87 = Use(_88#1)
-	// ^ drop(_88)
-	var86 = ZRISCa4iter0g( var87 );
-	// ^ Call( _86 = <[u8] /*- <u8,>*/>::iter<'#local6,>( _87, ), bb18, bb4)
-	var85._0 = var86;	// _85 = Struct(::"core-0_0_0"::str::Chars<'#local6,>, {_86})
-	var4._0 = var85;
-	var4._1 = 0x1ull;	// _4 = Struct(::"core-0_0_0"::iter::Skip<::"core-0_0_0"::str::Chars<'#local6,>/*S*/,>, {_85, 0x1 usize})
-	var20 = & var4;	// _20 = Borrow(Unique, _4)
-	var21 = ZRQG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g3c_A_B8iterator8Iterator0g4next0g( var20 );
-	// ^ Call( _21 = <::"core-0_0_0"::iter::Skip<::"core-0_0_0"::str::Chars<'#local6,>/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local7,>( _20, ), bb19, bb4)
-	if( var21.DATA.var_1._0 == 1114112) {goto bb20;} else {goto bb22;}
-	// ^ Switch( _21 : 0 => bb20, 1 => bb22, )
+	var89 = & var3._0;	// _89 = Borrow(Shared, _3.0)
+	var90 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var89 );
+	// ^ Call( _90 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _89, ), bb17, bb4)
+	var93 = var90;	// _93 = Borrow(Shared, _90*)
+	var91 = var93;	// _91 = Cast(_93 as *const [u8])
+	var92 = var91;	// _92 = Cast(_91 as *const str)
+	var99 = var92;	// _99 = Borrow(Shared, _92*)
+	var98.var_0 = var99;	// _98 = UnionVariant(::"core-0_0_0"::str::#2::Slices<'#local6,> #0, _99)
+	var97 = var98.var_1;	// _97 = Use(_98#1)
+	// ^ drop(_98)
+	var96 = ZRISCa4iter0g( var97 );
+	// ^ Call( _96 = <[u8] /*- <u8,>*/>::iter<'#local6,>( _97, ), bb18, bb4)
+	var95._0 = var96;	// _95 = Struct(::"core-0_0_0"::str::Chars<'#local6,>, {_96})
+	var4._0 = var95;
+	var4._1 = 0x1ull;	// _4 = Struct(::"core-0_0_0"::iter::Skip<::"core-0_0_0"::str::Chars<'#local6,>/*S*/,>, {_95, 0x1 usize})
+	var23 = & var4;	// _23 = Borrow(Unique, _4)
+	var24 = ZRQG2cE9core0_0_04iter4Skip1gG2c_A3str5Chars0g3c_A_B8iterator8Iterator0g4next0g( var23 );
+	// ^ Call( _24 = <::"core-0_0_0"::iter::Skip<::"core-0_0_0"::str::Chars<'#local6,>/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local7,>( _23, ), bb19, bb4)
+	if( var24.DATA.var_1._0 == 1114112) {goto bb20;} else {goto bb22;}
+	// ^ Switch( _24 : 0 => bb20, 1 => bb22, )
 bb20:
 	// ^ drop(_4)
 	// ^ Goto(21)
@@ -4595,53 +4815,57 @@ bb21:
 	goto bb2;
 	// ^ Goto(2)
 bb22:
-	var5 = var21.DATA.var_1._0;	// _5 = Use(_21#1.0)
-	var22 = & var5;	// _22 = Borrow(Shared, _5)
-	var91 = make_sliceptr(&ZRG2cD3binC_229FRAGMENTS0g.val, 0x2ull);	// _91 = MakeDst(&::"bin#"::#22::FRAGMENTS, 0x2 usize)
-	var24 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCx( var22, ZRQCx2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _24 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local8,char,>( _22, &<char as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb23, bb4)
-	var25.DATA[0] = var24;	// _25 = Array(_24)
-	var26 = & var25;	// _26 = Borrow(Shared, _25)
-	var92 = make_sliceptr(var26, 0x1ull);	// _92 = MakeDst(_26, 0x1 usize)
-	memset(&var90, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _90 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var23._0 = var91;
-	var23._1 = var90;
-	var23._2 = var92;	// _23 = Struct(::"core-0_0_0"::fmt::Arguments<'#local26,>, {_91, _90, _92})
-	var27 = & var23;	// _27 = Borrow(Shared, _23)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var27, &ZRG1cD3binG7lifted10g.val );
+	var5 = var24.DATA.var_1._0;	// _5 = Use(_24#1.0)
+	var25 = & var5;	// _25 = Borrow(Shared, _5)
+	var101 = make_sliceptr(&ZRG2cD3binC_289FRAGMENTS0g.val, 0x2ull);	// _101 = MakeDst(&::"bin#"::#28::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var28 = ZRQCx2cE9core0_0_03fmt7Display0g_B0g;	// _28 = Cast(_27 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static char, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var29 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCx( var25, var28 );
+	// ^ Call( _29 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local8,char,>( _25, _28, ), bb23, bb4)
+	var30.DATA[0] = var29;	// _30 = Array(_29)
+	var31 = & var30;	// _31 = Borrow(Shared, _30)
+	var102 = make_sliceptr(var31, 0x1ull);	// _102 = MakeDst(_31, 0x1 usize)
+	memset(&var100, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _100 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var26._0 = var101;
+	var26._1 = var100;
+	var26._2 = var102;	// _26 = Struct(::"core-0_0_0"::fmt::Arguments<'#local26,>, {_101, _100, _102})
+	var32 = & var26;	// _32 = Borrow(Shared, _26)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var32, &ZRG1cD3binF6const10g.val );
 	goto bb4;
-	// ^ Call( _28 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local30,'static,>( _27, &::"bin#"::lifted#1, ), bb4, bb4)
+	// ^ Call( _33 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local30,'static,>( _32, &::"bin#"::const#1, ), bb4, bb4)
 bb24:
-	var93 = & var3._0;	// _93 = Borrow(Shared, _3.0)
-	var94 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var93 );
-	// ^ Call( _94 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _93, ), bb25, bb4)
-	var97 = var94;	// _97 = Borrow(Shared, _94*)
-	var95 = var97;	// _95 = Cast(_97 as *const [u8])
-	var96 = var95;	// _96 = Cast(_95 as *const str)
-	var32 = var96;	// _32 = Borrow(Shared, _96*)
+	var103 = & var3._0;	// _103 = Borrow(Shared, _3.0)
+	var104 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref5Deref0g_F0g( var103 );
+	// ^ Call( _104 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::Deref>::deref<'#omitted,>( _103, ), bb25, bb4)
+	var107 = var104;	// _107 = Borrow(Shared, _104*)
+	var105 = var107;	// _105 = Cast(_107 as *const [u8])
+	var106 = var105;	// _106 = Cast(_105 as *const str)
+	var37 = var106;	// _37 = Borrow(Shared, _106*)
 	{ static SLICE_PTR switch_strings[] = { {"--is-output",11}, {"--pretty",8}, {0,0} };
-	switch( mrustc_string_search_linear(var32, 2, switch_strings) ) {
+	switch( mrustc_string_search_linear(var37, 2, switch_strings) ) {
 	case 0: goto bb28; break;
 	case 1: goto bb29; break;
 	default: goto bb26;
 	} }
-	// ^ SwitchValue( _32 : "--is-output" => bb28, "--pretty" => bb29, else bb26)
+	// ^ SwitchValue( _37 : "--is-output" => bb28, "--pretty" => bb29, else bb26)
 bb26:
-	var33 = & var3;	// _33 = Borrow(Shared, _3)
-	var99 = make_sliceptr(&ZRG2cD3binC_239FRAGMENTS0g.val, 0x2ull);	// _99 = MakeDst(&::"bin#"::#23::FRAGMENTS, 0x2 usize)
-	var35 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var33, ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g );
-	// ^ Call( _35 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local12,::"alloc-0_0_0"::string::String/*S*/,>( _33, &<::"alloc-0_0_0"::string::String/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb27, bb4)
-	var36.DATA[0] = var35;	// _36 = Array(_35)
-	var37 = & var36;	// _37 = Borrow(Shared, _36)
-	var100 = make_sliceptr(var37, 0x1ull);	// _100 = MakeDst(_37, 0x1 usize)
-	memset(&var98, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _98 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var34._0 = var99;
-	var34._1 = var98;
-	var34._2 = var100;	// _34 = Struct(::"core-0_0_0"::fmt::Arguments<'#local27,>, {_99, _98, _100})
-	var38 = & var34;	// _38 = Borrow(Shared, _34)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var38, &ZRG1cD3binG7lifted20g.val );
+	var38 = & var3;	// _38 = Borrow(Shared, _3)
+	var109 = make_sliceptr(&ZRG2cD3binC_299FRAGMENTS0g.val, 0x2ull);	// _109 = MakeDst(&::"bin#"::#29::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var41 = ZRQG2cF10alloc0_0_06string6String0g2cE9core0_0_03fmt7Display0g_E0g;	// _41 = Cast(_40 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::String/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var42 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string6String0g( var38, var41 );
+	// ^ Call( _42 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local12,::"alloc-0_0_0"::string::String/*S*/,>( _38, _41, ), bb27, bb4)
+	var43.DATA[0] = var42;	// _43 = Array(_42)
+	var44 = & var43;	// _44 = Borrow(Shared, _43)
+	var110 = make_sliceptr(var44, 0x1ull);	// _110 = MakeDst(_44, 0x1 usize)
+	memset(&var108, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _108 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var39._0 = var109;
+	var39._1 = var108;
+	var39._2 = var110;	// _39 = Struct(::"core-0_0_0"::fmt::Arguments<'#local27,>, {_109, _108, _110})
+	var45 = & var39;	// _45 = Borrow(Shared, _39)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var45, &ZRG1cD3binF6const20g.val );
 	goto bb4;
-	// ^ Call( _39 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local31,'static,>( _38, &::"bin#"::lifted#2, ), bb4, bb4)
+	// ^ Call( _46 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local31,'static,>( _45, &::"bin#"::const#2, ), bb4, bb4)
 bb28:
 	var1 = true;	// _1 = Constant(true)
 	goto bb21;
@@ -4652,74 +4876,74 @@ bb29:
 	// ^ Goto(21)
 bb30:
 	var6.DATA[0] = 0x0;	// _6 = Array(0x0 u8)
-	var40 = ZRG3cD8std0_0_02io5stdio5stdin0g( );
-	// ^ Call( _40 = ::"std-0_0_0"::io::stdio::stdin( ), bb31, bb4)
-	var41 = & var40;	// _41 = Borrow(Unique, _40)
-	var42 = & var6;	// _42 = Borrow(Unique, _6)
-	var43 = make_sliceptr(var42, 0x1ull);	// _43 = MakeDst(_42, 0x1 usize)
-	var44 = ZRQG3cD8std0_0_02io5stdio5Stdin0g2c_A2io4Read0g10read_exact0g( var41, var43 );
-	// ^ Call( _44 = <::"std-0_0_0"::io::stdio::Stdin/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local15,'#local16,>( _41, _43, ), bb32, bb4)
-	ZRIG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g6unwrap0g( var44 );
-	// ^ Call( _45 = <::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/ /*- <(),::"std-0_0_0"::io::error::Error/*S*/,>*/>::unwrap( _44, ), bb33, bb4)
-	ZRIG3cD8std0_0_02io5stdio5Stdin0gA9drop_glue0g(&var40);
-	// ^ drop(_40)
-	var46 = & var6;	// _46 = Borrow(Shared, _6)
-	var47 = make_sliceptr(var46, 0x1ull);	// _47 = MakeDst(_46, 0x1 usize)
-	var7 = & ((uint8_t *)var47.PTR)[0];	// _7 = Borrow(Shared, _47*.0)
-	var8 = &ZRG1cD3binG7lifted30g.val;	// _8 = Constant(&::"bin#"::lifted#3)
-	var9 = ((uint8_t *)var47.PTR)[0] == 0x0;	// _9 = BinOp(_47*.0 EQ 0x0 u8)
-	if(var9) goto bb34; else goto bb43;
-	// ^ If( _9 : 34, 43)
+	var47 = ZRG3cD8std0_0_02io5stdio5stdin0g( );
+	// ^ Call( _47 = ::"std-0_0_0"::io::stdio::stdin( ), bb31, bb4)
+	var48 = & var47;	// _48 = Borrow(Unique, _47)
+	var49 = & var6;	// _49 = Borrow(Unique, _6)
+	var50 = make_sliceptr(var49, 0x1ull);	// _50 = MakeDst(_49, 0x1 usize)
+	var51 = ZRQG3cD8std0_0_02io5stdio5Stdin0g2c_A2io4Read0g10read_exact0g( var48, var50 );
+	// ^ Call( _51 = <::"std-0_0_0"::io::stdio::Stdin/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local15,'#local16,>( _48, _50, ), bb32, bb4)
+	ZRIG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g6unwrap0g( var51 );
+	// ^ Call( _52 = <::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/ /*- <(),::"std-0_0_0"::io::error::Error/*S*/,>*/>::unwrap( _51, ), bb33, bb4)
+	ZRIG3cD8std0_0_02io5stdio5Stdin0gA9drop_glue0g(&var47);
+	// ^ drop(_47)
+	var53 = & var6;	// _53 = Borrow(Shared, _6)
+	var54 = make_sliceptr(var53, 0x1ull);	// _54 = MakeDst(_53, 0x1 usize)
+	var7 = & ((uint8_t *)var54.PTR)[0];	// _7 = Borrow(Shared, _54*.0)
+	var8 = &ZRG1cD3binF6const30g.val;	// _8 = Constant(&::"bin#"::const#3)
+	var55 = ((uint8_t *)var54.PTR)[0];	// _55 = Use(_54*.0)
+	var10 = var55 == 0x0;	// _10 = BinOp(_55 EQ 0x0 u8)
+	if(var10) goto bb34; else goto bb41;
+	// ^ If( _10 : 34, 41)
 bb34:
-	var9 = var0;	// _9 = Use(_0)
-	if(var0) goto bb35; else goto bb39;
-	// ^ If( _0 : 35, 39)
-bb35:
-	var56 = ZRG3cD8std0_0_02io5stdio5stdin0g( );
-	// ^ Call( _56 = ::"std-0_0_0"::io::stdio::stdin( ), bb36, bb4)
-	var57 = & var56;	// _57 = Borrow(Shared, _56)
-	var58 = ZRIG3cD8std0_0_02io5stdio5Stdin0g4lock0g( var57 );
-	// ^ Call( _58 = <::"std-0_0_0"::io::stdio::Stdin/*S*/ /*- */>::lock<'#local22,>( _57, ), bb37, bb4)
-	ZRG1cD3bin24dump_token_stream_pretty1gG3cD8std0_0_02io5stdio9StdinLock0g( var58 );
-	// ^ Call( _59 = ::"bin#"::dump_token_stream_pretty<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>( _58, ), bb38, bb4)
-	ZRIG3cD8std0_0_02io5stdio5Stdin0gA9drop_glue0g(&var56);
-	// ^ drop(_56)
+	var9 = ZRG3cD8std0_0_02io5stdio5stdin0g( );
+	// ^ Call( _9 = ::"std-0_0_0"::io::stdio::stdin( ), bb35, bb4)
+	var10 = var0;	// _10 = Use(_0)
+	if(var0) goto bb36; else goto bb38;
+	// ^ If( _0 : 36, 38)
+bb36:
+	var68 = & var9;	// _68 = Borrow(Shared, _9)
+	var69 = ZRIG3cD8std0_0_02io5stdio5Stdin0g4lock0g( var68 );
+	// ^ Call( _69 = <::"std-0_0_0"::io::stdio::Stdin/*S*/ /*- */>::lock<'#local22,>( _68, ), bb37, bb4)
+	ZRG1cD3bin24dump_token_stream_pretty1gG3cD8std0_0_02io5stdio9StdinLock0g( var69 );
+	goto bb40;
+	// ^ Call( _70 = ::"bin#"::dump_token_stream_pretty<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>( _69, ), bb40, bb4)
+bb38:
+	var71 = & var9;	// _71 = Borrow(Shared, _9)
+	var72 = ZRIG3cD8std0_0_02io5stdio5Stdin0g4lock0g( var71 );
+	// ^ Call( _72 = <::"std-0_0_0"::io::stdio::Stdin/*S*/ /*- */>::lock<'#local23,>( _71, ), bb39, bb4)
+	ZRG1cD3bin17dump_token_stream1gG3cD8std0_0_02io5stdio9StdinLock0g( var72 );
+	// ^ Call( _73 = ::"bin#"::dump_token_stream<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>( _72, ), bb40, bb4)
+bb40:
 	/* ZST assign */
+	ZRIG3cD8std0_0_02io5stdio5Stdin0gA9drop_glue0g(&var9);
+	// ^ drop(_9)
 	return ;
 	// ^ Return
-bb39:
-	var60 = ZRG3cD8std0_0_02io5stdio5stdin0g( );
-	// ^ Call( _60 = ::"std-0_0_0"::io::stdio::stdin( ), bb40, bb4)
-	var61 = & var60;	// _61 = Borrow(Shared, _60)
-	var62 = ZRIG3cD8std0_0_02io5stdio5Stdin0g4lock0g( var61 );
-	// ^ Call( _62 = <::"std-0_0_0"::io::stdio::Stdin/*S*/ /*- */>::lock<'#local23,>( _61, ), bb41, bb4)
-	ZRG1cD3bin17dump_token_stream1gG3cD8std0_0_02io5stdio9StdinLock0g( var62 );
-	// ^ Call( _63 = ::"bin#"::dump_token_stream<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>( _62, ), bb42, bb4)
-	ZRIG3cD8std0_0_02io5stdio5Stdin0gA9drop_glue0g(&var60);
-	// ^ drop(_60)
+bb41:
+	var56 = & var7;	// _56 = Borrow(Shared, _7)
+	var74 = & var8;	// _74 = Borrow(Shared, _8)
+	var112 = make_sliceptr(&ZRG3cD3binB_1B_09FRAGMENTS0g.val, 0x3ull);	// _112 = MakeDst(&::"bin#"::#1::#0::FRAGMENTS, 0x3 usize)
 	/* ZST assign */
-	return ;
-	// ^ Return
-bb43:
-	var48 = & var7;	// _48 = Borrow(Shared, _7)
-	var64 = & var8;	// _64 = Borrow(Shared, _8)
-	var102 = make_sliceptr(&ZRG3cD3binB_1B_09FRAGMENTS0g.val, 0x3ull);	// _102 = MakeDst(&::"bin#"::#1::#0::FRAGMENTS, 0x3 usize)
-	var50 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCa( var48, ZRQBsCa2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _50 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local18,&'#local17 u8,>( _48, &<&'#local17 u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb44, bb4)
-	var51 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCa( var64, ZRQBsCa2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _51 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local19,&'#local17 u8,>( _64, &<&'#local17 u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb45, bb4)
-	var52.DATA[0] = var50;
-	var52.DATA[1] = var51;	// _52 = Array(_50, _51)
-	var53 = & var52;	// _53 = Borrow(Shared, _52)
-	var103 = make_sliceptr(var53, 0x2ull);	// _103 = MakeDst(_53, 0x2 usize)
-	memset(&var101, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _101 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var49._0 = var102;
-	var49._1 = var101;
-	var49._2 = var103;	// _49 = Struct(::"core-0_0_0"::fmt::Arguments<'#local28,>, {_102, _101, _103})
-	var54 = & var49;	// _54 = Borrow(Shared, _49)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var54, &ZRG1cD3binG7lifted40g.val );
+	var59 = ZRQBsCa2cE9core0_0_03fmt5Debug0g_B0g;	// _59 = Cast(_58 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var60 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCa( var56, var59 );
+	// ^ Call( _60 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local18,&'#local17 u8,>( _56, _59, ), bb42, bb4)
+	/* ZST assign */
+	var62 = ZRQBsCa2cE9core0_0_03fmt5Debug0g_B0g;	// _62 = Cast(_61 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var63 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCa( var74, var62 );
+	// ^ Call( _63 = <::"core-0_0_0"::fmt::ArgumentV1<'#local2,>/*S*/ /*- <'static,>*/>::new<'#local19,&'#local17 u8,>( _74, _62, ), bb43, bb4)
+	var64.DATA[0] = var60;
+	var64.DATA[1] = var63;	// _64 = Array(_60, _63)
+	var65 = & var64;	// _65 = Borrow(Shared, _64)
+	var113 = make_sliceptr(var65, 0x2ull);	// _113 = MakeDst(_65, 0x2 usize)
+	memset(&var111, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _111 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var57._0 = var112;
+	var57._1 = var111;
+	var57._2 = var113;	// _57 = Struct(::"core-0_0_0"::fmt::Arguments<'#local28,>, {_112, _111, _113})
+	var66 = & var57;	// _66 = Borrow(Shared, _57)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var66, &ZRG1cD3binF6const40g.val );
 	goto bb4;
-	// ^ Call( _55 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local32,'static,>( _54, &::"bin#"::lifted#4, ), bb4, bb4)
+	// ^ Call( _67 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local32,'static,>( _66, &::"bin#"::const#4, ), bb4, bb4)
 }
 // ::"core-0_0_0"::char::convert::from_u32
 static struct e_ZRG2cE9core0_0_06option6Option1gCx  ZRG3cE9core0_0_04char7convert8from_u320g(
@@ -4803,175 +5027,6 @@ static struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g  ZRG2cE9core0_0_03ptr4read
 	// ^ Return
 bb3: _Unwind_Resume(); // Diverge
 }
-// ::"core-0_0_0"::ptr::swap_nonoverlapping<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>
-static void  ZRG2cE9core0_0_03ptr19swap_nonoverlapping1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu(
-		struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *arg0, // *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
-		struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *arg1, // *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
-		uintptr_t arg2 // usize
-		) // -> ()
-
-{
-	tUNIT rv;
-	uint8_t *var0;	// *mut u8
-	uint8_t *var1;	// *mut u8
-	uintptr_t var2;	// usize
-	var0 = (uint8_t *)arg0;	// _0 = Cast(a0 as *mut u8)
-	var1 = (uint8_t *)arg1;	// _1 = Cast(a1 as *mut u8)
-	var2 = 0x10ull * arg2;	// _2 = BinOp(0x10 usize MUL a2)
-	ZRG2cE9core0_0_03ptr25swap_nonoverlapping_bytes0g( var0, var1, var2 );
-	// ^ Call( retval = ::"core-0_0_0"::ptr::swap_nonoverlapping_bytes( _0, _1, _2, ), bb1, bb2)
-	return ;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// ::"core-0_0_0"::ptr::swap_nonoverlapping<::"core-0_0_0"::option::Option<&'static str,>/*E*/,>
-static void  ZRG2cE9core0_0_03ptr19swap_nonoverlapping1gG2c_A6option6Option1gBsCy(
-		struct e_ZRG2cE9core0_0_06option6Option1gBsCy *arg0, // *mut ::"core-0_0_0"::option::Option<&'static str,>/*E*/
-		struct e_ZRG2cE9core0_0_06option6Option1gBsCy *arg1, // *mut ::"core-0_0_0"::option::Option<&'static str,>/*E*/
-		uintptr_t arg2 // usize
-		) // -> ()
-
-{
-	tUNIT rv;
-	uint8_t *var0;	// *mut u8
-	uint8_t *var1;	// *mut u8
-	uintptr_t var2;	// usize
-	var0 = (uint8_t *)arg0;	// _0 = Cast(a0 as *mut u8)
-	var1 = (uint8_t *)arg1;	// _1 = Cast(a1 as *mut u8)
-	var2 = 0x10ull * arg2;	// _2 = BinOp(0x10 usize MUL a2)
-	ZRG2cE9core0_0_03ptr25swap_nonoverlapping_bytes0g( var0, var1, var2 );
-	// ^ Call( retval = ::"core-0_0_0"::ptr::swap_nonoverlapping_bytes( _0, _1, _2, ), bb1, bb2)
-	return ;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// ::"core-0_0_0"::ptr::swap_nonoverlapping_bytes
-static void  ZRG2cE9core0_0_03ptr25swap_nonoverlapping_bytes0g(
-		uint8_t *arg0, // *mut u8
-		uint8_t *arg1, // *mut u8
-		uintptr_t arg2 // usize
-		) // -> ()
-
-{
-	tUNIT rv;
-	uintptr_t var0;	// usize
-	uintptr_t var1;	// usize
-	struct s_ZRG3cE9core0_0_03ptrB_05Block0g var2;	// ::"core-0_0_0"::ptr::#0::Block/*S*/
-	uint8_t *var3;	// *mut u8
-	uint8_t *var4;	// *mut u8
-	uint8_t *var5;	// *mut u8
-	struct s_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g var6;	// ::"core-0_0_0"::ptr::#0::UnalignedBlock/*S*/
-	uintptr_t var7;	// usize
-	uint8_t *var8;	// *mut u8
-	uint8_t *var9;	// *mut u8
-	uint8_t *var10;	// *mut u8
-	RUST_BOOL var11;	// bool
-	uintptr_t var12;	// usize
-	struct s_ZRG3cE9core0_0_03ptrB_05Block0g *var13;	// &'#local0 mut ::"core-0_0_0"::ptr::#0::Block/*S*/
-	struct s_ZRG3cE9core0_0_03ptrB_05Block0g *var14;	// *mut ::"core-0_0_0"::ptr::#0::Block/*S*/
-	uint8_t *var15;	// *const u8
-	tUNIT var16 = {0};	// ()
-	uint8_t *var17;	// *const u8
-	tUNIT var18 = {0};	// ()
-	uint8_t *var19;	// *const u8
-	tUNIT var20 = {0};	// ()
-	struct s_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g *var21;	// &'#local1 mut ::"core-0_0_0"::ptr::#0::UnalignedBlock/*S*/
-	struct s_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g *var22;	// *mut ::"core-0_0_0"::ptr::#0::UnalignedBlock/*S*/
-	uint8_t *var23;	// *const u8
-	tUNIT var24 = {0};	// ()
-	uint8_t *var25;	// *const u8
-	tUNIT var26 = {0};	// ()
-	uint8_t *var27;	// *const u8
-	tUNIT var28 = {0};	// ()
-	uint8_t *var29;	// *const u8
-	uint8_t *var30;	// *const u8
-	intptr_t var31;	// isize
-	uint8_t *var32;	// *const u8
-	uint8_t *var33;	// *const u8
-	intptr_t var34;	// isize
-	uint8_t *var35;	// *const u8
-	uint8_t *var36;	// *const u8
-	intptr_t var37;	// isize
-	uint8_t *var38;	// *const u8
-	uint8_t *var39;	// *const u8
-	intptr_t var40;	// isize
-	var0 = 0x20ull;	// _0 = Constant(0x20 usize)
-	var1 = 0x0ull;	// _1 = Constant(0x0 usize)
-	// ^ Goto(1)
-bb1:
-	var12 = var1 + var0;	// _12 = BinOp(_1 ADD _0)
-	var11 = var12 <= arg2;	// _11 = BinOp(_12 LE a2)
-	if(var11) goto bb2; else goto bb9;
-	// ^ If( _11 : 2, 9)
-bb2:
-	;
-	// ^ Call( _2 = "uninit"::<::"core-0_0_0"::ptr::#0::Block/*S*/,>( ), bb3, bb18)
-	var13 = & var2;	// _13 = Borrow(Unique, _2)
-	var14 = (struct s_ZRG3cE9core0_0_03ptrB_05Block0g *)var13;	// _14 = Cast(_13 as *mut ::"core-0_0_0"::ptr::#0::Block/*S*/)
-	var3 = (uint8_t *)var14;	// _3 = Cast(_14 as *mut u8)
-	var31 = (intptr_t )var1;	// _31 = Cast(_1 as isize)
-	var29 = (uint8_t *)arg0;	// _29 = Cast(a0 as *const u8)
-	var30 = var29 + var31;
-	// ^ Call( _30 = "offset"::<u8,>( _29, _31, ), bb4, bb18)
-	var4 = (uint8_t *)var30;	// _4 = Cast(_30 as *mut u8)
-	var34 = (intptr_t )var1;	// _34 = Cast(_1 as isize)
-	var32 = (uint8_t *)arg1;	// _32 = Cast(a1 as *const u8)
-	var33 = var32 + var34;
-	// ^ Call( _33 = "offset"::<u8,>( _32, _34, ), bb5, bb18)
-	var5 = (uint8_t *)var33;	// _5 = Cast(_33 as *mut u8)
-	var15 = (uint8_t *)var4;	// _15 = Cast(_4 as *const u8)
-	memcpy( var3, var15, var0 * sizeof(uint8_t ));
-	// ^ Call( _16 = "copy_nonoverlapping"::<u8,>( _15, _3, _0, ), bb6, bb18)
-	var17 = (uint8_t *)var5;	// _17 = Cast(_5 as *const u8)
-	memcpy( var4, var17, var0 * sizeof(uint8_t ));
-	// ^ Call( _18 = "copy_nonoverlapping"::<u8,>( _17, _4, _0, ), bb7, bb18)
-	var19 = (uint8_t *)var3;	// _19 = Cast(_3 as *const u8)
-	memcpy( var5, var19, var0 * sizeof(uint8_t ));
-	// ^ Call( _20 = "copy_nonoverlapping"::<u8,>( _19, _5, _0, ), bb8, bb18)
-	var1 = var1 + var0;	// _1 = BinOp(_1 ADD _0)
-	// ^ drop(_2)
-	goto bb1;
-	// ^ Goto(1)
-bb9:
-	var11 = var1 < arg2;	// _11 = BinOp(_1 LT a2)
-	if(var11) goto bb10; else goto bb17;
-	// ^ If( _11 : 10, 17)
-bb10:
-	;
-	// ^ Call( _6 = "uninit"::<::"core-0_0_0"::ptr::#0::UnalignedBlock/*S*/,>( ), bb11, bb18)
-	var7 = arg2 - var1;	// _7 = BinOp(a2 SUB _1)
-	var21 = & var6;	// _21 = Borrow(Unique, _6)
-	var22 = (struct s_ZRG3cE9core0_0_03ptrB_014UnalignedBlock0g *)var21;	// _22 = Cast(_21 as *mut ::"core-0_0_0"::ptr::#0::UnalignedBlock/*S*/)
-	var8 = (uint8_t *)var22;	// _8 = Cast(_22 as *mut u8)
-	var37 = (intptr_t )var1;	// _37 = Cast(_1 as isize)
-	var35 = (uint8_t *)arg0;	// _35 = Cast(a0 as *const u8)
-	var36 = var35 + var37;
-	// ^ Call( _36 = "offset"::<u8,>( _35, _37, ), bb12, bb18)
-	var9 = (uint8_t *)var36;	// _9 = Cast(_36 as *mut u8)
-	var40 = (intptr_t )var1;	// _40 = Cast(_1 as isize)
-	var38 = (uint8_t *)arg1;	// _38 = Cast(a1 as *const u8)
-	var39 = var38 + var40;
-	// ^ Call( _39 = "offset"::<u8,>( _38, _40, ), bb13, bb18)
-	var10 = (uint8_t *)var39;	// _10 = Cast(_39 as *mut u8)
-	var23 = (uint8_t *)var9;	// _23 = Cast(_9 as *const u8)
-	memcpy( var8, var23, var7 * sizeof(uint8_t ));
-	// ^ Call( _24 = "copy_nonoverlapping"::<u8,>( _23, _8, _7, ), bb14, bb18)
-	var25 = (uint8_t *)var10;	// _25 = Cast(_10 as *const u8)
-	memcpy( var9, var25, var7 * sizeof(uint8_t ));
-	// ^ Call( _26 = "copy_nonoverlapping"::<u8,>( _25, _9, _7, ), bb15, bb18)
-	var27 = (uint8_t *)var8;	// _27 = Cast(_8 as *const u8)
-	memcpy( var10, var27, var7 * sizeof(uint8_t ));
-	// ^ Call( _28 = "copy_nonoverlapping"::<u8,>( _27, _10, _7, ), bb16, bb18)
-	// ^ drop(_6)
-	/* ZST assign */
-	return ;
-	// ^ Return
-bb17:
-	/* ZST assign */
-	return ;
-	// ^ Return
-bb18: _Unwind_Resume(); // Diverge
-}
 // ::"core-0_0_0"::ptr::swap_nonoverlapping_one<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>
 static void  ZRG2cE9core0_0_03ptr23swap_nonoverlapping_one1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu(
 		struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *arg0, // *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
@@ -4983,16 +5038,16 @@ static void  ZRG2cE9core0_0_03ptr23swap_nonoverlapping_one1gG2c_A6option6Option1
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var0;	// *const ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var1;	// *const ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
 	tUNIT var2 = {0};	// ()
-	tUNIT var3 = {0};	// ()
-	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu var4;	// ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
+	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu var3;	// ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
+	tUNIT var4 = {0};	// ()
 	var0 = (struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *)arg0;	// _0 = Cast(a0 as *const ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/)
-	var4 = ZRG2cE9core0_0_03ptr4read1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu( var0 );
-	// ^ Call( _4 = ::"core-0_0_0"::ptr::read<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>( _0, ), bb1, bb4)
+	var3 = ZRG2cE9core0_0_03ptr4read1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu( var0 );
+	// ^ Call( _3 = ::"core-0_0_0"::ptr::read<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>( _0, ), bb1, bb4)
 	var1 = (struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *)arg1;	// _1 = Cast(a1 as *const ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/)
 	memcpy( arg0, var1, 0x1ull * sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu ));
 	// ^ Call( _2 = "copy_nonoverlapping"::<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>( _1, a0, 0x1 usize, ), bb2, bb4)
-	*arg1 = var4;
-	// ^ Call( _3 = "move_val_init"::<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>( a1, _4, ), bb3, bb4)
+	*arg1 = var3;
+	// ^ Call( _4 = "move_val_init"::<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>( a1, _3, ), bb3, bb4)
 	/* ZST assign */
 	return ;
 	// ^ Return
@@ -5009,16 +5064,16 @@ static void  ZRG2cE9core0_0_03ptr23swap_nonoverlapping_one1gG2c_A6option6Option1
 	struct e_ZRG2cE9core0_0_06option6Option1gBsCy *var0;	// *const ::"core-0_0_0"::option::Option<&'static str,>/*E*/
 	struct e_ZRG2cE9core0_0_06option6Option1gBsCy *var1;	// *const ::"core-0_0_0"::option::Option<&'static str,>/*E*/
 	tUNIT var2 = {0};	// ()
-	tUNIT var3 = {0};	// ()
-	struct e_ZRG2cE9core0_0_06option6Option1gBsCy var4;	// ::"core-0_0_0"::option::Option<&'static str,>/*E*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsCy var3;	// ::"core-0_0_0"::option::Option<&'static str,>/*E*/
+	tUNIT var4 = {0};	// ()
 	var0 = (struct e_ZRG2cE9core0_0_06option6Option1gBsCy *)arg0;	// _0 = Cast(a0 as *const ::"core-0_0_0"::option::Option<&'static str,>/*E*/)
-	var4 = ZRG2cE9core0_0_03ptr4read1gG2c_A6option6Option1gBsCy( var0 );
-	// ^ Call( _4 = ::"core-0_0_0"::ptr::read<::"core-0_0_0"::option::Option<&'static str,>/*E*/,>( _0, ), bb1, bb4)
+	var3 = ZRG2cE9core0_0_03ptr4read1gG2c_A6option6Option1gBsCy( var0 );
+	// ^ Call( _3 = ::"core-0_0_0"::ptr::read<::"core-0_0_0"::option::Option<&'static str,>/*E*/,>( _0, ), bb1, bb4)
 	var1 = (struct e_ZRG2cE9core0_0_06option6Option1gBsCy *)arg1;	// _1 = Cast(a1 as *const ::"core-0_0_0"::option::Option<&'static str,>/*E*/)
 	memcpy( arg0, var1, 0x1ull * sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsCy ));
 	// ^ Call( _2 = "copy_nonoverlapping"::<::"core-0_0_0"::option::Option<&'static str,>/*E*/,>( _1, a0, 0x1 usize, ), bb2, bb4)
-	*arg1 = var4;
-	// ^ Call( _3 = "move_val_init"::<::"core-0_0_0"::option::Option<&'static str,>/*E*/,>( a1, _4, ), bb3, bb4)
+	*arg1 = var3;
+	// ^ Call( _4 = "move_val_init"::<::"core-0_0_0"::option::Option<&'static str,>/*E*/,>( a1, _3, ), bb3, bb4)
 	/* ZST assign */
 	return ;
 	// ^ Return
@@ -5033,33 +5088,41 @@ static tBANG  ZRG2cE9core0_0_06result13unwrap_failed1gG2cF10alloc0_0_06string13F
 {
 	tBANG rv;
 	SLICE_PTR *var0;	// &'#local0 &'static str
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var1;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var2;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var3;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var4;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	tBANG var5 = {0};	// !
-	struct s_ZRG2cF10alloc0_0_06string13FromUtf8Error0g *var6;	// &'#local1 ::"alloc-0_0_0"::string::FromUtf8Error/*S*/
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var7;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var8;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var9;	// &'static [&'static str]
-	SLICE_PTR var10;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
+	t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g var1 = {0};	// fn{<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var2;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var3;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTfQG2cF10alloc0_0_06string13FromUtf8Error0g2cE9core0_0_03fmt5Debug0g_E0g var4 = {0};	// fn{<::"alloc-0_0_0"::string::FromUtf8Error/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cF10alloc0_0_06string13FromUtf8Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_D6result6Result2gT0G2c_D_E5Error0g var5;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::FromUtf8Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var6;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var7;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var8;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	tBANG var9 = {0};	// !
+	struct s_ZRG2cF10alloc0_0_06string13FromUtf8Error0g *var10;	// &'#local1 ::"alloc-0_0_0"::string::FromUtf8Error/*S*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var11;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var12;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var13;	// &'static [&'static str]
+	SLICE_PTR var14;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
 	var0 = & arg0;	// _0 = Borrow(Shared, a0)
-	var6 = & arg1;	// _6 = Borrow(Shared, a1)
-	var9 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _9 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
-	var1 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _1 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, &<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb1, bb3)
-	var2 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string13FromUtf8Error0g( var6, ZRQG2cF10alloc0_0_06string13FromUtf8Error0g2cE9core0_0_03fmt5Debug0g_E0g );
-	// ^ Call( _2 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"alloc-0_0_0"::string::FromUtf8Error/*S*/,>( _6, &<::"alloc-0_0_0"::string::FromUtf8Error/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb2, bb3)
-	var3.DATA[0] = var1;
-	var3.DATA[1] = var2;	// _3 = Array(_1, _2)
-	var4 = & var3;	// _4 = Borrow(Shared, _3)
-	var10 = make_sliceptr(var4, 0x2ull);	// _10 = MakeDst(_4, 0x2 usize)
-	memset(&var8, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _8 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var7._0 = var9;
-	var7._1 = var8;
-	var7._2 = var10;	// _7 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_9, _8, _10})
-	ZRG2cE9core0_0_09panicking9panic_fmt0g( var7, &ZRG2cE9core0_0_06resultG7lifted00g.val );
-	// ^ Call( _5 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _7, &::"core-0_0_0"::result::lifted#0, ), bb3, bb3)
+	var10 = & arg1;	// _10 = Borrow(Shared, a1)
+	var13 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _13 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var2 = ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g;	// _2 = Cast(_1 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var3 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, var2 );
+	// ^ Call( _3 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, _2, ), bb1, bb3)
+	/* ZST assign */
+	var5 = ZRQG2cF10alloc0_0_06string13FromUtf8Error0g2cE9core0_0_03fmt5Debug0g_E0g;	// _5 = Cast(_4 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"alloc-0_0_0"::string::FromUtf8Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var6 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2cF10alloc0_0_06string13FromUtf8Error0g( var10, var5 );
+	// ^ Call( _6 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"alloc-0_0_0"::string::FromUtf8Error/*S*/,>( _10, _5, ), bb2, bb3)
+	var7.DATA[0] = var3;
+	var7.DATA[1] = var6;	// _7 = Array(_3, _6)
+	var8 = & var7;	// _8 = Borrow(Shared, _7)
+	var14 = make_sliceptr(var8, 0x2ull);	// _14 = MakeDst(_8, 0x2 usize)
+	memset(&var12, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _12 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var11._0 = var13;
+	var11._1 = var12;
+	var11._2 = var14;	// _11 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_13, _12, _14})
+	ZRG2cE9core0_0_09panicking9panic_fmt0g( var11, &ZRG2cE9core0_0_06resultF6const00g.val );
+	// ^ Call( _9 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _11, &::"core-0_0_0"::result::const#0, ), bb3, bb3)
 bb3: _Unwind_Resume(); // Diverge
 }
 // ::"core-0_0_0"::result::unwrap_failed<'static,::"core-0_0_0"::alloc::LayoutErr/*S*/,>
@@ -5071,33 +5134,41 @@ static tBANG  ZRG2cE9core0_0_06result13unwrap_failed1gG2c_A5alloc9LayoutErr0g(
 {
 	tBANG rv;
 	SLICE_PTR *var0;	// &'#local0 &'static str
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var1;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var2;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var3;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var4;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	tBANG var5 = {0};	// !
-	struct s_ZRG2cE9core0_0_05alloc9LayoutErr0g *var6;	// &'#local1 ::"core-0_0_0"::alloc::LayoutErr/*S*/
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var7;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var8;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var9;	// &'static [&'static str]
-	SLICE_PTR var10;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
+	t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g var1 = {0};	// fn{<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var2;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var3;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTfQG2cE9core0_0_05alloc9LayoutErr0g2c_A3fmt5Debug0g_D0g var4 = {0};	// fn{<::"core-0_0_0"::alloc::LayoutErr/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG2cE9core0_0_05alloc9LayoutErr0gBuG2c_A3fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_D5Error0g var5;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"core-0_0_0"::alloc::LayoutErr/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var6;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var7;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var8;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	tBANG var9 = {0};	// !
+	struct s_ZRG2cE9core0_0_05alloc9LayoutErr0g *var10;	// &'#local1 ::"core-0_0_0"::alloc::LayoutErr/*S*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var11;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var12;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var13;	// &'static [&'static str]
+	SLICE_PTR var14;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
 	var0 = & arg0;	// _0 = Borrow(Shared, a0)
-	var6 = & arg1;	// _6 = Borrow(Shared, a1)
-	var9 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _9 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
-	var1 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _1 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, &<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb1, bb3)
-	var2 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2c_A5alloc9LayoutErr0g( var6, ZRQG2cE9core0_0_05alloc9LayoutErr0g2c_A3fmt5Debug0g_D0g );
-	// ^ Call( _2 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"core-0_0_0"::alloc::LayoutErr/*S*/,>( _6, &<::"core-0_0_0"::alloc::LayoutErr/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb2, bb3)
-	var3.DATA[0] = var1;
-	var3.DATA[1] = var2;	// _3 = Array(_1, _2)
-	var4 = & var3;	// _4 = Borrow(Shared, _3)
-	var10 = make_sliceptr(var4, 0x2ull);	// _10 = MakeDst(_4, 0x2 usize)
-	memset(&var8, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _8 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var7._0 = var9;
-	var7._1 = var8;
-	var7._2 = var10;	// _7 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_9, _8, _10})
-	ZRG2cE9core0_0_09panicking9panic_fmt0g( var7, &ZRG2cE9core0_0_06resultG7lifted00g.val );
-	// ^ Call( _5 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _7, &::"core-0_0_0"::result::lifted#0, ), bb3, bb3)
+	var10 = & arg1;	// _10 = Borrow(Shared, a1)
+	var13 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _13 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var2 = ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g;	// _2 = Cast(_1 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var3 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, var2 );
+	// ^ Call( _3 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, _2, ), bb1, bb3)
+	/* ZST assign */
+	var5 = ZRQG2cE9core0_0_05alloc9LayoutErr0g2c_A3fmt5Debug0g_D0g;	// _5 = Cast(_4 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"core-0_0_0"::alloc::LayoutErr/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var6 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG2c_A5alloc9LayoutErr0g( var10, var5 );
+	// ^ Call( _6 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"core-0_0_0"::alloc::LayoutErr/*S*/,>( _10, _5, ), bb2, bb3)
+	var7.DATA[0] = var3;
+	var7.DATA[1] = var6;	// _7 = Array(_3, _6)
+	var8 = & var7;	// _8 = Borrow(Shared, _7)
+	var14 = make_sliceptr(var8, 0x2ull);	// _14 = MakeDst(_8, 0x2 usize)
+	memset(&var12, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _12 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var11._0 = var13;
+	var11._1 = var12;
+	var11._2 = var14;	// _11 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_13, _12, _14})
+	ZRG2cE9core0_0_09panicking9panic_fmt0g( var11, &ZRG2cE9core0_0_06resultF6const00g.val );
+	// ^ Call( _9 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _11, &::"core-0_0_0"::result::const#0, ), bb3, bb3)
 bb3: _Unwind_Resume(); // Diverge
 }
 // ::"core-0_0_0"::result::unwrap_failed<'static,::"std-0_0_0"::io::error::Error/*S*/,>
@@ -5109,33 +5180,41 @@ static tBANG  ZRG2cE9core0_0_06result13unwrap_failed1gG3cD8std0_0_02io5error5Err
 {
 	tBANG rv;
 	SLICE_PTR *var0;	// &'#local0 &'static str
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var1;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var2;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var3;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var4;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	tBANG var5 = {0};	// !
-	struct s_ZRG3cD8std0_0_02io5error5Error0g *var6;	// &'#local1 ::"std-0_0_0"::io::error::Error/*S*/
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var7;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var8;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var9;	// &'static [&'static str]
-	SLICE_PTR var10;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
+	t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g var1 = {0};	// fn{<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var2;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var3;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt5Debug0g_F0g var4 = {0};	// fn{<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG3cD8std0_0_02io5error5Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F_D0g var5;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var6;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var7;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var8;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	tBANG var9 = {0};	// !
+	struct s_ZRG3cD8std0_0_02io5error5Error0g *var10;	// &'#local1 ::"std-0_0_0"::io::error::Error/*S*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var11;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var12;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var13;	// &'static [&'static str]
+	SLICE_PTR var14;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
 	var0 = & arg0;	// _0 = Borrow(Shared, a0)
-	var6 = & arg1;	// _6 = Borrow(Shared, a1)
-	var9 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _9 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
-	var1 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _1 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, &<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb1, bb3)
-	var2 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var6, ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt5Debug0g_F0g );
-	// ^ Call( _2 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::io::error::Error/*S*/,>( _6, &<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb2, bb3)
-	var3.DATA[0] = var1;
-	var3.DATA[1] = var2;	// _3 = Array(_1, _2)
-	var4 = & var3;	// _4 = Borrow(Shared, _3)
-	var10 = make_sliceptr(var4, 0x2ull);	// _10 = MakeDst(_4, 0x2 usize)
-	memset(&var8, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _8 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var7._0 = var9;
-	var7._1 = var8;
-	var7._2 = var10;	// _7 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_9, _8, _10})
-	ZRG2cE9core0_0_09panicking9panic_fmt0g( var7, &ZRG2cE9core0_0_06resultG7lifted00g.val );
-	// ^ Call( _5 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _7, &::"core-0_0_0"::result::lifted#0, ), bb3, bb3)
+	var10 = & arg1;	// _10 = Borrow(Shared, a1)
+	var13 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _13 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var2 = ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g;	// _2 = Cast(_1 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var3 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, var2 );
+	// ^ Call( _3 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, _2, ), bb1, bb3)
+	/* ZST assign */
+	var5 = ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt5Debug0g_F0g;	// _5 = Cast(_4 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var6 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var10, var5 );
+	// ^ Call( _6 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::io::error::Error/*S*/,>( _10, _5, ), bb2, bb3)
+	var7.DATA[0] = var3;
+	var7.DATA[1] = var6;	// _7 = Array(_3, _6)
+	var8 = & var7;	// _8 = Borrow(Shared, _7)
+	var14 = make_sliceptr(var8, 0x2ull);	// _14 = MakeDst(_8, 0x2 usize)
+	memset(&var12, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _12 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var11._0 = var13;
+	var11._1 = var12;
+	var11._2 = var14;	// _11 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_13, _12, _14})
+	ZRG2cE9core0_0_09panicking9panic_fmt0g( var11, &ZRG2cE9core0_0_06resultF6const00g.val );
+	// ^ Call( _9 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _11, &::"core-0_0_0"::result::const#0, ), bb3, bb3)
 bb3: _Unwind_Resume(); // Diverge
 }
 // ::"core-0_0_0"::result::unwrap_failed<'static,::"std-0_0_0"::thread::local::AccessError/*S*/,>
@@ -5147,33 +5226,41 @@ static tBANG  ZRG2cE9core0_0_06result13unwrap_failed1gG3cD8std0_0_06thread5local
 {
 	tBANG rv;
 	SLICE_PTR *var0;	// &'#local0 &'static str
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var1;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var2;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var3;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var4;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
-	tBANG var5 = {0};	// !
-	struct s_ZRG3cD8std0_0_06thread5local11AccessError0g *var6;	// &'#local1 ::"std-0_0_0"::thread::local::AccessError/*S*/
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var7;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var8;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var9;	// &'static [&'static str]
-	SLICE_PTR var10;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
+	t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g var1 = {0};	// fn{<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var2;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var3;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTfQG3cD8std0_0_06thread5local11AccessError0g2cE9core0_0_03fmt5Debug0g_F0g var4 = {0};	// fn{<::"std-0_0_0"::thread::local::AccessError/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsG3cD8std0_0_06thread5local11AccessError0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F5Error0g var5;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::thread::local::AccessError/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var6;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var7;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var8;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/; 2]
+	tBANG var9 = {0};	// !
+	struct s_ZRG3cD8std0_0_06thread5local11AccessError0g *var10;	// &'#local1 ::"std-0_0_0"::thread::local::AccessError/*S*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var11;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var12;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var13;	// &'static [&'static str]
+	SLICE_PTR var14;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local3,>/*S*/]
 	var0 = & arg0;	// _0 = Borrow(Shared, a0)
-	var6 = & arg1;	// _6 = Borrow(Shared, a1)
-	var9 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _9 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
-	var1 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _1 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, &<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb1, bb3)
-	var2 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_06thread5local11AccessError0g( var6, ZRQG3cD8std0_0_06thread5local11AccessError0g2cE9core0_0_03fmt5Debug0g_F0g );
-	// ^ Call( _2 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::thread::local::AccessError/*S*/,>( _6, &<::"std-0_0_0"::thread::local::AccessError/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb2, bb3)
-	var3.DATA[0] = var1;
-	var3.DATA[1] = var2;	// _3 = Array(_1, _2)
-	var4 = & var3;	// _4 = Borrow(Shared, _3)
-	var10 = make_sliceptr(var4, 0x2ull);	// _10 = MakeDst(_4, 0x2 usize)
-	memset(&var8, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _8 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var7._0 = var9;
-	var7._1 = var8;
-	var7._2 = var10;	// _7 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_9, _8, _10})
-	ZRG2cE9core0_0_09panicking9panic_fmt0g( var7, &ZRG2cE9core0_0_06resultG7lifted00g.val );
-	// ^ Call( _5 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _7, &::"core-0_0_0"::result::lifted#0, ), bb3, bb3)
+	var10 = & arg1;	// _10 = Borrow(Shared, a1)
+	var13 = make_sliceptr(&ZRG3cE9core0_0_06resultB_19FRAGMENTS0g.val, 0x3ull);	// _13 = MakeDst(&::"core-0_0_0"::result::#1::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var2 = ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g;	// _2 = Cast(_1 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var3 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( var0, var2 );
+	// ^ Call( _3 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,&'static str,>( _0, _2, ), bb1, bb3)
+	/* ZST assign */
+	var5 = ZRQG3cD8std0_0_06thread5local11AccessError0g2cE9core0_0_03fmt5Debug0g_F0g;	// _5 = Cast(_4 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::thread::local::AccessError/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var6 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_06thread5local11AccessError0g( var10, var5 );
+	// ^ Call( _6 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::thread::local::AccessError/*S*/,>( _10, _5, ), bb2, bb3)
+	var7.DATA[0] = var3;
+	var7.DATA[1] = var6;	// _7 = Array(_3, _6)
+	var8 = & var7;	// _8 = Borrow(Shared, _7)
+	var14 = make_sliceptr(var8, 0x2ull);	// _14 = MakeDst(_8, 0x2 usize)
+	memset(&var12, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _12 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var11._0 = var13;
+	var11._1 = var12;
+	var11._2 = var14;	// _11 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_13, _12, _14})
+	ZRG2cE9core0_0_09panicking9panic_fmt0g( var11, &ZRG2cE9core0_0_06resultF6const00g.val );
+	// ^ Call( _9 = ::"core-0_0_0"::panicking::panic_fmt<'#local4,'static,>( _11, &::"core-0_0_0"::result::const#0, ), bb3, bb3)
 bb3: _Unwind_Resume(); // Diverge
 }
 // ::"core-0_0_0"::str::next_code_point<'static,'#local7,::"core-0_0_0"::slice::Iter<'#local6,u8,>/*S*/,>
@@ -5227,7 +5314,10 @@ static struct e_ZRG2cE9core0_0_06option6Option1gCe  ZRG2cE9core0_0_03str15next_c
 		var7 = ZRIG2cE9core0_0_06option6Option1gBsCa5ok_or1gG2c_A_B9NoneError0g( var21, zarg1 );
 	}
 	// ^ Call( _7 = <::"core-0_0_0"::option::Option<&'static u8,>/*E*/ /*- <&'static u8,>*/>::ok_or<::"core-0_0_0"::option::NoneError/*S*/,>( _21, _20, ), bb2, bb3)
-	if( var7.DATA.TAG == 0) {goto bb4;} else {goto bb5;}
+	if( var7.DATA.var_0._0 != 0 )
+		goto bb4;
+	else
+		goto bb5;
 	// ^ Switch( _7 : 0 => bb4, 1 => bb5, )
 bb3: _Unwind_Resume(); // Diverge
 bb4:
@@ -5291,13 +5381,13 @@ bb14:
 	// ^ Call( _16 = <::"core-0_0_0"::slice::Iter<'#local6,u8,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local7,>( _15, ), bb15, bb3)
 	var34 = ZRG2cE9core0_0_03str11unwrap_or_00g( var16 );
 	// ^ Call( _34 = ::"core-0_0_0"::str::unwrap_or_0<'static,>( _16, ), bb16, bb3)
-	var18 = var1 & 0x7;	// _18 = BinOp(_1 BIT_AND 0x7 u32)
-	var17 = var18 << 18;	// _17 = BinOp(_18 BIT_SHL +18 i32)
+	var17 = var1 & 0x7;	// _17 = BinOp(_1 BIT_AND 0x7 u32)
+	var18 = var17 << 18;	// _18 = BinOp(_17 BIT_SHL +18 i32)
 	var31 = var4 << 6;	// _31 = BinOp(_4 BIT_SHL +6 i32)
 	var32 = var34 & 0x3f;	// _32 = BinOp(_34 BIT_AND 0x3f u8)
 	var33 = (uint32_t )var32;	// _33 = Cast(_32 as u32)
 	var19 = var31 | var33;	// _19 = BinOp(_31 BIT_OR _33)
-	var3 = var17 | var19;	// _3 = BinOp(_17 BIT_OR _19)
+	var3 = var18 | var19;	// _3 = BinOp(_18 BIT_OR _19)
 	goto bb13;
 	// ^ Goto(13)
 }
@@ -5335,12 +5425,12 @@ static void  ZRG3cE9core0_0_04sync6atomic12atomic_store1gCa(
 	tBANG var1 = {0};	// !
 	tBANG var2 = {0};	// !
 	switch(arg2.TAG) {
-	case 0: goto bb1;break;
-	case 1: goto bb2;break;
-	case 2: goto bb3;break;
-	case 3: goto bb4;break;
-	case 4: goto bb5;break;
-	case 5: goto bb7;break;
+	case 0ll: goto bb1;break;
+	case 1ll: goto bb2;break;
+	case 2ll: goto bb3;break;
+	case 3ll: goto bb4;break;
+	case 4ll: goto bb5;break;
+	case 5ll: goto bb7;break;
 	default: abort();
 	}
 	// ^ Switch( a2 : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb7, )
@@ -5353,13 +5443,13 @@ bb2:
 	goto bb6;
 	// ^ Call( retval = "atomic_store_rel"::<u8,>( a0, a1, ), bb6, bb8)
 bb3:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicG7lifted50g.val );
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicF6const50g.val );
 	goto bb8;
-	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::lifted#5, ), bb8, bb8)
+	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::const#5, ), bb8, bb8)
 bb4:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicG7lifted60g.val );
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicF6const60g.val );
 	goto bb8;
-	// ^ Call( _1 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::lifted#6, ), bb8, bb8)
+	// ^ Call( _1 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::const#6, ), bb8, bb8)
 bb5:
 	atomic_store_explicit((uint8_t _Atomic *)arg0, arg1, memory_order_seq_cst);
 	// ^ Call( retval = "atomic_store"::<u8,>( a0, a1, ), bb6, bb8)
@@ -5367,8 +5457,8 @@ bb6:
 	return ;
 	// ^ Return
 bb7:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicG7lifted70g.val );
-	// ^ Call( _2 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::lifted#7, ), bb8, bb8)
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicF6const70g.val );
+	// ^ Call( _2 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::const#7, ), bb8, bb8)
 bb8: _Unwind_Resume(); // Diverge
 }
 // ::"core-0_0_0"::sync::atomic::atomic_sub<usize,>
@@ -5382,12 +5472,12 @@ static uintptr_t  ZRG3cE9core0_0_04sync6atomic10atomic_sub1gCu(
 	uintptr_t rv;
 	tBANG var0 = {0};	// !
 	switch(arg2.TAG) {
-	case 0: goto bb1;break;
-	case 1: goto bb2;break;
-	case 2: goto bb3;break;
-	case 3: goto bb4;break;
-	case 4: goto bb5;break;
-	case 5: goto bb7;break;
+	case 0ll: goto bb1;break;
+	case 1ll: goto bb2;break;
+	case 2ll: goto bb3;break;
+	case 3ll: goto bb4;break;
+	case 4ll: goto bb5;break;
+	case 5ll: goto bb7;break;
 	default: abort();
 	}
 	// ^ Switch( a2 : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb7, )
@@ -5414,8 +5504,8 @@ bb6:
 	return rv;
 	// ^ Return
 bb7:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicG8lifted190g.val );
-	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::lifted#19, ), bb8, bb8)
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicF7const190g.val );
+	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::const#19, ), bb8, bb8)
 bb8: _Unwind_Resume(); // Diverge
 }
 // ::"core-0_0_0"::sync::atomic::fence
@@ -5428,19 +5518,19 @@ static void  ZRG3cE9core0_0_04sync6atomic5fence0g(
 	tBANG var0 = {0};	// !
 	tBANG var1 = {0};	// !
 	switch(arg0.TAG) {
-	case 0: goto bb1;break;
-	case 1: goto bb2;break;
-	case 2: goto bb3;break;
-	case 3: goto bb4;break;
-	case 4: goto bb5;break;
-	case 5: goto bb7;break;
+	case 0ll: goto bb1;break;
+	case 1ll: goto bb2;break;
+	case 2ll: goto bb3;break;
+	case 3ll: goto bb4;break;
+	case 4ll: goto bb5;break;
+	case 5ll: goto bb7;break;
 	default: abort();
 	}
 	// ^ Switch( a0 : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb7, )
 bb1:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicG8lifted290g.val );
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicF7const290g.val );
 	goto bb8;
-	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::lifted#29, ), bb8, bb8)
+	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::const#29, ), bb8, bb8)
 bb2:
 	atomic_thread_fence(memory_order_release);
 	goto bb6;
@@ -5460,12 +5550,12 @@ bb6:
 	return ;
 	// ^ Return
 bb7:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicG8lifted300g.val );
-	// ^ Call( _1 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::lifted#30, ), bb8, bb8)
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG3cE9core0_0_04sync6atomicF7const300g.val );
+	// ^ Call( _1 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::sync::atomic::const#30, ), bb8, bb8)
 bb8: _Unwind_Resume(); // Diverge
 }
-// ::"std-0_0_0"::rt::lang_start
-static intptr_t  ZRG2cD8std0_0_02rt10lang_start0g(
+// ::"std-0_0_0"::rt::lang_start<(),>
+static intptr_t  ZRG2cD8std0_0_02rt10lang_start1gT0(
 		t_ZRTF0T0 arg0, // extern "Rust" fn() -> ()
 		intptr_t arg1, // isize
 		uint8_t **arg2 // *const *const u8
@@ -5478,7 +5568,7 @@ static intptr_t  ZRG2cD8std0_0_02rt10lang_start0g(
 	TRAITOBJ_PTR var2;	// &'#local0 dyn (for ::"core-0_0_0"::ops::function::Fn<(),Output{::"core-0_0_0"::ops::function::FnOnce<(),>}=i32,>+::"core-0_0_0"::marker::Sync+::"std-0_0_0"::panic::RefUnwindSafe)
 	var0._0 = arg0;	// _0 = Struct(::"std-0_0_0"::rt::closure#lang_start_0<(),>, {a0})
 	var1 = & var0;	// _1 = Borrow(Shared, _0)
-	var2 = make_traitobjptr(var1, &ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g.val);	// _2 = MakeDst(_1, &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as for ::"core-0_0_0"::ops::function::Fn<(),>>::vtable#)
+	var2 = make_traitobjptr(var1, &ZRQG2cD8std0_0_02rtH19closurelang_start_01gT03cE9core0_0_03ops8function2Fn1gT0G6vtable0g.val);	// _2 = MakeDst(_1, &<::"std-0_0_0"::rt::closure#lang_start_0<(),>/*S*/ as ::"core-0_0_0"::ops::function::Fn<(),>>::vtable#)
 	rv = ZRG2cD8std0_0_02rt19lang_start_internal0g( var2, arg1, arg2 );
 	// ^ Call( retval = ::"std-0_0_0"::rt::lang_start_internal<'#local0,>( _2, a1, a2, ), bb1, bb2)
 	return rv;
@@ -5526,10 +5616,10 @@ static RUST_BOOL  ZRICu15is_power_of_two0g(
 	uintptr_t var1;	// usize
 	uintptr_t var2;	// usize
 	RUST_BOOL var3;	// bool
-	__builtin_sub_overflow(arg0, 0x1ull, &var2);
-	// ^ Call( _2 = "overflowing_sub"::<usize,>( a0, 0x1 usize, ), bb1, bb2)
-	var1 = var2 & arg0;	// _1 = BinOp(_2 BIT_AND a0)
-	var0 = var1 == 0x0ull;	// _0 = BinOp(_1 EQ 0x0 usize)
+	__builtin_sub_overflow(arg0, 0x1ull, &var1);
+	// ^ Call( _1 = "overflowing_sub"::<usize,>( a0, 0x1 usize, ), bb1, bb2)
+	var2 = var1 & arg0;	// _2 = BinOp(_1 BIT_AND a0)
+	var0 = var2 == 0x0ull;	// _0 = BinOp(_2 EQ 0x0 usize)
 	if(var0) goto bb3; else goto bb4;
 	// ^ If( _0 : 3, 4)
 bb2: _Unwind_Resume(); // Diverge
@@ -5565,7 +5655,7 @@ static RUST_BOOL  ZRICy16is_char_boundary0g(
 	if(var1) goto bb2; else goto bb1;
 	// ^ If( _1 : 2, 1)
 bb1:
-	var8.var_0 = arg0;	// _8 = UnionVariant(::"core-0_0_0"::str::#2::Slices<'#omitted,> #0, a0)
+	var8.var_0 = arg0;	// _8 = UnionVariant(::"core-0_0_0"::str::#2::Slices<'M0,> #0, a0)
 	var7 = var8.var_1;	// _7 = Use(_8#1)
 	// ^ drop(_8)
 	var9 = var7;	// _9 = Cast(_7 as *const [u8])
@@ -5793,8 +5883,8 @@ static struct s_ZRG2cF10alloc0_0_07raw_vec6RawVec2gCaG2c_A5alloc6Global0g  ZRIG2
 	tUNIT var7 = {0};	// ()
 	struct s_ZRG2cE9core0_0_03ptr7NonNull1gCa var8;	// ::"core-0_0_0"::ptr::NonNull<u8,>/*S*/
 	struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g var9;	// ::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,>/*E*/
-	struct s_ZRG2cF10alloc0_0_05alloc6Global0g *var10;	// &'#local0 mut ::"alloc-0_0_0"::alloc::Global/*S*/
-	struct s_ZRG2cF10alloc0_0_05alloc6Global0g *var11;	// &'#local0 mut ::"alloc-0_0_0"::alloc::Global/*S*/
+	struct s_ZRG2cF10alloc0_0_05alloc6Global0g *var10;	// &'#local2 mut ::"alloc-0_0_0"::alloc::Global/*S*/
+	struct s_ZRG2cF10alloc0_0_05alloc6Global0g *var11;	// &'#local2 mut ::"alloc-0_0_0"::alloc::Global/*S*/
 	struct e_ZRG2cE9core0_0_06result6Result2gT0G2cF10alloc0_0_011collections18CollectionAllocErr0g var12;	// ::"core-0_0_0"::result::Result<(),::"alloc-0_0_0"::collections::CollectionAllocErr/*E*/,>/*E*/
 	tUNIT var13 = {0};	// ()
 	uintptr_t var14;	// usize
@@ -5845,13 +5935,16 @@ bb9:
 	var10 = & arg2;	// _10 = Borrow(Unique, a2)
 	var2 = ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g12alloc_zeroed0g( var10, var1 );
 	goto bb11;
-	// ^ Call( _2 = <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc_zeroed<'#local0,>( _10, _1, ), bb11, bb4)
+	// ^ Call( _2 = <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc_zeroed<'#local2,>( _10, _1, ), bb11, bb4)
 bb10:
 	var11 = & arg2;	// _11 = Borrow(Unique, a2)
 	var2 = ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g_B0g( var11, var1 );
-	// ^ Call( _2 = <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc<'#local1,>( _11, _1, ), bb11, bb4)
+	// ^ Call( _2 = <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc<'#local3,>( _11, _1, ), bb11, bb4)
 bb11:
-	if( var2.DATA.TAG == 0) {goto bb12;} else {goto bb14;}
+	if( var2.DATA.var_0._0._0._0 != 0 )
+		goto bb12;
+	else
+		goto bb14;
 	// ^ Switch( _2 : 0 => bb12, 1 => bb14, )
 bb12:
 	var19._0 = var2.DATA.var_0._0._0._0;	// _19 = Struct(::"core-0_0_0"::nonzero::NonZero<*const u8,>, {_2#0.0.0.0})
@@ -5878,10 +5971,12 @@ static struct e_ZRG2cE9core0_0_06option6Option1gG2c_A5alloc6Layout0g  ZRIG2cF10a
 {
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A5alloc6Layout0g rv;
 	RUST_BOOL var0;	// bool
-	struct s_ZRG2cE9core0_0_05alloc6Layout0g var1;	// ::"core-0_0_0"::alloc::Layout/*S*/
-	struct s_ZRG2cE9core0_0_03num12NonZeroUsize0g var2;	// ::"core-0_0_0"::num::NonZeroUsize/*S*/
-	struct s_ZRG2cE9core0_0_07nonzero7NonZero1gCu var3;	// ::"core-0_0_0"::nonzero::NonZero<usize,>/*S*/
-	var0 = arg0->_1 == 0x0ull;	// _0 = BinOp(a0*.1 EQ 0x0 usize)
+	uintptr_t var1;	// usize
+	struct s_ZRG2cE9core0_0_05alloc6Layout0g var2;	// ::"core-0_0_0"::alloc::Layout/*S*/
+	struct s_ZRG2cE9core0_0_03num12NonZeroUsize0g var3;	// ::"core-0_0_0"::num::NonZeroUsize/*S*/
+	struct s_ZRG2cE9core0_0_07nonzero7NonZero1gCu var4;	// ::"core-0_0_0"::nonzero::NonZero<usize,>/*S*/
+	var1 = arg0->_1;	// _1 = Use(a0*.1)
+	var0 = var1 == 0x0ull;	// _0 = BinOp(_1 EQ 0x0 usize)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
@@ -5889,11 +5984,11 @@ bb1:
 	return rv;
 	// ^ Return
 bb2:
-	var3._0 = 0x1ull;	// _3 = Struct(::"core-0_0_0"::nonzero::NonZero<usize,>, {0x1 usize})
-	var2._0 = var3;	// _2 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_3})
-	var1._0 = arg0->_1;
-	var1._1 = var2;	// _1 = Struct(::"core-0_0_0"::alloc::Layout, {a0*.1, _2})
-	rv.DATA.var_1._0 = var1;	// retval = Variant(::"core-0_0_0"::option::Option<::"core-0_0_0"::alloc::Layout/*S*/,> #1, {_1})
+	var4._0 = 0x1ull;	// _4 = Struct(::"core-0_0_0"::nonzero::NonZero<usize,>, {0x1 usize})
+	var3._0 = var4;	// _3 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_4})
+	var2._0 = arg0->_1;
+	var2._1 = var3;	// _2 = Struct(::"core-0_0_0"::alloc::Layout, {a0*.1, _3})
+	rv.DATA.var_1._0 = var2;	// retval = Variant(::"core-0_0_0"::option::Option<::"core-0_0_0"::alloc::Layout/*S*/,> #1, {_2})
 	return rv;
 	// ^ Return
 }
@@ -5921,7 +6016,7 @@ bb2: _Unwind_Resume(); // Diverge
 bb3:
 	var3 = arg0->_0;	// _3 = Use(a0*.0)
 	var4 = (uint8_t *)var3._0._0;	// _4 = Cast(_3.0.0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var4, var1.DATA.var_1._0._0, var1.DATA.var_1._0._1._0._0 );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var4, var1.DATA.var_1._0._0, var1.DATA.var_1._0._1._0._0 );
 	// ^ Call( _2 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _4, _1#1.0.0, _1#1.0.1.0.0, ), bb4, bb2)
 bb4:
 	/* ZST assign */
@@ -5955,11 +6050,14 @@ static struct e_ZRG2cE9core0_0_06option6Option1gG2c_A5alloc6Layout0g  ZRIG2cF10a
 {
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A5alloc6Layout0g rv;
 	RUST_BOOL var0;	// bool
-	struct s_ZRG2cE9core0_0_05alloc6Layout0g var1;	// ::"core-0_0_0"::alloc::Layout/*S*/
-	struct s_ZRG2cE9core0_0_03num12NonZeroUsize0g var2;	// ::"core-0_0_0"::num::NonZeroUsize/*S*/
-	struct s_ZRG2cE9core0_0_07nonzero7NonZero1gCu var3;	// ::"core-0_0_0"::nonzero::NonZero<usize,>/*S*/
-	uintptr_t var4;	// usize
-	var0 = arg0->_1 == 0x0ull;	// _0 = BinOp(a0*.1 EQ 0x0 usize)
+	uintptr_t var1;	// usize
+	uintptr_t var2;	// usize
+	struct s_ZRG2cE9core0_0_05alloc6Layout0g var3;	// ::"core-0_0_0"::alloc::Layout/*S*/
+	struct s_ZRG2cE9core0_0_03num12NonZeroUsize0g var4;	// ::"core-0_0_0"::num::NonZeroUsize/*S*/
+	struct s_ZRG2cE9core0_0_07nonzero7NonZero1gCu var5;	// ::"core-0_0_0"::nonzero::NonZero<usize,>/*S*/
+	uintptr_t var6;	// usize
+	var1 = arg0->_1;	// _1 = Use(a0*.1)
+	var0 = var1 == 0x0ull;	// _0 = BinOp(_1 EQ 0x0 usize)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
@@ -5967,12 +6065,13 @@ bb1:
 	return rv;
 	// ^ Return
 bb2:
-	var4 = 0x18ull * arg0->_1;	// _4 = BinOp(0x18 usize MUL a0*.1)
-	var3._0 = 0x8ull;	// _3 = Struct(::"core-0_0_0"::nonzero::NonZero<usize,>, {0x8 usize})
-	var2._0 = var3;	// _2 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_3})
-	var1._0 = var4;
-	var1._1 = var2;	// _1 = Struct(::"core-0_0_0"::alloc::Layout, {_4, _2})
-	rv.DATA.var_1._0 = var1;	// retval = Variant(::"core-0_0_0"::option::Option<::"core-0_0_0"::alloc::Layout/*S*/,> #1, {_1})
+	var2 = arg0->_1;	// _2 = Use(a0*.1)
+	var6 = 0x18ull * var2;	// _6 = BinOp(0x18 usize MUL _2)
+	var5._0 = 0x8ull;	// _5 = Struct(::"core-0_0_0"::nonzero::NonZero<usize,>, {0x8 usize})
+	var4._0 = var5;	// _4 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_5})
+	var3._0 = var6;
+	var3._1 = var4;	// _3 = Struct(::"core-0_0_0"::alloc::Layout, {_6, _4})
+	rv.DATA.var_1._0 = var3;	// retval = Variant(::"core-0_0_0"::option::Option<::"core-0_0_0"::alloc::Layout/*S*/,> #1, {_3})
 	return rv;
 	// ^ Return
 }
@@ -6002,7 +6101,7 @@ bb3:
 	var3 = arg0->_0;	// _3 = Use(a0*.0)
 	var4 = (struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g *)var3._0._0;	// _4 = Cast(_3.0.0 as *mut ::"std-0_0_0"::ffi::os_str::OsString/*S*/)
 	var5 = (uint8_t *)var4;	// _5 = Cast(_4 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var5, var1.DATA.var_1._0._0, var1.DATA.var_1._0._1._0._0 );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var5, var1.DATA.var_1._0._0, var1.DATA.var_1._0._1._0._0 );
 	// ^ Call( _2 = ::"alloc-0_0_0"::alloc::__rust_dealloc( _5, _1#1.0.0, _1#1.0.1.0.0, ), bb4, bb2)
 bb4:
 	/* ZST assign */
@@ -6129,7 +6228,7 @@ static void  ZRIG2cF10alloc0_0_04sync3Arc1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io
 	// ^ Call( _3 = "drop_in_place"::<::"std-0_0_0"::sync::mutex::Mutex<::"std-0_0_0"::io::buffered::BufReader<::"std-0_0_0"::io::stdio::Maybe<::"std-0_0_0"::io::stdio::StdinRaw/*S*/,>/*E*/,>/*S*/,>/*S*/,>( _2, ), bb1, bb3)
 	var20 = arg0->_0;	// _20 = Use(a0*.0)
 	var19 = (struct s_ZRG2cF10alloc0_0_04sync8ArcInner1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io8buffered9BufReader1gG3c_D2io5stdio5Maybe1gG3c_D$c2efdfe9737a55ec *)var20._0._0;	// _19 = Cast(_20.0.0 as *mut ::"alloc-0_0_0"::sync::ArcInner<::"std-0_0_0"::sync::mutex::Mutex<::"std-0_0_0"::io::buffered::BufReader<::"std-0_0_0"::io::stdio::Maybe<::"std-0_0_0"::io::stdio::StdinRaw/*S*/,>/*E*/,>/*S*/,>/*S*/,>/*S*/)
-	var12.TAG = 1;	// _12 = Variant(::"core-0_0_0"::sync::atomic::Ordering #1, {})
+	var12.TAG = 1ll;	// _12 = Variant(::"core-0_0_0"::sync::atomic::Ordering #1, {})
 	var10 = & var19->_1._0._0;	// _10 = Borrow(Shared, _19*.1.0.0)
 	var11 = (uintptr_t *)var10;	// _11 = Cast(_10 as *const usize)
 	var9 = (uintptr_t *)var11;	// _9 = Cast(_11 as *mut usize)
@@ -6140,7 +6239,7 @@ static void  ZRIG2cF10alloc0_0_04sync3Arc1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io
 	// ^ If( _0 : 4, 7)
 bb3: _Unwind_Resume(); // Diverge
 bb4:
-	var5.TAG = 2;	// _5 = Variant(::"core-0_0_0"::sync::atomic::Ordering #2, {})
+	var5.TAG = 2ll;	// _5 = Variant(::"core-0_0_0"::sync::atomic::Ordering #2, {})
 	ZRG3cE9core0_0_04sync6atomic5fence0g( var5 );
 	// ^ Call( _6 = ::"core-0_0_0"::sync::atomic::fence( _5, ), bb5, bb3)
 	var15 = arg0->_0;	// _15 = Use(a0*.0)
@@ -6153,7 +6252,7 @@ bb4:
 	var22 = ZRIG2cE9core0_0_05alloc6Layout0g9for_value1gG2cF10alloc0_0_04sync8ArcInner1gG3cD8std0_0_0_F5mutex5Mutex1gG3c_H2io8buffe$313667b3c642ae0a( var16 );
 	// ^ Call( _22 = <::"core-0_0_0"::alloc::Layout/*S*/ /*- */>::for_value<'#omitted,::"alloc-0_0_0"::sync::ArcInner<::"std-0_0_0"::sync::mutex::Mutex<::"std-0_0_0"::io::buffered::BufReader<::"std-0_0_0"::io::stdio::Maybe<::"std-0_0_0"::io::stdio::StdinRaw/*S*/,>/*E*/,>/*S*/,>/*S*/,>/*S*/,>( _16, ), bb6, bb3)
 	var21 = (uint8_t *)var23;	// _21 = Cast(_23 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var21, var22._0, var22._1._0._0 );
+	ZRG2cF10alloc0_0_05alloc15___rust_dealloc0g( var21, var22._0, var22._1._0._0 );
 	goto bb8;
 	// ^ Call( retval = ::"alloc-0_0_0"::alloc::__rust_dealloc( _21, _22.0, _22.1.0.0, ), bb8, bb3)
 bb7:
@@ -6241,29 +6340,38 @@ struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa  ZRIG2cD3bin8protocol6Reader1gG3cD8std0_
 	struct s_ZRG3cD8std0_0_02io5error5Error0g var3;	// ::"std-0_0_0"::io::error::Error/*S*/
 	RUST_BOOL var4;	// bool
 	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var5;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g *var6;	// &'#local0 mut ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var7;	// &'#omitted mut ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	SLICE_PTR var8;	// &'#omitted mut [u8]
-	SLICE_PTR var9;	// &'#omitted mut [u8]
-	struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g var10;	// ::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
-	uintptr_t *var11;	// &'#local1 usize
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var12;	// ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var13;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var14;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var15;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var16;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var17;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
-	tBANG var18 = {0};	// !
-	struct s_ZRG3cD8std0_0_02io5error5Error0g *var19;	// &'#local2 ::"std-0_0_0"::io::error::Error/*S*/
-	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy var20;	// ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
-	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy *var21;	// &'#local0 mut ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
-	TRAITOBJ_PTR var22;	// &'#local0 mut dyn (::"core-0_0_0"::panic::BoxMeUp)
-	struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g var23;	// ::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/,>/*E*/
-	tBANG var24 = {0};	// !
-	struct e_ZRG2cE9core0_0_06option6Option1gBsCy var25;	// ::"core-0_0_0"::option::Option<&'static str,>/*E*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var26;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var27;	// &'static [&'static str]
-	SLICE_PTR var28;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var6;	// ::"core-0_0_0"::fmt::Arguments<'#local0,>/*S*/
+	t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g var7 = {0};	// fn{<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var8;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var9;	// ::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var10;	// [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var11;	// &'#local0 [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var12;	// &'#local1 ::"core-0_0_0"::fmt::Arguments<'#local0,>/*S*/
+	tUNIT var13 = {0};	// ()
+	struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g *var14;	// &'#local0 mut ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *var15;	// &'#omitted mut ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	SLICE_PTR var16;	// &'#omitted mut [u8]
+	SLICE_PTR var17;	// &'#omitted mut [u8]
+	struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g var18;	// ::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
+	uintptr_t *var19;	// &'#local3 usize
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var20;	// ::"core-0_0_0"::fmt::Arguments<'#local0,>/*S*/
+	t_ZRTfQCu2cE9core0_0_03fmt7Display0g_B0g var21 = {0};	// fn{<usize as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var22;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var23;	// ::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/
+	t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g var24 = {0};	// fn{<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG3cD8std0_0_02io5error5Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F_D0g var25;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var26;	// ::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var27;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local7,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var28;	// &'#local5 [::"core-0_0_0"::fmt::ArgumentV1<'#local7,>/*S*/; 2]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var29;	// &'#local1 ::"core-0_0_0"::fmt::Arguments<'#local0,>/*S*/
+	tBANG var30 = {0};	// !
+	struct s_ZRG3cD8std0_0_02io5error5Error0g *var31;	// &'#local4 ::"std-0_0_0"::io::error::Error/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var32;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var33;	// &'static [&'static str]
+	SLICE_PTR var34;	// &'#local0 [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var35;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var36;	// &'static [&'static str]
+	SLICE_PTR var37;	// &'#local0 [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
 	var5 = arg0;	// _5 = Borrow(Unique, a0*)
 	var0 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var5 );
 	// ^ Call( _0 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _5, ), bb1, bb2)
@@ -6275,50 +6383,62 @@ bb3:
 	var1 = var0.lo;	// _1 = Cast(_0 as usize)
 	var2 = ZRQCa2cF10alloc0_0_03vec12SpecFromElem0g9from_elem0g( 0x0, var1 );
 	// ^ Call( _2 = <u8 as ::"alloc-0_0_0"::vec::SpecFromElem>::from_elem( 0x0 u8, _1, ), bb4, bb2)
-	var6 = & arg0->_0;	// _6 = Borrow(Unique, a0*.0)
-	var7 = & var2;	// _7 = Borrow(Unique, _2)
-	var8 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref8DerefMut0g9deref_mut0g( var7 );
-	// ^ Call( _8 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::DerefMut>::deref_mut<'#omitted,>( _7, ), bb5, bb2)
-	var9 = var8;	// _9 = Borrow(Unique, _8*)
-	var10 = ZRQG3cD8std0_0_02io5stdio9StdinLock0g2c_A2io4Read0g10read_exact0g( var6, var9 );
-	// ^ Call( _10 = <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local0,'#local0,>( _6, _9, ), bb6, bb2)
-	if( var10.DATA.var_1._0._0.DATA.TAG == 3) {goto bb8;} else {goto bb9;}
-	// ^ Switch( _10 : 0 => bb8, 1 => bb9, )
+	var14 = & arg0->_0;	// _14 = Borrow(Unique, a0*.0)
+	var15 = & var2;	// _15 = Borrow(Unique, _2)
+	var16 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref8DerefMut0g9deref_mut0g( var15 );
+	// ^ Call( _16 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::DerefMut>::deref_mut<'#omitted,>( _15, ), bb5, bb2)
+	var17 = var16;	// _17 = Borrow(Unique, _16*)
+	var18 = ZRQG3cD8std0_0_02io5stdio9StdinLock0g2c_A2io4Read0g10read_exact0g( var14, var17 );
+	// ^ Call( _18 = <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local0,'#local2,>( _14, _17, ), bb6, bb2)
+	if( var18.DATA.var_1._0._0.DATA.TAG == 3) {goto bb9;} else {goto bb10;}
+	// ^ Switch( _18 : 0 => bb9, 1 => bb10, )
 bb7:
-	var25.DATA.var_1._0 = make_sliceptr("assertion failed: (size < (1 << 30))", 36);	// _25 = Variant(::"core-0_0_0"::option::Option<&'#omitted str,> #1, {"assertion failed: (size < (1 << 30))"})
-	var20._0 = var25;	// _20 = Struct(::"std-0_0_0"::panicking::#4::PanicPayload<&'#omitted str,>, {_25})
-	var21 = & var20;	// _21 = Borrow(Unique, _20)
-	var22 = make_traitobjptr(var21, &ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g.val);	// _22 = MakeDst(_21, &<::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::vtable#)
-	memset(&var23, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g ));	// _23 = Variant(::"core-0_0_0"::option::Option<&'#local4 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/,> #0, {})
-	ZRG2cD8std0_0_09panicking20rust_panic_with_hook0g( var22, var23, &ZRG2cD3bin8protocolG7lifted00g.val );
+	var33 = make_sliceptr(&ZRG3cD3bin8protocolB_49FRAGMENTS0g.val, 0x2ull);	// _33 = MakeDst(&::"bin#"::protocol::#4::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var8 = ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g;	// _8 = Cast(_7 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var9 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( &ZRG2cD3bin8protocolF6const00g.val, var8 );
+	// ^ Call( _9 = <::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/ /*- <'static,>*/>::new<'static,&'static str,>( &::"bin#"::protocol::const#0, _8, ), bb8, bb2)
+	var10.DATA[0] = var9;	// _10 = Array(_9)
+	var11 = & var10;	// _11 = Borrow(Shared, _10)
+	var34 = make_sliceptr(var11, 0x1ull);	// _34 = MakeDst(_11, 0x1 usize)
+	memset(&var32, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _32 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var6._0 = var33;
+	var6._1 = var32;
+	var6._2 = var34;	// _6 = Struct(::"core-0_0_0"::fmt::Arguments<'#local0,>, {_33, _32, _34})
+	var12 = & var6;	// _12 = Borrow(Shared, _6)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var12, &ZRG2cD3bin8protocolF6const10g.val );
 	goto bb2;
-	// ^ Call( _24 = ::"std-0_0_0"::panicking::rust_panic_with_hook<'#local0,'static,'static,>( _22, _23, &::"bin#"::protocol::lifted#0, ), bb2, bb2)
-bb8:
+	// ^ Call( _13 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local9,'static,>( _12, &::"bin#"::protocol::const#1, ), bb2, bb2)
+bb9:
 	rv = var2;	// retval = Use(_2)
 	// ^ drop(a0)
 	return rv;
 	// ^ Return
-bb9:
-	var3 = var10.DATA.var_1._0;	// _3 = Use(_10#1.0)
-	var11 = & var1;	// _11 = Borrow(Shared, _1)
-	var19 = & var3;	// _19 = Borrow(Shared, _3)
-	var27 = make_sliceptr(&ZRG3cD3bin8protocolB_29FRAGMENTS0g.val, 0x3ull);	// _27 = MakeDst(&::"bin#"::protocol::#2::FRAGMENTS, 0x3 usize)
-	var13 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCu( var11, ZRQCu2cE9core0_0_03fmt7Display0g_B0g );
-	// ^ Call( _13 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,usize,>( _11, &<usize as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb10, bb2)
-	var14 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var19, ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g );
-	// ^ Call( _14 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local2,::"std-0_0_0"::io::error::Error/*S*/,>( _19, &<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb11, bb2)
-	var15.DATA[0] = var13;
-	var15.DATA[1] = var14;	// _15 = Array(_13, _14)
-	var16 = & var15;	// _16 = Borrow(Shared, _15)
-	var28 = make_sliceptr(var16, 0x2ull);	// _28 = MakeDst(_16, 0x2 usize)
-	memset(&var26, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _26 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var12._0 = var27;
-	var12._1 = var26;
-	var12._2 = var28;	// _12 = Struct(::"core-0_0_0"::fmt::Arguments<'#local6,>, {_27, _26, _28})
-	var17 = & var12;	// _17 = Borrow(Shared, _12)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var17, &ZRG2cD3bin8protocolG7lifted10g.val );
+bb10:
+	var3 = var18.DATA.var_1._0;	// _3 = Use(_18#1.0)
+	var19 = & var1;	// _19 = Borrow(Shared, _1)
+	var31 = & var3;	// _31 = Borrow(Shared, _3)
+	var36 = make_sliceptr(&ZRG3cD3bin8protocolB_59FRAGMENTS0g.val, 0x3ull);	// _36 = MakeDst(&::"bin#"::protocol::#5::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var22 = ZRQCu2cE9core0_0_03fmt7Display0g_B0g;	// _22 = Cast(_21 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var23 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCu( var19, var22 );
+	// ^ Call( _23 = <::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/ /*- <'static,>*/>::new<'#local3,usize,>( _19, _22, ), bb11, bb2)
+	/* ZST assign */
+	var25 = ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g;	// _25 = Cast(_24 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var26 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var31, var25 );
+	// ^ Call( _26 = <::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/ /*- <'static,>*/>::new<'#local4,::"std-0_0_0"::io::error::Error/*S*/,>( _31, _25, ), bb12, bb2)
+	var27.DATA[0] = var23;
+	var27.DATA[1] = var26;	// _27 = Array(_23, _26)
+	var28 = & var27;	// _28 = Borrow(Shared, _27)
+	var37 = make_sliceptr(var28, 0x2ull);	// _37 = MakeDst(_28, 0x2 usize)
+	memset(&var35, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _35 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var20._0 = var36;
+	var20._1 = var35;
+	var20._2 = var37;	// _20 = Struct(::"core-0_0_0"::fmt::Arguments<'#local8,>, {_36, _35, _37})
+	var29 = & var20;	// _29 = Borrow(Shared, _20)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var29, &ZRG2cD3bin8protocolF6const20g.val );
 	goto bb2;
-	// ^ Call( _18 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local7,'static,>( _17, &::"bin#"::protocol::lifted#1, ), bb2, bb2)
+	// ^ Call( _30 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local10,'static,>( _29, &::"bin#"::protocol::const#2, ), bb2, bb2)
 }
 // <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_f64<'#local0,>
 double  ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g7get_f640g(
@@ -6335,14 +6455,16 @@ double  ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g7get_f640
 	struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g var5;	// ::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
 	struct s_ZRG3cD8std0_0_02io5error5Error0g *var6;	// &'#local1 ::"std-0_0_0"::io::error::Error/*S*/
 	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var7;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var8;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var9;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var10;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var11;	// &'#local3 ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	tBANG var12 = {0};	// !
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var13;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var14;	// &'static [&'static str]
-	SLICE_PTR var15;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
+	t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g var8 = {0};	// fn{<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG3cD8std0_0_02io5error5Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F_D0g var9;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var10;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var11;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var12;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var13;	// &'#local3 ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
+	tBANG var14 = {0};	// !
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var15;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var16;	// &'static [&'static str]
+	SLICE_PTR var17;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
 	for(unsigned int i = 0; i < 8; i ++)
 		var0.DATA[i] = 0x0;	// _0 = SizedArray(0x0 u8; 8)
 	var2 = & arg0->_0;	// _2 = Borrow(Unique, a0*.0)
@@ -6362,20 +6484,22 @@ bb3:
 bb5:
 	var1 = var5.DATA.var_1._0;	// _1 = Use(_5#1.0)
 	var6 = & var1;	// _6 = Borrow(Shared, _1)
-	var14 = make_sliceptr(&ZRG3cD3bin8protocolB_39FRAGMENTS0g.val, 0x2ull);	// _14 = MakeDst(&::"bin#"::protocol::#3::FRAGMENTS, 0x2 usize)
-	var8 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var6, ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g );
-	// ^ Call( _8 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::io::error::Error/*S*/,>( _6, &<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb6, bb2)
-	var9.DATA[0] = var8;	// _9 = Array(_8)
-	var10 = & var9;	// _10 = Borrow(Shared, _9)
-	var15 = make_sliceptr(var10, 0x1ull);	// _15 = MakeDst(_10, 0x1 usize)
-	memset(&var13, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _13 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var7._0 = var14;
-	var7._1 = var13;
-	var7._2 = var15;	// _7 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_14, _13, _15})
-	var11 = & var7;	// _11 = Borrow(Shared, _7)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var11, &ZRG2cD3bin8protocolG7lifted20g.val );
+	var16 = make_sliceptr(&ZRG3cD3bin8protocolB_69FRAGMENTS0g.val, 0x2ull);	// _16 = MakeDst(&::"bin#"::protocol::#6::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var9 = ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g;	// _9 = Cast(_8 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var10 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var6, var9 );
+	// ^ Call( _10 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::io::error::Error/*S*/,>( _6, _9, ), bb6, bb2)
+	var11.DATA[0] = var10;	// _11 = Array(_10)
+	var12 = & var11;	// _12 = Borrow(Shared, _11)
+	var17 = make_sliceptr(var12, 0x1ull);	// _17 = MakeDst(_12, 0x1 usize)
+	memset(&var15, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _15 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var7._0 = var16;
+	var7._1 = var15;
+	var7._2 = var17;	// _7 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_16, _15, _17})
+	var13 = & var7;	// _13 = Borrow(Shared, _7)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var13, &ZRG2cD3bin8protocolF6const30g.val );
 	goto bb2;
-	// ^ Call( _12 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local5,'static,>( _11, &::"bin#"::protocol::lifted#2, ), bb2, bb2)
+	// ^ Call( _14 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local5,'static,>( _13, &::"bin#"::protocol::const#3, ), bb2, bb2)
 }
 // <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_i128v<'#local0,>
 int128_t  ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_i128v0g(
@@ -6446,12 +6570,17 @@ uint128_t  ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u
 	uint128_t var6;	// u128
 	uint8_t var7;	// u8
 	uint128_t var8;	// u128
-	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy var9;	// ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
-	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy *var10;	// &'#local0 mut ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
-	TRAITOBJ_PTR var11;	// &'#local0 mut dyn (::"core-0_0_0"::panic::BoxMeUp)
-	struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g var12;	// ::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/,>/*E*/
-	tBANG var13 = {0};	// !
-	struct e_ZRG2cE9core0_0_06option6Option1gBsCy var14;	// ::"core-0_0_0"::option::Option<&'static str,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var9;	// ::"core-0_0_0"::fmt::Arguments<'#local0,>/*S*/
+	t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g var10 = {0};	// fn{<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var11;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var12;	// ::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var13;	// [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var14;	// &'#local0 [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var15;	// &'#local1 ::"core-0_0_0"::fmt::Arguments<'#local0,>/*S*/
+	tUNIT var16 = {0};	// ()
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var17;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var18;	// &'static [&'static str]
+	SLICE_PTR var19;	// &'#local0 [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
 	var0 = 0;	// _0 = Constant(+0 i32)
 	var1 = make128_raw(0ull, 0ull);	// _1 = Constant(0x0 u128)
 	// ^ Goto(1)
@@ -6483,14 +6612,22 @@ bb7:
 	goto bb1;
 	// ^ Goto(1)
 bb8:
-	var14.DATA.var_1._0 = make_sliceptr("assertion failed: (ofs < (18 * 7))", 34);	// _14 = Variant(::"core-0_0_0"::option::Option<&'#omitted str,> #1, {"assertion failed: (ofs < (18 * 7))"})
-	var9._0 = var14;	// _9 = Struct(::"std-0_0_0"::panicking::#4::PanicPayload<&'#omitted str,>, {_14})
-	var10 = & var9;	// _10 = Borrow(Unique, _9)
-	var11 = make_traitobjptr(var10, &ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g.val);	// _11 = MakeDst(_10, &<::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::vtable#)
-	memset(&var12, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g ));	// _12 = Variant(::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/,> #0, {})
-	ZRG2cD8std0_0_09panicking20rust_panic_with_hook0g( var11, var12, &ZRG2cD3bin8protocolG7lifted30g.val );
+	var18 = make_sliceptr(&ZRG3cD3bin8protocolB_39FRAGMENTS0g.val, 0x2ull);	// _18 = MakeDst(&::"bin#"::protocol::#3::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var11 = ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g;	// _11 = Cast(_10 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var12 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( &ZRG2cD3bin8protocolF6const40g.val, var11 );
+	// ^ Call( _12 = <::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/ /*- <'static,>*/>::new<'static,&'static str,>( &::"bin#"::protocol::const#4, _11, ), bb9, bb4)
+	var13.DATA[0] = var12;	// _13 = Array(_12)
+	var14 = & var13;	// _14 = Borrow(Shared, _13)
+	var19 = make_sliceptr(var14, 0x1ull);	// _19 = MakeDst(_14, 0x1 usize)
+	memset(&var17, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _17 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var9._0 = var18;
+	var9._1 = var17;
+	var9._2 = var19;	// _9 = Struct(::"core-0_0_0"::fmt::Arguments<'#local0,>, {_18, _17, _19})
+	var15 = & var9;	// _15 = Borrow(Shared, _9)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var15, &ZRG2cD3bin8protocolF6const50g.val );
 	goto bb4;
-	// ^ Call( _13 = ::"std-0_0_0"::panicking::rust_panic_with_hook<'#local0,'static,'static,>( _11, _12, &::"bin#"::protocol::lifted#3, ), bb4, bb4)
+	// ^ Call( _16 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local2,'static,>( _15, &::"bin#"::protocol::const#5, ), bb4, bb4)
 }
 // <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>
 struct e_ZRG2cE9core0_0_06option6Option1gCa  ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g(
@@ -6509,20 +6646,22 @@ struct e_ZRG2cE9core0_0_06option6Option1gCa  ZRIG2cD3bin8protocol6Reader1gG3cD8s
 	SLICE_PTR var7;	// &'#omitted [u8]
 	struct s_ZRG3cD8std0_0_02io5error5Error0g *var8;	// &'#local1 ::"std-0_0_0"::io::error::Error/*S*/
 	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var9;	// ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var10;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var11;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var12;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var13;	// &'#local3 ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
-	tBANG var14 = {0};	// !
-	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy var15;	// ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
-	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy *var16;	// &'#local0 mut ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
-	TRAITOBJ_PTR var17;	// &'#local0 mut dyn (::"core-0_0_0"::panic::BoxMeUp)
-	struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g var18;	// ::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/,>/*E*/
-	tBANG var19 = {0};	// !
-	struct e_ZRG2cE9core0_0_06option6Option1gBsCy var20;	// ::"core-0_0_0"::option::Option<&'static str,>/*E*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var21;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var22;	// &'static [&'static str]
-	SLICE_PTR var23;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
+	t_ZRTfQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g var10 = {0};	// fn{<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsG3cD8std0_0_02io5error5Error0gBuG2cE9core0_0_03fmt9Formatter0gG2c_E6result6Result2gT0G2c_E_F_D0g var11;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var12;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var13;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var14;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var15;	// &'#local3 ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/
+	tBANG var16 = {0};	// !
+	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy var17;	// ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
+	struct s_ZRG3cD8std0_0_09panickingB_412PanicPayload1gBsCy *var18;	// &'#local0 mut ::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/
+	TRAITOBJ_PTR var19;	// &'#local0 mut dyn (::"core-0_0_0"::panic::BoxMeUp)
+	struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g var20;	// ::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::fmt::Arguments<'static,>/*S*/,>/*E*/
+	tBANG var21 = {0};	// !
+	struct e_ZRG2cE9core0_0_06option6Option1gBsCy var22;	// ::"core-0_0_0"::option::Option<&'static str,>/*E*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var23;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var24;	// &'static [&'static str]
+	SLICE_PTR var25;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
 	var0.DATA[0] = 0x0;	// _0 = Array(0x0 u8)
 	var2 = & arg0->_0;	// _2 = Borrow(Unique, a0*.0)
 	var3 = & var0;	// _3 = Borrow(Unique, _0)
@@ -6540,31 +6679,33 @@ bb3:
 	}
 	// ^ SwitchValue( _5#0.0 : 0 => bb7, 1 => bb8, else bb4)
 bb4:
-	var20.DATA.var_1._0 = make_sliceptr("Bad byte count", 14);	// _20 = Variant(::"core-0_0_0"::option::Option<&'#omitted str,> #1, {"Bad byte count"})
-	var15._0 = var20;	// _15 = Struct(::"std-0_0_0"::panicking::#4::PanicPayload<&'#omitted str,>, {_20})
-	var16 = & var15;	// _16 = Borrow(Unique, _15)
-	var17 = make_traitobjptr(var16, &ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g.val);	// _17 = MakeDst(_16, &<::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::vtable#)
-	memset(&var18, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g ));	// _18 = Variant(::"core-0_0_0"::option::Option<&'#local3 ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/,> #0, {})
-	ZRG2cD8std0_0_09panicking20rust_panic_with_hook0g( var17, var18, &ZRG2cD3bin8protocolG7lifted40g.val );
+	var22.DATA.var_1._0 = make_sliceptr("Bad byte count", 14);	// _22 = Variant(::"core-0_0_0"::option::Option<&'#omitted str,> #1, {"Bad byte count"})
+	var17._0 = var22;	// _17 = Struct(::"std-0_0_0"::panicking::#4::PanicPayload<&'#omitted str,>, {_22})
+	var18 = & var17;	// _18 = Borrow(Unique, _17)
+	var19 = make_traitobjptr(var18, &ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_0_05panic7BoxMeUp0gG6vtable0g.val);	// _19 = MakeDst(_18, &<::"std-0_0_0"::panicking::#4::PanicPayload<&'static str,>/*S*/ as ::"core-0_0_0"::panic::BoxMeUp>::vtable#)
+	memset(&var20, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g ));	// _20 = Variant(::"core-0_0_0"::option::Option<&'#local3 ::"core-0_0_0"::fmt::Arguments<'#local4,>/*S*/,> #0, {})
+	ZRG2cD8std0_0_09panicking20rust_panic_with_hook0g( var19, var20, &ZRG2cD3bin8protocolF6const60g.val );
 	goto bb2;
-	// ^ Call( _19 = ::"std-0_0_0"::panicking::rust_panic_with_hook<'#local0,'static,'static,>( _17, _18, &::"bin#"::protocol::lifted#4, ), bb2, bb2)
+	// ^ Call( _21 = ::"std-0_0_0"::panicking::rust_panic_with_hook<'#local0,'static,'static,>( _19, _20, &::"bin#"::protocol::const#6, ), bb2, bb2)
 bb5:
 	var1 = var5.DATA.var_1._0;	// _1 = Use(_5#1.0)
 	var8 = & var1;	// _8 = Borrow(Shared, _1)
-	var22 = make_sliceptr(&ZRG3cD3bin8protocolB_19FRAGMENTS0g.val, 0x2ull);	// _22 = MakeDst(&::"bin#"::protocol::#1::FRAGMENTS, 0x2 usize)
-	var10 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var8, ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g );
-	// ^ Call( _10 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::io::error::Error/*S*/,>( _8, &<::"std-0_0_0"::io::error::Error/*S*/ as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>, ), bb6, bb2)
-	var11.DATA[0] = var10;	// _11 = Array(_10)
-	var12 = & var11;	// _12 = Borrow(Shared, _11)
-	var23 = make_sliceptr(var12, 0x1ull);	// _23 = MakeDst(_12, 0x1 usize)
-	memset(&var21, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _21 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var9._0 = var22;
-	var9._1 = var21;
-	var9._2 = var23;	// _9 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_22, _21, _23})
-	var13 = & var9;	// _13 = Borrow(Shared, _9)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var13, &ZRG2cD3bin8protocolG7lifted50g.val );
+	var24 = make_sliceptr(&ZRG3cD3bin8protocolB_29FRAGMENTS0g.val, 0x2ull);	// _24 = MakeDst(&::"bin#"::protocol::#2::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var11 = ZRQG3cD8std0_0_02io5error5Error0g2cE9core0_0_03fmt7Display0g_F0g;	// _11 = Cast(_10 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"std-0_0_0"::io::error::Error/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var12 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gG3cD8std0_0_02io5error5Error0g( var8, var11 );
+	// ^ Call( _12 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,::"std-0_0_0"::io::error::Error/*S*/,>( _8, _11, ), bb6, bb2)
+	var13.DATA[0] = var12;	// _13 = Array(_12)
+	var14 = & var13;	// _14 = Borrow(Shared, _13)
+	var25 = make_sliceptr(var14, 0x1ull);	// _25 = MakeDst(_14, 0x1 usize)
+	memset(&var23, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _23 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var9._0 = var24;
+	var9._1 = var23;
+	var9._2 = var25;	// _9 = Struct(::"core-0_0_0"::fmt::Arguments<'#local4,>, {_24, _23, _25})
+	var15 = & var9;	// _15 = Borrow(Shared, _9)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var15, &ZRG2cD3bin8protocolF6const70g.val );
 	goto bb2;
-	// ^ Call( _14 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local5,'static,>( _13, &::"bin#"::protocol::lifted#5, ), bb2, bb2)
+	// ^ Call( _16 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local5,'static,>( _15, &::"bin#"::protocol::const#7, ), bb2, bb2)
 bb7:
 	rv.DATA.TAG = 0;	// retval = Variant(::"core-0_0_0"::option::Option<u8,> #0, {})
 	goto bb9;
@@ -6588,191 +6729,334 @@ struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g  ZRIG2cD3bin8
 {
 	struct e_ZRG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0g rv;
 	uint8_t var0;	// u8
-	uint8_t var1;	// u8
-	uint8_t var2;	// u8
-	uint8_t var3;	// u8
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var4;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gCa var5;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
-	struct e_ZRG2cD3bin8protocol5Token0g var6;	// ::"bin#"::protocol::Token/*E*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var7;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct s_ZRG2cF10alloc0_0_06string6String0g var8;	// ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var9;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct s_ZRG2cF10alloc0_0_06string6String0g var10;	// ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var11;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct s_ZRG2cF10alloc0_0_06string6String0g var12;	// ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var13;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct s_ZRG2cF10alloc0_0_06string6String0g var14;	// ::"alloc-0_0_0"::string::String/*S*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var15;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa var16;	// ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var17;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	int128_t var18;	// i128
-	uint32_t var19;	// u32
-	struct e_ZRG2cE9core0_0_06option6Option1gCx var20;	// ::"core-0_0_0"::option::Option<char,>/*E*/
-	RUST_CHAR var21;	// char
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var22;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gCa var23;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var24;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	uint128_t var25;	// u128
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var26;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gCa var27;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var28;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	int128_t var29;	// i128
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var30;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gCa var31;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
-	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var32;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
-	double var33;	// f64
-	uint8_t *var34;	// &'#local0 u8
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var35;	// ::"core-0_0_0"::fmt::Arguments<'#local3,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var36;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var37;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var38;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/; 1]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var39;	// &'#local2 ::"core-0_0_0"::fmt::Arguments<'#local3,>/*S*/
-	tBANG var40 = {0};	// !
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var41;	// ::"core-0_0_0"::option::Option<&'#local3 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var42;	// &'static [&'static str]
-	SLICE_PTR var43;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/]
-	SLICE_PTR var44;	// &'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/]
-	var4 = arg0;	// _4 = Borrow(Unique, a0*)
-	var5 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var4 );
-	// ^ Call( _5 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _4, ), bb1, bb2)
-	if( var5.DATA.TAG == 0) {goto bb3;} else {goto bb4;}
-	// ^ Switch( _5 : 0 => bb3, 1 => bb4, )
+	uint128_t var1;	// u128
+	RUST_BOOL var2;	// bool
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var3;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gCa var4;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
+	struct e_ZRG2cD3bin8protocol5Token0g var5;	// ::"bin#"::protocol::Token/*E*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var6;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct s_ZRG2cF10alloc0_0_06string6String0g var7;	// ::"alloc-0_0_0"::string::String/*S*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var8;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct s_ZRG2cF10alloc0_0_06string6String0g var9;	// ::"alloc-0_0_0"::string::String/*S*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var10;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct s_ZRG2cF10alloc0_0_06string6String0g var11;	// ::"alloc-0_0_0"::string::String/*S*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var12;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct s_ZRG2cF10alloc0_0_06string6String0g var13;	// ::"alloc-0_0_0"::string::String/*S*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var14;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa var15;	// ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var16;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t *var17;	// &'#local0 u128
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var18;	// ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
+	t_ZRTfQCi2cE9core0_0_03fmt8LowerHex0g_B0g var19 = {0};	// fn{<u128 as ::"core-0_0_0"::fmt::LowerHex>::fmt<'static,'static,>}
+	t_ZRTF2BsCiBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var20;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var21;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var22;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var23;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var24;	// &'#local2 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
+	tUNIT var25 = {0};	// ()
+	uint32_t var26;	// u32
+	struct e_ZRG2cE9core0_0_06option6Option1gCx var27;	// ::"core-0_0_0"::option::Option<char,>/*E*/
+	RUST_CHAR var28;	// char
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var29;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gCa var30;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var31;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var32;	// u128
+	uint8_t var33;	// u8
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var34;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gCa var35;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var36;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	int128_t var37;	// i128
+	uint8_t var38;	// u8
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var39;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gCa var40;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var41;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	double var42;	// f64
+	uint8_t var43;	// u8
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var44;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var45;	// u128
+	uintptr_t var46;	// usize
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var47;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var48;	// u128
+	uintptr_t var49;	// usize
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var50;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var51;	// u128
+	uintptr_t var52;	// usize
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var53;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct s_ZRG2cF10alloc0_0_06string6String0g var54;	// ::"alloc-0_0_0"::string::String/*S*/
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var55;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gCa var56;	// ::"core-0_0_0"::option::Option<u8,>/*E*/
+	uint8_t var57;	// u8
+	RUST_BOOL var58;	// bool
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var59;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var60;	// u128
+	uintptr_t var61;	// usize
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var62;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var63;	// u128
+	uintptr_t var64;	// usize
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var65;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var66;	// u128
+	uintptr_t var67;	// usize
+	struct s_ZRG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g *var68;	// &'#local0 mut ::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/
+	uint128_t var69;	// u128
+	uintptr_t var70;	// usize
+	struct s_ZRG2cD3bin8protocol7SpanDef0g var71;	// ::"bin#"::protocol::SpanDef/*S*/
+	uint8_t *var72;	// &'#local3 u8
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var73;	// ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt8LowerHex0g_B0g var74 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::LowerHex>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var75;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var76;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var77;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var78;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var79;	// &'#local2 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
+	tBANG var80 = {0};	// !
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var81;	// ::"core-0_0_0"::option::Option<&'#local6 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var82;	// &'static [&'static str]
+	SLICE_PTR var83;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/]
+	SLICE_PTR var84;	// &'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/]
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var85;	// ::"core-0_0_0"::option::Option<&'#local6 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var86;	// &'static [&'static str]
+	SLICE_PTR var87;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/]
+	SLICE_PTR var88;	// &'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/]
+	var3 = arg0;	// _3 = Borrow(Unique, a0*)
+	var4 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var3 );
+	// ^ Call( _4 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _3, ), bb1, bb2)
+	if( var4.DATA.TAG == 0) {goto bb3;} else {goto bb4;}
+	// ^ Switch( _4 : 0 => bb3, 1 => bb4, )
 bb2: _Unwind_Resume(); // Diverge
 bb3:
-	rv.DATA.var_1._0.DATA.TAG = 9;	// retval = Variant(::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,> #0, {})
+	rv.DATA.var_1._0.DATA.var_11._0._3 = 14;	// retval = Variant(::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,> #0, {})
 	// ^ drop(a0)
 	return rv;
 	// ^ Return
 bb4:
-	var0 = var5.DATA.var_1._0;	// _0 = Use(_5#1.0)
-	switch(var5.DATA.var_1._0) {
+	var0 = var4.DATA.var_1._0;	// _0 = Use(_4#1.0)
+	switch(var4.DATA.var_1._0) {
 		case 0ull: goto bb7; break;
-		case 1ull: goto bb9; break;
-		case 2ull: goto bb11; break;
-		case 3ull: goto bb13; break;
-		case 4ull: goto bb15; break;
-		case 5ull: goto bb17; break;
-		case 6ull: goto bb21; break;
-		case 7ull: goto bb25; break;
-		case 8ull: goto bb29; break;
+		case 1ull: goto bb8; break;
+		case 2ull: goto bb10; break;
+		case 3ull: goto bb12; break;
+		case 4ull: goto bb14; break;
+		case 5ull: goto bb16; break;
+		case 6ull: goto bb18; break;
+		case 7ull: goto bb20; break;
+		case 8ull: goto bb24; break;
+		case 9ull: goto bb28; break;
+		case 10ull: goto bb32; break;
+		case 11ull: goto bb34; break;
 		default: goto bb5;
 	}
-	// ^ SwitchValue( _5#1.0 : 0 => bb7, 1 => bb9, 2 => bb11, 3 => bb13, 4 => bb15, 5 => bb17, 6 => bb21, 7 => bb25, 8 => bb29, else bb5)
+	// ^ SwitchValue( _4#1.0 : 0 => bb7, 1 => bb8, 2 => bb10, 3 => bb12, 4 => bb14, 5 => bb16, 6 => bb18, 7 => bb20, 8 => bb24, 9 => bb28, 10 => bb32, 11 => bb34, else bb5)
 bb5:
-	var34 = & var0;	// _34 = Borrow(Shared, _0)
-	var42 = make_sliceptr(&ZRG3cD3bin8protocolB_09FRAGMENTS0g.val, 0x2ull);	// _42 = MakeDst(&::"bin#"::protocol::#0::FRAGMENTS, 0x2 usize)
-	var36 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var34, ZRQCa2cE9core0_0_03fmt8LowerHex0g_B0g );
-	// ^ Call( _36 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,u8,>( _34, &<u8 as ::"core-0_0_0"::fmt::LowerHex>::fmt<'static,'static,>, ), bb6, bb2)
-	var37.DATA[0] = var36;	// _37 = Array(_36)
-	var38 = & var37;	// _38 = Borrow(Shared, _37)
-	var43 = make_sliceptr(var38, 0x1ull);	// _43 = MakeDst(_38, 0x1 usize)
-	var44 = make_sliceptr(&ZRG2cD3bin8protocolG7lifted60g.val, 0x1ull);	// _44 = MakeDst(&::"bin#"::protocol::lifted#6, 0x1 usize)
-	var41.DATA.var_1._0 = var44;	// _41 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #1, {_44})
-	var35._0 = var42;
-	var35._1 = var41;
-	var35._2 = var43;	// _35 = Struct(::"core-0_0_0"::fmt::Arguments<'#local3,>, {_42, _41, _43})
-	var39 = & var35;	// _39 = Borrow(Shared, _35)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var39, &ZRG2cD3bin8protocolG7lifted70g.val );
+	var72 = & var0;	// _72 = Borrow(Shared, _0)
+	var86 = make_sliceptr(&ZRG3cD3bin8protocolB_19FRAGMENTS0g.val, 0x2ull);	// _86 = MakeDst(&::"bin#"::protocol::#1::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var75 = ZRQCa2cE9core0_0_03fmt8LowerHex0g_B0g;	// _75 = Cast(_74 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var76 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var72, var75 );
+	// ^ Call( _76 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local3,u8,>( _72, _75, ), bb6, bb2)
+	var77.DATA[0] = var76;	// _77 = Array(_76)
+	var78 = & var77;	// _78 = Borrow(Shared, _77)
+	var87 = make_sliceptr(var78, 0x1ull);	// _87 = MakeDst(_78, 0x1 usize)
+	var88 = make_sliceptr(&ZRG2cD3bin8protocolF7const100g.val, 0x1ull);	// _88 = MakeDst(&::"bin#"::protocol::const#10, 0x1 usize)
+	var85.DATA.var_1._0 = var88;	// _85 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #1, {_88})
+	var73._0 = var86;
+	var73._1 = var85;
+	var73._2 = var87;	// _73 = Struct(::"core-0_0_0"::fmt::Arguments<'#local7,>, {_86, _85, _87})
+	var79 = & var73;	// _79 = Borrow(Shared, _73)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var79, &ZRG2cD3bin8protocolF7const110g.val );
 	goto bb2;
-	// ^ Call( _40 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local4,'static,>( _39, &::"bin#"::protocol::lifted#7, ), bb2, bb2)
+	// ^ Call( _80 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local9,'static,>( _79, &::"bin#"::protocol::const#11, ), bb2, bb2)
 bb7:
-	var7 = arg0;	// _7 = Borrow(Unique, a0*)
-	var8 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var7 );
-	// ^ Call( _8 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _7, ), bb8, bb2)
-	var6.DATA.TAG = 0;
-	var6.DATA.var_0._0 = var8;	// _6 = Variant(::"bin#"::protocol::Token #0, {_8})
-	goto bb33;
-	// ^ Goto(33)
-bb9:
-	var9 = arg0;	// _9 = Borrow(Unique, a0*)
-	var10 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var9 );
-	// ^ Call( _10 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _9, ), bb10, bb2)
-	var6.DATA.TAG = 1;
-	var6.DATA.var_1._0 = var10;	// _6 = Variant(::"bin#"::protocol::Token #1, {_10})
-	goto bb33;
-	// ^ Goto(33)
-bb11:
-	var11 = arg0;	// _11 = Borrow(Unique, a0*)
-	var12 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var11 );
-	// ^ Call( _12 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _11, ), bb12, bb2)
-	var6.DATA.TAG = 2;
-	var6.DATA.var_2._0 = var12;	// _6 = Variant(::"bin#"::protocol::Token #2, {_12})
-	goto bb33;
-	// ^ Goto(33)
-bb13:
-	var13 = arg0;	// _13 = Borrow(Unique, a0*)
-	var14 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var13 );
-	// ^ Call( _14 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _13, ), bb14, bb2)
-	var6.DATA.TAG = 3;
-	var6.DATA.var_3._0 = var14;	// _6 = Variant(::"bin#"::protocol::Token #3, {_14})
-	goto bb33;
-	// ^ Goto(33)
-bb15:
-	var15 = arg0;	// _15 = Borrow(Unique, a0*)
-	var16 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g12get_byte_vec0g( var15 );
-	// ^ Call( _16 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_byte_vec<'#local0,>( _15, ), bb16, bb2)
-	var6.DATA.TAG = 4;
-	var6.DATA.var_4._0 = var16;	// _6 = Variant(::"bin#"::protocol::Token #4, {_16})
-	goto bb33;
-	// ^ Goto(33)
-bb17:
-	var17 = arg0;	// _17 = Borrow(Unique, a0*)
-	var18 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_i128v0g( var17 );
-	// ^ Call( _18 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_i128v<'#local0,>( _17, ), bb18, bb2)
-	var19 = var18.lo;	// _19 = Cast(_18 as u32)
-	var20 = ZRG3cE9core0_0_04char7convert8from_u320g( var19 );
-	// ^ Call( _20 = ::"core-0_0_0"::char::convert::from_u32( _19, ), bb19, bb2)
-	var21 = ZRIG2cE9core0_0_06option6Option1gCx6expect0g( var20, make_sliceptr("char lit", 8) );
-	// ^ Call( _21 = <::"core-0_0_0"::option::Option<char,>/*E*/ /*- <char,>*/>::expect<'static,>( _20, "char lit", ), bb20, bb2)
-	var6.DATA.TAG = 5;
-	var6.DATA.var_5._0 = var21;	// _6 = Variant(::"bin#"::protocol::Token #5, {_21})
-	goto bb33;
-	// ^ Goto(33)
-bb21:
-	var22 = arg0;	// _22 = Borrow(Unique, a0*)
-	var23 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var22 );
-	// ^ Call( _23 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _22, ), bb22, bb2)
-	var1 = ZRIG2cE9core0_0_06option6Option1gCa6expect0g( var23, make_sliceptr("getb int ty", 11) );
-	// ^ Call( _1 = <::"core-0_0_0"::option::Option<u8,>/*E*/ /*- <u8,>*/>::expect<'static,>( _23, "getb int ty", ), bb23, bb2)
-	var24 = arg0;	// _24 = Borrow(Unique, a0*)
-	var25 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var24 );
-	// ^ Call( _25 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _24, ), bb24, bb2)
-	var6.DATA.TAG = 6;
-	var6.DATA.var_6._0 = var25;
-	var6.DATA.var_6._1 = var1;	// _6 = Variant(::"bin#"::protocol::Token #6, {_25, _1})
-	goto bb33;
-	// ^ Goto(33)
-bb25:
-	var26 = arg0;	// _26 = Borrow(Unique, a0*)
-	var27 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var26 );
-	// ^ Call( _27 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _26, ), bb26, bb2)
-	var2 = ZRIG2cE9core0_0_06option6Option1gCa6expect0g( var27, make_sliceptr("getb int ty", 11) );
-	// ^ Call( _2 = <::"core-0_0_0"::option::Option<u8,>/*E*/ /*- <u8,>*/>::expect<'static,>( _27, "getb int ty", ), bb27, bb2)
-	var28 = arg0;	// _28 = Borrow(Unique, a0*)
-	var29 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_i128v0g( var28 );
-	// ^ Call( _29 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_i128v<'#local0,>( _28, ), bb28, bb2)
-	var6.DATA.TAG = 7;
-	var6.DATA.var_7._0 = var29;
-	var6.DATA.var_7._1 = var2;	// _6 = Variant(::"bin#"::protocol::Token #7, {_29, _2})
-	goto bb33;
-	// ^ Goto(33)
-bb29:
-	var30 = arg0;	// _30 = Borrow(Unique, a0*)
-	var31 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var30 );
-	// ^ Call( _31 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _30, ), bb30, bb2)
-	var3 = ZRIG2cE9core0_0_06option6Option1gCa6expect0g( var31, make_sliceptr("getb int ty", 11) );
-	// ^ Call( _3 = <::"core-0_0_0"::option::Option<u8,>/*E*/ /*- <u8,>*/>::expect<'static,>( _31, "getb int ty", ), bb31, bb2)
-	var32 = arg0;	// _32 = Borrow(Unique, a0*)
-	var33 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g7get_f640g( var32 );
-	// ^ Call( _33 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_f64<'#local0,>( _32, ), bb32, bb2)
-	var6.DATA.TAG = 8;
-	var6.DATA.var_8._0 = var33;
-	var6.DATA.var_8._1 = var3;	// _6 = Variant(::"bin#"::protocol::Token #8, {_33, _3})
-	// ^ Goto(33)
-bb33:
-	/* Niche tag */rv.DATA.var_1._0 = var6;	// retval = Variant(::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,> #1, {_6})
+	var5.DATA.var_11._0._3 = 2;	// _5 = Variant(::"bin#"::protocol::Token #0, {})
+	goto bb44;
+	// ^ Goto(44)
+bb8:
+	var6 = arg0;	// _6 = Borrow(Unique, a0*)
+	var7 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var6 );
+	// ^ Call( _7 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _6, ), bb9, bb2)
+	var5.DATA.var_1._1 = 3;
+	var5.DATA.var_1._0 = var7;	// _5 = Variant(::"bin#"::protocol::Token #1, {_7})
+	goto bb44;
+	// ^ Goto(44)
+bb10:
+	var8 = arg0;	// _8 = Borrow(Unique, a0*)
+	var9 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var8 );
+	// ^ Call( _9 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _8, ), bb11, bb2)
+	var5.DATA.var_2._1 = 4;
+	var5.DATA.var_2._0 = var9;	// _5 = Variant(::"bin#"::protocol::Token #2, {_9})
+	goto bb44;
+	// ^ Goto(44)
+bb12:
+	var10 = arg0;	// _10 = Borrow(Unique, a0*)
+	var11 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var10 );
+	// ^ Call( _11 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _10, ), bb13, bb2)
+	var5.DATA.var_3._1 = 5;
+	var5.DATA.var_3._0 = var11;	// _5 = Variant(::"bin#"::protocol::Token #3, {_11})
+	goto bb44;
+	// ^ Goto(44)
+bb14:
+	var12 = arg0;	// _12 = Borrow(Unique, a0*)
+	var13 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var12 );
+	// ^ Call( _13 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _12, ), bb15, bb2)
+	var5.DATA.var_4._1 = 6;
+	var5.DATA.var_4._0 = var13;	// _5 = Variant(::"bin#"::protocol::Token #4, {_13})
+	goto bb44;
+	// ^ Goto(44)
+bb16:
+	var14 = arg0;	// _14 = Borrow(Unique, a0*)
+	var15 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g12get_byte_vec0g( var14 );
+	// ^ Call( _15 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_byte_vec<'#local0,>( _14, ), bb17, bb2)
+	var5.DATA.var_5._1 = 7;
+	var5.DATA.var_5._0 = var15;	// _5 = Variant(::"bin#"::protocol::Token #5, {_15})
+	goto bb44;
+	// ^ Goto(44)
+bb18:
+	var16 = arg0;	// _16 = Borrow(Unique, a0*)
+	var1 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var16 );
+	// ^ Call( _1 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _16, ), bb19, bb2)
+	var2 = 0 < cmp128(make128_raw(0ull, 1114111ull), var1);	// _2 = BinOp(_1 LT 0x10ffff u128)
+	if(var2) goto bb45; else goto bb48;
+	// ^ If( _2 : 45, 48)
+bb20:
+	var29 = arg0;	// _29 = Borrow(Unique, a0*)
+	var30 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var29 );
+	// ^ Call( _30 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _29, ), bb21, bb2)
+	var33 = ZRIG2cE9core0_0_06option6Option1gCa6expect0g( var30, make_sliceptr("getb int ty", 11) );
+	// ^ Call( _33 = <::"core-0_0_0"::option::Option<u8,>/*E*/ /*- <u8,>*/>::expect<'static,>( _30, "getb int ty", ), bb22, bb2)
+	var31 = arg0;	// _31 = Borrow(Unique, a0*)
+	var32 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var31 );
+	// ^ Call( _32 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _31, ), bb23, bb2)
+	var5.DATA.var_7._2 = 9;
+	var5.DATA.var_7._0 = var32;
+	var5.DATA.var_7._1 = var33;	// _5 = Variant(::"bin#"::protocol::Token #7, {_32, _33})
+	goto bb44;
+	// ^ Goto(44)
+bb24:
+	var34 = arg0;	// _34 = Borrow(Unique, a0*)
+	var35 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var34 );
+	// ^ Call( _35 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _34, ), bb25, bb2)
+	var38 = ZRIG2cE9core0_0_06option6Option1gCa6expect0g( var35, make_sliceptr("getb int ty", 11) );
+	// ^ Call( _38 = <::"core-0_0_0"::option::Option<u8,>/*E*/ /*- <u8,>*/>::expect<'static,>( _35, "getb int ty", ), bb26, bb2)
+	var36 = arg0;	// _36 = Borrow(Unique, a0*)
+	var37 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_i128v0g( var36 );
+	// ^ Call( _37 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_i128v<'#local0,>( _36, ), bb27, bb2)
+	var5.DATA.var_8._2 = 10;
+	var5.DATA.var_8._0 = var37;
+	var5.DATA.var_8._1 = var38;	// _5 = Variant(::"bin#"::protocol::Token #8, {_37, _38})
+	goto bb44;
+	// ^ Goto(44)
+bb28:
+	var39 = arg0;	// _39 = Borrow(Unique, a0*)
+	var40 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var39 );
+	// ^ Call( _40 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _39, ), bb29, bb2)
+	var43 = ZRIG2cE9core0_0_06option6Option1gCa6expect0g( var40, make_sliceptr("getb int ty", 11) );
+	// ^ Call( _43 = <::"core-0_0_0"::option::Option<u8,>/*E*/ /*- <u8,>*/>::expect<'static,>( _40, "getb int ty", ), bb30, bb2)
+	var41 = arg0;	// _41 = Borrow(Unique, a0*)
+	var42 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g7get_f640g( var41 );
+	// ^ Call( _42 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_f64<'#local0,>( _41, ), bb31, bb2)
+	var5.DATA.var_9._2 = 11;
+	var5.DATA.var_9._0 = var42;
+	var5.DATA.var_9._1 = var43;	// _5 = Variant(::"bin#"::protocol::Token #9, {_42, _43})
+	goto bb44;
+	// ^ Goto(44)
+bb32:
+	var44 = arg0;	// _44 = Borrow(Unique, a0*)
+	var45 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var44 );
+	// ^ Call( _45 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _44, ), bb33, bb2)
+	var46 = var45.lo;	// _46 = Cast(_45 as usize)
+	var5.DATA.var_10._1 = 12;
+	var5.DATA.var_10._0 = var46;	// _5 = Variant(::"bin#"::protocol::Token #10, {_46})
+	goto bb44;
+	// ^ Goto(44)
+bb34:
+	var47 = arg0;	// _47 = Borrow(Unique, a0*)
+	var48 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var47 );
+	// ^ Call( _48 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _47, ), bb35, bb2)
+	var49 = var48.lo;	// _49 = Cast(_48 as usize)
+	var50 = arg0;	// _50 = Borrow(Unique, a0*)
+	var51 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var50 );
+	// ^ Call( _51 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _50, ), bb36, bb2)
+	var52 = var51.lo;	// _52 = Cast(_51 as usize)
+	var53 = arg0;	// _53 = Borrow(Unique, a0*)
+	var54 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g10get_string0g( var53 );
+	// ^ Call( _54 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_string<'#local0,>( _53, ), bb37, bb2)
+	var55 = arg0;	// _55 = Borrow(Unique, a0*)
+	var56 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g4getb0g( var55 );
+	// ^ Call( _56 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::getb<'#local0,>( _55, ), bb38, bb2)
+	var57 = ZRIG2cE9core0_0_06option6Option1gCa6expect0g( var56, make_sliceptr("getb span path_is_real", 22) );
+	// ^ Call( _57 = <::"core-0_0_0"::option::Option<u8,>/*E*/ /*- <u8,>*/>::expect<'static,>( _56, "getb span path_is_real", ), bb39, bb2)
+	var58 = var57 != 0x0;	// _58 = BinOp(_57 NE 0x0 u8)
+	var59 = arg0;	// _59 = Borrow(Unique, a0*)
+	var60 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var59 );
+	// ^ Call( _60 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _59, ), bb40, bb2)
+	var61 = var60.lo;	// _61 = Cast(_60 as usize)
+	var62 = arg0;	// _62 = Borrow(Unique, a0*)
+	var63 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var62 );
+	// ^ Call( _63 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _62, ), bb41, bb2)
+	var64 = var63.lo;	// _64 = Cast(_63 as usize)
+	var65 = arg0;	// _65 = Borrow(Unique, a0*)
+	var66 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var65 );
+	// ^ Call( _66 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _65, ), bb42, bb2)
+	var67 = var66.lo;	// _67 = Cast(_66 as usize)
+	var68 = arg0;	// _68 = Borrow(Unique, a0*)
+	var69 = ZRIG2cD3bin8protocol6Reader1gG3cD8std0_0_02io5stdio9StdinLock0g9get_u128v0g( var68 );
+	// ^ Call( _69 = <::"bin#"::protocol::Reader<::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>/*S*/ /*- <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/,>*/>::get_u128v<'#local0,>( _68, ), bb43, bb2)
+	var70 = var69.lo;	// _70 = Cast(_69 as usize)
+	var71._0 = var49;
+	var71._1 = var52;
+	var71._2 = var54;
+	var71._3 = var58;
+	var71._4 = var61;
+	var71._5 = var64;
+	var71._6 = var67;
+	var71._7 = var70;	// _71 = Struct(::"bin#"::protocol::SpanDef, {_49, _52, _54, _58, _61, _64, _67, _70})
+	/* Niche tag */var5.DATA.var_11._0 = var71;	// _5 = Variant(::"bin#"::protocol::Token #11, {_71})
+	// ^ Goto(44)
+bb44:
+	/* Niche tag */rv.DATA.var_1._0 = var5;	// retval = Variant(::"core-0_0_0"::option::Option<::"bin#"::protocol::Token/*E*/,> #1, {_5})
 	// ^ drop(a0)
 	return rv;
+	// ^ Return
+bb45:
+	var26 = var1.lo;	// _26 = Cast(_1 as u32)
+	var27 = ZRG3cE9core0_0_04char7convert8from_u320g( var26 );
+	// ^ Call( _27 = ::"core-0_0_0"::char::convert::from_u32( _26, ), bb46, bb2)
+	var28 = ZRIG2cE9core0_0_06option6Option1gCx6expect0g( var27, make_sliceptr("protocol: char lit invalid", 26) );
+	// ^ Call( _28 = <::"core-0_0_0"::option::Option<char,>/*E*/ /*- <char,>*/>::expect<'static,>( _27, "protocol: char lit invalid", ), bb47, bb2)
+	var5.DATA.var_6._1 = 8;
+	var5.DATA.var_6._0 = var28;	// _5 = Variant(::"bin#"::protocol::Token #6, {_28})
+	goto bb44;
+	// ^ Goto(44)
+bb48:
+	var17 = & var1;	// _17 = Borrow(Shared, _1)
+	var82 = make_sliceptr(&ZRG3cD3bin8protocolB_09FRAGMENTS0g.val, 0x2ull);	// _82 = MakeDst(&::"bin#"::protocol::#0::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var20 = ZRQCi2cE9core0_0_03fmt8LowerHex0g_B0g;	// _20 = Cast(_19 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u128, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var21 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCi( var17, var20 );
+	// ^ Call( _21 = <::"core-0_0_0"::fmt::ArgumentV1<'#local0,>/*S*/ /*- <'static,>*/>::new<'#local0,u128,>( _17, _20, ), bb49, bb2)
+	var22.DATA[0] = var21;	// _22 = Array(_21)
+	var23 = & var22;	// _23 = Borrow(Shared, _22)
+	var83 = make_sliceptr(var23, 0x1ull);	// _83 = MakeDst(_23, 0x1 usize)
+	var84 = make_sliceptr(&ZRG2cD3bin8protocolF6const80g.val, 0x1ull);	// _84 = MakeDst(&::"bin#"::protocol::const#8, 0x1 usize)
+	var81.DATA.var_1._0 = var84;	// _81 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #1, {_84})
+	var18._0 = var82;
+	var18._1 = var81;
+	var18._2 = var83;	// _18 = Struct(::"core-0_0_0"::fmt::Arguments<'#local6,>, {_82, _81, _83})
+	var24 = & var18;	// _24 = Borrow(Shared, _18)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var24, &ZRG2cD3bin8protocolF6const90g.val );
+	goto bb2;
+	// ^ Call( _25 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local8,'static,>( _24, &::"bin#"::protocol::const#9, ), bb2, bb2)
+}
+// <::"bin#"::protocol::SpanDef/*S*/ /*- */>::#drop_glue
+static void  ZRIG2cD3bin8protocol7SpanDef0gA9drop_glue0g(
+		struct s_ZRG2cD3bin8protocol7SpanDef0g *arg0 // &'#omitted move ::"bin#"::protocol::SpanDef/*S*/
+		) // -> ()
+
+{
+	tUNIT rv;
+	/* ZST assign */
+	ZRIG2cF10alloc0_0_06string6String0gA9drop_glue0g(&arg0->_2);
+	// ^ drop(a0*.2)
+	return ;
 	// ^ Return
 }
 // <::"bin#"::protocol::Token/*E*/ /*- */>::#drop_glue
@@ -6783,45 +7067,47 @@ static void  ZRIG2cD3bin8protocol5Token0gA9drop_glue0g(
 {
 	tUNIT rv;
 	/* ZST assign */
-	switch((*arg0).DATA.TAG) {
-	case 0: goto bb1;break;
-	case 1: goto bb2;break;
-	case 2: goto bb3;break;
-	case 3: goto bb4;break;
-	case 4: goto bb5;break;
-	case 5: goto bb6;break;
-	case 6: goto bb7;break;
-	case 7: goto bb8;break;
-	case 8: goto bb9;break;
-	default: abort();
+	switch((*arg0).DATA.var_11._0._3) {
+	case 2: goto bb1;break;
+	case 3: goto bb2;break;
+	case 4: goto bb3;break;
+	case 5: goto bb4;break;
+	case 6: goto bb5;break;
+	case 7: goto bb6;break;
+	case 8: goto bb7;break;
+	case 9: goto bb8;break;
+	case 10: goto bb9;break;
+	case 11: goto bb10;break;
+	case 12: goto bb11;break;
+	default: goto bb12;break;
 	}
-	// ^ Switch( a0* : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb6, 6 => bb7, 7 => bb8, 8 => bb9, )
+	// ^ Switch( a0* : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb6, 6 => bb7, 7 => bb8, 8 => bb9, 9 => bb10, 10 => bb11, 11 => bb12, )
 bb1:
-	ZRIG2cD3bin8protocolF11TokenSymbol0gA9drop_glue0g(&(*arg0).DATA.var_0);
 	// ^ drop(a0*#0)
 	return ;
 	// ^ Return
 bb2:
-	ZRIG2cD3bin8protocolF10TokenIdent0gA9drop_glue0g(&(*arg0).DATA.var_1);
+	ZRIG2cD3bin8protocolF11TokenSymbol0gA9drop_glue0g(&(*arg0).DATA.var_1);
 	// ^ drop(a0*#1)
 	return ;
 	// ^ Return
 bb3:
-	ZRIG2cD3bin8protocolF13TokenLifetime0gA9drop_glue0g(&(*arg0).DATA.var_2);
+	ZRIG2cD3bin8protocolF10TokenIdent0gA9drop_glue0g(&(*arg0).DATA.var_2);
 	// ^ drop(a0*#2)
 	return ;
 	// ^ Return
 bb4:
-	ZRIG2cD3bin8protocolF11TokenString0gA9drop_glue0g(&(*arg0).DATA.var_3);
+	ZRIG2cD3bin8protocolF13TokenLifetime0gA9drop_glue0g(&(*arg0).DATA.var_3);
 	// ^ drop(a0*#3)
 	return ;
 	// ^ Return
 bb5:
-	ZRIG2cD3bin8protocolF15TokenByteString0gA9drop_glue0g(&(*arg0).DATA.var_4);
+	ZRIG2cD3bin8protocolF11TokenString0gA9drop_glue0g(&(*arg0).DATA.var_4);
 	// ^ drop(a0*#4)
 	return ;
 	// ^ Return
 bb6:
+	ZRIG2cD3bin8protocolF15TokenByteString0gA9drop_glue0g(&(*arg0).DATA.var_5);
 	// ^ drop(a0*#5)
 	return ;
 	// ^ Return
@@ -6835,6 +7121,19 @@ bb8:
 	// ^ Return
 bb9:
 	// ^ drop(a0*#8)
+	return ;
+	// ^ Return
+bb10:
+	// ^ drop(a0*#9)
+	return ;
+	// ^ Return
+bb11:
+	// ^ drop(a0*#10)
+	return ;
+	// ^ Return
+bb12:
+	ZRIG2cD3bin8protocolF12TokenSpanDef0gA9drop_glue0g(&(*arg0).DATA.var_11);
+	// ^ drop(a0*#11)
 	return ;
 	// ^ Return
 }
@@ -6877,6 +7176,19 @@ static void  ZRIG2cD3bin8protocolF13TokenLifetime0gA9drop_glue0g(
 	return ;
 	// ^ Return
 }
+// <::"bin#"::protocol::Token#SpanDef/*S*/ /*- */>::#drop_glue
+static void  ZRIG2cD3bin8protocolF12TokenSpanDef0gA9drop_glue0g(
+		struct s_ZRG2cD3bin8protocolF12TokenSpanDef0g *arg0 // &'#omitted move ::"bin#"::protocol::Token#SpanDef/*S*/
+		) // -> ()
+
+{
+	tUNIT rv;
+	/* ZST assign */
+	ZRIG2cD3bin8protocol7SpanDef0gA9drop_glue0g(&arg0->_0);
+	// ^ drop(a0*.0)
+	return ;
+	// ^ Return
+}
 // <::"bin#"::protocol::Token#String/*S*/ /*- */>::#drop_glue
 static void  ZRIG2cD3bin8protocolF11TokenString0gA9drop_glue0g(
 		struct s_ZRG2cD3bin8protocolF11TokenString0g *arg0 // &'#omitted move ::"bin#"::protocol::Token#String/*S*/
@@ -6915,9 +7227,24 @@ static struct s_ZRG2cE9core0_0_05alloc6Layout0g  ZRIG2cE9core0_0_05alloc6Layout0
 	RUST_BOOL var2;	// bool
 	struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g var3;	// ::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,>/*E*/
 	struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g *var4;	// &'#local0 ::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,>/*E*/
-	tUNIT var5 = {0};	// ()
-	struct s_ZRG2cE9core0_0_03num12NonZeroUsize0g var6;	// ::"core-0_0_0"::num::NonZeroUsize/*S*/
-	struct s_ZRG2cE9core0_0_07nonzero7NonZero1gCu var7;	// ::"core-0_0_0"::nonzero::NonZero<usize,>/*S*/
+	t_ZRTfQBsCy2cE9core0_0_03fmt7Display0g_B0g var5 = {0};	// fn{<&'static str as ::"core-0_0_0"::fmt::Display>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCyBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var6;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var7;	// ::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var8;	// [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var9;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/; 1]
+	struct s_ZRG2cE9core0_0_03num12NonZeroUsize0g var10;	// ::"core-0_0_0"::num::NonZeroUsize/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var11;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var12;	// &'static [&'static str]
+	SLICE_PTR var13;	// &'#local1 [::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/]
+	struct s_ZRG2cE9core0_0_05panic9PanicInfo0g var14;	// ::"core-0_0_0"::panic::PanicInfo<'#local2,>/*S*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var15;	// &'#local0 ::"core-0_0_0"::fmt::Arguments<'#local1,>/*S*/
+	struct s_ZRG2cE9core0_0_05panic9PanicInfo0g *var16;	// &'#local1 ::"core-0_0_0"::panic::PanicInfo<'#local2,>/*S*/
+	tBANG var17 = {0};	// !
+	TRAITOBJ_PTR var18;	// &'#local2 dyn (::"core-0_0_0"::any::Any+::"core-0_0_0"::marker::Send)
+	struct s_ZRG2cE9core0_0_05panic8Location0g var19;	// ::"core-0_0_0"::panic::Location<'static,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsG2c_A3fmt9Arguments0g var20;	// ::"core-0_0_0"::option::Option<&'#local0 ::"core-0_0_0"::fmt::Arguments<'#local1,>/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var21;	// ::"core-0_0_0"::fmt::Arguments<'#local1,>/*S*/
+	struct s_ZRG2cE9core0_0_07nonzero7NonZero1gCu var22;	// ::"core-0_0_0"::nonzero::NonZero<usize,>/*S*/
 	var1 = 0x8ull;	// _1 = Constant(0x8 usize)
 	var0 = 0x48ull;	// _0 = Constant(0x48 usize)
 	var3 = ZRIG2cE9core0_0_05alloc6Layout0g15from_size_align0g( 0x48ull, 0x8ull );
@@ -6930,16 +7257,38 @@ static struct s_ZRG2cE9core0_0_05alloc6Layout0g  ZRIG2cE9core0_0_05alloc6Layout0
 	// ^ If( _2 : 4, 5)
 bb3: _Unwind_Resume(); // Diverge
 bb4:
-	var7._0 = var1;	// _7 = Struct(::"core-0_0_0"::nonzero::NonZero<usize,>, {_1})
-	var6._0 = var7;	// _6 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_7})
+	var22._0 = var1;	// _22 = Struct(::"core-0_0_0"::nonzero::NonZero<usize,>, {_1})
+	var10._0 = var22;	// _10 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_22})
 	rv._0 = var0;
-	rv._1 = var6;	// retval = Struct(::"core-0_0_0"::alloc::Layout, {_0, _6})
+	rv._1 = var10;	// retval = Struct(::"core-0_0_0"::alloc::Layout, {_0, _10})
 	return rv;
 	// ^ Return
 bb5:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG2cE9core0_0_05allocG7lifted30g.val );
+	var12 = make_sliceptr(&ZRG3cE9core0_0_05allocB_19FRAGMENTS0g.val, 0x2ull);	// _12 = MakeDst(&::"core-0_0_0"::alloc::#1::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var6 = ZRQBsCy2cE9core0_0_03fmt7Display0g_B0g;	// _6 = Cast(_5 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static str, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var7 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCy( &ZRG2cE9core0_0_05allocF6const60g.val, var6 );
+	// ^ Call( _7 = <::"core-0_0_0"::fmt::ArgumentV1<'static,>/*S*/ /*- <'static,>*/>::new<'static,&'static str,>( &::"core-0_0_0"::alloc::const#6, _6, ), bb6, bb3)
+	var8.DATA[0] = var7;	// _8 = Array(_7)
+	var9 = & var8;	// _9 = Borrow(Shared, _8)
+	var13 = make_sliceptr(var9, 0x1ull);	// _13 = MakeDst(_9, 0x1 usize)
+	memset(&var11, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _11 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var21._0 = var12;
+	var21._1 = var11;
+	var21._2 = var13;	// _21 = Struct(::"core-0_0_0"::fmt::Arguments<'#local1,>, {_12, _11, _13})
+	var15 = & var21;	// _15 = Borrow(Shared, _21)
+	var20.DATA.var_1._0 = var15;	// _20 = Variant(::"core-0_0_0"::option::Option<&'#local0 ::"core-0_0_0"::fmt::Arguments<'#local1,>/*S*/,> #1, {_15})
+	var19._0 = ZRG2cE9core0_0_05allocF6const70g.val._0;
+	var19._1 = ZRG2cE9core0_0_05allocF6const70g.val._1;
+	var19._2 = ZRG2cE9core0_0_05allocF6const70g.val._2;	// _19 = Struct(::"core-0_0_0"::panic::Location<'static,>, {(::"core-0_0_0"::alloc::const#7).0, (::"core-0_0_0"::alloc::const#7).1, (::"core-0_0_0"::alloc::const#7).2})
+	var18 = make_traitobjptr(&ZRG2cE9core0_0_05panicF6const00g.val, &ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0gG6vtable0g.val);	// _18 = MakeDst(&::"core-0_0_0"::panic::const#0, &<::"core-0_0_0"::panic::#0::NoPayload/*S*/ as ::"core-0_0_0"::any::Any>::vtable#)
+	var14._0 = var18;
+	var14._1 = var20;
+	var14._2 = var19;	// _14 = Struct(::"core-0_0_0"::panic::PanicInfo<'#local2,>, {_18, _20, _19})
+	var16 = & var14;	// _16 = Borrow(Shared, _14)
+	ZRG3cE9core0_0_09panickingB_010panic_impl0g( var16 );
 	goto bb3;
-	// ^ Call( _5 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::alloc::lifted#3, ), bb3, bb3)
+	// ^ Call( _17 = ::"core-0_0_0"::panicking::#0::panic_impl<'#local3,>( _16, ), bb3, bb3)
 }
 // <::"core-0_0_0"::alloc::Layout/*S*/ /*- */>::from_size_align
 static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g  ZRIG2cE9core0_0_05alloc6Layout0g15from_size_align0g(
@@ -6965,21 +7314,21 @@ static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9Layo
 	// ^ If( _0 : 3, 4)
 bb2: _Unwind_Resume(); // Diverge
 bb3:
-	var4 = arg1 - 0x1ull;	// _4 = BinOp(a1 SUB 0x1 usize)
-	var3 = 0xffffffffffffffffull - var4;	// _3 = BinOp(0xffffffffffffffff usize SUB _4)
-	var0 = arg0 > var3;	// _0 = BinOp(a0 GT _3)
+	var3 = arg1 - 0x1ull;	// _3 = BinOp(a1 SUB 0x1 usize)
+	var4 = 0xffffffffffffffffull - var3;	// _4 = BinOp(0xffffffffffffffff usize SUB _3)
+	var0 = arg0 > var4;	// _0 = BinOp(a0 GT _4)
 	if(var0) goto bb5; else goto bb6;
 	// ^ If( _0 : 5, 6)
 bb4:
 	/* ZST assign */
 	/* ZST assign */
-	rv.DATA.TAG = 1;	// retval = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,> #1, {_2})
+	memset(&rv, 0, sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g ));	// retval = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,> #1, {_2})
 	return rv;
 	// ^ Return
 bb5:
 	/* ZST assign */
 	/* ZST assign */
-	rv.DATA.TAG = 1;	// retval = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,> #1, {_6})
+	memset(&rv, 0, sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9LayoutErr0g ));	// retval = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,> #1, {_6})
 	return rv;
 	// ^ Return
 bb6:
@@ -6987,7 +7336,6 @@ bb6:
 	var8._0 = var9;	// _8 = Struct(::"core-0_0_0"::num::NonZeroUsize, {_9})
 	var7._0 = arg0;
 	var7._1 = var8;	// _7 = Struct(::"core-0_0_0"::alloc::Layout, {a0, _8})
-	rv.DATA.TAG = 0;
 	rv.DATA.var_0._0 = var7;	// retval = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::alloc::Layout/*S*/,::"core-0_0_0"::alloc::LayoutErr/*S*/,> #0, {_7})
 	return rv;
 	// ^ Return
@@ -7005,22 +7353,22 @@ static void  ZRIG2cE9core0_0_04cell10UnsafeCell1gG3cD8std0_0_02io8buffered9BufRe
 	return ;
 	// ^ Return
 }
-// <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,usize,>
+// <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local23,usize,>
 static struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g  ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCu(
-		uintptr_t *arg0, // &'#local1 usize
+		uintptr_t *arg0, // &'#local23 usize
 		t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g arg1 // for<'elided#0,'elided#1,> extern "Rust" fn(&'H0 usize, &'H1 mut ::"core-0_0_0"::fmt::Formatter<'H1,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-		) // -> ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+		) // -> ::"core-0_0_0"::fmt::ArgumentV1<'#local23,>/*S*/
 
 {
 	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g rv;
 	t_ZRTF2BsG2cE9core0_0_03fmt4Void0gBuG2c_A_B9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var0;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"core-0_0_0"::fmt::Void/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-	struct s_ZRG2cE9core0_0_03fmt4Void0g *var1;	// &'#local1 ::"core-0_0_0"::fmt::Void/*S*/
+	struct s_ZRG2cE9core0_0_03fmt4Void0g *var1;	// &'#local23 ::"core-0_0_0"::fmt::Void/*S*/
 	memcpy( &var0, &arg1, sizeof(t_ZRTF2BsCuBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g ));
 	// ^ Call( _0 = "transmute"::<for<'elided#0,'elided#1,> extern "Rust" fn(&'static usize, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/,for<'elided#0,'elided#1,> extern "Rust" fn(&'static ::"core-0_0_0"::fmt::Void/*S*/, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/,>( a1, ), bb1, bb3)
 	var1 = (void*)arg0;
-	// ^ Call( _1 = "transmute"::<&'#local1 usize,&'#local1 ::"core-0_0_0"::fmt::Void/*S*/,>( a0, ), bb2, bb3)
+	// ^ Call( _1 = "transmute"::<&'#local23 usize,&'#local23 ::"core-0_0_0"::fmt::Void/*S*/,>( a0, ), bb2, bb3)
 	rv._0 = var1;
-	rv._1 = var0;	// retval = Struct(::"core-0_0_0"::fmt::ArgumentV1<'#local1,>, {_1, _0})
+	rv._1 = var0;	// retval = Struct(::"core-0_0_0"::fmt::ArgumentV1<'#local23,>, {_1, _0})
 	return rv;
 	// ^ Return
 bb3: _Unwind_Resume(); // Diverge
@@ -7377,9 +7725,9 @@ static uint8_t  ZRIG2cE9core0_0_06option6Option1gCa6unwrap0g(
 	if( arg0.DATA.TAG == 0) {goto bb1;} else {goto bb2;}
 	// ^ Switch( a0 : 0 => bb1, 1 => bb2, )
 bb1:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG2cE9core0_0_06optionG7lifted10g.val );
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG2cE9core0_0_06optionF6const10g.val );
 	goto bb3;
-	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::option::lifted#1, ), bb3, bb3)
+	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::option::const#1, ), bb3, bb3)
 bb2:
 	rv = arg0.DATA.var_1._0;	// retval = Use(a0#1.0)
 	return rv;
@@ -7467,7 +7815,7 @@ static void  ZRIG2cE9core0_0_06option6Option1gG2cD3bin8protocol5Token0gA9drop_gl
 {
 	tUNIT rv;
 	/* ZST assign */
-	if( (*arg0).DATA.var_1._0.DATA.TAG == 9) {goto bb1;} else {goto bb2;}
+	if( (*arg0).DATA.var_1._0.DATA.var_11._0._3 == 14) {goto bb1;} else {goto bb2;}
 	// ^ Switch( a0* : 0 => bb1, 1 => bb2, )
 bb1:
 	// ^ drop(a0*#0)
@@ -7515,12 +7863,11 @@ static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc
 		goto bb1;
 	// ^ Switch( a0 : 0 => bb1, 1 => bb2, )
 bb1:
-	var0.DATA.TAG = 1;	// _0 = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,> #1, {a1})
+	memset(&var0, 0, sizeof(struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g ));	// _0 = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,> #1, {a1})
 	df0 = 0;
 	goto bb3;
 	// ^ Goto(3)
 bb2:
-	var0.DATA.TAG = 0;
 	var0.DATA.var_0._0 = arg0.DATA.var_1._0;	// _0 = Variant(::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,> #0, {a0#1.0})
 	// ^ Goto(3)
 bb3:
@@ -7568,19 +7915,18 @@ static struct e_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g  ZR
 		goto bb1;
 	// ^ Switch( a0 : 0 => bb1, 1 => bb2, )
 bb1:
-	rv.DATA.TAG = 1;	// retval = Variant(::"core-0_0_0"::result::Result<&'static u8,::"core-0_0_0"::option::NoneError/*S*/,> #1, {a1})
+	memset(&rv, 0, sizeof(struct e_ZRG2cE9core0_0_06result6Result2gBsCaG2c_A6option9NoneError0g ));	// retval = Variant(::"core-0_0_0"::result::Result<&'static u8,::"core-0_0_0"::option::NoneError/*S*/,> #1, {a1})
 	return rv;
 	// ^ Return
 bb2:
-	rv.DATA.TAG = 0;
 	rv.DATA.var_0._0 = arg0.DATA.var_1._0;	// retval = Variant(::"core-0_0_0"::result::Result<&'static u8,::"core-0_0_0"::option::NoneError/*S*/,> #0, {a0#1.0})
 	return rv;
 	// ^ Return
 }
-// <::"core-0_0_0"::option::Option<&'#omitted str,>/*E*/ /*- <&'#omitted str,>*/>::unwrap_or_else<::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>/*S*/,>
+// <::"core-0_0_0"::option::Option<&'#omitted str,>/*E*/ /*- <&'#omitted str,>*/>::unwrap_or_else<::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>/*S*/,>
 static SLICE_PTR  ZRIG2cE9core0_0_06option6Option1gBsCy14unwrap_or_else1gG1c_AH18closureI_index_1440g(
 		struct e_ZRG2cE9core0_0_06option6Option1gBsCy arg0, // ::"core-0_0_0"::option::Option<&'#omitted str,>/*E*/
-		struct s_ZRG1cE9core0_0_0H18closureI_index_1440g arg1 // ::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>/*S*/
+		struct s_ZRG1cE9core0_0_0H18closureI_index_1440g arg1 // ::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>/*S*/
 		) // -> &'#omitted str
 
 {
@@ -7597,7 +7943,7 @@ bb1:
 		tUNIT zarg1 = {0};
 		rv = ZRQG1cE9core0_0_0H18closureI_index_1440g3c_A3ops8function6FnOnce1gT09call_once0g( arg1, zarg1 );
 	}
-	// ^ Call( retval = <::"core-0_0_0"::closure#I_index_144<'#omitted,'#ivar1,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(),>>::call_once( a1, _0, ), bb2, bb4)
+	// ^ Call( retval = <::"core-0_0_0"::closure#I_index_144<'#omitted,'#local0,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(),>>::call_once( a1, _0, ), bb2, bb4)
 	return rv;
 	// ^ Return
 bb3:
@@ -7620,9 +7966,9 @@ static struct s_ZRG2cE9core0_0_04cell4Cell1gCu * ZRIG2cE9core0_0_06option6Option
 		goto bb1;
 	// ^ Switch( a0 : 0 => bb1, 1 => bb2, )
 bb1:
-	ZRG2cE9core0_0_09panicking5panic0g( &ZRG2cE9core0_0_06optionG7lifted10g.val );
+	ZRG2cE9core0_0_09panicking5panic0g( &ZRG2cE9core0_0_06optionF6const10g.val );
 	goto bb3;
-	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::option::lifted#1, ), bb3, bb3)
+	// ^ Call( _0 = ::"core-0_0_0"::panicking::panic<'static,>( &::"core-0_0_0"::option::const#1, ), bb3, bb3)
 bb2:
 	rv = arg0.DATA.var_1._0;	// retval = Use(a0#1.0)
 	return rv;
@@ -7645,12 +7991,11 @@ static struct e_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6
 		goto bb1;
 	// ^ Switch( a0 : 0 => bb1, 1 => bb2, )
 bb1:
-	var0.DATA.TAG = 1;	// _0 = Variant(::"core-0_0_0"::result::Result<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,::"std-0_0_0"::thread::local::AccessError/*S*/,> #1, {a1})
+	memset(&var0, 0, sizeof(struct e_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5loc$129c7df1900d2f7e ));	// _0 = Variant(::"core-0_0_0"::result::Result<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,::"std-0_0_0"::thread::local::AccessError/*S*/,> #1, {a1})
 	df0 = 0;
 	goto bb3;
 	// ^ Goto(3)
 bb2:
-	var0.DATA.TAG = 0;
 	var0.DATA.var_0._0 = arg0.DATA.var_1._0;	// _0 = Variant(::"core-0_0_0"::result::Result<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,::"std-0_0_0"::thread::local::AccessError/*S*/,> #0, {a0#1.0})
 	// ^ Goto(3)
 bb3:
@@ -7697,6 +8042,17 @@ static void  ZRIG2cE9core0_0_06optionG10OptionSome1gG3cD8std0_0_03ffi6os_str8OsS
 	/* ZST assign */
 	ZRIG3cD8std0_0_03ffi6os_str8OsString0gA9drop_glue0g(&arg0->_0);
 	// ^ drop(a0*.0)
+	return ;
+	// ^ Return
+}
+// <::"core-0_0_0"::panic::#0::NoPayload/*S*/ /*- */>::#drop_glue
+static void  ZRIG3cE9core0_0_05panicB_09NoPayload0gA9drop_glue0g(
+		struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g *arg0 // &'#omitted move ::"core-0_0_0"::panic::#0::NoPayload/*S*/
+		) // -> ()
+
+{
+	tUNIT rv;
+	/* ZST assign */
 	return ;
 	// ^ Return
 }
@@ -7839,7 +8195,10 @@ static RUST_BOOL  ZRIG2cE9core0_0_06result6Result2gG2c_A5alloc6Layout0gG2c_A_D9L
 
 {
 	RUST_BOOL rv;
-	if( (*arg0).DATA.TAG == 0) {goto bb1;} else {goto bb2;}
+	if( (*arg0).DATA.var_0._0._1._0._0 != 0 )
+		goto bb1;
+	else
+		goto bb2;
 	// ^ Switch( a0* : 0 => bb1, 1 => bb2, )
 bb1:
 	rv = true;	// retval = Constant(true)
@@ -7858,7 +8217,10 @@ static struct s_ZRG2cE9core0_0_05alloc6Layout0g  ZRIG2cE9core0_0_06result6Result
 {
 	struct s_ZRG2cE9core0_0_05alloc6Layout0g rv;
 	tBANG var0 = {0};	// !
-	if( arg0.DATA.TAG == 0) {goto bb1;} else {goto bb2;}
+	if( arg0.DATA.var_0._0._1._0._0 != 0 )
+		goto bb1;
+	else
+		goto bb2;
 	// ^ Switch( a0 : 0 => bb1, 1 => bb2, )
 bb1:
 	rv = arg0.DATA.var_0._0;	// retval = Use(a0#0.0)
@@ -8249,26 +8611,30 @@ static void  ZRIG4cD8std0_0_03sys4unix5mutex5Mutex0g7destroy0g(
 	RUST_BOOL var3;	// bool
 	int32_t **var4;	// &'#local1 &'#local0 i32
 	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var5;	// ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var6;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var7;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var8;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var9;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var10;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
-	tUNIT var11 = {0};	// ()
-	int32_t **var12;	// &'#local1 &'#local0 i32
-	struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *var13;	// *mut ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
-	struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *var14;	// &'M0 ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
-	struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *var15;	// *const ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var16;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var17;	// &'static [&'static str]
-	SLICE_PTR var18;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/]
-	var14 = & arg0->_0._0;	// _14 = Borrow(Shared, a0*.0.0)
-	var15 = (struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *)var14;	// _15 = Cast(_14 as *const ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/)
-	var13 = (struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *)var15;	// _13 = Cast(_15 as *mut ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/)
-	var0 = ZRG2cE12libc0_0_0_H14unix21pthread_mutex_destroy0g( var13 );
-	// ^ Call( _0 = ::"libc-0_0_0_H1"::unix::pthread_mutex_destroy( _13, ), bb1, bb2)
+	t_ZRTfQBsCf2cE9core0_0_03fmt5Debug0g_B0g var6 = {0};	// fn{<&'static i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCfBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var7;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var8;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQBsCf2cE9core0_0_03fmt5Debug0g_B0g var9 = {0};	// fn{<&'static i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCfBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var10;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var11;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var12;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var13;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var14;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
+	tUNIT var15 = {0};	// ()
+	int32_t **var16;	// &'#local1 &'#local0 i32
+	struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *var17;	// *mut ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
+	struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *var18;	// &'M0 ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
+	struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *var19;	// *const ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var20;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var21;	// &'static [&'static str]
+	SLICE_PTR var22;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/]
+	var18 = & arg0->_0._0;	// _18 = Borrow(Shared, a0*.0.0)
+	var19 = (struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *)var18;	// _19 = Cast(_18 as *const ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/)
+	var17 = (struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *)var19;	// _17 = Cast(_19 as *mut ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/)
+	var0 = ZRG2cE12libc0_0_0_H44unix21pthread_mutex_destroy0g( var17 );
+	// ^ Call( _0 = ::"libc-0_0_0_H4"::unix::pthread_mutex_destroy( _17, ), bb1, bb2)
 	var1 = & var0;	// _1 = Borrow(Shared, _0)
-	var2 = &ZRG4cD8std0_0_03sys4unix5mutexG7lifted00g.val;	// _2 = Constant(&::"std-0_0_0"::sys::unix::mutex::lifted#0)
+	var2 = &ZRG4cD8std0_0_03sys4unix5mutexF6const00g.val;	// _2 = Constant(&::"std-0_0_0"::sys::unix::mutex::const#0)
 	var3 = var0 == 0;	// _3 = BinOp(_0 EQ +0 i32)
 	if(var3) goto bb3; else goto bb4;
 	// ^ If( _3 : 3, 4)
@@ -8279,24 +8645,28 @@ bb3:
 	// ^ Return
 bb4:
 	var4 = & var1;	// _4 = Borrow(Shared, _1)
-	var12 = & var2;	// _12 = Borrow(Shared, _2)
-	var17 = make_sliceptr(&ZRG5cD8std0_0_03sys4unix5mutexB_79FRAGMENTS0g.val, 0x3ull);	// _17 = MakeDst(&::"std-0_0_0"::sys::unix::mutex::#7::FRAGMENTS, 0x3 usize)
-	var6 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var4, ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _6 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,&'#local0 i32,>( _4, &<&'#local0 i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb5, bb2)
-	var7 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var12, ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _7 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local2,&'#local0 i32,>( _12, &<&'#local0 i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb6, bb2)
-	var8.DATA[0] = var6;
-	var8.DATA[1] = var7;	// _8 = Array(_6, _7)
-	var9 = & var8;	// _9 = Borrow(Shared, _8)
-	var18 = make_sliceptr(var9, 0x2ull);	// _18 = MakeDst(_9, 0x2 usize)
-	memset(&var16, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _16 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var5._0 = var17;
-	var5._1 = var16;
-	var5._2 = var18;	// _5 = Struct(::"core-0_0_0"::fmt::Arguments<'#local6,>, {_17, _16, _18})
-	var10 = & var5;	// _10 = Borrow(Shared, _5)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var10, &ZRG4cD8std0_0_03sys4unix5mutexG7lifted10g.val );
+	var16 = & var2;	// _16 = Borrow(Shared, _2)
+	var21 = make_sliceptr(&ZRG5cD8std0_0_03sys4unix5mutexB_79FRAGMENTS0g.val, 0x3ull);	// _21 = MakeDst(&::"std-0_0_0"::sys::unix::mutex::#7::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var7 = ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g;	// _7 = Cast(_6 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var8 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var4, var7 );
+	// ^ Call( _8 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,&'#local0 i32,>( _4, _7, ), bb5, bb2)
+	/* ZST assign */
+	var10 = ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g;	// _10 = Cast(_9 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var11 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var16, var10 );
+	// ^ Call( _11 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local2,&'#local0 i32,>( _16, _10, ), bb6, bb2)
+	var12.DATA[0] = var8;
+	var12.DATA[1] = var11;	// _12 = Array(_8, _11)
+	var13 = & var12;	// _13 = Borrow(Shared, _12)
+	var22 = make_sliceptr(var13, 0x2ull);	// _22 = MakeDst(_13, 0x2 usize)
+	memset(&var20, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _20 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var5._0 = var21;
+	var5._1 = var20;
+	var5._2 = var22;	// _5 = Struct(::"core-0_0_0"::fmt::Arguments<'#local6,>, {_21, _20, _22})
+	var14 = & var5;	// _14 = Borrow(Shared, _5)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var14, &ZRG4cD8std0_0_03sys4unix5mutexF6const10g.val );
 	goto bb2;
-	// ^ Call( _11 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local7,'static,>( _10, &::"std-0_0_0"::sys::unix::mutex::lifted#1, ), bb2, bb2)
+	// ^ Call( _15 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local7,'static,>( _14, &::"std-0_0_0"::sys::unix::mutex::const#1, ), bb2, bb2)
 }
 // <::"std-0_0_0"::sys::unix::mutex::Mutex/*S*/ /*- */>::unlock<'#local22,>
 static void  ZRIG4cD8std0_0_03sys4unix5mutex5Mutex0g6unlock0g(
@@ -8311,26 +8681,30 @@ static void  ZRIG4cD8std0_0_03sys4unix5mutex5Mutex0g6unlock0g(
 	RUST_BOOL var3;	// bool
 	int32_t **var4;	// &'#local1 &'#local0 i32
 	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var5;	// ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var6;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var7;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var8;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
-	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var9;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var10;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
-	tUNIT var11 = {0};	// ()
-	int32_t **var12;	// &'#local1 &'#local0 i32
-	struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *var13;	// *mut ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
-	struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *var14;	// &'M0 ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
-	struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *var15;	// *const ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var16;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var17;	// &'static [&'static str]
-	SLICE_PTR var18;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/]
-	var14 = & arg0->_0._0;	// _14 = Borrow(Shared, a0*.0.0)
-	var15 = (struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *)var14;	// _15 = Cast(_14 as *const ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/)
-	var13 = (struct s_ZRG4cE12libc0_0_0_H14unix6notbsd5linux15pthread_mutex_t0g *)var15;	// _13 = Cast(_15 as *mut ::"libc-0_0_0_H1"::unix::notbsd::linux::pthread_mutex_t/*S*/)
-	var0 = ZRG2cE12libc0_0_0_H14unix20pthread_mutex_unlock0g( var13 );
-	// ^ Call( _0 = ::"libc-0_0_0_H1"::unix::pthread_mutex_unlock( _13, ), bb1, bb2)
+	t_ZRTfQBsCf2cE9core0_0_03fmt5Debug0g_B0g var6 = {0};	// fn{<&'static i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCfBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var7;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var8;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTfQBsCf2cE9core0_0_03fmt5Debug0g_B0g var9 = {0};	// fn{<&'static i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>}
+	t_ZRTF2BsBsCfBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var10;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var11;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g var12;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
+	t_ZRTA2G2cE9core0_0_03fmt10ArgumentV10g *var13;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/; 2]
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g *var14;	// &'#local4 ::"core-0_0_0"::fmt::Arguments<'#local6,>/*S*/
+	tUNIT var15 = {0};	// ()
+	int32_t **var16;	// &'#local1 &'#local0 i32
+	struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *var17;	// *mut ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
+	struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *var18;	// &'M0 ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
+	struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *var19;	// *const ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var20;	// ::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var21;	// &'static [&'static str]
+	SLICE_PTR var22;	// &'#local3 [::"core-0_0_0"::fmt::ArgumentV1<'#local5,>/*S*/]
+	var18 = & arg0->_0._0;	// _18 = Borrow(Shared, a0*.0.0)
+	var19 = (struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *)var18;	// _19 = Cast(_18 as *const ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/)
+	var17 = (struct s_ZRG4cE12libc0_0_0_H44unix6notbsd5linux15pthread_mutex_t0g *)var19;	// _17 = Cast(_19 as *mut ::"libc-0_0_0_H4"::unix::notbsd::linux::pthread_mutex_t/*S*/)
+	var0 = ZRG2cE12libc0_0_0_H44unix20pthread_mutex_unlock0g( var17 );
+	// ^ Call( _0 = ::"libc-0_0_0_H4"::unix::pthread_mutex_unlock( _17, ), bb1, bb2)
 	var1 = & var0;	// _1 = Borrow(Shared, _0)
-	var2 = &ZRG4cD8std0_0_03sys4unix5mutexG8lifted120g.val;	// _2 = Constant(&::"std-0_0_0"::sys::unix::mutex::lifted#12)
+	var2 = &ZRG4cD8std0_0_03sys4unix5mutexF7const120g.val;	// _2 = Constant(&::"std-0_0_0"::sys::unix::mutex::const#12)
 	var3 = var0 == 0;	// _3 = BinOp(_0 EQ +0 i32)
 	if(var3) goto bb3; else goto bb4;
 	// ^ If( _3 : 3, 4)
@@ -8341,24 +8715,28 @@ bb3:
 	// ^ Return
 bb4:
 	var4 = & var1;	// _4 = Borrow(Shared, _1)
-	var12 = & var2;	// _12 = Borrow(Shared, _2)
-	var17 = make_sliceptr(&ZRG5cD8std0_0_03sys4unix5mutexB_69FRAGMENTS0g.val, 0x3ull);	// _17 = MakeDst(&::"std-0_0_0"::sys::unix::mutex::#6::FRAGMENTS, 0x3 usize)
-	var6 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var4, ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _6 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,&'#local0 i32,>( _4, &<&'#local0 i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb5, bb2)
-	var7 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var12, ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g );
-	// ^ Call( _7 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local2,&'#local0 i32,>( _12, &<&'#local0 i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>, ), bb6, bb2)
-	var8.DATA[0] = var6;
-	var8.DATA[1] = var7;	// _8 = Array(_6, _7)
-	var9 = & var8;	// _9 = Borrow(Shared, _8)
-	var18 = make_sliceptr(var9, 0x2ull);	// _18 = MakeDst(_9, 0x2 usize)
-	memset(&var16, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _16 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
-	var5._0 = var17;
-	var5._1 = var16;
-	var5._2 = var18;	// _5 = Struct(::"core-0_0_0"::fmt::Arguments<'#local6,>, {_17, _16, _18})
-	var10 = & var5;	// _10 = Borrow(Shared, _5)
-	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var10, &ZRG4cD8std0_0_03sys4unix5mutexG8lifted130g.val );
+	var16 = & var2;	// _16 = Borrow(Shared, _2)
+	var21 = make_sliceptr(&ZRG5cD8std0_0_03sys4unix5mutexB_69FRAGMENTS0g.val, 0x3ull);	// _21 = MakeDst(&::"std-0_0_0"::sys::unix::mutex::#6::FRAGMENTS, 0x3 usize)
+	/* ZST assign */
+	var7 = ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g;	// _7 = Cast(_6 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var8 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var4, var7 );
+	// ^ Call( _8 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,&'#local0 i32,>( _4, _7, ), bb5, bb2)
+	/* ZST assign */
+	var10 = ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g;	// _10 = Cast(_9 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static &'static i32, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var11 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gBsCf( var16, var10 );
+	// ^ Call( _11 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local2,&'#local0 i32,>( _16, _10, ), bb6, bb2)
+	var12.DATA[0] = var8;
+	var12.DATA[1] = var11;	// _12 = Array(_8, _11)
+	var13 = & var12;	// _13 = Borrow(Shared, _12)
+	var22 = make_sliceptr(var13, 0x2ull);	// _22 = MakeDst(_13, 0x2 usize)
+	memset(&var20, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g ));	// _20 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #0, {})
+	var5._0 = var21;
+	var5._1 = var20;
+	var5._2 = var22;	// _5 = Struct(::"core-0_0_0"::fmt::Arguments<'#local6,>, {_21, _20, _22})
+	var14 = & var5;	// _14 = Borrow(Shared, _5)
+	ZRG2cD8std0_0_09panicking15begin_panic_fmt0g( var14, &ZRG4cD8std0_0_03sys4unix5mutexF7const130g.val );
 	goto bb2;
-	// ^ Call( _11 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local7,'static,>( _10, &::"std-0_0_0"::sys::unix::mutex::lifted#13, ), bb2, bb2)
+	// ^ Call( _15 = ::"std-0_0_0"::panicking::begin_panic_fmt<'#local7,'static,>( _14, &::"std-0_0_0"::sys::unix::mutex::const#13, ), bb2, bb2)
 }
 // <::"std-0_0_0"::sys::unix::os_str::Buf/*S*/ /*- */>::#drop_glue
 static void  ZRIG4cD8std0_0_03sys4unix6os_str3Buf0gA9drop_glue0g(
@@ -8389,7 +8767,7 @@ static void  ZRIG3cD8std0_0_010sys_common6poison4Flag0g4done0g(
 	struct e_ZRG3cE9core0_0_04sync6atomic8Ordering0g var5;	// ::"core-0_0_0"::sync::atomic::Ordering/*E*/
 	uintptr_t var6;	// usize
 	intptr_t *var7;	// &'#ivar1 isize
-	struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g var8;	// ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/
+	struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g var8;	// ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/
 	intptr_t var9;	// isize
 	var0 = arg1->_0;	// _0 = Use(a1*.0)
 	if(var0) goto bb5; else goto bb1;
@@ -8397,15 +8775,15 @@ static void  ZRIG3cD8std0_0_010sys_common6poison4Flag0g4done0g(
 bb1:
 	var9 = 0ll;	// _9 = Constant(+0 isize)
 	var7 = & var9;	// _7 = Borrow(Shared, _9)
-	var8._0 = var7;	// _8 = Struct(::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>, {_7})
-	var6 = ZRIG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu4with2gG2c_A9panickingH27closureupdate_panic_count_00gCu( &ZRG2cD8std0_0_09panickingG7lifted20g.val, var8 );
-	// ^ Call( _6 = <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/,usize,>( &::"std-0_0_0"::panicking::lifted#2, _8, ), bb2, bb3)
+	var8._0 = var7;	// _8 = Struct(::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>, {_7})
+	var6 = ZRIG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu4with2gG2c_A9panickingH27closureupdate_panic_count_00gCu( &ZRG2cD8std0_0_09panickingF6const20g.val, var8 );
+	// ^ Call( _6 = <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/,usize,>( &::"std-0_0_0"::panicking::const#2, _8, ), bb2, bb3)
 	var0 = var6 != 0x0ull;	// _0 = BinOp(_6 NE 0x0 usize)
 	if(var0) goto bb4; else goto bb5;
 	// ^ If( _0 : 4, 5)
 bb3: _Unwind_Resume(); // Diverge
 bb4:
-	var5.TAG = 0;	// _5 = Variant(::"core-0_0_0"::sync::atomic::Ordering #0, {})
+	var5.TAG = 0ll;	// _5 = Variant(::"core-0_0_0"::sync::atomic::Ordering #0, {})
 	var3 = & arg0->_0._0._0;	// _3 = Borrow(Shared, a0*.0.0.0)
 	var4 = (uint8_t *)var3;	// _4 = Cast(_3 as *const u8)
 	var2 = (uint8_t *)var4;	// _2 = Cast(_4 as *mut u8)
@@ -8424,9 +8802,9 @@ static struct s_ZRG2cE9core0_0_04cell4Cell1gCu * ZRIG3cD8std0_0_06thread5local8L
 
 {
 	struct s_ZRG2cE9core0_0_04cell4Cell1gCu *rv;
-	struct s_ZRG2cE9core0_0_04cell4Cell1gCu var0;	// ::"core-0_0_0"::cell::Cell<usize,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var1;	// *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
-	t_ZRTF0G2cE9core0_0_04cell4Cell1gCu var2;	// extern "Rust" fn() -> ::"core-0_0_0"::cell::Cell<usize,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var0;	// *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
+	t_ZRTF0G2cE9core0_0_04cell4Cell1gCu var1;	// extern "Rust" fn() -> ::"core-0_0_0"::cell::Cell<usize,>/*S*/
+	struct s_ZRG2cE9core0_0_04cell4Cell1gCu var2;	// ::"core-0_0_0"::cell::Cell<usize,>/*S*/
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu var3;	// ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu var4;	// ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var5;	// &'static ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
@@ -8437,22 +8815,22 @@ static struct s_ZRG2cE9core0_0_04cell4Cell1gCu * ZRIG3cD8std0_0_06thread5local8L
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var10;	// &'static mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var11;	// *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
 	tUNIT var12 = {0};	// ()
-	var2 = arg0->_1;	// _2 = Use(a0*.1)
-	var0 = (var2)( );
-	// ^ Call( _0 = (_2)( ), bb1, bb5)
+	var1 = arg0->_1;	// _1 = Use(a0*.1)
+	var2 = (var1)( );
+	// ^ Call( _2 = (_1)( ), bb1, bb5)
 	var9 = arg1;	// _9 = Use(a1)
 	var7 = & var9->_0;	// _7 = Borrow(Shared, _9*.0)
 	var8 = (struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *)var7;	// _8 = Cast(_7 as *const ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/)
-	var1 = (struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *)var8;	// _1 = Cast(_8 as *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/)
+	var0 = (struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *)var8;	// _0 = Cast(_8 as *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/)
 	var3.DATA.TAG = 1;
-	var3.DATA.var_1._0 = var0;	// _3 = Variant(::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,> #1, {_0})
+	var3.DATA.var_1._0 = var2;	// _3 = Variant(::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,> #1, {_2})
 	var10 = & var3;	// _10 = Borrow(Unique, _3)
 	var11 = (struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *)var10;	// _11 = Cast(_10 as *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/)
-	ZRG2cE9core0_0_03ptr23swap_nonoverlapping_one1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu( var1, var11 );
-	// ^ Call( _12 = ::"core-0_0_0"::ptr::swap_nonoverlapping_one<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>( _1, _11, ), bb2, bb5)
+	ZRG2cE9core0_0_03ptr23swap_nonoverlapping_one1gG2c_A6option6Option1gG2c_A4cell4Cell1gCu( var0, var11 );
+	// ^ Call( _12 = ::"core-0_0_0"::ptr::swap_nonoverlapping_one<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>( _0, _11, ), bb2, bb5)
 	var4 = var3;	// _4 = Use(_3)
 	// ^ drop(_4)
-	var5 = var1;	// _5 = Borrow(Shared, _1*)
+	var5 = var0;	// _5 = Borrow(Shared, _0*)
 	var6 = ZRIG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu6as_ref0g( var5 );
 	// ^ Call( _6 = <::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::as_ref<'static,>( _5, ), bb3, bb5)
 	rv = ZRIG2cE9core0_0_06option6Option1gBsG2c_A4cell4Cell1gCu6unwrap0g( var6 );
@@ -8461,10 +8839,10 @@ static struct s_ZRG2cE9core0_0_04cell4Cell1gCu * ZRIG3cD8std0_0_06thread5local8L
 	// ^ Return
 bb5: _Unwind_Resume(); // Diverge
 }
-// <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::try_with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/,usize,>
+// <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::try_with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/,usize,>
 static struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11AccessError0g  ZRIG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu8try_with2gG2c_A9panickingH27closureupdate_panic_count_00gCu(
 		struct s_ZRG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu *arg0, // &'static ::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/
-		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/
+		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<usize,::"std-0_0_0"::thread::local::AccessError/*S*/,>/*E*/
 
 {
@@ -8475,7 +8853,7 @@ static struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11Ac
 	tUNIT var3 = {0};	// ()
 	struct s_ZRG3cD8std0_0_06thread5local11AccessError0g var4 = {0};	// ::"std-0_0_0"::thread::local::AccessError/*S*/
 	struct e_ZRG2cE9core0_0_06result6Result2gBsG2c_A4cell10UnsafeCell1gG2c_A6option6Option1gG2c_A_D4Cell1gCuG3cD8std0_0_06thread5loc$129c7df1900d2f7e var5;	// ::"core-0_0_0"::result::Result<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,::"std-0_0_0"::thread::local::AccessError/*S*/,>/*E*/
-	struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g var6;	// ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/
+	struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g var6;	// ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A4cell4Cell1gCu *var7;	// *mut ::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/
 	struct s_ZRG2cE9core0_0_04cell4Cell1gCu *var8;	// &'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/
 	TUP_1_ZRTBsG2cE9core0_0_04cell4Cell1gCu var9;	// (&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/, )
@@ -8493,7 +8871,10 @@ static struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11Ac
 		var5 = ZRIG2cE9core0_0_06option6Option1gBsG2c_A4cell10UnsafeCell1gG2c_A_B_C1gG2c_A_D4Cell1gCu5ok_or1gG3cD8std0_0_06thread5loca$d7d72a5d403af237( var2, zarg1 );
 	}
 	// ^ Call( _5 = <::"core-0_0_0"::option::Option<&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,>/*E*/ /*- <&'static ::"core-0_0_0"::cell::UnsafeCell<::"core-0_0_0"::option::Option<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*E*/,>/*S*/,>*/>::ok_or<::"std-0_0_0"::thread::local::AccessError/*S*/,>( _2, _4, ), bb2, bb3)
-	if( var5.DATA.TAG == 0) {goto bb4;} else {goto bb5;}
+	if( var5.DATA.var_0._0 != 0 )
+		goto bb4;
+	else
+		goto bb5;
 	// ^ Switch( _5 : 0 => bb4, 1 => bb5, )
 bb3: _Unwind_Resume(); // Diverge
 bb4:
@@ -8521,23 +8902,23 @@ bb8:
 	;
 	var9._0 = var8;	// _9 = Tuple(_8)
 	var10 = ZRQG2cD8std0_0_09panickingH27closureupdate_panic_count_00g3cE9core0_0_03ops8function6FnOnce1gT1BsG2c_D4cell4Cell1gCu9call_once0g( var6, var9 );
-	// ^ Call( _10 = <::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/, ),>>::call_once( _6, _9, ), bb9, bb3)
+	// ^ Call( _10 = <::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/ as ::"core-0_0_0"::ops::function::FnOnce<(&'static ::"core-0_0_0"::cell::Cell<usize,>/*S*/, ),>>::call_once( _6, _9, ), bb9, bb3)
 	rv.DATA.TAG = 0;
 	rv.DATA.var_0._0 = var10;	// retval = Variant(::"core-0_0_0"::result::Result<usize,::"std-0_0_0"::thread::local::AccessError/*S*/,> #0, {_10})
 	return rv;
 	// ^ Return
 }
-// <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/,usize,>
+// <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/,usize,>
 static uintptr_t  ZRIG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu4with2gG2c_A9panickingH27closureupdate_panic_count_00gCu(
 		struct s_ZRG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu *arg0, // &'static ::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/
-		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/
+		struct s_ZRG2cD8std0_0_09panickingH27closureupdate_panic_count_00g arg1 // ::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/
 		) // -> usize
 
 {
 	uintptr_t rv;
 	struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11AccessError0g var0;	// ::"core-0_0_0"::result::Result<usize,::"std-0_0_0"::thread::local::AccessError/*S*/,>/*E*/
 	var0 = ZRIG3cD8std0_0_06thread5local8LocalKey1gG2cE9core0_0_04cell4Cell1gCu8try_with2gG2c_A9panickingH27closureupdate_panic_count_00gCu( arg0, arg1 );
-	// ^ Call( _0 = <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::try_with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#ivar1,>/*S*/,usize,>( a0, a1, ), bb1, bb3)
+	// ^ Call( _0 = <::"std-0_0_0"::thread::local::LocalKey<::"core-0_0_0"::cell::Cell<usize,>/*S*/,>/*S*/ /*- <::"core-0_0_0"::cell::Cell<usize,>/*S*/,>*/>::try_with<::"std-0_0_0"::panicking::closure#update_panic_count_0<'#local0,>/*S*/,usize,>( a0, a1, ), bb1, bb3)
 	rv = ZRIG2cE9core0_0_06result6Result2gCuG3cD8std0_0_06thread5local11AccessError0g6expect0g( var0, make_sliceptr("cannot access a TLS value during or after it is destroyed", 57) );
 	// ^ Call( retval = <::"core-0_0_0"::result::Result<usize,::"std-0_0_0"::thread::local::AccessError/*S*/,>/*E*/ /*- <usize,::"std-0_0_0"::thread::local::AccessError/*S*/,>*/>::expect<'static,>( _0, "cannot access a TLS value during or after it is destroyed", ), bb2, bb3)
 	return rv;
@@ -8556,31 +8937,29 @@ static struct s_ZRG2cE9core0_0_05slice4Iter1gCa  ZRISCa4iter0g(
 	RUST_BOOL var2;	// bool
 	tUNIT var3 = {0};	// ()
 	uint8_t *var4;	// *const u8
-	uint8_t *var5;	// *const u8
-	uintptr_t var6;	// usize
-	struct s_ZRG2cE9core0_0_06marker11PhantomData1gBsCa var7 = {0};	// ::"core-0_0_0"::marker::PhantomData<&'static u8,>/*S*/
-	SLICE_PTR var8;	// *const [u8]
-	uint8_t *var9;	// *const u8
-	uintptr_t var10;	// usize
-	intptr_t var11;	// isize
-	SLICE_PTR var12;	// *const [u8]
-	var8 = arg0;	// _8 = Cast(a0 as *const [u8])
-	var0 = (uint8_t *)var8.PTR;	// _0 = Cast(_8 as *const u8)
-	var10 = 0x0ull;	// _10 = Constant(0x0 usize)
-	var9 = (uint8_t *)var10;	// _9 = Cast(_10 as *const u8)
-	var1 = var0 == var9;	// _1 = BinOp(_0 EQ _9)
+	uintptr_t var5;	// usize
+	struct s_ZRG2cE9core0_0_06marker11PhantomData1gBsCa var6 = {0};	// ::"core-0_0_0"::marker::PhantomData<&'static u8,>/*S*/
+	SLICE_PTR var7;	// *const [u8]
+	uint8_t *var8;	// *const u8
+	uintptr_t var9;	// usize
+	intptr_t var10;	// isize
+	SLICE_PTR var11;	// *const [u8]
+	var7 = arg0;	// _7 = Cast(a0 as *const [u8])
+	var0 = (uint8_t *)var7.PTR;	// _0 = Cast(_7 as *const u8)
+	var9 = 0x0ull;	// _9 = Constant(0x0 usize)
+	var8 = (uint8_t *)var9;	// _8 = Cast(_9 as *const u8)
+	var1 = var0 == var8;	// _1 = BinOp(_0 EQ _8)
 	var2 = !var1;	// _2 = UniOp(_1 INV)
 	;
 	// ^ Call( _3 = "assume"::( _2, ), bb1, bb3)
-	var4 = var0;	// _4 = Use(_0)
-	var12 = arg0;	// _12 = Cast(a0 as *const [u8])
-	var6 = var12.META;	// _6 = DstMeta(_12)
-	var11 = (intptr_t )var6;	// _11 = Cast(_6 as isize)
-	var5 = var0 + var11;
-	// ^ Call( _5 = "offset"::<u8,>( _0, _11, ), bb2, bb3)
+	var11 = arg0;	// _11 = Cast(a0 as *const [u8])
+	var5 = var11.META;	// _5 = DstMeta(_11)
+	var10 = (intptr_t )var5;	// _10 = Cast(_5 as isize)
+	var4 = var0 + var10;
+	// ^ Call( _4 = "offset"::<u8,>( _0, _10, ), bb2, bb3)
 	/* ZST assign */
-	rv._0 = var4;
-	rv._1 = var5;	// retval = Struct(::"core-0_0_0"::slice::Iter<'#local6,u8,>, {_4, _5, _7})
+	rv._0 = var0;
+	rv._1 = var4;	// retval = Struct(::"core-0_0_0"::slice::Iter<'#local6,u8,>, {_0, _4, _6})
 	return rv;
 	// ^ Return
 bb3: _Unwind_Resume(); // Diverge
@@ -8692,28 +9071,6 @@ bb3:
 	// ^ Return
 bb4: _Unwind_Resume(); // Diverge
 }
-// <usize as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::get_unchecked<'#local1,>
-static uint8_t * ZRQCu2cE9core0_0_05slice10SliceIndex1gSCa13get_unchecked0g(
-		uintptr_t arg0, // usize
-		SLICE_PTR arg1 // &'#local1 [u8]
-		) // -> &'#local1 u8
-
-{
-	uint8_t *rv;
-	uint8_t *var0;	// *const u8
-	SLICE_PTR var1;	// *const [u8]
-	uint8_t *var2;	// *const u8
-	intptr_t var3;	// isize
-	var1 = arg1;	// _1 = Cast(a1 as *const [u8])
-	var2 = (uint8_t *)var1.PTR;	// _2 = Cast(_1 as *const u8)
-	var3 = (intptr_t )arg0;	// _3 = Cast(a0 as isize)
-	var0 = var2 + var3;
-	// ^ Call( _0 = "offset"::<u8,>( _2, _3, ), bb1, bb2)
-	rv = var0;	// retval = Borrow(Shared, _0*)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
 // <u8 as ::"alloc-0_0_0"::vec::SpecFromElem>::from_elem
 static struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa  ZRQCa2cF10alloc0_0_03vec12SpecFromElem0g9from_elem0g(
 		uint8_t arg0, // u8
@@ -8771,33 +9128,9 @@ bb3:
 	// ^ Return
 bb7: _Unwind_Resume(); // Diverge
 }
-// <u8 as ::"core-0_0_0"::cmp::PartialEq<u8,>>::eq<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCa2cE9core0_0_03cmp9PartialEq1gCa2eq0g(
-		uint8_t *arg0, // &'#omitted u8
-		uint8_t *arg1 // &'#omitted u8
-		) // -> bool
-
-{
-	RUST_BOOL rv;
-	rv = (*arg0) == (*arg1);	// retval = BinOp(a0* EQ a1*)
-	return rv;
-	// ^ Return
-}
-// <u8 as ::"core-0_0_0"::cmp::PartialOrd<u8,>>::ge<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCa2cE9core0_0_03cmp10PartialOrd1gCa2ge0g(
-		uint8_t *arg0, // &'#omitted u8
-		uint8_t *arg1 // &'#omitted u8
-		) // -> bool
-
-{
-	RUST_BOOL rv;
-	rv = (*arg0) >= (*arg1);	// retval = BinOp(a0* GE a1*)
-	return rv;
-	// ^ Return
-}
-// <u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'#local17,'static,>
+// <u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCa2cE9core0_0_03fmt5Debug0g_B0g(
-		uint8_t *arg0, // &'#local17 u8
+		uint8_t *arg0, // &'static u8
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 
@@ -8806,32 +9139,36 @@ static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCa2cE9co
 	RUST_BOOL var0;	// bool
 	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var1;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	uint32_t var2;	// u32
-	uint8_t var3;	// u8
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var4;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	uint32_t var5;	// u32
-	uint8_t var6;	// u8
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var7;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	var2 = arg1->_0 & 0x10;	// _2 = BinOp(a1*.0 BIT_AND 0x10 u32)
-	var0 = var2 != 0x0;	// _0 = BinOp(_2 NE 0x0 u32)
+	uint32_t var3;	// u32
+	uint8_t var4;	// u8
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var5;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	uint32_t var6;	// u32
+	uint32_t var7;	// u32
+	uint8_t var8;	// u8
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var9;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	var2 = arg1->_0;	// _2 = Use(a1*.0)
+	var3 = var2 & 0x10;	// _3 = BinOp(_2 BIT_AND 0x10 u32)
+	var0 = var3 != 0x0;	// _0 = BinOp(_3 NE 0x0 u32)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
-	var3 = (*arg0);	// _3 = Use(a0*)
-	var4 = arg1;	// _4 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCa( &ZRG3cE9core0_0_03fmt3numG8lifted150g.val, var3, var4 );
+	var4 = (*arg0);	// _4 = Use(a0*)
+	var5 = arg1;	// _5 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCa( &ZRG3cE9core0_0_03fmt3numF7const150g.val, var4, var5 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u8,>( &::"core-0_0_0"::fmt::num::lifted#15, _3, _4, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u8,>( &::"core-0_0_0"::fmt::num::const#15, _4, _5, ), bb5, bb6)
 bb2:
-	var5 = arg1->_0 & 0x20;	// _5 = BinOp(a1*.0 BIT_AND 0x20 u32)
-	var0 = var5 != 0x0;	// _0 = BinOp(_5 NE 0x0 u32)
+	var6 = arg1->_0;	// _6 = Use(a1*.0)
+	var7 = var6 & 0x20;	// _7 = BinOp(_6 BIT_AND 0x20 u32)
+	var0 = var7 != 0x0;	// _0 = BinOp(_7 NE 0x0 u32)
 	if(var0) goto bb3; else goto bb4;
 	// ^ If( _0 : 3, 4)
 bb3:
-	var6 = (*arg0);	// _6 = Use(a0*)
-	var7 = arg1;	// _7 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCa( &ZRG3cE9core0_0_03fmt3numG8lifted390g.val, var6, var7 );
+	var8 = (*arg0);	// _8 = Use(a0*)
+	var9 = arg1;	// _9 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCa( &ZRG3cE9core0_0_03fmt3numF7const390g.val, var8, var9 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u8,>( &::"core-0_0_0"::fmt::num::lifted#39, _6, _7, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u8,>( &::"core-0_0_0"::fmt::num::const#39, _8, _9, ), bb5, bb6)
 bb4:
 	var1 = arg1;	// _1 = Borrow(Unique, a1*)
 	rv = ZRQCa2cE9core0_0_03fmt7Display0g_B0g( arg0, var1 );
@@ -8842,105 +9179,9 @@ bb5:
 	// ^ Return
 bb6: _Unwind_Resume(); // Diverge
 }
-// <u8 as ::"core-0_0_0"::ops::arith::Div<u8,>>::div
-static uint8_t  ZRQCa3cE9core0_0_03ops5arith3Div1gCa3div0g(
-		uint8_t arg0, // u8
-		uint8_t arg1 // u8
-		) // -> u8
-
-{
-	uint8_t rv;
-	rv = arg0 / arg1;	// retval = BinOp(a0 DIV a1)
-	return rv;
-	// ^ Return
-}
-// <u8 as ::"core-0_0_0"::ops::arith::Rem<u8,>>::rem
-static uint8_t  ZRQCa3cE9core0_0_03ops5arith3Rem1gCa3rem0g(
-		uint8_t arg0, // u8
-		uint8_t arg1 // u8
-		) // -> u8
-
-{
-	uint8_t rv;
-	rv = arg0 % arg1;	// retval = BinOp(a0 MOD a1)
-	return rv;
-	// ^ Return
-}
-// <u8 as ::"core-0_0_0"::ops::arith::Sub<u8,>>::sub
-static uint8_t  ZRQCa3cE9core0_0_03ops5arith3Sub1gCa3sub0g(
-		uint8_t arg0, // u8
-		uint8_t arg1 // u8
-		) // -> u8
-
-{
-	uint8_t rv;
-	rv = arg0 - arg1;	// retval = BinOp(a0 SUB a1)
-	return rv;
-	// ^ Return
-}
-// <u32 as ::"core-0_0_0"::cmp::PartialEq<u32,>>::eq<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCe2cE9core0_0_03cmp9PartialEq1gCe2eq0g(
-		uint32_t *arg0, // &'#omitted u32
-		uint32_t *arg1 // &'#omitted u32
-		) // -> bool
-
-{
-	RUST_BOOL rv;
-	rv = (*arg0) == (*arg1);	// retval = BinOp(a0* EQ a1*)
-	return rv;
-	// ^ Return
-}
-// <u32 as ::"core-0_0_0"::cmp::PartialOrd<u32,>>::ge<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCe2cE9core0_0_03cmp10PartialOrd1gCe2ge0g(
-		uint32_t *arg0, // &'#omitted u32
-		uint32_t *arg1 // &'#omitted u32
-		) // -> bool
-
-{
-	RUST_BOOL rv;
-	rv = (*arg0) >= (*arg1);	// retval = BinOp(a0* GE a1*)
-	return rv;
-	// ^ Return
-}
-// <u32 as ::"core-0_0_0"::ops::arith::Div<u32,>>::div
-static uint32_t  ZRQCe3cE9core0_0_03ops5arith3Div1gCe3div0g(
-		uint32_t arg0, // u32
-		uint32_t arg1 // u32
-		) // -> u32
-
-{
-	uint32_t rv;
-	rv = arg0 / arg1;	// retval = BinOp(a0 DIV a1)
-	return rv;
-	// ^ Return
-}
-// <u32 as ::"core-0_0_0"::ops::arith::Rem<u32,>>::rem
-static uint32_t  ZRQCe3cE9core0_0_03ops5arith3Rem1gCe3rem0g(
-		uint32_t arg0, // u32
-		uint32_t arg1 // u32
-		) // -> u32
-
-{
-	uint32_t rv;
-	rv = arg0 % arg1;	// retval = BinOp(a0 MOD a1)
-	return rv;
-	// ^ Return
-}
-// <u32 as ::"core-0_0_0"::ops::arith::Sub<u32,>>::sub
-static uint32_t  ZRQCe3cE9core0_0_03ops5arith3Sub1gCe3sub0g(
-		uint32_t arg0, // u32
-		uint32_t arg1 // u32
-		) // -> u32
-
-{
-	uint32_t rv;
-	rv = arg0 - arg1;	// retval = BinOp(a0 SUB a1)
-	return rv;
-	// ^ Return
-}
-// <i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'#local0,'static,>
+// <i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCf2cE9core0_0_03fmt5Debug0g_B0g(
-		int32_t *arg0, // &'#local0 i32
+		int32_t *arg0, // &'static i32
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 
@@ -8950,31 +9191,35 @@ static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCf2cE9co
 	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var1;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	uint32_t var2;	// u32
 	uint32_t var3;	// u32
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var4;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	uint32_t var5;	// u32
+	uint32_t var4;	// u32
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var5;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	uint32_t var6;	// u32
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var7;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	var2 = arg1->_0 & 0x10;	// _2 = BinOp(a1*.0 BIT_AND 0x10 u32)
-	var0 = var2 != 0x0;	// _0 = BinOp(_2 NE 0x0 u32)
+	uint32_t var7;	// u32
+	uint32_t var8;	// u32
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var9;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	var2 = arg1->_0;	// _2 = Use(a1*.0)
+	var3 = var2 & 0x10;	// _3 = BinOp(_2 BIT_AND 0x10 u32)
+	var0 = var3 != 0x0;	// _0 = BinOp(_3 NE 0x0 u32)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
-	var3 = (uint32_t )(*arg0);	// _3 = Cast(a0* as u32)
-	var4 = arg1;	// _4 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCe( &ZRG3cE9core0_0_03fmt3numG8lifted180g.val, var3, var4 );
+	var4 = (uint32_t )(*arg0);	// _4 = Cast(a0* as u32)
+	var5 = arg1;	// _5 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCe( &ZRG3cE9core0_0_03fmt3numF7const180g.val, var4, var5 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u32,>( &::"core-0_0_0"::fmt::num::lifted#18, _3, _4, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u32,>( &::"core-0_0_0"::fmt::num::const#18, _4, _5, ), bb5, bb6)
 bb2:
-	var5 = arg1->_0 & 0x20;	// _5 = BinOp(a1*.0 BIT_AND 0x20 u32)
-	var0 = var5 != 0x0;	// _0 = BinOp(_5 NE 0x0 u32)
+	var6 = arg1->_0;	// _6 = Use(a1*.0)
+	var7 = var6 & 0x20;	// _7 = BinOp(_6 BIT_AND 0x20 u32)
+	var0 = var7 != 0x0;	// _0 = BinOp(_7 NE 0x0 u32)
 	if(var0) goto bb3; else goto bb4;
 	// ^ If( _0 : 3, 4)
 bb3:
-	var6 = (uint32_t )(*arg0);	// _6 = Cast(a0* as u32)
-	var7 = arg1;	// _7 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCe( &ZRG3cE9core0_0_03fmt3numG8lifted420g.val, var6, var7 );
+	var8 = (uint32_t )(*arg0);	// _8 = Cast(a0* as u32)
+	var9 = arg1;	// _9 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCe( &ZRG3cE9core0_0_03fmt3numF7const420g.val, var8, var9 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u32,>( &::"core-0_0_0"::fmt::num::lifted#42, _6, _7, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u32,>( &::"core-0_0_0"::fmt::num::const#42, _8, _9, ), bb5, bb6)
 bb4:
 	var1 = arg1;	// _1 = Borrow(Unique, a1*)
 	rv = ZRQCf2cE9core0_0_03fmt7Display0g_B0g( arg0, var1 );
@@ -8984,30 +9229,6 @@ bb5:
 	return rv;
 	// ^ Return
 bb6: _Unwind_Resume(); // Diverge
-}
-// <u128 as ::"core-0_0_0"::cmp::PartialEq<u128,>>::eq<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCi2cE9core0_0_03cmp9PartialEq1gCi2eq0g(
-		uint128_t *arg0, // &'#omitted u128
-		uint128_t *arg1 // &'#omitted u128
-		) // -> bool
-
-{
-	RUST_BOOL rv;
-	rv = 0 == cmp128((*arg1), (*arg0));	// retval = BinOp(a0* EQ a1*)
-	return rv;
-	// ^ Return
-}
-// <u128 as ::"core-0_0_0"::cmp::PartialOrd<u128,>>::ge<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQCi2cE9core0_0_03cmp10PartialOrd1gCi2ge0g(
-		uint128_t *arg0, // &'#omitted u128
-		uint128_t *arg1 // &'#omitted u128
-		) // -> bool
-
-{
-	RUST_BOOL rv;
-	rv = 0 >= cmp128((*arg1), (*arg0));	// retval = BinOp(a0* GE a1*)
-	return rv;
-	// ^ Return
 }
 // <u128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCi2cE9core0_0_03fmt5Debug0g_B0g(
@@ -9020,32 +9241,36 @@ static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCi2cE9co
 	RUST_BOOL var0;	// bool
 	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var1;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	uint32_t var2;	// u32
-	uint128_t var3;	// u128
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var4;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	uint32_t var5;	// u32
-	uint128_t var6;	// u128
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var7;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	var2 = arg1->_0 & 0x10;	// _2 = BinOp(a1*.0 BIT_AND 0x10 u32)
-	var0 = var2 != 0x0;	// _0 = BinOp(_2 NE 0x0 u32)
+	uint32_t var3;	// u32
+	uint128_t var4;	// u128
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var5;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	uint32_t var6;	// u32
+	uint32_t var7;	// u32
+	uint128_t var8;	// u128
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var9;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	var2 = arg1->_0;	// _2 = Use(a1*.0)
+	var3 = var2 & 0x10;	// _3 = BinOp(_2 BIT_AND 0x10 u32)
+	var0 = var3 != 0x0;	// _0 = BinOp(_3 NE 0x0 u32)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
-	var3 = (*arg0);	// _3 = Use(a0*)
-	var4 = arg1;	// _4 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numG8lifted230g.val, var3, var4 );
+	var4 = (*arg0);	// _4 = Use(a0*)
+	var5 = arg1;	// _5 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numF7const230g.val, var4, var5 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::lifted#23, _3, _4, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::const#23, _4, _5, ), bb5, bb6)
 bb2:
-	var5 = arg1->_0 & 0x20;	// _5 = BinOp(a1*.0 BIT_AND 0x20 u32)
-	var0 = var5 != 0x0;	// _0 = BinOp(_5 NE 0x0 u32)
+	var6 = arg1->_0;	// _6 = Use(a1*.0)
+	var7 = var6 & 0x20;	// _7 = BinOp(_6 BIT_AND 0x20 u32)
+	var0 = var7 != 0x0;	// _0 = BinOp(_7 NE 0x0 u32)
 	if(var0) goto bb3; else goto bb4;
 	// ^ If( _0 : 3, 4)
 bb3:
-	var6 = (*arg0);	// _6 = Use(a0*)
-	var7 = arg1;	// _7 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numG8lifted470g.val, var6, var7 );
+	var8 = (*arg0);	// _8 = Use(a0*)
+	var9 = arg1;	// _9 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numF7const470g.val, var8, var9 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::lifted#47, _6, _7, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::const#47, _8, _9, ), bb5, bb6)
 bb4:
 	var1 = arg1;	// _1 = Borrow(Unique, a1*)
 	rv = ZRQCi2cE9core0_0_03fmt7Display0g_B0g( arg0, var1 );
@@ -9055,42 +9280,6 @@ bb5:
 	return rv;
 	// ^ Return
 bb6: _Unwind_Resume(); // Diverge
-}
-// <u128 as ::"core-0_0_0"::ops::arith::Div<u128,>>::div
-static uint128_t  ZRQCi3cE9core0_0_03ops5arith3Div1gCi3div0g(
-		uint128_t arg0, // u128
-		uint128_t arg1 // u128
-		) // -> u128
-
-{
-	uint128_t rv;
-	rv = div128(arg0, arg1);	// retval = BinOp(a0 DIV a1)
-	return rv;
-	// ^ Return
-}
-// <u128 as ::"core-0_0_0"::ops::arith::Rem<u128,>>::rem
-static uint128_t  ZRQCi3cE9core0_0_03ops5arith3Rem1gCi3rem0g(
-		uint128_t arg0, // u128
-		uint128_t arg1 // u128
-		) // -> u128
-
-{
-	uint128_t rv;
-	rv = mod128(arg0, arg1);	// retval = BinOp(a0 MOD a1)
-	return rv;
-	// ^ Return
-}
-// <u128 as ::"core-0_0_0"::ops::arith::Sub<u128,>>::sub
-static uint128_t  ZRQCi3cE9core0_0_03ops5arith3Sub1gCi3sub0g(
-		uint128_t arg0, // u128
-		uint128_t arg1 // u128
-		) // -> u128
-
-{
-	uint128_t rv;
-	rv = sub128(arg0, arg1);	// retval = BinOp(a0 SUB a1)
-	return rv;
-	// ^ Return
 }
 // <i128 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCj2cE9core0_0_03fmt5Debug0g_B0g(
@@ -9103,32 +9292,36 @@ static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQCj2cE9co
 	RUST_BOOL var0;	// bool
 	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var1;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	uint32_t var2;	// u32
-	uint128_t var3;	// u128
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var4;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	uint32_t var5;	// u32
-	uint128_t var6;	// u128
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var7;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
-	var2 = arg1->_0 & 0x10;	// _2 = BinOp(a1*.0 BIT_AND 0x10 u32)
-	var0 = var2 != 0x0;	// _0 = BinOp(_2 NE 0x0 u32)
+	uint32_t var3;	// u32
+	uint128_t var4;	// u128
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var5;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	uint32_t var6;	// u32
+	uint32_t var7;	// u32
+	uint128_t var8;	// u128
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var9;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	var2 = arg1->_0;	// _2 = Use(a1*.0)
+	var3 = var2 & 0x10;	// _3 = BinOp(_2 BIT_AND 0x10 u32)
+	var0 = var3 != 0x0;	// _0 = BinOp(_3 NE 0x0 u32)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
-	var3.lo = (*arg0).lo; var3.hi = (*arg0).hi;	// _3 = Cast(a0* as u128)
-	var4 = arg1;	// _4 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numG8lifted220g.val, var3, var4 );
+	var4.lo = (*arg0).lo; var4.hi = (*arg0).hi;	// _4 = Cast(a0* as u128)
+	var5 = arg1;	// _5 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8LowerHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numF7const220g.val, var4, var5 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::lifted#22, _3, _4, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::LowerHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::const#22, _4, _5, ), bb5, bb6)
 bb2:
-	var5 = arg1->_0 & 0x20;	// _5 = BinOp(a1*.0 BIT_AND 0x20 u32)
-	var0 = var5 != 0x0;	// _0 = BinOp(_5 NE 0x0 u32)
+	var6 = arg1->_0;	// _6 = Use(a1*.0)
+	var7 = var6 & 0x20;	// _7 = BinOp(_6 BIT_AND 0x20 u32)
+	var0 = var7 != 0x0;	// _0 = BinOp(_7 NE 0x0 u32)
 	if(var0) goto bb3; else goto bb4;
 	// ^ If( _0 : 3, 4)
 bb3:
-	var6.lo = (*arg0).lo; var6.hi = (*arg0).hi;	// _6 = Cast(a0* as u128)
-	var7 = arg1;	// _7 = Borrow(Unique, a1*)
-	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numG8lifted460g.val, var6, var7 );
+	var8.lo = (*arg0).lo; var8.hi = (*arg0).hi;	// _8 = Cast(a0* as u128)
+	var9 = arg1;	// _9 = Borrow(Unique, a1*)
+	rv = ZRQG3cE9core0_0_03fmt3num8UpperHex0g3c_A_B_C12GenericRadix0g7fmt_int1gCi( &ZRG3cE9core0_0_03fmt3numF7const460g.val, var8, var9 );
 	goto bb5;
-	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::lifted#46, _6, _7, ), bb5, bb6)
+	// ^ Call( retval = <::"core-0_0_0"::fmt::num::UpperHex/*S*/ as ::"core-0_0_0"::fmt::num::GenericRadix>::fmt_int<'static,'M1,u128,>( &::"core-0_0_0"::fmt::num::const#46, _8, _9, ), bb5, bb6)
 bb4:
 	var1 = arg1;	// _1 = Borrow(Unique, a1*)
 	rv = ZRQCj2cE9core0_0_03fmt7Display0g_B0g( arg0, var1 );
@@ -9175,9 +9368,9 @@ bb6:
 	return rv;
 	// ^ Return
 }
-// <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc<'#local1,>
+// <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc<'#local3,>
 static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g  ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g_B0g(
-		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local1 mut ::"alloc-0_0_0"::alloc::Global/*S*/
+		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local3 mut ::"alloc-0_0_0"::alloc::Global/*S*/
 		struct s_ZRG2cE9core0_0_05alloc6Layout0g arg1 // ::"core-0_0_0"::alloc::Layout/*S*/
 		) // -> ::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,>/*E*/
 
@@ -9186,7 +9379,7 @@ static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A3ptr7NonNull1gCa var0;	// ::"core-0_0_0"::option::Option<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,>/*E*/
 	struct s_ZRG2cE9core0_0_05alloc8AllocErr0g var1 = {0};	// ::"core-0_0_0"::alloc::AllocErr/*S*/
 	uint8_t *var2;	// *mut u8
-	var2 = ZRG2cF10alloc0_0_05alloc12__rust_alloc0g( arg1._0, arg1._1._0._0 );
+	var2 = ZRG2cF10alloc0_0_05alloc13___rust_alloc0g( arg1._0, arg1._1._0._0 );
 	// ^ Call( _2 = ::"alloc-0_0_0"::alloc::__rust_alloc( a1.0, a1.1.0.0, ), bb1, bb4)
 	var0 = ZRIG2cE9core0_0_03ptr7NonNull1gCa3new0g( var2 );
 	// ^ Call( _0 = <::"core-0_0_0"::ptr::NonNull<u8,>/*S*/ /*- <u8,>*/>::new( _2, ), bb2, bb4)
@@ -9201,9 +9394,9 @@ static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc
 	// ^ Return
 bb4: _Unwind_Resume(); // Diverge
 }
-// <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc_zeroed<'#local0,>
+// <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::alloc_zeroed<'#local2,>
 static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc8AllocErr0g  ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g12alloc_zeroed0g(
-		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local0 mut ::"alloc-0_0_0"::alloc::Global/*S*/
+		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#local2 mut ::"alloc-0_0_0"::alloc::Global/*S*/
 		struct s_ZRG2cE9core0_0_05alloc6Layout0g arg1 // ::"core-0_0_0"::alloc::Layout/*S*/
 		) // -> ::"core-0_0_0"::result::Result<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,::"core-0_0_0"::alloc::AllocErr/*S*/,>/*E*/
 
@@ -9212,7 +9405,7 @@ static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc
 	struct e_ZRG2cE9core0_0_06option6Option1gG2c_A3ptr7NonNull1gCa var0;	// ::"core-0_0_0"::option::Option<::"core-0_0_0"::ptr::NonNull<u8,>/*S*/,>/*E*/
 	struct s_ZRG2cE9core0_0_05alloc8AllocErr0g var1 = {0};	// ::"core-0_0_0"::alloc::AllocErr/*S*/
 	uint8_t *var2;	// *mut u8
-	var2 = ZRG2cF10alloc0_0_05alloc19__rust_alloc_zeroed0g( arg1._0, arg1._1._0._0 );
+	var2 = ZRG2cF10alloc0_0_05alloc20___rust_alloc_zeroed0g( arg1._0, arg1._1._0._0 );
 	// ^ Call( _2 = ::"alloc-0_0_0"::alloc::__rust_alloc_zeroed( a1.0, a1.1.0.0, ), bb1, bb4)
 	var0 = ZRIG2cE9core0_0_03ptr7NonNull1gCa3new0g( var2 );
 	// ^ Call( _0 = <::"core-0_0_0"::ptr::NonNull<u8,>/*S*/ /*- <u8,>*/>::new( _2, ), bb2, bb4)
@@ -9226,24 +9419,6 @@ static struct e_ZRG2cE9core0_0_06result6Result2gG2c_A3ptr7NonNull1gCaG2c_A5alloc
 	return rv;
 	// ^ Return
 bb4: _Unwind_Resume(); // Diverge
-}
-// <::"alloc-0_0_0"::alloc::Global/*S*/ as ::"core-0_0_0"::alloc::Alloc>::dealloc<'#omitted,>
-static void  ZRQG2cF10alloc0_0_05alloc6Global0g2cE9core0_0_0_B5Alloc0g7dealloc0g(
-		struct s_ZRG2cF10alloc0_0_05alloc6Global0g *arg0, // &'#omitted mut ::"alloc-0_0_0"::alloc::Global/*S*/
-		struct s_ZRG2cE9core0_0_03ptr7NonNull1gCa arg1, // ::"core-0_0_0"::ptr::NonNull<u8,>/*S*/
-		struct s_ZRG2cE9core0_0_05alloc6Layout0g arg2 // ::"core-0_0_0"::alloc::Layout/*S*/
-		) // -> ()
-
-{
-	tUNIT rv;
-	uint8_t *var0;	// *mut u8
-	var0 = (uint8_t *)arg1._0._0;	// _0 = Cast(a1.0.0 as *mut u8)
-	ZRG2cF10alloc0_0_05alloc14__rust_dealloc0g( var0, arg2._0, arg2._1._0._0 );
-	// ^ Call( retval = ::"alloc-0_0_0"::alloc::__rust_dealloc( _0, a2.0, a2.1.0.0, ), bb1, bb2)
-	// ^ drop(a0)
-	return ;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
 }
 // <::"alloc-0_0_0"::boxed::Box<::"std-0_0_0"::io::error::Custom/*S*/,>/*S*/ as ::"core-0_0_0"::ops::drop::Drop>::drop<'#omitted,>
 static void  ZRQG2cF10alloc0_0_05boxed3Box1gG3cD8std0_0_02io5error6Custom0g3cE9core0_0_03ops4drop4Drop0g_J0g(
@@ -9483,7 +9658,7 @@ static void  ZRQG2cF10alloc0_0_04sync3Arc1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io
 	struct e_ZRG3cE9core0_0_04sync6atomic8Ordering0g var11;	// ::"core-0_0_0"::sync::atomic::Ordering/*E*/
 	var7 = arg0->_0;	// _7 = Use(a0*.0)
 	var6 = (struct s_ZRG2cF10alloc0_0_04sync8ArcInner1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io8buffered9BufReader1gG3c_D2io5stdio5Maybe1gG3c_D$c2efdfe9737a55ec *)var7._0._0;	// _6 = Cast(_7.0.0 as *mut ::"alloc-0_0_0"::sync::ArcInner<::"std-0_0_0"::sync::mutex::Mutex<::"std-0_0_0"::io::buffered::BufReader<::"std-0_0_0"::io::stdio::Maybe<::"std-0_0_0"::io::stdio::StdinRaw/*S*/,>/*E*/,>/*S*/,>/*S*/,>/*S*/)
-	var11.TAG = 1;	// _11 = Variant(::"core-0_0_0"::sync::atomic::Ordering #1, {})
+	var11.TAG = 1ll;	// _11 = Variant(::"core-0_0_0"::sync::atomic::Ordering #1, {})
 	var9 = & var6->_0._0._0;	// _9 = Borrow(Shared, _6*.0.0.0)
 	var10 = (uintptr_t *)var9;	// _10 = Cast(_9 as *const usize)
 	var8 = (uintptr_t *)var10;	// _8 = Cast(_10 as *mut usize)
@@ -9494,7 +9669,7 @@ static void  ZRQG2cF10alloc0_0_04sync3Arc1gG3cD8std0_0_0_B5mutex5Mutex1gG3c_D2io
 	// ^ If( _0 : 5, 3)
 bb2: _Unwind_Resume(); // Diverge
 bb3:
-	var2.TAG = 2;	// _2 = Variant(::"core-0_0_0"::sync::atomic::Ordering #2, {})
+	var2.TAG = 2ll;	// _2 = Variant(::"core-0_0_0"::sync::atomic::Ordering #2, {})
 	ZRG3cE9core0_0_04sync6atomic5fence0g( var2 );
 	// ^ Call( _3 = ::"core-0_0_0"::sync::atomic::fence( _2, ), bb4, bb2)
 	var4 = arg0;	// _4 = Borrow(Unique, a0*)
@@ -9506,18 +9681,6 @@ bb5:
 	return ;
 	// ^ Return
 }
-// <::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::by_ref<'#omitted,>
-static struct s_ZRG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g * ZRQG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g3cE9core0_0_04iter8iterator8Iterator0g6by_ref0g(
-		struct s_ZRG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g *arg0 // &'#omitted mut ::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/
-		) // -> &'#omitted mut ::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/
-
-{
-	struct s_ZRG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g *rv;
-	rv = arg0;	// retval = Borrow(Unique, a0*)
-	// ^ drop(a0)
-	return rv;
-	// ^ Return
-}
 // <::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#omitted,>
 static struct e_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsString0g  ZRQG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g3cE9core0_0_04iter8iterator8Iterator0g4next0g(
 		struct s_ZRG2cF10alloc0_0_03vec8IntoIter1gG3cD8std0_0_03ffi6os_str8OsString0g *arg0 // &'#omitted mut ::"alloc-0_0_0"::vec::IntoIter<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>/*S*/
@@ -9525,26 +9688,30 @@ static struct e_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsStrin
 
 {
 	struct e_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsString0g rv;
-	struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g *var0;	// *const ::"std-0_0_0"::ffi::os_str::OsString/*S*/
-	RUST_BOOL var1;	// bool
-	struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g var2;	// ::"std-0_0_0"::ffi::os_str::OsString/*S*/
+	RUST_BOOL var0;	// bool
+	struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g *var1;	// *const ::"std-0_0_0"::ffi::os_str::OsString/*S*/
+	struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g *var2;	// *const ::"std-0_0_0"::ffi::os_str::OsString/*S*/
 	struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g *var3;	// *const ::"std-0_0_0"::ffi::os_str::OsString/*S*/
-	var1 = arg0->_3 == arg0->_4;	// _1 = BinOp(a0*.3 EQ a0*.4)
-	if(var1) goto bb1; else goto bb2;
-	// ^ If( _1 : 1, 2)
+	struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g var4;	// ::"std-0_0_0"::ffi::os_str::OsString/*S*/
+	struct s_ZRG3cD8std0_0_03ffi6os_str8OsString0g *var5;	// *const ::"std-0_0_0"::ffi::os_str::OsString/*S*/
+	var1 = arg0->_3;	// _1 = Use(a0*.3)
+	var2 = arg0->_4;	// _2 = Use(a0*.4)
+	var0 = var1 == var2;	// _0 = BinOp(_1 EQ _2)
+	if(var0) goto bb1; else goto bb2;
+	// ^ If( _0 : 1, 2)
 bb1:
 	memset(&rv, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gG3cD8std0_0_03ffi6os_str8OsString0g ));	// retval = Variant(::"core-0_0_0"::option::Option<::"std-0_0_0"::ffi::os_str::OsString/*S*/,> #0, {})
 	goto bb5;
 	// ^ Goto(5)
 bb2:
-	var1 = false;	// _1 = Constant(false)
-	var0 = arg0->_3;	// _0 = Use(a0*.3)
+	var0 = false;	// _0 = Constant(false)
 	var3 = arg0->_3;	// _3 = Use(a0*.3)
-	arg0->_3 = var3 + 1ll;
-	// ^ Call( a0*.3 = "offset"::<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>( _3, +1 isize, ), bb3, bb6)
-	var2 = ZRG2cE9core0_0_03ptr4read1gG3cD8std0_0_03ffi6os_str8OsString0g( var0 );
-	// ^ Call( _2 = ::"core-0_0_0"::ptr::read<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>( _0, ), bb4, bb6)
-	rv.DATA.var_1._0 = var2;	// retval = Variant(::"core-0_0_0"::option::Option<::"std-0_0_0"::ffi::os_str::OsString/*S*/,> #1, {_2})
+	var5 = arg0->_3;	// _5 = Use(a0*.3)
+	arg0->_3 = var5 + 1ll;
+	// ^ Call( a0*.3 = "offset"::<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>( _5, +1 isize, ), bb3, bb6)
+	var4 = ZRG2cE9core0_0_03ptr4read1gG3cD8std0_0_03ffi6os_str8OsString0g( var3 );
+	// ^ Call( _4 = ::"core-0_0_0"::ptr::read<::"std-0_0_0"::ffi::os_str::OsString/*S*/,>( _3, ), bb4, bb6)
+	rv.DATA.var_1._0 = var4;	// retval = Variant(::"core-0_0_0"::option::Option<::"std-0_0_0"::ffi::os_str::OsString/*S*/,> #1, {_4})
 	// ^ Goto(5)
 bb5:
 	// ^ drop(a0)
@@ -9696,25 +9863,9 @@ static void  ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops4drop4Drop0g_F0g(
 	// ^ Return
 bb3: _Unwind_Resume(); // Diverge
 }
-// <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::index::IndexMut<::"core-0_0_0"::ops::range::RangeFull/*S*/,>>::index_mut<'#omitted,>
-static SLICE_PTR  ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5index8IndexMut1gG3c_D_E5range9RangeFull0g9index_mut0g(
-		struct s_ZRG2cF10alloc0_0_03vec3Vec1gCa *arg0, // &'#omitted mut ::"alloc-0_0_0"::vec::Vec<u8,>/*S*/
-		struct s_ZRG3cE9core0_0_03ops5range9RangeFull0g arg1 // ::"core-0_0_0"::ops::range::RangeFull/*S*/
-		) // -> &'#omitted mut [u8]
-
-{
-	SLICE_PTR rv;
-	SLICE_PTR var0;	// &'#omitted mut [u8]
-	var0 = ZRQG2cF10alloc0_0_03vec3Vec1gCa3cE9core0_0_03ops5deref8DerefMut0g9deref_mut0g( arg0 );
-	// ^ Call( _0 = <::"alloc-0_0_0"::vec::Vec<u8,>/*S*/ as ::"core-0_0_0"::ops::deref::DerefMut>::deref_mut<'#omitted,>( a0, ), bb1, bb2)
-	rv = var0;	// retval = Borrow(Unique, _0*)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// <::"bin#"::FmtByteString<'#local9,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
+// <::"bin#"::FmtByteString<'static,>/*S*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG1cD3bin13FmtByteString0g2cE9core0_0_03fmt5Debug0g_D0g(
-		struct s_ZRG1cD3bin13FmtByteString0g *arg0, // &'static ::"bin#"::FmtByteString<'#local9,>/*S*/
+		struct s_ZRG1cD3bin13FmtByteString0g *arg0, // &'static ::"bin#"::FmtByteString<'static,>/*S*/
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 
@@ -9737,18 +9888,20 @@ struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG1cD3bin13FmtBy
 	struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g var14;	// ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var15;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	uint8_t *var16;	// &'#local1 u8
-	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var17;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var18;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var19;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
-	struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g var20;	// ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var21;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	t_ZRTfQCa2cE9core0_0_03fmt8UpperHex0g_B0g var17 = {0};	// fn{<u8 as ::"core-0_0_0"::fmt::UpperHex>::fmt<'static,'static,>}
+	t_ZRTF2BsCaBuG2cE9core0_0_03fmt9Formatter0gG2c_A6result6Result2gT0G2c_A_B5Error0g var18;	// for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	struct s_ZRG2cE9core0_0_03fmt10ArgumentV10g var19;	// ::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g var20;	// [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
+	t_ZRTA1G2cE9core0_0_03fmt10ArgumentV10g *var21;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/; 1]
 	struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g var22;	// ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
-	tUNIT var23 = {0};	// ()
-	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var24;	// ::"core-0_0_0"::fmt::Arguments<'#local3,>/*S*/
-	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var25;	// ::"core-0_0_0"::option::Option<&'#local3 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
-	SLICE_PTR var26;	// &'static [&'static str]
-	SLICE_PTR var27;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
-	SLICE_PTR var28;	// &'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/]
+	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var23;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
+	struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g var24;	// ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
+	tUNIT var25 = {0};	// ()
+	struct s_ZRG2cE9core0_0_03fmt9Arguments0g var26;	// ::"core-0_0_0"::fmt::Arguments<'#local3,>/*S*/
+	struct e_ZRG2cE9core0_0_06option6Option1gBsSG4c_A3fmt2rt2v18Argument0g var27;	// ::"core-0_0_0"::option::Option<&'#local3 [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],>/*E*/
+	SLICE_PTR var28;	// &'static [&'static str]
+	SLICE_PTR var29;	// &'#local2 [::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/]
+	SLICE_PTR var30;	// &'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/]
 	var4 = arg1;	// _4 = Borrow(Unique, a1*)
 	var5 = ZRQG2cE9core0_0_03fmt9Formatter0g2c_A_B5Write0g10write_char0g( var4, 34 );
 	// ^ Call( _5 = <::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/ as ::"core-0_0_0"::fmt::Write>::write_char<'M1,>( _4, 0x22 char, ), bb1, bb2)
@@ -9776,11 +9929,11 @@ bb7:
 	// ^ Return
 bb8:
 	// ^ drop(_0)
-	var21 = arg1;	// _21 = Borrow(Unique, a1*)
-	var22 = ZRQG2cE9core0_0_03fmt9Formatter0g2c_A_B5Write0g10write_char0g( var21, 34 );
-	// ^ Call( _22 = <::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/ as ::"core-0_0_0"::fmt::Write>::write_char<'M1,>( _21, 0x22 char, ), bb9, bb2)
-	if( var22.DATA.TAG == 0) {goto bb27;} else {goto bb28;}
-	// ^ Switch( _22 : 0 => bb27, 1 => bb28, )
+	var23 = arg1;	// _23 = Borrow(Unique, a1*)
+	var24 = ZRQG2cE9core0_0_03fmt9Formatter0g2c_A_B5Write0g10write_char0g( var23, 34 );
+	// ^ Call( _24 = <::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/ as ::"core-0_0_0"::fmt::Write>::write_char<'M1,>( _23, 0x22 char, ), bb9, bb2)
+	if( var24.DATA.TAG == 0) {goto bb27;} else {goto bb28;}
+	// ^ Switch( _24 : 0 => bb27, 1 => bb28, )
 bb10:
 	var1 = (*var7.DATA.var_1._0);	// _1 = Use(_7#1.0*)
 	switch(var1) {
@@ -9813,21 +9966,23 @@ bb17:
 	var2 = var1;	// _2 = Use(_1)
 	var15 = arg1;	// _15 = Borrow(Unique, a1*)
 	var16 = & var2;	// _16 = Borrow(Shared, _2)
-	var26 = make_sliceptr(&ZRG3cD3binB_0B_09FRAGMENTS0g.val, 0x2ull);	// _26 = MakeDst(&::"bin#"::#0::#0::FRAGMENTS, 0x2 usize)
-	var17 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var16, ZRQCa2cE9core0_0_03fmt8UpperHex0g_B0g );
-	// ^ Call( _17 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,u8,>( _16, &<u8 as ::"core-0_0_0"::fmt::UpperHex>::fmt<'static,'static,>, ), bb18, bb2)
-	var18.DATA[0] = var17;	// _18 = Array(_17)
-	var19 = & var18;	// _19 = Borrow(Shared, _18)
-	var27 = make_sliceptr(var19, 0x1ull);	// _27 = MakeDst(_19, 0x1 usize)
-	var28 = make_sliceptr(&ZRG1cD3binG7lifted60g.val, 0x1ull);	// _28 = MakeDst(&::"bin#"::lifted#6, 0x1 usize)
-	var25.DATA.var_1._0 = var28;	// _25 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #1, {_28})
-	var24._0 = var26;
-	var24._1 = var25;
-	var24._2 = var27;	// _24 = Struct(::"core-0_0_0"::fmt::Arguments<'#local3,>, {_26, _25, _27})
-	var20 = ZRIG2cE9core0_0_03fmt9Formatter0g9write_fmt0g( var15, var24 );
-	// ^ Call( _20 = <::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/ /*- <'M1,>*/>::write_fmt<'M1,'#local3,>( _15, _24, ), bb19, bb2)
-	if( var20.DATA.TAG == 0) {goto bb4;} else {goto bb24;}
-	// ^ Switch( _20 : 0 => bb4, 1 => bb24, )
+	var28 = make_sliceptr(&ZRG3cD3binB_0B_09FRAGMENTS0g.val, 0x2ull);	// _28 = MakeDst(&::"bin#"::#0::#0::FRAGMENTS, 0x2 usize)
+	/* ZST assign */
+	var18 = ZRQCa2cE9core0_0_03fmt8UpperHex0g_B0g;	// _18 = Cast(_17 as for<'elided#0,'elided#1,> extern "Rust" fn(&'static u8, &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/, ) -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/)
+	var19 = ZRIG2cE9core0_0_03fmt10ArgumentV10g3new1gCa( var16, var18 );
+	// ^ Call( _19 = <::"core-0_0_0"::fmt::ArgumentV1<'#local1,>/*S*/ /*- <'static,>*/>::new<'#local1,u8,>( _16, _18, ), bb18, bb2)
+	var20.DATA[0] = var19;	// _20 = Array(_19)
+	var21 = & var20;	// _21 = Borrow(Shared, _20)
+	var29 = make_sliceptr(var21, 0x1ull);	// _29 = MakeDst(_21, 0x1 usize)
+	var30 = make_sliceptr(&ZRG1cD3binF6const90g.val, 0x1ull);	// _30 = MakeDst(&::"bin#"::const#9, 0x1 usize)
+	var27.DATA.var_1._0 = var30;	// _27 = Variant(::"core-0_0_0"::option::Option<&'static [::"core-0_0_0"::fmt::rt::v1::Argument/*S*/],> #1, {_30})
+	var26._0 = var28;
+	var26._1 = var27;
+	var26._2 = var29;	// _26 = Struct(::"core-0_0_0"::fmt::Arguments<'#local3,>, {_28, _27, _29})
+	var22 = ZRIG2cE9core0_0_03fmt9Formatter0g9write_fmt0g( var15, var26 );
+	// ^ Call( _22 = <::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/ /*- <'M1,>*/>::write_fmt<'M1,'#local3,>( _15, _26, ), bb19, bb2)
+	if( var22.DATA.TAG == 0) {goto bb4;} else {goto bb24;}
+	// ^ Switch( _22 : 0 => bb4, 1 => bb24, )
 bb20:
 	var12 = arg1;	// _12 = Borrow(Unique, a1*)
 	var13 = (RUST_CHAR )var1;	// _13 = Cast(_1 as char)
@@ -9844,7 +9999,7 @@ bb23:
 	return rv;
 	// ^ Return
 bb24:
-	rv.DATA.TAG = 1;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,> #1, {_20#1.0})
+	rv.DATA.TAG = 1;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,> #1, {_22#1.0})
 	goto bb23;
 	// ^ Goto(23)
 bb25:
@@ -9857,12 +10012,12 @@ bb26:
 	// ^ Goto(23)
 bb27:
 	/* ZST assign */
-	rv.DATA.TAG = 0;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,> #0, {_23})
+	rv.DATA.TAG = 0;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,> #0, {_25})
 	// ^ drop(a1)
 	return rv;
 	// ^ Return
 bb28:
-	rv.DATA.TAG = 1;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,> #1, {_22#1.0})
+	rv.DATA.TAG = 1;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,> #1, {_24#1.0})
 	goto bb7;
 	// ^ Goto(7)
 }
@@ -10996,23 +11151,25 @@ static struct e_ZRG2cE9core0_0_06option6Option1gCx  ZRQG2cE9core0_0_04iter4Skip1
 {
 	struct e_ZRG2cE9core0_0_06option6Option1gCx rv;
 	RUST_BOOL var0;	// bool
-	struct s_ZRG2cE9core0_0_03str5Chars0g *var1;	// &'#local7 mut ::"core-0_0_0"::str::Chars<'#local6,>/*S*/
+	uintptr_t var1;	// usize
 	struct s_ZRG2cE9core0_0_03str5Chars0g *var2;	// &'#local7 mut ::"core-0_0_0"::str::Chars<'#local6,>/*S*/
-	uintptr_t var3;	// usize
-	var0 = arg0->_1 == 0x0ull;	// _0 = BinOp(a0*.1 EQ 0x0 usize)
+	struct s_ZRG2cE9core0_0_03str5Chars0g *var3;	// &'#local7 mut ::"core-0_0_0"::str::Chars<'#local6,>/*S*/
+	uintptr_t var4;	// usize
+	var1 = arg0->_1;	// _1 = Use(a0*.1)
+	var0 = var1 == 0x0ull;	// _0 = BinOp(_1 EQ 0x0 usize)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
-	var1 = & arg0->_0;	// _1 = Borrow(Unique, a0*.0)
-	rv = ZRQG2cE9core0_0_03str5Chars0g3c_A4iter8iterator8Iterator0g4next0g( var1 );
-	goto bb3;
-	// ^ Call( retval = <::"core-0_0_0"::str::Chars<'#local6,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local7,>( _1, ), bb3, bb4)
-bb2:
-	var3 = arg0->_1;	// _3 = Use(a0*.1)
-	arg0->_1 = 0x0ull;	// a0*.1 = Constant(0x0 usize)
 	var2 = & arg0->_0;	// _2 = Borrow(Unique, a0*.0)
-	rv = ZRQG2cE9core0_0_03str5Chars0g3c_A4iter8iterator8Iterator0g3nth0g( var2, var3 );
-	// ^ Call( retval = <::"core-0_0_0"::str::Chars<'#local6,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::nth<'#local7,>( _2, _3, ), bb3, bb4)
+	rv = ZRQG2cE9core0_0_03str5Chars0g3c_A4iter8iterator8Iterator0g4next0g( var2 );
+	goto bb3;
+	// ^ Call( retval = <::"core-0_0_0"::str::Chars<'#local6,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local7,>( _2, ), bb3, bb4)
+bb2:
+	var4 = arg0->_1;	// _4 = Use(a0*.1)
+	arg0->_1 = 0x0ull;	// a0*.1 = Constant(0x0 usize)
+	var3 = & arg0->_0;	// _3 = Borrow(Unique, a0*.0)
+	rv = ZRQG2cE9core0_0_03str5Chars0g3c_A4iter8iterator8Iterator0g3nth0g( var3, var4 );
+	// ^ Call( retval = <::"core-0_0_0"::str::Chars<'#local6,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::nth<'#local7,>( _3, _4, ), bb3, bb4)
 bb3:
 	// ^ drop(a0)
 	return rv;
@@ -11027,23 +11184,25 @@ static struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g
 {
 	struct e_ZRG2cE9core0_0_06option6Option1gG2cF10alloc0_0_06string6String0g rv;
 	RUST_BOOL var0;	// bool
-	struct s_ZRG2cD8std0_0_03env4Args0g *var1;	// &'#local0 mut ::"std-0_0_0"::env::Args/*S*/
+	uintptr_t var1;	// usize
 	struct s_ZRG2cD8std0_0_03env4Args0g *var2;	// &'#local0 mut ::"std-0_0_0"::env::Args/*S*/
-	uintptr_t var3;	// usize
-	var0 = arg0->_1 == 0x0ull;	// _0 = BinOp(a0*.1 EQ 0x0 usize)
+	struct s_ZRG2cD8std0_0_03env4Args0g *var3;	// &'#local0 mut ::"std-0_0_0"::env::Args/*S*/
+	uintptr_t var4;	// usize
+	var1 = arg0->_1;	// _1 = Use(a0*.1)
+	var0 = var1 == 0x0ull;	// _0 = BinOp(_1 EQ 0x0 usize)
 	if(var0) goto bb1; else goto bb2;
 	// ^ If( _0 : 1, 2)
 bb1:
-	var1 = & arg0->_0;	// _1 = Borrow(Unique, a0*.0)
-	rv = ZRQG2cD8std0_0_03env4Args0g3cE9core0_0_04iter8iterator8Iterator0g4next0g( var1 );
-	goto bb3;
-	// ^ Call( retval = <::"std-0_0_0"::env::Args/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>( _1, ), bb3, bb4)
-bb2:
-	var3 = arg0->_1;	// _3 = Use(a0*.1)
-	arg0->_1 = 0x0ull;	// a0*.1 = Constant(0x0 usize)
 	var2 = & arg0->_0;	// _2 = Borrow(Unique, a0*.0)
-	rv = ZRQG2cD8std0_0_03env4Args0g3cE9core0_0_04iter8iterator8Iterator0g3nth0g( var2, var3 );
-	// ^ Call( retval = <::"std-0_0_0"::env::Args/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::nth<'#local0,>( _2, _3, ), bb3, bb4)
+	rv = ZRQG2cD8std0_0_03env4Args0g3cE9core0_0_04iter8iterator8Iterator0g4next0g( var2 );
+	goto bb3;
+	// ^ Call( retval = <::"std-0_0_0"::env::Args/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>( _2, ), bb3, bb4)
+bb2:
+	var4 = arg0->_1;	// _4 = Use(a0*.1)
+	arg0->_1 = 0x0ull;	// a0*.1 = Constant(0x0 usize)
+	var3 = & arg0->_0;	// _3 = Borrow(Unique, a0*.0)
+	rv = ZRQG2cD8std0_0_03env4Args0g3cE9core0_0_04iter8iterator8Iterator0g3nth0g( var3, var4 );
+	// ^ Call( retval = <::"std-0_0_0"::env::Args/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::nth<'#local0,>( _3, _4, ), bb3, bb4)
 bb3:
 	// ^ drop(a0)
 	return rv;
@@ -11175,41 +11334,6 @@ bb4:
 	// ^ Return
 bb6: _Unwind_Resume(); // Diverge
 }
-// <::"core-0_0_0"::ops::range::RangeFrom<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::index<'#omitted,>
-static SLICE_PTR  ZRQG3cE9core0_0_03ops5range9RangeFrom1gCu2c_A5slice10SliceIndex1gSCa5index0g(
-		struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu arg0, // ::"core-0_0_0"::ops::range::RangeFrom<usize,>/*S*/
-		SLICE_PTR arg1 // &'#omitted [u8]
-		) // -> &'#omitted [u8]
-
-{
-	SLICE_PTR rv;
-	struct s_ZRG3cE9core0_0_03ops5range5Range1gCu var0;	// ::"core-0_0_0"::ops::range::Range<usize,>/*S*/
-	uintptr_t var1;	// usize
-	SLICE_PTR var2;	// *const [u8]
-	var2 = arg1;	// _2 = Cast(a1 as *const [u8])
-	var1 = var2.META;	// _1 = DstMeta(_2)
-	var0._0 = arg0._0;
-	var0._1 = var1;	// _0 = Struct(::"core-0_0_0"::ops::range::Range<usize,>, {a0.0, _1})
-	rv = ZRQG3cE9core0_0_03ops5range5Range1gCu2c_A5slice10SliceIndex1gSCa5index0g( var0, arg1 );
-	// ^ Call( retval = <::"core-0_0_0"::ops::range::Range<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::index<'#omitted,>( _0, a1, ), bb1, bb2)
-	// ^ drop(a0)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// <::"core-0_0_0"::ops::range::RangeFull/*S*/ as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::index_mut<'#omitted,>
-static SLICE_PTR  ZRQG3cE9core0_0_03ops5range9RangeFull0g2c_A5slice10SliceIndex1gSCa9index_mut0g(
-		struct s_ZRG3cE9core0_0_03ops5range9RangeFull0g arg0, // ::"core-0_0_0"::ops::range::RangeFull/*S*/
-		SLICE_PTR arg1 // &'#omitted mut [u8]
-		) // -> &'#omitted mut [u8]
-
-{
-	SLICE_PTR rv;
-	rv = arg1;	// retval = Borrow(Unique, a1*)
-	// ^ drop(a1)
-	return rv;
-	// ^ Return
-}
 // <::"core-0_0_0"::ops::range::RangeTo<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<str,>>::get<'#omitted,>
 static struct e_ZRG2cE9core0_0_06option6Option1gBsCy  ZRQG3cE9core0_0_03ops5range7RangeTo1gCu2c_A5slice10SliceIndex1gCy3get0g(
 		struct s_ZRG3cE9core0_0_03ops5range7RangeTo1gCu arg0, // ::"core-0_0_0"::ops::range::RangeTo<usize,>/*S*/
@@ -11261,37 +11385,39 @@ static SLICE_PTR  ZRQG3cE9core0_0_03ops5range7RangeTo1gCu2c_A5slice10SliceIndex1
 	SLICE_PTR rv;
 	uintptr_t var0;	// usize
 	struct e_ZRG2cE9core0_0_06option6Option1gBsCy var1;	// ::"core-0_0_0"::option::Option<&'M0 str,>/*E*/
-	SLICE_PTR *var2;	// &'#ivar1 &'M0 str
-	uintptr_t *var3;	// &'#ivar1 usize
-	struct s_ZRG1cE9core0_0_0H18closureI_index_1440g var4;	// ::"core-0_0_0"::closure#I_index_144<'M0,'#ivar1,>/*S*/
+	uintptr_t *var2;	// &'#ivar1 usize
+	struct s_ZRG1cE9core0_0_0H18closureI_index_1440g var3;	// ::"core-0_0_0"::closure#I_index_144<'M0,'#local0,>/*S*/
 	var0 = arg0._0;	// _0 = Use(a0.0)
 	var1 = ZRQG3cE9core0_0_03ops5range7RangeTo1gCu2c_A5slice10SliceIndex1gCy3get0g( arg0, arg1 );
 	// ^ Call( _1 = <::"core-0_0_0"::ops::range::RangeTo<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<str,>>::get<'M0,>( a0, a1, ), bb1, bb3)
-	var2 = & arg1;	// _2 = Borrow(Shared, a1)
-	var3 = & var0;	// _3 = Borrow(Shared, _0)
-	var4._0 = var2;
-	var4._1 = var3;	// _4 = Struct(::"core-0_0_0"::closure#I_index_144<'M0,'#ivar1,>, {_2, _3})
-	rv = ZRIG2cE9core0_0_06option6Option1gBsCy14unwrap_or_else1gG1c_AH18closureI_index_1440g( var1, var4 );
-	// ^ Call( retval = <::"core-0_0_0"::option::Option<&'M0 str,>/*E*/ /*- <&'M0 str,>*/>::unwrap_or_else<::"core-0_0_0"::closure#I_index_144<'M0,'#ivar1,>/*S*/,>( _1, _4, ), bb2, bb3)
+	var2 = & var0;	// _2 = Borrow(Shared, _0)
+	var3._0 = arg1;
+	var3._1 = var2;	// _3 = Struct(::"core-0_0_0"::closure#I_index_144<'M0,'#local0,>, {a1, _2})
+	rv = ZRIG2cE9core0_0_06option6Option1gBsCy14unwrap_or_else1gG1c_AH18closureI_index_1440g( var1, var3 );
+	// ^ Call( retval = <::"core-0_0_0"::option::Option<&'M0 str,>/*E*/ /*- <&'M0 str,>*/>::unwrap_or_else<::"core-0_0_0"::closure#I_index_144<'M0,'#local0,>/*S*/,>( _1, _3, ), bb2, bb3)
 	return rv;
 	// ^ Return
 bb3: _Unwind_Resume(); // Diverge
 }
-// <::"core-0_0_0"::option::Option<u32,>/*E*/ as ::"core-0_0_0"::ops::try::Try>::from_error
-static struct e_ZRG2cE9core0_0_06option6Option1gCe  ZRQG2cE9core0_0_06option6Option1gCe3c_A3ops3try3Try0g10from_error0g(
-		struct s_ZRG2cE9core0_0_06option9NoneError0g arg0 // ::"core-0_0_0"::option::NoneError/*S*/
-		) // -> ::"core-0_0_0"::option::Option<u32,>/*E*/
+// <::"core-0_0_0"::panic::#0::NoPayload/*S*/ as ::"core-0_0_0"::any::Any>::get_type_id<'#omitted,>
+static struct s_ZRG2cE9core0_0_03any6TypeId0g  ZRQG3cE9core0_0_05panicB_09NoPayload0g2c_A3any3Any0g11get_type_id0g(
+		struct s_ZRG3cE9core0_0_05panicB_09NoPayload0g *arg0 // &'#omitted ::"core-0_0_0"::panic::#0::NoPayload/*S*/
+		) // -> ::"core-0_0_0"::any::TypeId/*S*/
 
 {
-	struct e_ZRG2cE9core0_0_06option6Option1gCe rv;
-	rv.DATA.TAG = 0;	// retval = Variant(::"core-0_0_0"::option::Option<u32,> #0, {})
+	struct s_ZRG2cE9core0_0_03any6TypeId0g rv;
+	uint64_t var0;	// u64
+	var0 = (uintptr_t)&__typeid_ZRTG3cE9core0_0_05panicB_09NoPayload0g;
+	// ^ Call( _0 = "type_id"::<::"core-0_0_0"::panic::#0::NoPayload/*S*/,>( ), bb1, bb2)
+	rv._0 = var0;	// retval = Struct(::"core-0_0_0"::any::TypeId, {_0})
 	return rv;
 	// ^ Return
+bb2: _Unwind_Resume(); // Diverge
 }
-// <::"core-0_0_0"::slice::Iter<'#local9,u8,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>
+// <::"core-0_0_0"::slice::Iter<'static,u8,>/*S*/ as ::"core-0_0_0"::iter::iterator::Iterator>::next<'#local0,>
 static struct e_ZRG2cE9core0_0_06option6Option1gBsCa  ZRQG2cE9core0_0_05slice4Iter1gCa3c_A4iter8iterator8Iterator0g4next0g(
-		struct s_ZRG2cE9core0_0_05slice4Iter1gCa *arg0 // &'#local0 mut ::"core-0_0_0"::slice::Iter<'#local9,u8,>/*S*/
-		) // -> ::"core-0_0_0"::option::Option<&'#local9 u8,>/*E*/
+		struct s_ZRG2cE9core0_0_05slice4Iter1gCa *arg0 // &'#local0 mut ::"core-0_0_0"::slice::Iter<'static,u8,>/*S*/
+		) // -> ::"core-0_0_0"::option::Option<&'static u8,>/*E*/
 
 {
 	struct e_ZRG2cE9core0_0_06option6Option1gBsCa rv;
@@ -11303,50 +11429,54 @@ static struct e_ZRG2cE9core0_0_06option6Option1gBsCa  ZRQG2cE9core0_0_05slice4It
 	RUST_BOOL var5;	// bool
 	RUST_BOOL var6;	// bool
 	tUNIT var7 = {0};	// ()
-	uint8_t **var8;	// &'#local0 mut *const u8
-	uint8_t *var9;	// &'#local9 u8
-	uint8_t *var10;	// *const u8
-	uint8_t *var11;	// *const u8
-	uintptr_t var12;	// usize
+	uint8_t *var8;	// *const u8
+	uint8_t *var9;	// *const u8
+	uint8_t **var10;	// &'#local0 mut *const u8
+	uint8_t *var11;	// &'static u8
+	uint8_t *var12;	// *const u8
 	uint8_t *var13;	// *const u8
-	uint8_t *var14;	// *const u8
-	uintptr_t var15;	// usize
+	uintptr_t var14;	// usize
+	uint8_t *var15;	// *const u8
 	uint8_t *var16;	// *const u8
-	uint8_t *var17;	// *const u8
+	uintptr_t var17;	// usize
+	uint8_t *var18;	// *const u8
+	uint8_t *var19;	// *const u8
 	var1 = true;	// _1 = Constant(true)
-	var10 = arg0->_0;	// _10 = Use(a0*.0)
-	var12 = 0x0ull;	// _12 = Constant(0x0 usize)
-	var11 = (uint8_t *)var12;	// _11 = Cast(_12 as *const u8)
-	var2 = var10 == var11;	// _2 = BinOp(_10 EQ _11)
+	var12 = arg0->_0;	// _12 = Use(a0*.0)
+	var14 = 0x0ull;	// _14 = Constant(0x0 usize)
+	var13 = (uint8_t *)var14;	// _13 = Cast(_14 as *const u8)
+	var2 = var12 == var13;	// _2 = BinOp(_12 EQ _13)
 	var3 = !var2;	// _3 = UniOp(_2 INV)
 	;
 	// ^ Call( _4 = "assume"::( _3, ), bb1, bb3)
-	var13 = arg0->_1;	// _13 = Use(a0*.1)
-	var15 = 0x0ull;	// _15 = Constant(0x0 usize)
-	var14 = (uint8_t *)var15;	// _14 = Cast(_15 as *const u8)
-	var5 = var13 == var14;	// _5 = BinOp(_13 EQ _14)
+	var15 = arg0->_1;	// _15 = Use(a0*.1)
+	var17 = 0x0ull;	// _17 = Constant(0x0 usize)
+	var16 = (uint8_t *)var17;	// _16 = Cast(_17 as *const u8)
+	var5 = var15 == var16;	// _5 = BinOp(_15 EQ _16)
 	var6 = !var5;	// _6 = UniOp(_5 INV)
 	;
 	// ^ Call( _7 = "assume"::( _6, ), bb2, bb3)
-	var1 = arg0->_0 == arg0->_1;	// _1 = BinOp(a0*.0 EQ a0*.1)
+	var8 = arg0->_0;	// _8 = Use(a0*.0)
+	var9 = arg0->_1;	// _9 = Use(a0*.1)
+	var1 = var8 == var9;	// _1 = BinOp(_8 EQ _9)
 	if(var1) goto bb4; else goto bb5;
 	// ^ If( _1 : 4, 5)
 bb3: _Unwind_Resume(); // Diverge
 bb4:
-	memset(&rv, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsCa ));	// retval = Variant(::"core-0_0_0"::option::Option<&'#local9 u8,> #0, {})
+	memset(&rv, 0, sizeof(struct e_ZRG2cE9core0_0_06option6Option1gBsCa ));	// retval = Variant(::"core-0_0_0"::option::Option<&'static u8,> #0, {})
 	goto bb7;
 	// ^ Goto(7)
 bb5:
-	var8 = & arg0->_0;	// _8 = Borrow(Unique, a0*.0)
-	var16 = (*var8);	// _16 = Use(_8*)
-	var17 = (*var8);	// _17 = Use(_8*)
-	(*var8) = var17 + 1ll;
-	// ^ Call( _8* = "offset"::<u8,>( _17, +1 isize, ), bb6, bb3)
-	// ^ drop(_8)
-	var0 = var16;	// _0 = Use(_16)
+	var10 = & arg0->_0;	// _10 = Borrow(Unique, a0*.0)
+	var18 = (*var10);	// _18 = Use(_10*)
+	var19 = (*var10);	// _19 = Use(_10*)
+	(*var10) = var19 + 1ll;
+	// ^ Call( _10* = "offset"::<u8,>( _19, +1 isize, ), bb6, bb3)
+	// ^ drop(_10)
+	var0 = var18;	// _0 = Use(_18)
 	var1 = false;	// _1 = Constant(false)
-	var9 = var0;	// _9 = Borrow(Shared, _0*)
-	rv.DATA.var_1._0 = var9;	// retval = Variant(::"core-0_0_0"::option::Option<&'#local9 u8,> #1, {_9})
+	var11 = var0;	// _11 = Borrow(Shared, _0*)
+	rv.DATA.var_1._0 = var11;	// retval = Variant(::"core-0_0_0"::option::Option<&'static u8,> #1, {_11})
 	// ^ Goto(7)
 bb7:
 	// ^ drop(a0)
@@ -11368,34 +11498,38 @@ static struct e_ZRG2cE9core0_0_06option6Option1gBuCa  ZRQG2cE9core0_0_05slice7It
 	RUST_BOOL var5;	// bool
 	RUST_BOOL var6;	// bool
 	tUNIT var7 = {0};	// ()
-	uint8_t **var8;	// &'#local2 mut *mut u8
-	uint8_t *var9;	// &'#local1 mut u8
-	uint8_t *var10;	// *mut u8
-	uint8_t *var11;	// *mut u8
-	uintptr_t var12;	// usize
+	uint8_t *var8;	// *mut u8
+	uint8_t *var9;	// *mut u8
+	uint8_t **var10;	// &'#local2 mut *mut u8
+	uint8_t *var11;	// &'#local1 mut u8
+	uint8_t *var12;	// *mut u8
 	uint8_t *var13;	// *mut u8
-	uint8_t *var14;	// *mut u8
-	uintptr_t var15;	// usize
+	uintptr_t var14;	// usize
+	uint8_t *var15;	// *mut u8
 	uint8_t *var16;	// *mut u8
-	uint8_t *var17;	// *const u8
-	uint8_t *var18;	// *const u8
-	uint8_t *var19;	// *mut u8
+	uintptr_t var17;	// usize
+	uint8_t *var18;	// *mut u8
+	uint8_t *var19;	// *const u8
+	uint8_t *var20;	// *const u8
+	uint8_t *var21;	// *mut u8
 	var1 = true;	// _1 = Constant(true)
-	var10 = arg0->_0;	// _10 = Use(a0*.0)
-	var12 = 0x0ull;	// _12 = Constant(0x0 usize)
-	var11 = (uint8_t *)var12;	// _11 = Cast(_12 as *mut u8)
-	var2 = var10 == var11;	// _2 = BinOp(_10 EQ _11)
+	var12 = arg0->_0;	// _12 = Use(a0*.0)
+	var14 = 0x0ull;	// _14 = Constant(0x0 usize)
+	var13 = (uint8_t *)var14;	// _13 = Cast(_14 as *mut u8)
+	var2 = var12 == var13;	// _2 = BinOp(_12 EQ _13)
 	var3 = !var2;	// _3 = UniOp(_2 INV)
 	;
 	// ^ Call( _4 = "assume"::( _3, ), bb1, bb3)
-	var13 = arg0->_1;	// _13 = Use(a0*.1)
-	var15 = 0x0ull;	// _15 = Constant(0x0 usize)
-	var14 = (uint8_t *)var15;	// _14 = Cast(_15 as *mut u8)
-	var5 = var13 == var14;	// _5 = BinOp(_13 EQ _14)
+	var15 = arg0->_1;	// _15 = Use(a0*.1)
+	var17 = 0x0ull;	// _17 = Constant(0x0 usize)
+	var16 = (uint8_t *)var17;	// _16 = Cast(_17 as *mut u8)
+	var5 = var15 == var16;	// _5 = BinOp(_15 EQ _16)
 	var6 = !var5;	// _6 = UniOp(_5 INV)
 	;
 	// ^ Call( _7 = "assume"::( _6, ), bb2, bb3)
-	var1 = arg0->_1 == arg0->_0;	// _1 = BinOp(a0*.1 EQ a0*.0)
+	var8 = arg0->_1;	// _8 = Use(a0*.1)
+	var9 = arg0->_0;	// _9 = Use(a0*.0)
+	var1 = var8 == var9;	// _1 = BinOp(_8 EQ _9)
 	if(var1) goto bb4; else goto bb5;
 	// ^ If( _1 : 4, 5)
 bb3: _Unwind_Resume(); // Diverge
@@ -11404,18 +11538,18 @@ bb4:
 	goto bb7;
 	// ^ Goto(7)
 bb5:
-	var8 = & arg0->_1;	// _8 = Borrow(Unique, a0*.1)
-	var19 = (*var8);	// _19 = Use(_8*)
-	var17 = (uint8_t *)var19;	// _17 = Cast(_19 as *const u8)
-	var18 = var17 + -1ll;
-	// ^ Call( _18 = "offset"::<u8,>( _17, -1 isize, ), bb6, bb3)
-	(*var8) = (uint8_t *)var18;	// _8* = Cast(_18 as *mut u8)
-	var16 = (*var8);	// _16 = Use(_8*)
-	// ^ drop(_8)
-	var0 = var16;	// _0 = Use(_16)
+	var10 = & arg0->_1;	// _10 = Borrow(Unique, a0*.1)
+	var21 = (*var10);	// _21 = Use(_10*)
+	var19 = (uint8_t *)var21;	// _19 = Cast(_21 as *const u8)
+	var20 = var19 + -1ll;
+	// ^ Call( _20 = "offset"::<u8,>( _19, -1 isize, ), bb6, bb3)
+	(*var10) = (uint8_t *)var20;	// _10* = Cast(_20 as *mut u8)
+	var18 = (*var10);	// _18 = Use(_10*)
+	// ^ drop(_10)
+	var0 = var18;	// _0 = Use(_18)
 	var1 = false;	// _1 = Constant(false)
-	var9 = var0;	// _9 = Borrow(Unique, _0*)
-	rv.DATA.var_1._0 = var9;	// retval = Variant(::"core-0_0_0"::option::Option<&'#local1 mut u8,> #1, {_9})
+	var11 = var0;	// _11 = Borrow(Unique, _0*)
+	rv.DATA.var_1._0 = var11;	// retval = Variant(::"core-0_0_0"::option::Option<&'#local1 mut u8,> #1, {_11})
 	// ^ Goto(7)
 bb7:
 	// ^ drop(a0)
@@ -11535,54 +11669,55 @@ bb7:
 	goto bb1;
 	// ^ Goto(1)
 }
-// <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local0,'#local0,>
+// <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read_exact<'#local0,'#local2,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g  ZRQG3cD8std0_0_02io5stdio9StdinLock0g2c_A2io4Read0g10read_exact0g(
 		struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g *arg0, // &'#local0 mut ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
-		SLICE_PTR arg1 // &'#local0 mut [u8]
+		SLICE_PTR arg1 // &'#local2 mut [u8]
 		) // -> ::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
 
 {
 	struct e_ZRG2cE9core0_0_06result6Result2gT0G3cD8std0_0_02io5error5Error0g rv;
-	SLICE_PTR var0;	// &'#local0 mut [u8]
+	SLICE_PTR var0;	// &'#local2 mut [u8]
 	RUST_BOOL var1;	// bool
 	struct s_ZRG3cD8std0_0_02io5stdio9StdinLock0g *var2;	// &'#local0 mut ::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/
-	SLICE_PTR var3;	// &'#local0 mut [u8]
+	SLICE_PTR var3;	// &'#local2 mut [u8]
 	struct e_ZRG2cE9core0_0_06result6Result2gCuG3cD8std0_0_02io5error5Error0g var4;	// ::"core-0_0_0"::result::Result<usize,::"std-0_0_0"::io::error::Error/*S*/,>/*E*/
-	SLICE_PTR var5;	// &'#local0 mut [u8]
+	SLICE_PTR var5;	// &'#local2 mut [u8]
 	struct s_ZRG3cE9core0_0_03ops5range9RangeFrom1gCu var6;	// ::"core-0_0_0"::ops::range::RangeFrom<usize,>/*S*/
-	SLICE_PTR var7;	// &'#local0 mut [u8]
+	SLICE_PTR var7;	// &'#local2 mut [u8]
 	struct s_ZRG3cD8std0_0_02io5error5Error0g *var8;	// &'#local0 ::"std-0_0_0"::io::error::Error/*S*/
 	struct e_ZRG3cD8std0_0_02io5error9ErrorKind0g var9;	// ::"std-0_0_0"::io::error::ErrorKind/*E*/
 	struct e_ZRG3cD8std0_0_02io5error9ErrorKind0g *var10;	// &'#omitted ::"std-0_0_0"::io::error::ErrorKind/*E*/
 	struct e_ZRG3cD8std0_0_02io5error9ErrorKind0g var11;	// ::"std-0_0_0"::io::error::ErrorKind/*E*/
 	struct e_ZRG3cD8std0_0_02io5error9ErrorKind0g *var12;	// &'#omitted ::"std-0_0_0"::io::error::ErrorKind/*E*/
-	struct e_ZRG3cD8std0_0_02io5error9ErrorKind0g var13;	// ::"std-0_0_0"::io::error::ErrorKind/*E*/
-	struct s_ZRG3cD8std0_0_02io5error5Error0g var14;	// ::"std-0_0_0"::io::error::Error/*S*/
-	tUNIT var15 = {0};	// ()
-	uintptr_t var16;	// usize
-	SLICE_PTR var17;	// *const [u8]
-	SLICE_PTR var18;	// &'#local0 [u8]
-	uintptr_t var19;	// usize
-	SLICE_PTR var20;	// *const [u8]
-	SLICE_PTR var21;	// &'#local0 [u8]
-	struct s_ZRG3cE9core0_0_03ops5range5Range1gCu var22;	// ::"core-0_0_0"::ops::range::Range<usize,>/*S*/
-	SLICE_PTR var23;	// &'#local0 mut [u8]
-	uintptr_t var24;	// usize
-	SLICE_PTR var25;	// *const [u8]
-	SLICE_PTR var26;	// &'#local0 [u8]
+	RUST_BOOL var13;	// bool
+	struct e_ZRG3cD8std0_0_02io5error9ErrorKind0g var14;	// ::"std-0_0_0"::io::error::ErrorKind/*E*/
+	struct s_ZRG3cD8std0_0_02io5error5Error0g var15;	// ::"std-0_0_0"::io::error::Error/*S*/
+	tUNIT var16 = {0};	// ()
+	uintptr_t var17;	// usize
+	SLICE_PTR var18;	// *const [u8]
+	SLICE_PTR var19;	// &'#local2 [u8]
+	uintptr_t var20;	// usize
+	SLICE_PTR var21;	// *const [u8]
+	SLICE_PTR var22;	// &'#local2 [u8]
+	struct s_ZRG3cE9core0_0_03ops5range5Range1gCu var23;	// ::"core-0_0_0"::ops::range::Range<usize,>/*S*/
+	SLICE_PTR var24;	// &'#local2 mut [u8]
+	uintptr_t var25;	// usize
+	SLICE_PTR var26;	// *const [u8]
+	SLICE_PTR var27;	// &'#local2 [u8]
 	// ^ Goto(1)
 bb1:
-	var18 = arg1;	// _18 = Borrow(Shared, a1*)
-	var17 = var18;	// _17 = Cast(_18 as *const [u8])
-	var16 = var17.META;	// _16 = DstMeta(_17)
-	var1 = var16 == 0x0ull;	// _1 = BinOp(_16 EQ 0x0 usize)
+	var19 = arg1;	// _19 = Borrow(Shared, a1*)
+	var18 = var19;	// _18 = Cast(_19 as *const [u8])
+	var17 = var18.META;	// _17 = DstMeta(_18)
+	var1 = var17 == 0x0ull;	// _1 = BinOp(_17 EQ 0x0 usize)
 	if(var1) goto bb13; else goto bb2;
 	// ^ If( _1 : 13, 2)
 bb2:
 	var2 = arg0;	// _2 = Borrow(Unique, a0*)
 	var3 = arg1;	// _3 = Borrow(Unique, a1*)
 	var4 = ZRQG3cD8std0_0_02io5stdio9StdinLock0g2c_A2io4Read0g4read0g( var2, var3 );
-	// ^ Call( _4 = <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read<'#local0,'#local0,>( _2, _3, ), bb3, bb4)
+	// ^ Call( _4 = <::"std-0_0_0"::io::stdio::StdinLock<'#local22,>/*S*/ as ::"std-0_0_0"::io::Read>::read<'#local0,'#local2,>( _2, _3, ), bb3, bb4)
 	if( var4.DATA.var_1._0._0.DATA.TAG == 3) {goto bb5;} else {goto bb6;}
 	// ^ Switch( _4 : 0 => bb5, 1 => bb6, )
 bb4: _Unwind_Resume(); // Diverge
@@ -11595,12 +11730,12 @@ bb6:
 	var9 = ZRIG3cD8std0_0_02io5error5Error0g4kind0g( var8 );
 	// ^ Call( _9 = <::"std-0_0_0"::io::error::Error/*S*/ /*- */>::kind<'#local0,>( _8, ), bb7, bb4)
 	var10 = & var9;	// _10 = Borrow(Shared, _9)
-	var11.TAG = 15;	// _11 = Variant(::"std-0_0_0"::io::error::ErrorKind #15, {})
+	var11.TAG = 15ll;	// _11 = Variant(::"std-0_0_0"::io::error::ErrorKind #15, {})
 	var12 = & var11;	// _12 = Borrow(Shared, _11)
-	var1 = ZRQG3cD8std0_0_02io5error9ErrorKind0g2cE9core0_0_03cmp9PartialEq1gG3c_A2io_C_D0g2eq0g( var10, var12 );
-	// ^ Call( _1 = <::"std-0_0_0"::io::error::ErrorKind/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"std-0_0_0"::io::error::ErrorKind/*E*/,>>::eq<'#omitted,'#omitted,>( _10, _12, ), bb8, bb4)
-	if(var1) goto bb9; else goto bb10;
-	// ^ If( _1 : 9, 10)
+	var13 = ZRQG3cD8std0_0_02io5error9ErrorKind0g2cE9core0_0_03cmp9PartialEq1gG3c_A2io_C_D0g2eq0g( var10, var12 );
+	// ^ Call( _13 = <::"std-0_0_0"::io::error::ErrorKind/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"std-0_0_0"::io::error::ErrorKind/*E*/,>>::eq<'#omitted,'#omitted,>( _10, _12, ), bb8, bb4)
+	if(var13) goto bb9; else goto bb10;
+	// ^ If( _13 : 9, 10)
 bb9:
 	ZRIG2cE9core0_0_06result6Result2gCuG3cD8std0_0_02io5error5Error0gA9drop_glue0g(&var4);
 	// ^ drop(_4)
@@ -11620,10 +11755,10 @@ bb12:
 	// ^ drop(_4)
 	// ^ Goto(13)
 bb13:
-	var21 = arg1;	// _21 = Borrow(Shared, a1*)
-	var20 = var21;	// _20 = Cast(_21 as *const [u8])
-	var19 = var20.META;	// _19 = DstMeta(_20)
-	var1 = var19 == 0x0ull;	// _1 = BinOp(_19 EQ 0x0 usize)
+	var22 = arg1;	// _22 = Borrow(Shared, a1*)
+	var21 = var22;	// _21 = Cast(_22 as *const [u8])
+	var20 = var21.META;	// _20 = DstMeta(_21)
+	var1 = var20 == 0x0ull;	// _1 = BinOp(_20 EQ 0x0 usize)
 	if(var1) goto bb17; else goto bb18;
 	// ^ If( _1 : 17, 18)
 bb14:
@@ -11633,14 +11768,14 @@ bb15:
 	var0 = arg1;	// _0 = Use(a1)
 	var5 = var0;	// _5 = Borrow(Unique, _0*)
 	var6._0 = var4.DATA.var_0._0;	// _6 = Struct(::"core-0_0_0"::ops::range::RangeFrom<usize,>, {_4#0.0})
-	var26 = var5;	// _26 = Borrow(Shared, _5*)
-	var25 = var26;	// _25 = Cast(_26 as *const [u8])
-	var24 = var25.META;	// _24 = DstMeta(_25)
-	var22._0 = var6._0;
-	var22._1 = var24;	// _22 = Struct(::"core-0_0_0"::ops::range::Range<usize,>, {_6.0, _24})
-	var23 = var5;	// _23 = Borrow(Unique, _5*)
-	var7 = ZRQG3cE9core0_0_03ops5range5Range1gCu2c_A5slice10SliceIndex1gSCa9index_mut0g( var22, var23 );
-	// ^ Call( _7 = <::"core-0_0_0"::ops::range::Range<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::index_mut<'#omitted,>( _22, _23, ), bb16, bb4)
+	var27 = var5;	// _27 = Borrow(Shared, _5*)
+	var26 = var27;	// _26 = Cast(_27 as *const [u8])
+	var25 = var26.META;	// _25 = DstMeta(_26)
+	var23._0 = var6._0;
+	var23._1 = var25;	// _23 = Struct(::"core-0_0_0"::ops::range::Range<usize,>, {_6.0, _25})
+	var24 = var5;	// _24 = Borrow(Unique, _5*)
+	var7 = ZRQG3cE9core0_0_03ops5range5Range1gCu2c_A5slice10SliceIndex1gSCa9index_mut0g( var23, var24 );
+	// ^ Call( _7 = <::"core-0_0_0"::ops::range::Range<usize,>/*S*/ as ::"core-0_0_0"::slice::SliceIndex<[u8],>>::index_mut<'#omitted,>( _23, _24, ), bb16, bb4)
 	// ^ drop(_6)
 	// ^ drop(_5)
 	arg1 = var7;	// a1 = Borrow(Unique, _7*)
@@ -11650,14 +11785,14 @@ bb15:
 	// ^ Goto(9)
 bb17:
 	/* ZST assign */
-	rv.DATA.var_0._1 = 3;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,> #0, {_15})
+	rv.DATA.var_0._1 = 3;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,> #0, {_16})
 	goto bb20;
 	// ^ Goto(20)
 bb18:
-	var13.TAG = 17;	// _13 = Variant(::"std-0_0_0"::io::error::ErrorKind #17, {})
-	var14 = ZRIG3cD8std0_0_02io5error5Error0g3new1gBsCy( var13, make_sliceptr("failed to fill whole buffer", 27) );
-	// ^ Call( _14 = <::"std-0_0_0"::io::error::Error/*S*/ /*- */>::new<&'static str,>( _13, "failed to fill whole buffer", ), bb19, bb4)
-	/* Niche tag */rv.DATA.var_1._0 = var14;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,> #1, {_14})
+	var14.TAG = 17ll;	// _14 = Variant(::"std-0_0_0"::io::error::ErrorKind #17, {})
+	var15 = ZRIG3cD8std0_0_02io5error5Error0g3new1gBsCy( var14, make_sliceptr("failed to fill whole buffer", 27) );
+	// ^ Call( _15 = <::"std-0_0_0"::io::error::Error/*S*/ /*- */>::new<&'static str,>( _14, "failed to fill whole buffer", ), bb19, bb4)
+	/* Niche tag */rv.DATA.var_1._0 = var15;	// retval = Variant(::"core-0_0_0"::result::Result<(),::"std-0_0_0"::io::error::Error/*S*/,> #1, {_15})
 	// ^ Goto(20)
 bb20:
 	// ^ drop(a0)
@@ -11753,7 +11888,7 @@ static TRAITOBJ_PTR  ZRQG3cD8std0_0_09panickingB_412PanicPayload1gBsCy2cE9core0_
 		goto bb1;
 	// ^ Switch( a0*.0 : 0 => bb1, 1 => bb2, )
 bb1:
-	rv = make_traitobjptr(&ZRG3cD8std0_0_09panickingB_4G7lifted00g.val, &ZRQT02cE9core0_0_03any3Any0gG6vtable0g.val);	// retval = MakeDst(&::"std-0_0_0"::panicking::#4::lifted#0, &<() as ::"core-0_0_0"::any::Any>::vtable#)
+	rv = make_traitobjptr(&ZRG3cD8std0_0_09panickingB_4F6const00g.val, &ZRQT02cE9core0_0_03any3Any0gG6vtable0g.val);	// retval = MakeDst(&::"std-0_0_0"::panicking::#4::const#0, &<() as ::"core-0_0_0"::any::Any>::vtable#)
 	goto bb3;
 	// ^ Goto(3)
 bb2:
@@ -11922,45 +12057,34 @@ static struct s_ZRG2cE9core0_0_03any6TypeId0g  ZRQT02cE9core0_0_03any3Any0g11get
 	// ^ Return
 bb2: _Unwind_Resume(); // Diverge
 }
-// <() as ::"std-0_0_0"::process::Termination>::report
-static int32_t  ZRQT02cD8std0_0_07process11Termination0g6report0g(
-		tUNIT arg0 // ()
-		) // -> i32
-
-{
-	int32_t rv;
-	rv = 0;	// retval = Constant(+0 i32)
-	return rv;
-	// ^ Return
-}
-// <&'#local17 u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
+// <&'static u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQBsCa2cE9core0_0_03fmt5Debug0g_B0g(
-		uint8_t **arg0, // &'static &'#local17 u8
+		uint8_t **arg0, // &'static &'static u8
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 
 {
 	struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g rv;
-	uint8_t *var0;	// &'#local17 u8
+	uint8_t *var0;	// &'static u8
 	var0 = (*arg0);	// _0 = Borrow(Shared, a0**)
 	rv = ZRQCa2cE9core0_0_03fmt5Debug0g_B0g( var0, arg1 );
-	// ^ Call( retval = <u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'#local17,'static,>( _0, a1, ), bb1, bb2)
+	// ^ Call( retval = <u8 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>( _0, a1, ), bb1, bb2)
 	return rv;
 	// ^ Return
 bb2: _Unwind_Resume(); // Diverge
 }
-// <&'#local0 i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
+// <&'static i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>
 static struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQBsCf2cE9core0_0_03fmt5Debug0g_B0g(
-		int32_t **arg0, // &'static &'#local0 i32
+		int32_t **arg0, // &'static &'static i32
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'static mut ::"core-0_0_0"::fmt::Formatter<'static,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 
 {
 	struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g rv;
-	int32_t *var0;	// &'#local0 i32
+	int32_t *var0;	// &'static i32
 	var0 = (*arg0);	// _0 = Borrow(Shared, a0**)
 	rv = ZRQCf2cE9core0_0_03fmt5Debug0g_B0g( var0, arg1 );
-	// ^ Call( retval = <i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'#local0,'static,>( _0, a1, ), bb1, bb2)
+	// ^ Call( retval = <i32 as ::"core-0_0_0"::fmt::Debug>::fmt<'static,'static,>( _0, a1, ), bb1, bb2)
 	return rv;
 	// ^ Return
 bb2: _Unwind_Resume(); // Diverge
@@ -11976,19 +12100,6 @@ static struct s_ZRG2cE9core0_0_03any6TypeId0g  ZRQBsCy2cE9core0_0_03any3Any0g11g
 	var0 = (uintptr_t)&__typeid_ZRTBsCy;
 	// ^ Call( _0 = "type_id"::<&'static str,>( ), bb1, bb2)
 	rv._0 = var0;	// retval = Struct(::"core-0_0_0"::any::TypeId, {_0})
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// <&'static str as ::"core-0_0_0"::convert::Into<::"alloc-0_0_0"::boxed::Box<dyn (::"std-0_0_0"::error::Error+::"core-0_0_0"::marker::Send+::"core-0_0_0"::marker::Sync),>/*S*/,>>::into
-static struct s_ZRG2cF10alloc0_0_05boxed3Box1gD2cD8std0_0_05error5Error0g022cE9core0_0_06marker4Send0g2c_G_H4Sync0g  ZRQBsCy2cE9core0_0_07convert4Into1gG2cF10alloc0_0_05boxed3Box1gD2cD8std0_0_05error5Error0g022c_A6marker4Send0g2c_A_J4Sy$3822e47e5d8ad101(
-		SLICE_PTR arg0 // &'static str
-		) // -> ::"alloc-0_0_0"::boxed::Box<dyn (::"std-0_0_0"::error::Error+::"core-0_0_0"::marker::Send+::"core-0_0_0"::marker::Sync),>/*S*/
-
-{
-	struct s_ZRG2cF10alloc0_0_05boxed3Box1gD2cD8std0_0_05error5Error0g022cE9core0_0_06marker4Send0g2c_G_H4Sync0g rv;
-	rv = ZRQG2cF10alloc0_0_05boxed3Box1gD2cD8std0_0_05error5Error0g022cE9core0_0_06marker4Send0g2c_G_H4Sync0g2c_G7convert4From1g$ea650a580e4f612e( arg0 );
-	// ^ Call( retval = <::"alloc-0_0_0"::boxed::Box<dyn (::"std-0_0_0"::error::Error+::"core-0_0_0"::marker::Send+::"core-0_0_0"::marker::Sync),>/*S*/ as ::"core-0_0_0"::convert::From<&'static str,>>::from( a0, ), bb1, bb2)
 	return rv;
 	// ^ Return
 bb2: _Unwind_Resume(); // Diverge
@@ -12072,78 +12183,8 @@ bb6:
 	return rv;
 	// ^ Return
 }
-// <*const u8 as ::"core-0_0_0"::slice::PointerExt>::post_inc<'#local0,>
-static uint8_t * ZRQPsCa2cE9core0_0_05slice10PointerExt0g8post_inc0g(
-		uint8_t **arg0 // &'#local0 mut *const u8
-		) // -> *const u8
-
-{
-	uint8_t *rv;
-	uint8_t *var0;	// *const u8
-	rv = (*arg0);	// retval = Use(a0*)
-	var0 = (*arg0);	// _0 = Use(a0*)
-	(*arg0) = var0 + 1ll;
-	// ^ Call( a0* = "offset"::<u8,>( _0, +1 isize, ), bb1, bb2)
-	// ^ drop(a0)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// <*const u8 as ::"core-0_0_0"::slice::PointerExt>::slice_offset
-static uint8_t * ZRQPsCa2cE9core0_0_05slice10PointerExt0g12slice_offset0g(
-		uint8_t *arg0, // *const u8
-		intptr_t arg1 // isize
-		) // -> *const u8
-
-{
-	uint8_t *rv;
-	rv = arg0 + arg1;
-	// ^ Call( retval = "offset"::<u8,>( a0, a1, ), bb1, bb2)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// <*mut u8 as ::"core-0_0_0"::slice::PointerExt>::pre_dec<'#local2,>
-static uint8_t * ZRQPuCa2cE9core0_0_05slice10PointerExt0g7pre_dec0g(
-		uint8_t **arg0 // &'#local2 mut *mut u8
-		) // -> *mut u8
-
-{
-	uint8_t *rv;
-	uint8_t *var0;	// *const u8
-	uint8_t *var1;	// *const u8
-	uint8_t *var2;	// *mut u8
-	var2 = (*arg0);	// _2 = Use(a0*)
-	var0 = (uint8_t *)var2;	// _0 = Cast(_2 as *const u8)
-	var1 = var0 + -1ll;
-	// ^ Call( _1 = "offset"::<u8,>( _0, -1 isize, ), bb1, bb2)
-	(*arg0) = (uint8_t *)var1;	// a0* = Cast(_1 as *mut u8)
-	rv = (*arg0);	// retval = Use(a0*)
-	// ^ drop(a0)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
-// <*mut u8 as ::"core-0_0_0"::slice::PointerExt>::slice_offset
-static uint8_t * ZRQPuCa2cE9core0_0_05slice10PointerExt0g12slice_offset0g(
-		uint8_t *arg0, // *mut u8
-		intptr_t arg1 // isize
-		) // -> *mut u8
-
-{
-	uint8_t *rv;
-	uint8_t *var0;	// *const u8
-	uint8_t *var1;	// *const u8
-	var0 = (uint8_t *)arg0;	// _0 = Cast(a0 as *const u8)
-	var1 = var0 + arg1;
-	// ^ Call( _1 = "offset"::<u8,>( _0, a1, ), bb1, bb2)
-	rv = (uint8_t *)var1;	// retval = Cast(_1 as *mut u8)
-	return rv;
-	// ^ Return
-bb2: _Unwind_Resume(); // Diverge
-}
 int main(int argc, const char* argv[]) {
-	return ZRG2cD8std0_0_02rt10lang_start0g(ZRG1cD3bin4main0g, argc, (uint8_t**)argv);
+	return ZRG2cD8std0_0_02rt10lang_start1gT0(ZRG1cD3bin4main0g, argc, (uint8_t**)argv);
 }
 __thread jmp_buf* mrustc_panic_target;
 __thread void* mrustc_panic_value;

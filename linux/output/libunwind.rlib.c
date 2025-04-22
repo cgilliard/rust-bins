@@ -91,6 +91,8 @@ static inline int128_t or128s (int128_t a, int128_t b) { int128_t v = { a.lo | b
 static inline int128_t xor128s(int128_t a, int128_t b) { int128_t v = { a.lo ^ b.lo, a.hi ^ b.hi }; return v; }
 static inline int128_t shl128s(int128_t a, uint32_t b) { int128_t v; if(b == 0) { return a; } else if(b < 64) { v.lo = a.lo << b; v.hi = (a.hi << b) | (a.lo >> (64 - b)); } else { v.hi = a.lo << (b - 64); v.lo = 0; } return v; }
 static inline int128_t shr128s(int128_t a, uint32_t b) { int128_t v; if(b == 0) { return a; } else if(b < 64) { v.lo = (a.lo >> b)|(a.hi << (64 - b)); v.hi = (int64_t)a.hi >> b; } else { v.lo = (int64_t)a.hi >> (b - 64); v.hi = (int64_t)a.hi < 0 ? -1 : 0; } return v; }
+static inline uint128_t int128_to_uint128(int128_t a) { return make128_raw(a.lo, a.hi); }
+static inline int128_t uint128_to_int128(uint128_t a) { return make128s_raw(a.lo, a.hi); }
 
 static inline int slice_cmp(SLICE_PTR l, SLICE_PTR r) {
 	int rv = memcmp(l.PTR, r.PTR, l.META < r.META ? l.META : r.META);
@@ -139,20 +141,20 @@ static inline uint64_t __mrustc_op_umin64(uint64_t a, uint64_t b) { return (a < 
 static inline uint64_t __mrustc_op_imax64(uint64_t a, uint64_t b) { return ((int64_t)a > (int64_t)b ? a : b); }
 static inline uint64_t __mrustc_op_imin64(uint64_t a, uint64_t b) { return ((int64_t)a < (int64_t)b ? a : b); }
 static inline uint64_t __mrustc_op_and_not64(uint64_t a, uint64_t b) { return ~(a & b); }
-struct s_ZRG2cG11unwind0_0_09libunwind17_Unwind_Exception0g;
-struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g;
 // enum ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code
-struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g {
+struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g {
 	uint32_t TAG;
 };
-typedef char sizeof_assert_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g[ (sizeof(struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g) == 4) ? 1 : -1 ];
-struct e_ZRG1cE12libc0_0_0_H16c_void0g;
-typedef struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  (*t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind15_Unwind_Context0gPuG1cE12libc0_0_0_H16c_void0gG2c_A_B19_Unwind_Reason_Code0g )( struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *, struct e_ZRG1cE12libc0_0_0_H16c_void0g * ); // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"libc-0_0_0_H1"::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+typedef char sizeof_assert_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g[ (sizeof(struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g) == 4) ? 1 : -1 ];
+struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g;
+struct e_ZRG1cE12libc0_0_0_H46c_void0g;
+typedef struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g  (*t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind16__Unwind_Context0gPuG1cE12libc0_0_0_H46c_void0gG2c_A_B20__Unwind_Reason_Code0g )( struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *, struct e_ZRG1cE12libc0_0_0_H46c_void0g * ); // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"libc-0_0_0_H4"::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+struct s_ZRG2cG11unwind0_0_09libunwind18__Unwind_Exception0g;
 // enum ::"unwind-0_0_0"::libunwind::_Unwind_Action
-struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g {
+struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g {
 	uint32_t TAG;
 };
-typedef char sizeof_assert_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g[ (sizeof(struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g) == 4) ? 1 : -1 ];
+typedef char sizeof_assert_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g[ (sizeof(struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g) == 4) ? 1 : -1 ];
 // struct ::"core-0_0_0"::result::Result#Ok<(),::"core-0_0_0"::fmt::Error/*S*/,>
 struct s_ZRG2cE9core0_0_06resultG8ResultOk2gT0G2c_A3fmt5Error0g  {
 	/*@0*/uint8_t _1; // u8
@@ -231,114 +233,114 @@ struct s_ZRG2cE9core0_0_03fmt9Formatter0g  {
 typedef char sizeof_assert_ZRG2cE9core0_0_03fmt9Formatter0g[ (sizeof(struct s_ZRG2cE9core0_0_03fmt9Formatter0g) == 96) ? 1 : -1 ];
 typedef char alignof_assert_ZRG2cE9core0_0_03fmt9Formatter0g[ (ALIGNOF(struct s_ZRG2cE9core0_0_03fmt9Formatter0g) == 8) ? 1 : -1 ];
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::clone::Clone>::clone<'#omitted,>
-struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_05clone5Clone0g_E0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_05clone5Clone0g_E0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::clone::Clone>::clone_from<'#omitted,'#omitted,>
-static void  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_05clone5Clone0g10clone_from0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+static void  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_05clone5Clone0g10clone_from0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> ()
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/,>>::eq<'#omitted,'#omitted,>
-RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> bool
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/,>>::ne<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> bool
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::clone::Clone>::clone<'#omitted,>
-struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g_E0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g_E0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::clone::Clone>::clone_from<'#omitted,'#omitted,>
-static void  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g10clone_from0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+static void  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g10clone_from0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> ()
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/,>>::eq<'#omitted,'#omitted,>
-RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> bool
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/,>>::ne<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> bool
 ;
 // PROTO extern "Rust" <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'#omitted,'#omitted,>
-struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_03fmt5Debug0g_E0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_03fmt5Debug0g_E0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'#omitted mut ::"core-0_0_0"::fmt::Formatter<'#omitted,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_Backtrace
-extern struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  ZRG2cG11unwind0_0_09libunwind17_Unwind_Backtrace0g(
-		t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind15_Unwind_Context0gPuG1cE12libc0_0_0_H16c_void0gG2c_A_B19_Unwind_Reason_Code0g arg0, // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"libc-0_0_0_H1"::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG1cE12libc0_0_0_H16c_void0g *arg1 // *mut ::"libc-0_0_0_H1"::c_void/*E*/
+extern struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g  ZRG2cG11unwind0_0_09libunwind18__Unwind_Backtrace0g(
+		t_ZRTFe1C2PuG2cG11unwind0_0_09libunwind16__Unwind_Context0gPuG1cE12libc0_0_0_H46c_void0gG2c_A_B20__Unwind_Reason_Code0g arg0, // extern "C" fn(*mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/, *mut ::"libc-0_0_0_H4"::c_void/*E*/, ) -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG1cE12libc0_0_0_H46c_void0g *arg1 // *mut ::"libc-0_0_0_H4"::c_void/*E*/
 		) // -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
  asm("_Unwind_Backtrace");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_DeleteException
-extern void  ZRG2cG11unwind0_0_09libunwind23_Unwind_DeleteException0g(
-		struct s_ZRG2cG11unwind0_0_09libunwind17_Unwind_Exception0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Exception/*S*/
+extern void  ZRG2cG11unwind0_0_09libunwind24__Unwind_DeleteException0g(
+		struct s_ZRG2cG11unwind0_0_09libunwind18__Unwind_Exception0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Exception/*S*/
 		) // -> ()
  asm("_Unwind_DeleteException");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_FindEnclosingFunction
-extern struct e_ZRG1cE12libc0_0_0_H16c_void0g * ZRG2cG11unwind0_0_09libunwind29_Unwind_FindEnclosingFunction0g(
-		struct e_ZRG1cE12libc0_0_0_H16c_void0g *arg0 // *mut ::"libc-0_0_0_H1"::c_void/*E*/
-		) // -> *mut ::"libc-0_0_0_H1"::c_void/*E*/
+extern struct e_ZRG1cE12libc0_0_0_H46c_void0g * ZRG2cG11unwind0_0_09libunwind30__Unwind_FindEnclosingFunction0g(
+		struct e_ZRG1cE12libc0_0_0_H46c_void0g *arg0 // *mut ::"libc-0_0_0_H4"::c_void/*E*/
+		) // -> *mut ::"libc-0_0_0_H4"::c_void/*E*/
  asm("_Unwind_FindEnclosingFunction");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetDataRelBase
-extern uintptr_t  ZRG2cG11unwind0_0_09libunwind22_Unwind_GetDataRelBase0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern uintptr_t  ZRG2cG11unwind0_0_09libunwind23__Unwind_GetDataRelBase0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		) // -> usize
  asm("_Unwind_GetDataRelBase");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetGR
-extern uintptr_t  ZRG2cG11unwind0_0_09libunwind13_Unwind_GetGR0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern uintptr_t  ZRG2cG11unwind0_0_09libunwind14__Unwind_GetGR0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		int32_t arg1 // i32
 		) // -> usize
  asm("_Unwind_GetGR");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetIP
-extern uintptr_t  ZRG2cG11unwind0_0_09libunwind13_Unwind_GetIP0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern uintptr_t  ZRG2cG11unwind0_0_09libunwind14__Unwind_GetIP0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		) // -> usize
  asm("_Unwind_GetIP");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetIPInfo
-extern uintptr_t  ZRG2cG11unwind0_0_09libunwind17_Unwind_GetIPInfo0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern uintptr_t  ZRG2cG11unwind0_0_09libunwind18__Unwind_GetIPInfo0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		int32_t *arg1 // *mut i32
 		) // -> usize
  asm("_Unwind_GetIPInfo");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetLanguageSpecificData
-extern struct e_ZRG1cE12libc0_0_0_H16c_void0g * ZRG2cG11unwind0_0_09libunwind31_Unwind_GetLanguageSpecificData0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
-		) // -> *mut ::"libc-0_0_0_H1"::c_void/*E*/
+extern struct e_ZRG1cE12libc0_0_0_H46c_void0g * ZRG2cG11unwind0_0_09libunwind32__Unwind_GetLanguageSpecificData0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+		) // -> *mut ::"libc-0_0_0_H4"::c_void/*E*/
  asm("_Unwind_GetLanguageSpecificData");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetRegionStart
-extern uintptr_t  ZRG2cG11unwind0_0_09libunwind22_Unwind_GetRegionStart0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern uintptr_t  ZRG2cG11unwind0_0_09libunwind23__Unwind_GetRegionStart0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		) // -> usize
  asm("_Unwind_GetRegionStart");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_GetTextRelBase
-extern uintptr_t  ZRG2cG11unwind0_0_09libunwind22_Unwind_GetTextRelBase0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern uintptr_t  ZRG2cG11unwind0_0_09libunwind23__Unwind_GetTextRelBase0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		) // -> usize
  asm("_Unwind_GetTextRelBase");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_RaiseException
 // - Magic compiler impl
-static struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  ZRG2cG11unwind0_0_09libunwind22_Unwind_RaiseException0g(
-		struct s_ZRG2cG11unwind0_0_09libunwind17_Unwind_Exception0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Exception/*S*/
+static struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g  ZRG2cG11unwind0_0_09libunwind23__Unwind_RaiseException0g(
+		struct s_ZRG2cG11unwind0_0_09libunwind18__Unwind_Exception0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Exception/*S*/
 		) // -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
  {
 	if( !mrustc_panic_target ) abort();
@@ -346,20 +348,20 @@ static struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  ZRG2cG11un
 	longjmp(*mrustc_panic_target, 1);
 }
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_Resume
-extern tBANG  ZRG2cG11unwind0_0_09libunwind14_Unwind_Resume0g(
-		struct s_ZRG2cG11unwind0_0_09libunwind17_Unwind_Exception0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Exception/*S*/
+extern tBANG  ZRG2cG11unwind0_0_09libunwind15__Unwind_Resume0g(
+		struct s_ZRG2cG11unwind0_0_09libunwind18__Unwind_Exception0g *arg0 // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Exception/*S*/
 		) // -> !
  asm("_Unwind_Resume");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_SetGR
-extern void  ZRG2cG11unwind0_0_09libunwind13_Unwind_SetGR0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern void  ZRG2cG11unwind0_0_09libunwind14__Unwind_SetGR0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		int32_t arg1, // i32
 		uintptr_t arg2 // usize
 		) // -> ()
  asm("_Unwind_SetGR");
 // EXTERN extern "C" ::"unwind-0_0_0"::libunwind::_Unwind_SetIP
-extern void  ZRG2cG11unwind0_0_09libunwind13_Unwind_SetIP0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind15_Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
+extern void  ZRG2cG11unwind0_0_09libunwind14__Unwind_SetIP0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind16__Unwind_Context0g *arg0, // *mut ::"unwind-0_0_0"::libunwind::_Unwind_Context/*E*/
 		uintptr_t arg1 // usize
 		) // -> ()
  asm("_Unwind_SetIP");
@@ -370,51 +372,51 @@ extern struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRIG2cE9cor
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 ;
 // <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::clone::Clone>::clone<'#omitted,>
-struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_05clone5Clone0g_E0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_05clone5Clone0g_E0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 
 {
-	struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g rv;
+	struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g rv;
 	switch((*arg0).TAG) {
-	case 1: goto bb1;break;
-	case 2: goto bb2;break;
-	case 4: goto bb3;break;
-	case 8: goto bb4;break;
-	case 16: goto bb5;break;
+	case 1ull: goto bb1;break;
+	case 2ull: goto bb2;break;
+	case 4ull: goto bb3;break;
+	case 8ull: goto bb4;break;
+	case 16ull: goto bb5;break;
 	default: abort();
 	}
 	// ^ Switch( a0* : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, )
 bb1:
-	rv.TAG = 1;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #0, {})
+	rv.TAG = 1ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #0, {})
 	return rv;
 	// ^ Return
 bb2:
-	rv.TAG = 2;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #1, {})
+	rv.TAG = 2ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #1, {})
 	return rv;
 	// ^ Return
 bb3:
-	rv.TAG = 4;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #2, {})
+	rv.TAG = 4ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #2, {})
 	return rv;
 	// ^ Return
 bb4:
-	rv.TAG = 8;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #3, {})
+	rv.TAG = 8ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #3, {})
 	return rv;
 	// ^ Return
 bb5:
-	rv.TAG = 16;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #4, {})
+	rv.TAG = 16ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Action #4, {})
 	return rv;
 	// ^ Return
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::clone::Clone>::clone_from<'#omitted,'#omitted,>
-static void  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_05clone5Clone0g10clone_from0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+static void  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_05clone5Clone0g10clone_from0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> ()
 
 {
 	tUNIT rv;
-	(*arg0) = ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_05clone5Clone0g_E0g( arg1 );
+	(*arg0) = ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_05clone5Clone0g_E0g( arg1 );
 	// ^ Call( a0* = <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::clone::Clone>::clone<'#omitted,>( a1, ), bb1, bb2)
 	/* ZST assign */
 	// ^ drop(a0)
@@ -423,40 +425,40 @@ static void  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_05clone
 bb2: _Unwind_Resume(); // Diverge
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/,>>::eq<'#omitted,'#omitted,>
-RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> bool
 
 {
 	RUST_BOOL rv;
-	struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *var0;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
-	struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *var1;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+	struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *var0;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+	struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *var1;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 	var0 = arg0;	// _0 = Use(a0)
 	var1 = arg1;	// _1 = Use(a1)
 	switch((*var0).TAG) {
-	case 1: goto bb1;break;
-	case 2: goto bb2;break;
-	case 4: goto bb3;break;
-	case 8: goto bb4;break;
-	case 16: goto bb5;break;
+	case 1ull: goto bb1;break;
+	case 2ull: goto bb2;break;
+	case 4ull: goto bb3;break;
+	case 8ull: goto bb4;break;
+	case 16ull: goto bb5;break;
 	default: abort();
 	}
 	// ^ Switch( _0* : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, )
 bb1:
-	if((*var1).TAG == 1) {goto bb7;} else {goto bb6;}
+	if((*var1).TAG == 1ull) {goto bb7;} else {goto bb6;}
 	// ^ Switch( _1* : 0 => bb7, 1 => bb6, 2 => bb6, 3 => bb6, 4 => bb6, )
 bb2:
-	if((*var1).TAG == 2) {goto bb7;} else {goto bb6;}
+	if((*var1).TAG == 2ull) {goto bb7;} else {goto bb6;}
 	// ^ Switch( _1* : 0 => bb6, 1 => bb7, 2 => bb6, 3 => bb6, 4 => bb6, )
 bb3:
-	if((*var1).TAG == 4) {goto bb7;} else {goto bb6;}
+	if((*var1).TAG == 4ull) {goto bb7;} else {goto bb6;}
 	// ^ Switch( _1* : 0 => bb6, 1 => bb6, 2 => bb7, 3 => bb6, 4 => bb6, )
 bb4:
-	if((*var1).TAG == 8) {goto bb7;} else {goto bb6;}
+	if((*var1).TAG == 8ull) {goto bb7;} else {goto bb6;}
 	// ^ Switch( _1* : 0 => bb6, 1 => bb6, 2 => bb6, 3 => bb7, 4 => bb6, )
 bb5:
-	if((*var1).TAG == 16) {goto bb7;} else {goto bb6;}
+	if((*var1).TAG == 16ull) {goto bb7;} else {goto bb6;}
 	// ^ Switch( _1* : 0 => bb6, 1 => bb6, 2 => bb6, 3 => bb6, 4 => bb7, )
 bb6:
 	rv = false;	// retval = Constant(false)
@@ -468,15 +470,15 @@ bb7:
 	// ^ Return
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/,>>::ne<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind14_Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind15__Unwind_Action0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/
 		) // -> bool
 
 {
 	RUST_BOOL rv;
 	RUST_BOOL var0;	// bool
-	var0 = ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g( arg0, arg1 );
+	var0 = ZRQG2cG11unwind0_0_09libunwind15__Unwind_Action0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g( arg0, arg1 );
 	// ^ Call( _0 = <::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Action/*E*/,>>::eq<'#omitted,'#omitted,>( a0, a1, ), bb1, bb2)
 	rv = !var0;	// retval = UniOp(_0 INV)
 	return rv;
@@ -484,76 +486,76 @@ static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind14_Unwind_Action0g2cE9core0_0_03
 bb2: _Unwind_Resume(); // Diverge
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::clone::Clone>::clone<'#omitted,>
-struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g_E0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g_E0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 
 {
-	struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g rv;
+	struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g rv;
 	switch((*arg0).TAG) {
-	case 0: goto bb1;break;
-	case 1: goto bb2;break;
-	case 2: goto bb3;break;
-	case 3: goto bb4;break;
-	case 4: goto bb5;break;
-	case 5: goto bb6;break;
-	case 6: goto bb7;break;
-	case 7: goto bb8;break;
-	case 8: goto bb9;break;
-	case 9: goto bb10;break;
+	case 0ull: goto bb1;break;
+	case 1ull: goto bb2;break;
+	case 2ull: goto bb3;break;
+	case 3ull: goto bb4;break;
+	case 4ull: goto bb5;break;
+	case 5ull: goto bb6;break;
+	case 6ull: goto bb7;break;
+	case 7ull: goto bb8;break;
+	case 8ull: goto bb9;break;
+	case 9ull: goto bb10;break;
 	default: abort();
 	}
 	// ^ Switch( a0* : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb6, 6 => bb7, 7 => bb8, 8 => bb9, 9 => bb10, )
 bb1:
-	rv.TAG = 0;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #0, {})
+	rv.TAG = 0ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #0, {})
 	return rv;
 	// ^ Return
 bb2:
-	rv.TAG = 1;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #1, {})
+	rv.TAG = 1ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #1, {})
 	return rv;
 	// ^ Return
 bb3:
-	rv.TAG = 2;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #2, {})
+	rv.TAG = 2ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #2, {})
 	return rv;
 	// ^ Return
 bb4:
-	rv.TAG = 3;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #3, {})
+	rv.TAG = 3ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #3, {})
 	return rv;
 	// ^ Return
 bb5:
-	rv.TAG = 4;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #4, {})
+	rv.TAG = 4ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #4, {})
 	return rv;
 	// ^ Return
 bb6:
-	rv.TAG = 5;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #5, {})
+	rv.TAG = 5ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #5, {})
 	return rv;
 	// ^ Return
 bb7:
-	rv.TAG = 6;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #6, {})
+	rv.TAG = 6ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #6, {})
 	return rv;
 	// ^ Return
 bb8:
-	rv.TAG = 7;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #7, {})
+	rv.TAG = 7ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #7, {})
 	return rv;
 	// ^ Return
 bb9:
-	rv.TAG = 8;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #8, {})
+	rv.TAG = 8ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #8, {})
 	return rv;
 	// ^ Return
 bb10:
-	rv.TAG = 9;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #9, {})
+	rv.TAG = 9ull;	// retval = Variant(::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code #9, {})
 	return rv;
 	// ^ Return
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::clone::Clone>::clone_from<'#omitted,'#omitted,>
-static void  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g10clone_from0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+static void  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g10clone_from0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted mut ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> ()
 
 {
 	tUNIT rv;
-	(*arg0) = ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g_E0g( arg1 );
+	(*arg0) = ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_05clone5Clone0g_E0g( arg1 );
 	// ^ Call( a0* = <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::clone::Clone>::clone<'#omitted,>( a1, ), bb1, bb2)
 	/* ZST assign */
 	// ^ drop(a0)
@@ -562,60 +564,60 @@ static void  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_05
 bb2: _Unwind_Resume(); // Diverge
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/,>>::eq<'#omitted,'#omitted,>
-RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> bool
 
 {
 	RUST_BOOL rv;
-	struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *var0;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-	struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *var1;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+	struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *var0;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+	struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *var1;	// &'M0 ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 	var0 = arg0;	// _0 = Use(a0)
 	var1 = arg1;	// _1 = Use(a1)
 	switch((*var0).TAG) {
-	case 0: goto bb1;break;
-	case 1: goto bb2;break;
-	case 2: goto bb3;break;
-	case 3: goto bb4;break;
-	case 4: goto bb5;break;
-	case 5: goto bb6;break;
-	case 6: goto bb7;break;
-	case 7: goto bb8;break;
-	case 8: goto bb9;break;
-	case 9: goto bb10;break;
+	case 0ull: goto bb1;break;
+	case 1ull: goto bb2;break;
+	case 2ull: goto bb3;break;
+	case 3ull: goto bb4;break;
+	case 4ull: goto bb5;break;
+	case 5ull: goto bb6;break;
+	case 6ull: goto bb7;break;
+	case 7ull: goto bb8;break;
+	case 8ull: goto bb9;break;
+	case 9ull: goto bb10;break;
 	default: abort();
 	}
 	// ^ Switch( _0* : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb6, 6 => bb7, 7 => bb8, 8 => bb9, 9 => bb10, )
 bb1:
-	if((*var1).TAG == 0) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 0ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb12, 1 => bb11, 2 => bb11, 3 => bb11, 4 => bb11, 5 => bb11, 6 => bb11, 7 => bb11, 8 => bb11, 9 => bb11, )
 bb2:
-	if((*var1).TAG == 1) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 1ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb12, 2 => bb11, 3 => bb11, 4 => bb11, 5 => bb11, 6 => bb11, 7 => bb11, 8 => bb11, 9 => bb11, )
 bb3:
-	if((*var1).TAG == 2) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 2ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb12, 3 => bb11, 4 => bb11, 5 => bb11, 6 => bb11, 7 => bb11, 8 => bb11, 9 => bb11, )
 bb4:
-	if((*var1).TAG == 3) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 3ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb11, 3 => bb12, 4 => bb11, 5 => bb11, 6 => bb11, 7 => bb11, 8 => bb11, 9 => bb11, )
 bb5:
-	if((*var1).TAG == 4) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 4ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb11, 3 => bb11, 4 => bb12, 5 => bb11, 6 => bb11, 7 => bb11, 8 => bb11, 9 => bb11, )
 bb6:
-	if((*var1).TAG == 5) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 5ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb11, 3 => bb11, 4 => bb11, 5 => bb12, 6 => bb11, 7 => bb11, 8 => bb11, 9 => bb11, )
 bb7:
-	if((*var1).TAG == 6) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 6ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb11, 3 => bb11, 4 => bb11, 5 => bb11, 6 => bb12, 7 => bb11, 8 => bb11, 9 => bb11, )
 bb8:
-	if((*var1).TAG == 7) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 7ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb11, 3 => bb11, 4 => bb11, 5 => bb11, 6 => bb11, 7 => bb12, 8 => bb11, 9 => bb11, )
 bb9:
-	if((*var1).TAG == 8) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 8ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb11, 3 => bb11, 4 => bb11, 5 => bb11, 6 => bb11, 7 => bb11, 8 => bb12, 9 => bb11, )
 bb10:
-	if((*var1).TAG == 9) {goto bb12;} else {goto bb11;}
+	if((*var1).TAG == 9ull) {goto bb12;} else {goto bb11;}
 	// ^ Switch( _1* : 0 => bb11, 1 => bb11, 2 => bb11, 3 => bb11, 4 => bb11, 5 => bb11, 6 => bb11, 7 => bb11, 8 => bb11, 9 => bb12, )
 bb11:
 	rv = false;	// retval = Constant(false)
@@ -627,15 +629,15 @@ bb12:
 	// ^ Return
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/,>>::ne<'#omitted,'#omitted,>
-static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2ne0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg1 // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		) // -> bool
 
 {
 	RUST_BOOL rv;
 	RUST_BOOL var0;	// bool
-	var0 = ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g( arg0, arg1 );
+	var0 = ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_03cmp9PartialEq1gG2c_A_B_C0g2eq0g( arg0, arg1 );
 	// ^ Call( _0 = <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::cmp::PartialEq<::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/,>>::eq<'#omitted,'#omitted,>( a0, a1, ), bb1, bb2)
 	rv = !var0;	// retval = UniOp(_0 INV)
 	return rv;
@@ -643,8 +645,8 @@ static RUST_BOOL  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0
 bb2: _Unwind_Resume(); // Diverge
 }
 // <::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/ as ::"core-0_0_0"::fmt::Debug>::fmt<'#omitted,'#omitted,>
-struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g2cE9core0_0_03fmt5Debug0g_E0g(
-		struct e_ZRG2cG11unwind0_0_09libunwind19_Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
+struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g2cE9core0_0_03fmt5Debug0g_E0g(
+		struct e_ZRG2cG11unwind0_0_09libunwind20__Unwind_Reason_Code0g *arg0, // &'#omitted ::"unwind-0_0_0"::libunwind::_Unwind_Reason_Code/*E*/
 		struct s_ZRG2cE9core0_0_03fmt9Formatter0g *arg1 // &'#omitted mut ::"core-0_0_0"::fmt::Formatter<'#omitted,>/*S*/
 		) // -> ::"core-0_0_0"::result::Result<(),::"core-0_0_0"::fmt::Error/*S*/,>/*E*/
 
@@ -661,16 +663,16 @@ struct e_ZRG2cE9core0_0_06result6Result2gT0G2c_A3fmt5Error0g  ZRQG2cG11unwind0_0
 	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var8;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	struct s_ZRG2cE9core0_0_03fmt9Formatter0g *var9;	// &'M1 mut ::"core-0_0_0"::fmt::Formatter<'M1,>/*S*/
 	switch((*arg0).TAG) {
-	case 0: goto bb1;break;
-	case 1: goto bb2;break;
-	case 2: goto bb3;break;
-	case 3: goto bb4;break;
-	case 4: goto bb5;break;
-	case 5: goto bb6;break;
-	case 6: goto bb7;break;
-	case 7: goto bb8;break;
-	case 8: goto bb9;break;
-	case 9: goto bb10;break;
+	case 0ull: goto bb1;break;
+	case 1ull: goto bb2;break;
+	case 2ull: goto bb3;break;
+	case 3ull: goto bb4;break;
+	case 4ull: goto bb5;break;
+	case 5ull: goto bb6;break;
+	case 6ull: goto bb7;break;
+	case 7ull: goto bb8;break;
+	case 8ull: goto bb9;break;
+	case 9ull: goto bb10;break;
 	default: abort();
 	}
 	// ^ Switch( a0* : 0 => bb1, 1 => bb2, 2 => bb3, 3 => bb4, 4 => bb5, 5 => bb6, 6 => bb7, 7 => bb8, 8 => bb9, 9 => bb10, )
