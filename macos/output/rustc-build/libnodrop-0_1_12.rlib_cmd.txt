@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libnodrop-0_1_12.rlib.o" "output-1.29.0/rustc-build/libnodrop-0_1_12.rlib.c" "-c" 

@@ -1,0 +1,229 @@
+cargo:rerun-if-changed=/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/build/bin/llvm-config
+cargo:rerun-if-env-changed=LLVM_CONFIG
+cargo:rustc-cfg=llvm_component="aarch64"
+cargo:rustc-cfg=llvm_component="arm"
+cargo:rustc-cfg=llvm_component="asmparser"
+cargo:rustc-cfg=llvm_component="bitreader"
+cargo:rustc-cfg=llvm_component="bitwriter"
+cargo:rustc-cfg=llvm_component="instrumentation"
+cargo:rustc-cfg=llvm_component="interpreter"
+cargo:rustc-cfg=llvm_component="ipo"
+cargo:rustc-cfg=llvm_component="linker"
+cargo:rustc-cfg=llvm_component="lto"
+cargo:rustc-cfg=llvm_component="mcjit"
+cargo:rustc-cfg=llvm_component="x86"
+cargo:rerun-if-changed-env=LLVM_RUSTLLVM
+cargo:rerun-if-changed=../rustllvm/ArchiveWrapper.cpp
+cargo:rerun-if-changed=../rustllvm/rustllvm.h
+cargo:rerun-if-changed=../rustllvm/PassWrapper.cpp
+cargo:rerun-if-changed=../rustllvm/.editorconfig
+cargo:rerun-if-changed=../rustllvm/README
+cargo:rerun-if-changed=../rustllvm/RustWrapper.cpp
+cargo:rerun-if-changed=../rustllvm/Linker.cpp
+cargo:rerun-if-changed=../rustllvm/llvm-rebuild-trigger
+TARGET = Some("aarch64-apple-darwin")
+OPT_LEVEL = Some("2")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXX_aarch64-apple-darwin = None
+CXX_aarch64_apple_darwin = None
+HOST_CXX = None
+CXX = None
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXXFLAGS_aarch64-apple-darwin = None
+CXXFLAGS_aarch64_apple_darwin = None
+HOST_CXXFLAGS = None
+CXXFLAGS = None
+DEBUG = Some("0")
+running: "c++" "-O2" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/build/include" "-fPIC" "-fvisibility-inlines-hidden" "-Werror=date-time" "-Werror=unguarded-availability-new" "-std=c++11" "-Wall" "-Wextra" "-Wno-unused-parameter" "-Wwrite-strings" "-Wcast-qual" "-Wmissing-field-initializers" "-pedantic" "-Wno-long-long" "-Wcovered-switch-default" "-Wnon-virtual-dtor" "-Wdelete-non-virtual-dtor" "-Wno-comment" "-Wstring-conversion" "-O3" "-DNDEBUG" "-fno-exceptions" "-fno-rtti" "-D__STDC_CONSTANT_MACROS" "-D__STDC_FORMAT_MACROS" "-D__STDC_LIMIT_MACROS" "-DLLVM_COMPONENT_AARCH64" "-DLLVM_COMPONENT_ARM" "-DLLVM_COMPONENT_ASMPARSER" "-DLLVM_COMPONENT_BITREADER" "-DLLVM_COMPONENT_BITWRITER" "-DLLVM_COMPONENT_INSTRUMENTATION" "-DLLVM_COMPONENT_INTERPRETER" "-DLLVM_COMPONENT_IPO" "-DLLVM_COMPONENT_LINKER" "-DLLVM_COMPONENT_LTO" "-DLLVM_COMPONENT_MCJIT" "-DLLVM_COMPONENT_X86" "-o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/PassWrapper.o" "-c" "../rustllvm/PassWrapper.cpp"
+cargo:warning=In file included from ../rustllvm/PassWrapper.cpp:16:
+cargo:warning=In file included from ../rustllvm/rustllvm.h:16:
+cargo:warning=In file included from /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseSet.h:17:
+cargo:warning=/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseMap.h:124:16: warning: variable 'NumEntries' set but not used [-Wunused-but-set-variable]
+cargo:warning=      unsigned NumEntries = getNumEntries();
+cargo:warning=               ^
+cargo:warning=../rustllvm/PassWrapper.cpp:1095:14: warning: moving a local object in a return statement prevents copy elision [-Wpessimizing-move]
+cargo:warning=      return std::move(MOrErr);
+cargo:warning=             ^
+cargo:warning=../rustllvm/PassWrapper.cpp:1095:14: note: remove std::move call here
+cargo:warning=      return std::move(MOrErr);
+cargo:warning=             ^~~~~~~~~~      ~
+cargo:warning=../rustllvm/PassWrapper.cpp:1113:14: warning: moving a local object in a return statement prevents copy elision [-Wpessimizing-move]
+cargo:warning=      return std::move(Ret);
+cargo:warning=             ^
+cargo:warning=../rustllvm/PassWrapper.cpp:1113:14: note: remove std::move call here
+cargo:warning=      return std::move(Ret);
+cargo:warning=             ^~~~~~~~~~   ~
+cargo:warning=../rustllvm/PassWrapper.cpp:1120:12: warning: moving a local object in a return statement prevents copy elision [-Wpessimizing-move]
+cargo:warning=    return std::move(MOrErr);
+cargo:warning=           ^
+cargo:warning=../rustllvm/PassWrapper.cpp:1120:12: note: remove std::move call here
+cargo:warning=    return std::move(MOrErr);
+cargo:warning=           ^~~~~~~~~~      ~
+cargo:warning=4 warnings generated.
+exit code: 0
+TARGET = Some("aarch64-apple-darwin")
+OPT_LEVEL = Some("2")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXX_aarch64-apple-darwin = None
+CXX_aarch64_apple_darwin = None
+HOST_CXX = None
+CXX = None
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXXFLAGS_aarch64-apple-darwin = None
+CXXFLAGS_aarch64_apple_darwin = None
+HOST_CXXFLAGS = None
+CXXFLAGS = None
+DEBUG = Some("0")
+running: "c++" "-O2" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/build/include" "-fPIC" "-fvisibility-inlines-hidden" "-Werror=date-time" "-Werror=unguarded-availability-new" "-std=c++11" "-Wall" "-Wextra" "-Wno-unused-parameter" "-Wwrite-strings" "-Wcast-qual" "-Wmissing-field-initializers" "-pedantic" "-Wno-long-long" "-Wcovered-switch-default" "-Wnon-virtual-dtor" "-Wdelete-non-virtual-dtor" "-Wno-comment" "-Wstring-conversion" "-O3" "-DNDEBUG" "-fno-exceptions" "-fno-rtti" "-D__STDC_CONSTANT_MACROS" "-D__STDC_FORMAT_MACROS" "-D__STDC_LIMIT_MACROS" "-DLLVM_COMPONENT_AARCH64" "-DLLVM_COMPONENT_ARM" "-DLLVM_COMPONENT_ASMPARSER" "-DLLVM_COMPONENT_BITREADER" "-DLLVM_COMPONENT_BITWRITER" "-DLLVM_COMPONENT_INSTRUMENTATION" "-DLLVM_COMPONENT_INTERPRETER" "-DLLVM_COMPONENT_IPO" "-DLLVM_COMPONENT_LINKER" "-DLLVM_COMPONENT_LTO" "-DLLVM_COMPONENT_MCJIT" "-DLLVM_COMPONENT_X86" "-o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/RustWrapper.o" "-c" "../rustllvm/RustWrapper.cpp"
+cargo:warning=In file included from ../rustllvm/RustWrapper.cpp:11:
+cargo:warning=In file included from ../rustllvm/rustllvm.h:16:
+cargo:warning=In file included from /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseSet.h:17:
+cargo:warning=/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseMap.h:124:16: warning: variable 'NumEntries' set but not used [-Wunused-but-set-variable]
+cargo:warning=      unsigned NumEntries = getNumEntries();
+cargo:warning=               ^
+cargo:warning=1 warning generated.
+exit code: 0
+TARGET = Some("aarch64-apple-darwin")
+OPT_LEVEL = Some("2")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXX_aarch64-apple-darwin = None
+CXX_aarch64_apple_darwin = None
+HOST_CXX = None
+CXX = None
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXXFLAGS_aarch64-apple-darwin = None
+CXXFLAGS_aarch64_apple_darwin = None
+HOST_CXXFLAGS = None
+CXXFLAGS = None
+DEBUG = Some("0")
+running: "c++" "-O2" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/build/include" "-fPIC" "-fvisibility-inlines-hidden" "-Werror=date-time" "-Werror=unguarded-availability-new" "-std=c++11" "-Wall" "-Wextra" "-Wno-unused-parameter" "-Wwrite-strings" "-Wcast-qual" "-Wmissing-field-initializers" "-pedantic" "-Wno-long-long" "-Wcovered-switch-default" "-Wnon-virtual-dtor" "-Wdelete-non-virtual-dtor" "-Wno-comment" "-Wstring-conversion" "-O3" "-DNDEBUG" "-fno-exceptions" "-fno-rtti" "-D__STDC_CONSTANT_MACROS" "-D__STDC_FORMAT_MACROS" "-D__STDC_LIMIT_MACROS" "-DLLVM_COMPONENT_AARCH64" "-DLLVM_COMPONENT_ARM" "-DLLVM_COMPONENT_ASMPARSER" "-DLLVM_COMPONENT_BITREADER" "-DLLVM_COMPONENT_BITWRITER" "-DLLVM_COMPONENT_INSTRUMENTATION" "-DLLVM_COMPONENT_INTERPRETER" "-DLLVM_COMPONENT_IPO" "-DLLVM_COMPONENT_LINKER" "-DLLVM_COMPONENT_LTO" "-DLLVM_COMPONENT_MCJIT" "-DLLVM_COMPONENT_X86" "-o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/ArchiveWrapper.o" "-c" "../rustllvm/ArchiveWrapper.cpp"
+cargo:warning=In file included from ../rustllvm/ArchiveWrapper.cpp:11:
+cargo:warning=In file included from ../rustllvm/rustllvm.h:16:
+cargo:warning=In file included from /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseSet.h:17:
+cargo:warning=/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseMap.h:124:16: warning: variable 'NumEntries' set but not used [-Wunused-but-set-variable]
+cargo:warning=      unsigned NumEntries = getNumEntries();
+cargo:warning=               ^
+cargo:warning=1 warning generated.
+exit code: 0
+TARGET = Some("aarch64-apple-darwin")
+OPT_LEVEL = Some("2")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXX_aarch64-apple-darwin = None
+CXX_aarch64_apple_darwin = None
+HOST_CXX = None
+CXX = None
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CXXFLAGS_aarch64-apple-darwin = None
+CXXFLAGS_aarch64_apple_darwin = None
+HOST_CXXFLAGS = None
+CXXFLAGS = None
+DEBUG = Some("0")
+running: "c++" "-O2" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include" "-I/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/build/include" "-fPIC" "-fvisibility-inlines-hidden" "-Werror=date-time" "-Werror=unguarded-availability-new" "-std=c++11" "-Wall" "-Wextra" "-Wno-unused-parameter" "-Wwrite-strings" "-Wcast-qual" "-Wmissing-field-initializers" "-pedantic" "-Wno-long-long" "-Wcovered-switch-default" "-Wnon-virtual-dtor" "-Wdelete-non-virtual-dtor" "-Wno-comment" "-Wstring-conversion" "-O3" "-DNDEBUG" "-fno-exceptions" "-fno-rtti" "-D__STDC_CONSTANT_MACROS" "-D__STDC_FORMAT_MACROS" "-D__STDC_LIMIT_MACROS" "-DLLVM_COMPONENT_AARCH64" "-DLLVM_COMPONENT_ARM" "-DLLVM_COMPONENT_ASMPARSER" "-DLLVM_COMPONENT_BITREADER" "-DLLVM_COMPONENT_BITWRITER" "-DLLVM_COMPONENT_INSTRUMENTATION" "-DLLVM_COMPONENT_INTERPRETER" "-DLLVM_COMPONENT_IPO" "-DLLVM_COMPONENT_LINKER" "-DLLVM_COMPONENT_LTO" "-DLLVM_COMPONENT_MCJIT" "-DLLVM_COMPONENT_X86" "-o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/Linker.o" "-c" "../rustllvm/Linker.cpp"
+cargo:warning=In file included from ../rustllvm/Linker.cpp:11:
+cargo:warning=In file included from /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/Linker/Linker.h:14:
+cargo:warning=In file included from /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/Linker/IRMover.h:14:
+cargo:warning=In file included from /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseSet.h:17:
+cargo:warning=/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/llvm/include/llvm/ADT/DenseMap.h:124:16: warning: variable 'NumEntries' set but not used [-Wunused-but-set-variable]
+cargo:warning=      unsigned NumEntries = getNumEntries();
+cargo:warning=               ^
+cargo:warning=1 warning generated.
+exit code: 0
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+AR_aarch64-apple-darwin = None
+AR_aarch64_apple_darwin = None
+HOST_AR = None
+AR = None
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+running: "ar" "crs" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/librustllvm.a" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/PassWrapper.o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/RustWrapper.o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/ArchiveWrapper.o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm/../rustllvm/Linker.o"
+exit code: 0
+TARGET = Some("aarch64-apple-darwin")
+cargo:rustc-link-lib=static=rustllvm
+cargo:rustc-link-search=native=/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_rustc_llvm
+cargo:rustc-link-lib=static=LLVMX86Disassembler
+cargo:rustc-link-lib=static=LLVMX86CodeGen
+cargo:rustc-link-lib=static=LLVMX86AsmParser
+cargo:rustc-link-lib=static=LLVMX86Desc
+cargo:rustc-link-lib=static=LLVMX86Info
+cargo:rustc-link-lib=static=LLVMX86AsmPrinter
+cargo:rustc-link-lib=static=LLVMX86Utils
+cargo:rustc-link-lib=static=LLVMMCJIT
+cargo:rustc-link-lib=static=LLVMLTO
+cargo:rustc-link-lib=static=LLVMPasses
+cargo:rustc-link-lib=static=LLVMObjCARCOpts
+cargo:rustc-link-lib=static=LLVMipo
+cargo:rustc-link-lib=static=LLVMVectorize
+cargo:rustc-link-lib=static=LLVMLinker
+cargo:rustc-link-lib=static=LLVMIRReader
+cargo:rustc-link-lib=static=LLVMInterpreter
+cargo:rustc-link-lib=static=LLVMExecutionEngine
+cargo:rustc-link-lib=static=LLVMRuntimeDyld
+cargo:rustc-link-lib=static=LLVMInstrumentation
+cargo:rustc-link-lib=static=LLVMAsmParser
+cargo:rustc-link-lib=static=LLVMARMDisassembler
+cargo:rustc-link-lib=static=LLVMARMCodeGen
+cargo:rustc-link-lib=static=LLVMARMAsmParser
+cargo:rustc-link-lib=static=LLVMARMDesc
+cargo:rustc-link-lib=static=LLVMARMInfo
+cargo:rustc-link-lib=static=LLVMARMAsmPrinter
+cargo:rustc-link-lib=static=LLVMARMUtils
+cargo:rustc-link-lib=static=LLVMAArch64Disassembler
+cargo:rustc-link-lib=static=LLVMMCDisassembler
+cargo:rustc-link-lib=static=LLVMAArch64CodeGen
+cargo:rustc-link-lib=static=LLVMGlobalISel
+cargo:rustc-link-lib=static=LLVMSelectionDAG
+cargo:rustc-link-lib=static=LLVMAsmPrinter
+cargo:rustc-link-lib=static=LLVMCodeGen
+cargo:rustc-link-lib=static=LLVMTarget
+cargo:rustc-link-lib=static=LLVMScalarOpts
+cargo:rustc-link-lib=static=LLVMInstCombine
+cargo:rustc-link-lib=static=LLVMAggressiveInstCombine
+cargo:rustc-link-lib=static=LLVMTransformUtils
+cargo:rustc-link-lib=static=LLVMBitWriter
+cargo:rustc-link-lib=static=LLVMAnalysis
+cargo:rustc-link-lib=static=LLVMProfileData
+cargo:rustc-link-lib=static=LLVMObject
+cargo:rustc-link-lib=static=LLVMBitReader
+cargo:rustc-link-lib=static=LLVMCore
+cargo:rustc-link-lib=static=LLVMAArch64AsmParser
+cargo:rustc-link-lib=static=LLVMMCParser
+cargo:rustc-link-lib=static=LLVMAArch64Desc
+cargo:rustc-link-lib=static=LLVMAArch64Info
+cargo:rustc-link-lib=static=LLVMAArch64AsmPrinter
+cargo:rustc-link-lib=static=LLVMMC
+cargo:rustc-link-lib=static=LLVMDebugInfoCodeView
+cargo:rustc-link-lib=static=LLVMDebugInfoMSF
+cargo:rustc-link-lib=static=LLVMBinaryFormat
+cargo:rustc-link-lib=static=LLVMAArch64Utils
+cargo:rustc-link-lib=static=LLVMSupport
+cargo:rustc-link-lib=static=LLVMDemangle
+cargo:rustc-link-lib=dylib=m
+cargo:rustc-link-lib=dylib=xml2
+cargo:rustc-link-search=native=/Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/build/lib
+cargo:rustc-link-lib=stdc++

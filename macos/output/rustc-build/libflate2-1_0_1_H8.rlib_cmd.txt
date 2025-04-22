@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libflate2-1_0_1_H8.rlib.o" "output-1.29.0/rustc-build/libflate2-1_0_1_H8.rlib.c" "-c" 

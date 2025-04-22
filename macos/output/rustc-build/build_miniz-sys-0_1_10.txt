@@ -1,0 +1,365 @@
+TARGET = Some("aarch64-apple-darwin")
+OPT_LEVEL = Some("2")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CC_aarch64-apple-darwin = None
+CC_aarch64_apple_darwin = None
+HOST_CC = None
+CC = Some("gcc")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+CFLAGS_aarch64-apple-darwin = None
+CFLAGS_aarch64_apple_darwin = None
+HOST_CFLAGS = None
+CFLAGS = None
+DEBUG = Some("0")
+running: "gcc" "-O2" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-Wall" "-Wextra" "-o" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_miniz-sys-0_1_10/miniz.o" "-c" "miniz.c"
+cargo:warning=miniz.c: In function 'tinfl_decompress':
+cargo:warning=miniz.c:1531:9: warning: this 'for' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1531 |         for ( i = 0; i <= 143; ++i) *p++ = 8; for ( ; i <= 255; ++i) *p++ = 9; for ( ; i <= 279; ++i) *p++ = 7; for ( ; i <= 287; ++i) *p++ = 8;
+cargo:warning=      |         ^~~
+cargo:warning=miniz.c:1531:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'for'
+cargo:warning= 1531 |         for ( i = 0; i <= 143; ++i) *p++ = 8; for ( ; i <= 255; ++i) *p++ = 9; for ( ; i <= 279; ++i) *p++ = 7; for ( ; i <= 287; ++i) *p++ = 8;
+cargo:warning=      |                                               ^~~
+cargo:warning=miniz.c: In function 'tdefl_start_dynamic_block':
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2024:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2024 |   TDEFL_PUT_BITS(2, 2);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2024:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2024 |   TDEFL_PUT_BITS(2, 2);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2026:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2026 |   TDEFL_PUT_BITS(num_lit_codes - 257, 5);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2026:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2026 |   TDEFL_PUT_BITS(num_lit_codes - 257, 5);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2027:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2027 |   TDEFL_PUT_BITS(num_dist_codes - 1, 5);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2027:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2027 |   TDEFL_PUT_BITS(num_dist_codes - 1, 5);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2030:55: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2030 |   num_bit_lengths = MZ_MAX(4, (num_bit_lengths + 1)); TDEFL_PUT_BITS(num_bit_lengths - 4, 4);
+cargo:warning=      |                                                       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2030:55: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2030 |   num_bit_lengths = MZ_MAX(4, (num_bit_lengths + 1)); TDEFL_PUT_BITS(num_bit_lengths - 4, 4);
+cargo:warning=      |                                                       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2031:46: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2031 |   for (i = 0; (int)i < num_bit_lengths; i++) TDEFL_PUT_BITS(d->m_huff_code_sizes[2][s_tdefl_packed_code_size_syms_swizzle[i]], 3);
+cargo:warning=      |                                              ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2031:46: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2031 |   for (i = 0; (int)i < num_bit_lengths; i++) TDEFL_PUT_BITS(d->m_huff_code_sizes[2][s_tdefl_packed_code_size_syms_swizzle[i]], 3);
+cargo:warning=      |                                              ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2036:5: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2036 |     TDEFL_PUT_BITS(d->m_huff_codes[2][code], d->m_huff_code_sizes[2][code]);
+cargo:warning=      |     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2036:5: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2036 |     TDEFL_PUT_BITS(d->m_huff_codes[2][code], d->m_huff_code_sizes[2][code]);
+cargo:warning=      |     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2037:21: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2037 |     if (code >= 16) TDEFL_PUT_BITS(packed_code_sizes[packed_code_sizes_index++], "\02\03\07"[code - 16]);
+cargo:warning=      |                     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2037:21: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2037 |     if (code >= 16) TDEFL_PUT_BITS(packed_code_sizes[packed_code_sizes_index++], "\02\03\07"[code - 16]);
+cargo:warning=      |                     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c: In function 'tdefl_start_static_block':
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2056:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2056 |   TDEFL_PUT_BITS(1, 2);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2056:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2056 |   TDEFL_PUT_BITS(1, 2);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c: In function 'tdefl_compress_lz_codes':
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2167:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2167 |       TDEFL_PUT_BITS(d->m_huff_codes[0][s_tdefl_len_sym[match_len]], d->m_huff_code_sizes[0][s_tdefl_len_sym[match_len]]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2167:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2167 |       TDEFL_PUT_BITS(d->m_huff_codes[0][s_tdefl_len_sym[match_len]], d->m_huff_code_sizes[0][s_tdefl_len_sym[match_len]]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2168:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2168 |       TDEFL_PUT_BITS(match_len & mz_bitmasks[s_tdefl_len_extra[match_len]], s_tdefl_len_extra[match_len]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2168:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2168 |       TDEFL_PUT_BITS(match_len & mz_bitmasks[s_tdefl_len_extra[match_len]], s_tdefl_len_extra[match_len]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2179:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2179 |       TDEFL_PUT_BITS(d->m_huff_codes[1][sym], d->m_huff_code_sizes[1][sym]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2179:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2179 |       TDEFL_PUT_BITS(d->m_huff_codes[1][sym], d->m_huff_code_sizes[1][sym]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2180:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2180 |       TDEFL_PUT_BITS(match_dist & mz_bitmasks[num_extra_bits], num_extra_bits);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2180:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2180 |       TDEFL_PUT_BITS(match_dist & mz_bitmasks[num_extra_bits], num_extra_bits);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2186:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2186 |       TDEFL_PUT_BITS(d->m_huff_codes[0][lit], d->m_huff_code_sizes[0][lit]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2186:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2186 |       TDEFL_PUT_BITS(d->m_huff_codes[0][lit], d->m_huff_code_sizes[0][lit]);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2190:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2190 |   TDEFL_PUT_BITS(d->m_huff_codes[0][256], d->m_huff_code_sizes[0][256]);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2190:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2190 |   TDEFL_PUT_BITS(d->m_huff_codes[0][256], d->m_huff_code_sizes[0][256]);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c: In function 'tdefl_flush_block':
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2225:5: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2225 |     TDEFL_PUT_BITS(0x78, 8); TDEFL_PUT_BITS(0x01, 8);
+cargo:warning=      |     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2225:5: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2225 |     TDEFL_PUT_BITS(0x78, 8); TDEFL_PUT_BITS(0x01, 8);
+cargo:warning=      |     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2225:30: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2225 |     TDEFL_PUT_BITS(0x78, 8); TDEFL_PUT_BITS(0x01, 8);
+cargo:warning=      |                              ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2225:30: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2225 |     TDEFL_PUT_BITS(0x78, 8); TDEFL_PUT_BITS(0x01, 8);
+cargo:warning=      |                              ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2228:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2228 |   TDEFL_PUT_BITS(flush == TDEFL_FINISH, 1);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2228:3: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2228 |   TDEFL_PUT_BITS(flush == TDEFL_FINISH, 1);
+cargo:warning=      |   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2240:5: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2240 |     TDEFL_PUT_BITS(0, 2);
+cargo:warning=      |     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2240:5: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2240 |     TDEFL_PUT_BITS(0, 2);
+cargo:warning=      |     ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2241:25: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2241 |     if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); }
+cargo:warning=      |                         ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2241:25: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2241 |     if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); }
+cargo:warning=      |                         ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2244:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2244 |       TDEFL_PUT_BITS(d->m_total_lz_bytes & 0xFFFF, 16);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2244:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2244 |       TDEFL_PUT_BITS(d->m_total_lz_bytes & 0xFFFF, 16);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2248:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2248 |       TDEFL_PUT_BITS(d->m_dict[(d->m_lz_code_buf_dict_pos + i) & TDEFL_LZ_DICT_SIZE_MASK], 8);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2248:7: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2248 |       TDEFL_PUT_BITS(d->m_dict[(d->m_lz_code_buf_dict_pos + i) & TDEFL_LZ_DICT_SIZE_MASK], 8);
+cargo:warning=      |       ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2262:27: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2262 |       if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); }
+cargo:warning=      |                           ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2262:27: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2262 |       if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); }
+cargo:warning=      |                           ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2263:106: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2263 |       if (d->m_flags & TDEFL_WRITE_ZLIB_HEADER) { mz_uint i, a = d->m_adler32; for (i = 0; i < 4; i++) { TDEFL_PUT_BITS((a >> 24) & 0xFF, 8); a <<= 8; } }
+cargo:warning=      |                                                                                                          ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2263:106: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2263 |       if (d->m_flags & TDEFL_WRITE_ZLIB_HEADER) { mz_uint i, a = d->m_adler32; for (i = 0; i < 4; i++) { TDEFL_PUT_BITS((a >> 24) & 0xFF, 8); a <<= 8; } }
+cargo:warning=      |                                                                                                          ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2267:25: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2267 |       mz_uint i, z = 0; TDEFL_PUT_BITS(0, 3); if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); } for (i = 2; i; --i, z ^= 0xFFFF) { TDEFL_PUT_BITS(z & 0xFFFF, 16); }
+cargo:warning=      |                         ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2267:25: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2267 |       mz_uint i, z = 0; TDEFL_PUT_BITS(0, 3); if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); } for (i = 2; i; --i, z ^= 0xFFFF) { TDEFL_PUT_BITS(z & 0xFFFF, 16); }
+cargo:warning=      |                         ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2267:67: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2267 |       mz_uint i, z = 0; TDEFL_PUT_BITS(0, 3); if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); } for (i = 2; i; --i, z ^= 0xFFFF) { TDEFL_PUT_BITS(z & 0xFFFF, 16); }
+cargo:warning=      |                                                                   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2267:67: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2267 |       mz_uint i, z = 0; TDEFL_PUT_BITS(0, 3); if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); } for (i = 2; i; --i, z ^= 0xFFFF) { TDEFL_PUT_BITS(z & 0xFFFF, 16); }
+cargo:warning=      |                                                                   ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1953:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 1953 |     if (d->m_pOutput_buf < d->m_pOutput_buf_end) \
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2267:141: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2267 |       mz_uint i, z = 0; TDEFL_PUT_BITS(0, 3); if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); } for (i = 2; i; --i, z ^= 0xFFFF) { TDEFL_PUT_BITS(z & 0xFFFF, 16); }
+cargo:warning=      |                                                                                                                                             ^~~~~~~~~~~~~~
+cargo:warning=miniz.c:1955:7: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 1955 |       d->m_bit_buffer >>= 8; \
+cargo:warning=      |       ^
+cargo:warning=miniz.c:2267:141: note: in expansion of macro 'TDEFL_PUT_BITS'
+cargo:warning= 2267 |       mz_uint i, z = 0; TDEFL_PUT_BITS(0, 3); if (d->m_bits_in) { TDEFL_PUT_BITS(0, 8 - d->m_bits_in); } for (i = 2; i; --i, z ^= 0xFFFF) { TDEFL_PUT_BITS(z & 0xFFFF, 16); }
+cargo:warning=      |                                                                                                                                             ^~~~~~~~~~~~~~
+cargo:warning=miniz.c: In function 'tdefl_find_match':
+cargo:warning=miniz.c:2361:5: warning: this 'if' clause does not guard... [-Wmisleading-indentation]
+cargo:warning= 2361 |     if (!dist) break; p = s; q = d->m_dict + probe_pos; for (probe_len = 0; probe_len < max_match_len; probe_len++) if (*p++ != *q++) break;
+cargo:warning=      |     ^~
+cargo:warning=miniz.c:2361:23: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the 'if'
+cargo:warning= 2361 |     if (!dist) break; p = s; q = d->m_dict + probe_pos; for (probe_len = 0; probe_len < max_match_len; probe_len++) if (*p++ != *q++) break;
+cargo:warning=      |                       ^
+exit code: 0
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+HOST = Some("aarch64-apple-darwin")
+AR_aarch64-apple-darwin = None
+AR_aarch64_apple_darwin = None
+HOST_AR = None
+AR = None
+TARGET = Some("aarch64-apple-darwin")
+TARGET = Some("aarch64-apple-darwin")
+running: "ar" "crs" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_miniz-sys-0_1_10/libminiz.a" "/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_miniz-sys-0_1_10/miniz.o"
+exit code: 0
+TARGET = Some("aarch64-apple-darwin")
+cargo:rustc-link-lib=static=miniz
+cargo:rustc-link-search=native=/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_miniz-sys-0_1_10
+cargo:root=/Users/christophergilliard/projects/mrustc-latest/output-1.29.0/rustc-build/build_miniz-sys-0_1_10

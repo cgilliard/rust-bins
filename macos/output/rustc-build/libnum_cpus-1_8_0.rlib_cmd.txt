@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libnum_cpus-1_8_0.rlib.o" "output-1.29.0/rustc-build/libnum_cpus-1_8_0.rlib.c" "-c" 

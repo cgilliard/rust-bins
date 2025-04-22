@@ -1,2 +1,2 @@
-output/libpanic_abort.rlib: rustc-1.29.0-src/src/libpanic_abort/lib.rs
-output/libpanic_abort.rlib: output/libcompiler_builtins.rlib output/libcore.rlib output/liblibc.rlib
+output-1.29.0/libpanic_abort.rlib: /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/libpanic_abort/lib.rs
+output-1.29.0/libpanic_abort.rlib: output-1.29.0/libcompiler_builtins.rlib output-1.29.0/libcore.rlib output-1.29.0/liblibc.rlib

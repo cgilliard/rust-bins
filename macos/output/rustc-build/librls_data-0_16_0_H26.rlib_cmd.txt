@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/librls_data-0_16_0_H26.rlib.o" "output-1.29.0/rustc-build/librls_data-0_16_0_H26.rlib.c" "-c" 

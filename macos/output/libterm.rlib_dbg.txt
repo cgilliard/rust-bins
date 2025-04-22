@@ -3,7 +3,7 @@ Setup: V V V
 Target Load: V V V
 (0.00 s) Target Load: DONE
 Parse: V V V
-(0.00 s) Parse: DONE
+(0.01 s) Parse: DONE
 LoadCrates: V V V
 (0.08 s) LoadCrates: DONE
 Expand: V V V
@@ -39,7 +39,7 @@ Constant Evaluate: V V V
 Typecheck Outer: V V V
 (0.00 s) Typecheck Outer: DONE
 Typecheck Expressions: V V V
-(0.04 s) Typecheck Expressions: DONE
+(0.03 s) Typecheck Expressions: DONE
 Expand HIR Annotate: V V V
 (0.00 s) Expand HIR Annotate: DONE
 Expand HIR Static Borrow Mark: V V V
@@ -61,29 +61,31 @@ Expand HIR ErasedType: V V V
 Typecheck Expressions (validate): V V V
 (0.00 s) Typecheck Expressions (validate): DONE
 Lower MIR: V V V
-(0.07 s) Lower MIR: DONE
+(0.08 s) Lower MIR: DONE
 MIR Validate: V V V
-(0.06 s) MIR Validate: DONE
+(0.08 s) MIR Validate: DONE
 MIR Cleanup: V V V
-(0.06 s) MIR Cleanup: DONE
+(0.08 s) MIR Cleanup: DONE
 MIR Optimise: V V V
-(0.06 s) MIR Optimise: DONE
+(0.07 s) MIR Optimise: DONE
 MIR Validate PO: V V V
 (0.01 s) MIR Validate PO: DONE
 MIR Validate Full: V V V
 (0.00 s) MIR Validate Full: DONE
 Trans Enumerate: V V V
-(0.03 s) Trans Enumerate: DONE
+(0.02 s) Trans Enumerate: DONE
 Trans Auto Impls: V V V
 (0.00 s) Trans Auto Impls: DONE
 Trans Monomorph: V V V
 (0.05 s) Trans Monomorph: DONE
 MIR Optimise Inline: V V V
-(0.07 s) MIR Optimise Inline: DONE
-Trans Enumerate Cleanup: V V V
-(0.00 s) Trans Enumerate Cleanup: DONE
+(0.09 s) MIR Optimise Inline: DONE
 HIR Serialise: V V V
 (0.01 s) HIR Serialise: DONE
+MIR Optimise Inline PostSave: V V V
+(0.01 s) MIR Optimise Inline PostSave: DONE
+Trans Enumerate Cleanup: V V V
+(0.02 s) Trans Enumerate Cleanup: DONE
 Trans Codegen: V V V
-Running command - "gcc" @"output/libterm.rlib_cmd.txt"
+Running command - "gcc" @"output-1.29.0/libterm.rlib_cmd.txt"
 (0.07 s) Trans Codegen: DONE

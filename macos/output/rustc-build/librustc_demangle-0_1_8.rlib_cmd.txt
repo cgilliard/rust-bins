@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/librustc_demangle-0_1_8.rlib.o" "output-1.29.0/rustc-build/librustc_demangle-0_1_8.rlib.c" "-c" 

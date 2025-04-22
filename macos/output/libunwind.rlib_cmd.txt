@@ -1,1 +1,1 @@
-"-O2" "-fPIC" "-o" "output/libunwind.rlib.o" "output/libunwind.rlib.c" "-c" 
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/libunwind.rlib.o" "output-1.29.0/libunwind.rlib.c" "-c" 

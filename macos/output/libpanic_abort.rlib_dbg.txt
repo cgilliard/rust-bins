@@ -5,9 +5,9 @@ Target Load: V V V
 Parse: V V V
 (0.00 s) Parse: DONE
 LoadCrates: V V V
-(0.10 s) LoadCrates: DONE
+(0.11 s) LoadCrates: DONE
 Expand: V V V
-(0.00 s) Expand: DONE
+(0.01 s) Expand: DONE
 Implicit Crates: V V V
 (0.00 s) Implicit Crates: DONE
 Resolve Use: V V V
@@ -80,10 +80,12 @@ Trans Monomorph: V V V
 (0.00 s) Trans Monomorph: DONE
 MIR Optimise Inline: V V V
 (0.00 s) MIR Optimise Inline: DONE
-Trans Enumerate Cleanup: V V V
-(0.00 s) Trans Enumerate Cleanup: DONE
 HIR Serialise: V V V
 (0.00 s) HIR Serialise: DONE
+MIR Optimise Inline PostSave: V V V
+(0.00 s) MIR Optimise Inline PostSave: DONE
+Trans Enumerate Cleanup: V V V
+(0.00 s) Trans Enumerate Cleanup: DONE
 Trans Codegen: V V V
-Running command - "gcc" @"output/libpanic_abort.rlib_cmd.txt"
+Running command - "gcc" @"output-1.29.0/libpanic_abort.rlib_cmd.txt"
 (0.00 s) Trans Codegen: DONE

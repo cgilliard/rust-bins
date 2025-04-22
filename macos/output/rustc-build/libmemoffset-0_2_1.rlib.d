@@ -1,0 +1,2 @@
+output-1.29.0/rustc-build/libmemoffset-0_2_1.rlib: rustc-1.29.0-src/src/vendor/memoffset/src/lib.rs rustc-1.29.0-src/src/vendor/memoffset/src/offset_of.rs rustc-1.29.0-src/src/vendor/memoffset/src/span_of.rs
+output-1.29.0/rustc-build/libmemoffset-0_2_1.rlib: output-1.29.0/libcore.rlib

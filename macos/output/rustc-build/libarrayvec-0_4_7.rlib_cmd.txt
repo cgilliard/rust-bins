@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libarrayvec-0_4_7.rlib.o" "output-1.29.0/rustc-build/libarrayvec-0_4_7.rlib.c" "-c" 

@@ -1,0 +1,2 @@
+output-1.29.0/libstd_unicode.rlib: /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/libstd_unicode/lib.rs
+output-1.29.0/libstd_unicode.rlib: output-1.29.0/libcompiler_builtins.rlib output-1.29.0/libcore.rlib

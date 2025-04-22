@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libdatafrog-0_1_0.rlib.o" "output-1.29.0/rustc-build/libdatafrog-0_1_0.rlib.c" "-c" 

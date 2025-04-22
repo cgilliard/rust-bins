@@ -1,1 +1,1 @@
-"-O2" "-fPIC" "-o" "output/libpanic_unwind.rlib.o" "output/libpanic_unwind.rlib.c" "-c" 
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/libpanic_unwind.rlib.o" "output-1.29.0/libpanic_unwind.rlib.c" "-c" 

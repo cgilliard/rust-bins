@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/librustc_rayon_core-0_1_1_H20.rlib.o" "output-1.29.0/rustc-build/librustc_rayon_core-0_1_1_H20.rlib.c" "-c" 

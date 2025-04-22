@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libfmt_macros.rlib.o" "output-1.29.0/rustc-build/libfmt_macros.rlib.c" "-c" 

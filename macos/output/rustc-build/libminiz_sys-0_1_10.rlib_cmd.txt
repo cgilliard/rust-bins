@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libminiz_sys-0_1_10.rlib.o" "output-1.29.0/rustc-build/libminiz_sys-0_1_10.rlib.c" "-c" 

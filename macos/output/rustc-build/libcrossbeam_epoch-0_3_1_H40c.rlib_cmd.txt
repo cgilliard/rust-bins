@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libcrossbeam_epoch-0_3_1_H40c.rlib.o" "output-1.29.0/rustc-build/libcrossbeam_epoch-0_3_1_H40c.rlib.c" "-c" 

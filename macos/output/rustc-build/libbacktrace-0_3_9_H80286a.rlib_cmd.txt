@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libbacktrace-0_3_9_H80286a.rlib.o" "output-1.29.0/rustc-build/libbacktrace-0_3_9_H80286a.rlib.c" "-c" 

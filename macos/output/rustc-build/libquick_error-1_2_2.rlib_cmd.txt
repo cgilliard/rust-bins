@@ -1,0 +1,1 @@
+"-Wno-psabi" "-O1" "-fno-tree-sra" "-fPIC" "-o" "output-1.29.0/rustc-build/libquick_error-1_2_2.rlib.o" "output-1.29.0/rustc-build/libquick_error-1_2_2.rlib.c" "-c" 

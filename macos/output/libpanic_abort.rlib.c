@@ -97,12 +97,9 @@ static inline uint64_t __mrustc_op_imax64(uint64_t a, uint64_t b) { return ((int
 static inline uint64_t __mrustc_op_imin64(uint64_t a, uint64_t b) { return ((int64_t)a < (int64_t)b ? a : b); }
 static inline uint64_t __mrustc_op_and_not64(uint64_t a, uint64_t b) { return ~(a & b); }
 typedef void (*t_ZRTF1PuCaT0 )( uint8_t * ); // extern "Rust" fn(*mut u8, ) -> ()
-// PROTO extern "Rust" ::"panic_abort-0_0_0"::#0::abort
-tBANG  ZRG2cL16panic_abort0_0_0B_05abort0g(void) // -> !
-;
 // PROTO extern "C" ::"panic_abort-0_0_0"::__rust_maybe_catch_panic
-#define ZRG1cL16panic_abort0_0_024__rust_maybe_catch_panic0g __rust_maybe_catch_panic
-__attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_024__rust_maybe_catch_panic0g(
+#define ZRG1cL16panic_abort0_0_025___rust_maybe_catch_panic0g __rust_maybe_catch_panic
+__attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_025___rust_maybe_catch_panic0g(
 		t_ZRTF1PuCaT0 arg0, // extern "Rust" fn(*mut u8, ) -> ()
 		uint8_t *arg1, // *mut u8
 		uintptr_t *arg2, // *mut usize
@@ -110,8 +107,8 @@ __attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_024__rust_maybe_catch_pan
 		) // -> u32
 ;
 // PROTO extern "C" ::"panic_abort-0_0_0"::__rust_start_panic
-#define ZRG1cL16panic_abort0_0_018__rust_start_panic0g __rust_start_panic
-__attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_018__rust_start_panic0g(
+#define ZRG1cL16panic_abort0_0_019___rust_start_panic0g __rust_start_panic
+__attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_019___rust_start_panic0g(
 		uintptr_t arg0 // usize
 		) // -> u32
 ;
@@ -119,21 +116,11 @@ __attribute__((weak)) uint32_t  ZRG1cL16panic_abort0_0_018__rust_start_panic0g(
 #define ZRG2cL16panic_abort0_0_013personalities19rust_eh_personality0g rust_eh_personality
 void  ZRG2cL16panic_abort0_0_013personalities19rust_eh_personality0g(void) // -> ()
 ;
-// EXTERN extern "C" ::"libc-0_0_0_H1"::abort
-extern tBANG  ZRG1cE12libc0_0_0_H15abort0g(void) // -> !
+// EXTERN extern "C" ::"libc-0_0_0_H4"::abort
+extern tBANG  ZRG1cE12libc0_0_0_H45abort0g(void) // -> !
  asm("_abort");
-// ::"panic_abort-0_0_0"::#0::abort
-tBANG  ZRG2cL16panic_abort0_0_0B_05abort0g(void) // -> !
-
-{
-	tBANG rv;
-	tBANG var0 = {0};	// !
-	ZRG1cE12libc0_0_0_H15abort0g( );
-	// ^ Call( _0 = ::"libc-0_0_0_H1"::abort( ), bb1, bb1)
-bb1: _Unwind_Resume(); // Diverge
-}
 // ::"panic_abort-0_0_0"::__rust_maybe_catch_panic
-uint32_t  ZRG1cL16panic_abort0_0_024__rust_maybe_catch_panic0g(
+uint32_t  ZRG1cL16panic_abort0_0_025___rust_maybe_catch_panic0g(
 		t_ZRTF1PuCaT0 arg0, // extern "Rust" fn(*mut u8, ) -> ()
 		uint8_t *arg1, // *mut u8
 		uintptr_t *arg2, // *mut usize
@@ -151,15 +138,15 @@ uint32_t  ZRG1cL16panic_abort0_0_024__rust_maybe_catch_panic0g(
 bb2: _Unwind_Resume(); // Diverge
 }
 // ::"panic_abort-0_0_0"::__rust_start_panic
-uint32_t  ZRG1cL16panic_abort0_0_018__rust_start_panic0g(
+uint32_t  ZRG1cL16panic_abort0_0_019___rust_start_panic0g(
 		uintptr_t arg0 // usize
 		) // -> u32
 
 {
 	uint32_t rv;
 	tBANG var0 = {0};	// !
-	ZRG1cE12libc0_0_0_H15abort0g( );
-	// ^ Call( _0 = ::"libc-0_0_0_H1"::abort( ), bb1, bb1)
+	ZRG1cE12libc0_0_0_H45abort0g( );
+	// ^ Call( _0 = ::"libc-0_0_0_H4"::abort( ), bb1, bb1)
 bb1: _Unwind_Resume(); // Diverge
 }
 // ::"panic_abort-0_0_0"::personalities::rust_eh_personality

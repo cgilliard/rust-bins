@@ -1,0 +1,2 @@
+output-1.29.0/librustc_asan.rlib: /Users/christophergilliard/projects/mrustc-latest/rustc-1.29.0-src/src/librustc_asan/lib.rs
+output-1.29.0/librustc_asan.rlib: output-1.29.0/liballoc.rlib output-1.29.0/liballoc_system.rlib output-1.29.0/libcompiler_builtins.rlib output-1.29.0/libcore.rlib output-1.29.0/liblibc.rlib
